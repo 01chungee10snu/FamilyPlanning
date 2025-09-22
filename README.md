@@ -1,10 +1,13 @@
-# Family Planning: The Unfinished Agenda - Interactive Presentation
+# Family Planning: The Unfinished Agenda
+# 가족계획: 미완의 과제
 
-A comprehensive, interactive presentation system for academic research on family planning policies, built with modern web technologies and designed for professional presentations.
+Interactive presentation system for "Family Planning: The Unfinished Agenda" (Lancet 2006)
 
-## 📋 Project Overview
+## 📋 Project Overview / 프로젝트 개요
 
-This project is an interactive presentation system covering the research paper "Family Planning: The Unfinished Agenda" by John Bongaarts and John Casterline. The presentation includes 16 comprehensive slides covering historical development, current status, case studies, and policy recommendations for family planning initiatives.
+This project is an interactive presentation system covering the research paper "Family Planning: The Unfinished Agenda" from The Lancet (2006). The presentation includes 15 refined slides with all panels, tables, and figures from the original paper, covering historical development, current status, case studies, and policy recommendations for family planning initiatives.
+
+Lancet 2006 가족계획 논문을 위한 종합 발표 시스템입니다. 원문의 모든 패널, 표, 그림을 포함한 15개 핵심 슬라이드로 구성되어 있으며, 가족계획의 역사적 발전, 현재 상황, 사례 연구, 정책 권고사항을 다룹니다.
 
 ### Key Features
 
