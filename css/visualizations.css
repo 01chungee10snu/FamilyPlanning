@@ -1,0 +1,791 @@
+/* ========================================
+   VISUALIZATION STYLES
+   ======================================== */
+
+/* CSS Variables - Extending existing design system */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --transition-speed: 0.3s;
+
+    /* Visualization-specific variables */
+    --chart-bg: #ffffff;
+    --chart-border: #e0e0e0;
+    --chart-text: #333333;
+    --chart-grid: #f5f5f5;
+    --chart-primary: #2D5F5F;
+    --chart-secondary: #3D7F7F;
+    --chart-accent: #D4AF37;
+    --chart-success: #4D8F8F;
+    --chart-warning: #D4AF37;
+    --chart-danger: #A05040;
+    --chart-info: #3498db;
+
+    /* Chart color palette */
+    --color-1: #2D5F5F;
+    --color-2: #3D7F7F;
+    --color-3: #D4AF37;
+    --color-4: #A05040;
+    --color-5: #4D8F8F;
+    --color-6: #8B7355;
+    --color-7: #5F5F2D;
+    --color-8: #7F3D7F;
+}
+
+/* ========================================
+   CHART CONTAINERS
+   ======================================== */
+
+/* Base chart container with responsive sizing */
+.chart-container {
+    width: 100%;
+    height: 38vh;
+    margin: 1vh 0;
+    position: relative;
+    background: var(--chart-bg);
+    border-radius: 0.5vw;
+    padding: 1vh;
+    box-shadow: 0 0.2vh 1vh rgba(0,0,0,0.05);
+    transition: all var(--transition-speed) ease;
+}
+
+.chart-container:hover {
+    box-shadow: 0 0.4vh 1.5vh rgba(0,0,0,0.1);
+}
+
+/* Chart wrapper for different visualization libraries */
+.chart-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.3vw;
+}
+
+/* Small chart variant */
+.chart-container.small {
+    height: 25vh;
+}
+
+/* Large chart variant */
+.chart-container.large {
+    height: 50vh;
+}
+
+/* Full height chart */
+.chart-container.full-height {
+    height: 70vh;
+}
+
+/* ========================================
+   PLOTLY CHART STYLES
+   ======================================== */
+
+.plotly-chart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.plotly-chart .plotly {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Plotly modebar customization */
+.plotly-chart .modebar {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 0.3vw !important;
+    padding: 0.2vh !important;
+}
+
+.plotly-chart .modebar-btn {
+    background: transparent !important;
+    border: none !important;
+    color: var(--chart-text) !important;
+}
+
+.plotly-chart .modebar-btn:hover {
+    background: var(--chart-grid) !important;
+    border-radius: 0.2vw !important;
+}
+
+/* Plotly legend customization */
+.plotly-chart .legend {
+    font-family: 'SeoulNamsanL', sans-serif !important;
+    font-size: 0.9vw !important;
+}
+
+/* ========================================
+   LEAFLET MAP STYLES
+   ======================================== */
+
+.map-container {
+    width: 100%;
+    height: 38vh;
+    margin: 1vh 0;
+    border-radius: 0.5vw;
+    overflow: hidden;
+    box-shadow: 0 0.2vh 1vh rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.map-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.3vw;
+}
+
+/* Leaflet control customization */
+.leaflet-control-container {
+    font-family: 'SeoulNamsanM', sans-serif;
+}
+
+.leaflet-control-zoom {
+    border-radius: 0.3vw !important;
+    box-shadow: 0 0.2vh 0.5vh rgba(0,0,0,0.15) !important;
+}
+
+.leaflet-control-zoom a {
+    background: var(--chart-bg) !important;
+    color: var(--chart-text) !important;
+    border: 1px solid var(--chart-border) !important;
+    font-size: 1.2vw !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: var(--chart-grid) !important;
+}
+
+/* Custom map popup styling */
+.leaflet-popup-content-wrapper {
+    border-radius: 0.3vw !important;
+    box-shadow: 0 0.3vh 1vh rgba(0,0,0,0.2) !important;
+    font-family: 'SeoulNamsanL', sans-serif !important;
+}
+
+.leaflet-popup-content {
+    font-size: 0.9vw !important;
+    line-height: 1.4 !important;
+}
+
+/* ========================================
+   TIMELINE VISUALIZATION STYLES
+   ======================================== */
+
+.timeline-container {
+    width: 100%;
+    height: 38vh;
+    margin: 1vh 0;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background: var(--chart-bg);
+    border-radius: 0.5vw;
+    padding: 1vh;
+}
+
+.timeline-wrapper {
+    display: flex;
+    align-items: center;
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.timeline-axis {
+    position: absolute;
+    bottom: 3vh;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--chart-border);
+}
+
+.timeline-event {
+    position: absolute;
+    padding: 0.5vh 1vw;
+    background: var(--chart-primary);
+    color: white;
+    border-radius: 0.3vw;
+    font-size: 0.8vw;
+    font-family: 'SeoulNamsanL', sans-serif;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    transform: translateY(-50%);
+}
+
+.timeline-event:hover {
+    background: var(--chart-secondary);
+    transform: translateY(-50%) scale(1.05);
+    z-index: 10;
+}
+
+.timeline-event::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+/* ========================================
+   CHART.JS CANVAS STYLES
+   ======================================== */
+
+.chartjs-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.chartjs-canvas {
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+
+/* Chart.js tooltip customization */
+.chartjs-tooltip {
+    font-family: 'SeoulNamsanL', sans-serif !important;
+    font-size: 0.9vw !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-radius: 0.3vw !important;
+    padding: 0.5vh 1vw !important;
+}
+
+/* ========================================
+   CITATION TOOLTIPS & HOVER EFFECTS
+   ======================================== */
+
+.citation-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    color: var(--chart-info);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.citation-tooltip::before {
+    content: attr(data-citation);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.5vh 1vw;
+    border-radius: 0.3vw;
+    font-size: 0.8vw;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-speed) ease;
+    z-index: 100;
+    font-family: 'SeoulNamsanL', sans-serif;
+}
+
+.citation-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-speed) ease;
+    z-index: 100;
+}
+
+.citation-tooltip:hover::before,
+.citation-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Data point hover effects */
+.data-point-hover {
+    transition: all var(--transition-speed) ease;
+}
+
+.data-point-hover:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* ========================================
+   LOADING SPINNERS
+   ======================================== */
+
+.chart-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--chart-grid);
+    border-top: 4px solid var(--chart-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    margin-top: 1vh;
+    font-family: 'SeoulNamsanL', sans-serif;
+    font-size: 0.9vw;
+    color: var(--chart-text);
+    text-align: center;
+}
+
+/* Skeleton loader for charts */
+.chart-skeleton {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--chart-grid) 25%, transparent 50%, var(--chart-grid) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 0.3vw;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ========================================
+   LEGEND & AXIS STYLING
+   ======================================== */
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1vw;
+    margin-top: 1vh;
+    font-family: 'SeoulNamsanL', sans-serif;
+    font-size: 0.9vw;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.legend-label {
+    color: var(--chart-text);
+    white-space: nowrap;
+}
+
+/* Custom axis styling */
+.chart-axis {
+    font-family: 'SeoulNamsanL', sans-serif;
+    font-size: 0.8vw;
+    color: var(--chart-text);
+}
+
+.chart-axis-title {
+    font-family: 'SeoulNamsanM', sans-serif;
+    font-size: 1vw;
+    font-weight: 500;
+    color: var(--chart-primary);
+}
+
+.chart-grid-line {
+    stroke: var(--chart-grid);
+    stroke-width: 1;
+    stroke-dasharray: 2,2;
+}
+
+/* ========================================
+   COLOR SCHEMES
+   ======================================== */
+
+/* Primary color scheme */
+.color-scheme-primary {
+    --chart-color-1: var(--color-1);
+    --chart-color-2: var(--color-2);
+    --chart-color-3: var(--color-3);
+    --chart-color-4: var(--color-4);
+    --chart-color-5: var(--color-5);
+}
+
+/* Monochromatic blue scheme */
+.color-scheme-blue {
+    --chart-color-1: #1e3a8a;
+    --chart-color-2: #3b82f6;
+    --chart-color-3: #60a5fa;
+    --chart-color-4: #93c5fd;
+    --chart-color-5: #dbeafe;
+}
+
+/* Traffic light scheme for status indicators */
+.color-scheme-status {
+    --chart-color-1: var(--chart-success);
+    --chart-color-2: var(--chart-warning);
+    --chart-color-3: var(--chart-danger);
+    --chart-color-4: var(--chart-info);
+    --chart-color-5: var(--chart-primary);
+}
+
+/* Accessibility-friendly scheme */
+.color-scheme-accessible {
+    --chart-color-1: #0173b2;
+    --chart-color-2: #de8f05;
+    --chart-color-3: #cc78bc;
+    --chart-color-4: #ca9161;
+    --chart-color-5: #fbafe4;
+}
+
+/* ========================================
+   ANIMATION CLASSES
+   ======================================== */
+
+/* Chart entrance animations */
+.chart-fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chart-slide-in {
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.chart-scale-in {
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Data point animations */
+.data-point-pulse {
+    animation: pulse 2s infinite;
+}
+
+.data-point-bounce {
+    animation: bounce 1s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Chart transition animations */
+.chart-transition {
+    transition: all var(--transition-speed) ease;
+}
+
+/* ========================================
+   INTERACTIVE ELEMENTS
+   ======================================== */
+
+.chart-interactive {
+    cursor: pointer;
+}
+
+.chart-interactive:hover {
+    filter: brightness(1.05);
+}
+
+.chart-button {
+    background: var(--chart-primary);
+    color: white;
+    border: none;
+    padding: 0.5vh 1vw;
+    border-radius: 0.3vw;
+    font-family: 'SeoulNamsanM', sans-serif;
+    font-size: 0.9vw;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.chart-button:hover {
+    background: var(--chart-secondary);
+    transform: translateY(-2px);
+}
+
+.chart-button:active {
+    transform: translateY(0);
+}
+
+.chart-toggle {
+    display: inline-flex;
+    background: var(--chart-grid);
+    border-radius: 0.3vw;
+    padding: 0.2vh;
+    margin: 0.5vh 0;
+}
+
+.chart-toggle button {
+    background: transparent;
+    border: none;
+    padding: 0.3vh 0.8vw;
+    border-radius: 0.2vw;
+    font-family: 'SeoulNamsanL', sans-serif;
+    font-size: 0.8vw;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.chart-toggle button.active {
+    background: var(--chart-primary);
+    color: white;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet and smaller screens */
+@media (max-width: 1024px) {
+    .chart-container {
+        height: 35vh;
+        padding: 0.8vh;
+    }
+
+    .legend-item {
+        font-size: 1vw;
+    }
+
+    .chart-button {
+        font-size: 1vw;
+        padding: 0.6vh 1.2vw;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 30vh;
+        margin: 0.5vh 0;
+        padding: 0.5vh;
+    }
+
+    .chart-legend {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5vh;
+    }
+
+    .legend-item {
+        font-size: 1.2vw;
+    }
+
+    .chart-button {
+        font-size: 1.2vw;
+        padding: 0.8vh 1.5vw;
+    }
+
+    .timeline-container {
+        height: 25vh;
+    }
+
+    .map-container {
+        height: 30vh;
+    }
+}
+
+/* High DPI screens */
+@media (min-width: 1920px) {
+    .chart-container {
+        max-width: 1800px;
+        margin: 1vh auto;
+    }
+
+    .legend-item {
+        font-size: 14px;
+    }
+
+    .chart-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+    .chart-container {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--chart-border);
+    }
+
+    .chart-loading,
+    .loading-spinner {
+        display: none;
+    }
+
+    .chart-interactive {
+        cursor: default;
+    }
+
+    .citation-tooltip::before,
+    .citation-tooltip::after {
+        display: none;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+/* Focus indicators for interactive elements */
+.chart-button:focus,
+.chart-toggle button:focus {
+    outline: 2px solid var(--chart-info);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --chart-bg: #ffffff;
+        --chart-text: #000000;
+        --chart-border: #000000;
+        --chart-primary: #000080;
+        --chart-secondary: #800080;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .chart-fade-in,
+    .chart-slide-in,
+    .chart-scale-in,
+    .data-point-pulse,
+    .data-point-bounce,
+    .chart-transition,
+    .loading-spinner {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* Screen reader support */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ========================================
+   SPECIALIZED CHART TYPES
+   ======================================== */
+
+/* Donut chart center text */
+.donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.donut-center .value {
+    font-family: 'SeoulNamsanB', sans-serif;
+    font-size: 2vw;
+    font-weight: 700;
+    color: var(--chart-primary);
+}
+
+.donut-center .label {
+    font-family: 'SeoulNamsanL', sans-serif;
+    font-size: 0.9vw;
+    color: var(--chart-text);
+    margin-top: 0.3vh;
+}
+
+/* Gauge chart styling */
+.gauge-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gauge-label {
+    position: absolute;
+    bottom: 20%;
+    font-family: 'SeoulNamsanM', sans-serif;
+    font-size: 1vw;
+    color: var(--chart-text);
+    text-align: center;
+}
+
+/* Heatmap cell styling */
+.heatmap-cell {
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+}
+
+.heatmap-cell:hover {
+    stroke: var(--chart-primary);
+    stroke-width: 2;
+}
+
+/* Network diagram nodes */
+.network-node {
+    fill: var(--chart-primary);
+    stroke: white;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.network-node:hover {
+    fill: var(--chart-secondary);
+    transform: scale(1.2);
+}
+
+.network-link {
+    stroke: var(--chart-border);
+    stroke-width: 1;
+    opacity: 0.6;
+}

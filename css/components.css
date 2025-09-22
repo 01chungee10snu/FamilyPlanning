@@ -1,0 +1,309 @@
+/* Title Slide */
+.title-slide {
+    background: linear-gradient(135deg, #2D5F5F 0%, #4D8F8F 100%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.title-slide h1 {
+    color: white;
+    font-size: 3.3vw;
+    margin-bottom: 2vh;
+}
+
+/* Timeline Styles */
+.timeline-container {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    margin: 1vh 0;
+}
+
+.timeline-line {
+    position: absolute;
+    width: 90%;
+    height: 0.4vh;
+    background: linear-gradient(90deg, #2D5F5F 0%, #8B7355 50%, #D4AF37 100%);
+    top: 40%;
+    left: 5%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.timeline-item {
+    position: absolute;
+    transform: translateX(-50%);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    background: #8B7355;
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-0.5vh);
+    box-shadow: 0 0.6vh 1.5vh rgba(0,0,0,0.15);
+}
+
+.timeline-item.active .timeline-dot {
+    transform: scale(1.4);
+    background: #D4AF37;
+    animation: pulse 2s infinite;
+}
+
+.timeline-detail {
+    display: none;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    background: white;
+    border-radius: 1vw;
+    padding: 2vh 2.5vw;
+    box-shadow: 0 0.5vh 2vh rgba(0,0,0,0.15);
+    animation: fadeIn 0.3s ease;
+}
+
+.timeline-detail.active {
+    display: block;
+}
+
+.timeline-detail h3 {
+    color: #2c3e50;
+    font-size: 1.4vw;
+    margin-bottom: 1vh;
+}
+
+.timeline-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+    align-items: start;
+}
+
+.timeline-detail-left ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.timeline-detail-left li {
+    padding-left: 2vw;
+    position: relative;
+    margin-bottom: 0.8vh;
+    font-size: 0.95vw;
+}
+
+.timeline-detail-left li:before {
+    content: "\f058";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+}
+
+.timeline-detail-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5vh;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item i {
+    font-size: 2vw;
+    margin-bottom: 0.5vh;
+    display: block;
+}
+
+.stat-item .stat-number {
+    font-size: 1.5vw;
+    font-weight: 700;
+    color: #3498db;
+}
+
+.stat-item .stat-label {
+    font-family: 'SeoulNamsanL', sans-serif;
+    font-size: 0.8vw;
+    color: #666;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(1vh); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.timeline-dot {
+    width: 1.5vw;
+    height: 1.5vw;
+    background: #2D5F5F;
+    border: 0.2vw solid white;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0 0.2vh 0.8vh rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-content {
+    background: white;
+    padding: 0.8vh 1vw;
+    border-radius: 0.5vw;
+    box-shadow: 0 0.4vh 1.2vh rgba(0,0,0,0.1);
+    margin-top: 1.5vh;
+    min-width: 10vw;
+    font-size: 0.85vw;
+}
+
+.timeline-year {
+    font-size: 1.1vw;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 0.8vh;
+}
+
+/* Map Styles */
+.map-container {
+    width: 100%;
+    height: 45vh;
+    position: relative;
+    border-radius: 0.8vw;
+    overflow: hidden;
+    box-shadow: 0 0.4vh 2vh rgba(0,0,0,0.1);
+    margin: 1vh 0;
+}
+
+#world-map, #case-map {
+    width: 100%;
+    height: 100%;
+}
+
+.map-legend {
+    position: absolute;
+    bottom: 2vh;
+    right: 2vw;
+    background: white;
+    padding: 1vh 1vw;
+    border-radius: 0.5vw;
+    box-shadow: 0 0.2vh 1vh rgba(0,0,0,0.1);
+    z-index: 1000;
+    font-size: 0.8vw;
+}
+
+/* Flow Diagram */
+.flow-diagram {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5vh 0;
+    padding: 0.8vh 1vw;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 0.8vw;
+}
+
+.flow-item {
+    flex: 1;
+    text-align: center;
+    padding: 0.8vh 0.8vw;
+    background: white;
+    border-radius: 0.5vw;
+    margin: 0 0.3vw;
+    box-shadow: 0 0.2vh 1vh rgba(0,0,0,0.1);
+}
+
+.flow-item h4 {
+    font-size: 0.95vw;
+    margin: 0.3vh 0;
+}
+
+.flow-item p {
+    font-size: 0.85vw;
+    margin: 0;
+}
+
+.flow-arrow {
+    font-size: 1.4vw;
+    color: #2D5F5F;
+    margin: 0 0.3vw;
+}
+
+/* Impact Visualization */
+.impact-center {
+    position: relative;
+    height: 55vh;
+    width: 100%;
+    margin: 1vh 0;
+}
+
+.impact-hub {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 9vw;
+    height: 9vw;
+    background: linear-gradient(135deg, #2D5F5F, #4D8F8F);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'SeoulNamsanB', sans-serif;
+    font-size: 1.1vw;
+    font-weight: 700;
+    box-shadow: 0 1vh 3vh rgba(0,0,0,0.3);
+    z-index: 10;
+    border: 3px solid rgba(255,255,255,0.9);
+}
+
+.impact-item {
+    position: absolute;
+    width: 12vw;
+    min-height: 11vh;
+    padding: 0.8vh 0.8vw;
+    background: white;
+    border-radius: 0.8vw;
+    text-align: center;
+    box-shadow: 0 0.5vh 2vh rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(0,0,0,0.05);
+}
+
+.impact-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.8vh 2.5vh rgba(0,0,0,0.15);
+    z-index: 20;
+}
+
+.impact-item h4 {
+    font-family: 'SeoulNamsanM', sans-serif;
+    font-size: 1vw;
+    margin: 0.3vh 0;
+}
+
+.impact-item p {
+    font-family: 'SeoulNamsanL', sans-serif;
+    font-size: 0.8vw;
+    margin: 0.2vh 0;
+    line-height: 1.2;
+}
+
+.impact-item p:first-of-type {
+    font-family: 'SeoulNamsanB', sans-serif;
+    font-size: 1.5vw;
+    font-weight: 700;
+    margin: 0.4vh 0;
+}

@@ -1,0 +1,353 @@
+<!-- Slide 34: Unmet Need by Income (Figure 2) -->
+<div class="slide" id="slide-unmet-need-by-income">
+    <div class="slide-header">
+        <h1>소득별 미충족 수요 (Unmet Need by Income Level)</h1>
+        <div class="badge-container">
+            <span class="badge data">Figure 2</span>
+            <span class="badge inequality">불평등</span>
+        </div>
+    </div>
+    <div class="slide-content">
+        <div class="income-analysis">
+            <h3>소득별 미충족 수요 패턴</h3>
+            <div class="chart-container" data-chart="income-unmet-need">
+                <canvas id="incomeUnmetNeedChart"></canvas>
+            </div>
+        </div>
+
+        <div class="key-findings">
+            <h3>주요 발견사항</h3>
+            <div class="findings-grid">
+                <div class="finding inequality">
+                    <h4>📊 역설적 불평등</h4>
+                    <div class="finding-details">
+                        <p><strong>가장 가난한 계층에서 미충족 수요가 가장 높음</strong></p>
+                        <div class="statistics">
+                            <div class="stat">
+                                <span class="value">25-30%</span>
+                                <span class="label">최빈층 미충족 수요</span>
+                            </div>
+                            <div class="stat">
+                                <span class="value">8-12%</span>
+                                <span class="label">최상위층 미충족 수요</span>
+                            </div>
+                            <div class="stat">
+                                <span class="value">2-3배</span>
+                                <span class="label">계층간 격차</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="finding gradient">
+                    <h4>📈 소득 구배</h4>
+                    <div class="finding-details">
+                        <p><strong>소득이 높을수록 미충족 수요가 체계적으로 감소</strong></p>
+                        <div class="gradient-analysis">
+                            <div class="quintile">
+                                <h5>최빈층 (1분위)</h5>
+                                <ul>
+                                    <li>미충족 수요: 25-30%</li>
+                                    <li>피임 사용률: 20-30%</li>
+                                    <li>주요 장벽: 비용, 접근성</li>
+                                </ul>
+                            </div>
+                            <div class="quintile">
+                                <h5>중간층 (3분위)</h5>
+                                <ul>
+                                    <li>미충족 수요: 15-20%</li>
+                                    <li>피임 사용률: 40-50%</li>
+                                    <li>주요 장벽: 정보, 품질</li>
+                                </ul>
+                            </div>
+                            <div class="quintile">
+                                <h5>최상위층 (5분위)</h5>
+                                <ul>
+                                    <li>미충족 수요: 8-12%</li>
+                                    <li>피임 사용률: 60-75%</li>
+                                    <li>주요 장벽: 선택의 제약</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="finding regional">
+                    <h4>🌍 지역별 차이</h4>
+                    <div class="finding-details">
+                        <p><strong>지역에 관계없이 일관된 소득 구배 관찰</strong></p>
+                        <div class="regional-comparison">
+                            <div class="region">
+                                <h5>사하라 이남 아프리카</h5>
+                                <p>모든 소득층에서 높은 미충족 수요, 특히 빈곤층에서 심각</p>
+                            </div>
+                            <div class="region">
+                                <h5>남아시아</h5>
+                                <p>중간 정도 수준, 하지만 빈곤층에서 여전히 높음</p>
+                            </div>
+                            <div class="region">
+                                <h5>라틴 아메리카</h5>
+                                <p>상대적으로 낮지만 소득 격차는 여전히 존재</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="barrier-analysis">
+            <h3>소득별 장벽 분석</h3>
+            <div class="barriers-by-income">
+                <div class="income-group poorest">
+                    <h4>🔴 최빈층 (Bottom 20%)</h4>
+                    <div class="barriers-list">
+                        <div class="barrier economic">
+                            <h5>💰 경제적 장벽</h5>
+                            <ul>
+                                <li>피임법 구매 비용</li>
+                                <li>교통비 및 기회비용</li>
+                                <li>진료비 부담</li>
+                                <li>시간적 여유 부족</li>
+                            </ul>
+                        </div>
+                        <div class="barrier access">
+                            <h5>🚧 접근성 장벽</h5>
+                            <ul>
+                                <li>지리적 거리</li>
+                                <li>서비스 운영 시간</li>
+                                <li>대중교통 제한</li>
+                                <li>시설 부족</li>
+                            </ul>
+                        </div>
+                        <div class="barrier social">
+                            <h5>👥 사회적 장벽</h5>
+                            <ul>
+                                <li>낮은 교육 수준</li>
+                                <li>정보 접근 제한</li>
+                                <li>의사결정권 부족</li>
+                                <li>사회적 지위</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="income-group middle">
+                    <h4>🟡 중간층 (Middle 40%)</h4>
+                    <div class="barriers-list">
+                        <div class="barrier quality">
+                            <h5>🏥 품질 장벽</h5>
+                            <ul>
+                                <li>서비스 질 우려</li>
+                                <li>방법 선택의 제약</li>
+                                <li>상담 서비스 부족</li>
+                                <li>부작용 관리</li>
+                            </ul>
+                        </div>
+                        <div class="barrier information">
+                            <h5>📚 정보 장벽</h5>
+                            <ul>
+                                <li>부정확한 정보</li>
+                                <li>방법별 특성 이해 부족</li>
+                                <li>건강 위험 오해</li>
+                                <li>효과성 의문</li>
+                            </ul>
+                        </div>
+                        <div class="barrier cultural">
+                            <h5>🎭 문화적 장벽</h5>
+                            <ul>
+                                <li>종교적 신념</li>
+                                <li>전통적 가치관</li>
+                                <li>가족 압력</li>
+                                <li>지역 사회 규범</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="income-group richest">
+                    <h4>🟢 최상위층 (Top 20%)</h4>
+                    <div class="barriers-list">
+                        <div class="barrier choice">
+                            <h5>🎯 선택 장벽</h5>
+                            <ul>
+                                <li>최적 방법 부재</li>
+                                <li>개인 맞춤형 부족</li>
+                                <li>고급 서비스 접근</li>
+                                <li>전문적 상담 요구</li>
+                            </ul>
+                        </div>
+                        <div class="barrier lifestyle">
+                            <h5>🏃 생활양식 장벽</h5>
+                            <ul>
+                                <li>바쁜 일정</li>
+                                <li>이동성 높은 생활</li>
+                                <li>개인정보 보호 요구</li>
+                                <li>편의성 중시</li>
+                            </ul>
+                        </div>
+                        <div class="barrier expectation">
+                            <h5>⭐ 기대 장벽</h5>
+                            <ul>
+                                <li>높은 서비스 기대</li>
+                                <li>최신 기술 요구</li>
+                                <li>완벽한 효과성 추구</li>
+                                <li>부작용 완전 회피</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="equity-implications">
+            <h3>형평성 관점의 정책 함의</h3>
+            <div class="implications-framework">
+                <div class="equity-principle">
+                    <h4>🎯 형평성 원칙</h4>
+                    <p><strong>"가장 필요한 사람이 가장 적게 받는" 현실을 뒤바꿔야 함</strong></p>
+                </div>
+
+                <div class="targeted-approaches">
+                    <h4>맞춤형 접근 전략</h4>
+                    <div class="approaches-grid">
+                        <div class="approach pro-poor">
+                            <h5>🎈 빈곤층 대상 전략</h5>
+                            <ul>
+                                <li>무료 서비스 제공</li>
+                                <li>아웃리치 프로그램</li>
+                                <li>교통비 지원</li>
+                                <li>모바일 클리닉</li>
+                                <li>지역사회 기반 배급</li>
+                            </ul>
+                        </div>
+                        <div class="approach middle-class">
+                            <h5>🏢 중간층 대상 전략</h5>
+                            <ul>
+                                <li>직장 기반 프로그램</li>
+                                <li>보험 적용 확대</li>
+                                <li>정보 캠페인</li>
+                                <li>품질 개선</li>
+                                <li>상담 서비스 강화</li>
+                            </ul>
+                        </div>
+                        <div class="approach affluent">
+                            <h5>💎 상위층 대상 전략</h5>
+                            <ul>
+                                <li>프리미엄 서비스</li>
+                                <li>최신 기술 도입</li>
+                                <li>개인 맞춤형 상담</li>
+                                <li>편의성 개선</li>
+                                <li>민간 부문 활용</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="financing-strategy">
+                    <h4>💰 차등 지불 전략</h4>
+                    <div class="financing-model">
+                        <div class="payment-tier subsidized">
+                            <h5>완전 무료 (최빈층 40%)</h5>
+                            <p>정부 및 국제기구 완전 지원</p>
+                        </div>
+                        <div class="payment-tier partial">
+                            <h5>부분 지불 (중간층 40%)</h5>
+                            <p>소득에 비례한 차등 부담</p>
+                        </div>
+                        <div class="payment-tier full">
+                            <h5>전액 지불 (상위층 20%)</h5>
+                            <p>프리미엄 서비스 이용 가능</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="monitoring-equity">
+                    <h4>📊 형평성 모니터링</h4>
+                    <div class="monitoring-indicators">
+                        <div class="indicator">
+                            <h5>격차 지표</h5>
+                            <p>최상위층 대비 최빈층 미충족 수요 비율</p>
+                        </div>
+                        <div class="indicator">
+                            <h5>집중 지표</h5>
+                            <p>빈곤층에 대한 서비스 집중도</p>
+                        </div>
+                        <div class="indicator">
+                            <h5>진전 지표</h5>
+                            <p>소득별 미충족 수요 감소 속도</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). Figure 2">Cleland et al. (2006). Figure 2: Unmet need for family planning by wealth quintile</span>
+        <span class="slide-number">34 / 60</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Income-based Unmet Need Chart
+    const ctx = document.getElementById('incomeUnmetNeedChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['최빈층\n(Bottom 20%)', '2분위\n(Second 20%)', '3분위\n(Middle 20%)', '4분위\n(Fourth 20%)', '최상위층\n(Top 20%)'],
+                datasets: [{
+                    label: '출산 제한 수요',
+                    data: [18, 16, 14, 12, 8],
+                    backgroundColor: '#e74c3c',
+                    borderWidth: 1,
+                    borderColor: '#2c3e50'
+                }, {
+                    label: '출산 간격 수요',
+                    data: [12, 10, 8, 6, 4],
+                    backgroundColor: '#f39c12',
+                    borderWidth: 1,
+                    borderColor: '#2c3e50'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true,
+                        ticks: { color: '#ecf0f1', font: { size: 11 } },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        max: 35,
+                        ticks: {
+                            color: '#ecf0f1',
+                            callback: function(value) { return value + '%'; }
+                        },
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        title: {
+                            display: true,
+                            text: '미충족 수요 (%)',
+                            color: '#ecf0f1'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: '#ecf0f1', font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: '소득 분위별 가족계획 미충족 수요',
+                        color: '#ecf0f1',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>

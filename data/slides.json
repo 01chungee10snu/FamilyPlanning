@@ -1,0 +1,73 @@
+{
+  "slides": [
+    {
+      "id": "slide-1",
+      "sectionId": "title-intro",
+      "title": "Family Planning: The Unfinished Agenda",
+      "subtitle": "가족계획: 미완성 과제",
+      "content": {
+        "ko": "세계 인구 변화와 가족계획 정책의 현재와 미래",
+        "en": "Global Population Change and the Present and Future of Family Planning Policy"
+      },
+      "visualizations": [],
+      "citations": [],
+      "notes": {
+        "ko": "발표 제목 슬라이드",
+        "en": "Title slide for presentation"
+      },
+      "order": 1
+    },
+    {
+      "id": "slide-2",
+      "sectionId": "abstract-summary",
+      "title": "Key Messages",
+      "subtitle": "핵심 메시지",
+      "content": {
+        "ko": "• 가족계획은 여성의 건강과 권리에 핵심적\n• 현재 2억 2천만 여성이 피임에 대한 미충족 요구를 가짐\n• 효과적인 프로그램은 존재하지만 확산이 필요\n• 재정 투자 대비 높은 사회경제적 효과",
+        "en": "• Family planning is central to women's health and rights\n• Currently 222 million women have unmet contraceptive needs\n• Effective programs exist but need scaling up\n• High socioeconomic returns on financial investment"
+      },
+      "visualizations": [],
+      "citations": ["cite-1", "cite-2"],
+      "notes": {
+        "ko": "논문의 핵심 메시지 요약",
+        "en": "Summary of key messages from the paper"
+      },
+      "order": 2
+    },
+    {
+      "id": "slide-3",
+      "sectionId": "intro-background",
+      "title": "Historical Development",
+      "subtitle": "역사적 발전",
+      "content": {
+        "ko": "• 1960년대: 인구 폭발에 대한 우려로 시작\n• 1970-80년대: 대규모 가족계획 프로그램 확산\n• 1994년 카이로 회의: 인권 기반 접근법으로 전환\n• 2000년대: MDGs와 연계된 발전\n• 현재: SDGs 시대의 새로운 도전",
+        "en": "• 1960s: Started with concerns about population explosion\n• 1970-80s: Large-scale family planning programs expanded\n• 1994 Cairo Conference: Shift to rights-based approach\n• 2000s: Development linked to MDGs\n• Present: New challenges in the SDGs era"
+      },
+      "visualizations": ["timeline-1"],
+      "citations": ["cite-3", "cite-4"],
+      "notes": {
+        "ko": "가족계획 정책의 역사적 발전 과정",
+        "en": "Historical development of family planning policy"
+      },
+      "order": 3
+    }
+  ],
+  "totalSlides": 60,
+  "templateStructure": {
+    "id": "slide-{number}",
+    "sectionId": "section-identifier",
+    "title": "Slide Title",
+    "subtitle": "슬라이드 제목",
+    "content": {
+      "ko": "Korean content",
+      "en": "English content"
+    },
+    "visualizations": ["chart-id-1", "chart-id-2"],
+    "citations": ["cite-id-1", "cite-id-2"],
+    "notes": {
+      "ko": "Korean notes",
+      "en": "English notes"
+    },
+    "order": "number"
+  }
+}

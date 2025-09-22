@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel 6: 브라질 - 정부 개입 없는 가족계획</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .timeline-section {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 5px solid #ffd700;
+        }
+        .timeline-year {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffd700;
+            min-width: 100px;
+            margin-right: 20px;
+        }
+        .timeline-content {
+            flex: 1;
+        }
+        .timeline-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ffd700;
+        }
+        .three-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .pillar {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 5px solid #ffd700;
+        }
+        .pillar-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .pillar-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            color: #333;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #ffd700;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .success-factors {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4caf50;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .problems-section {
+            background: rgba(255, 152, 0, 0.2);
+            border: 2px solid #ff9800;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .problem-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 3px solid #ff9800;
+        }
+        .tv-influence {
+            background: rgba(138, 43, 226, 0.2);
+            border: 2px solid #8a2be2;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .comparison-table {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .highlight-row {
+            background-color: #fff3cd !important;
+            font-weight: bold;
+        }
+        .key-insight {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #ffd700;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Panel 6: 브라질 - 정부 개입 없는 가족계획</h1>
+            <p style="opacity: 0.8;">Family Planning without Government Intervention in Brazil</p>
+        </div>
+
+        <div class="timeline-section">
+            <h2 style="color: #ffd700; margin-top: 0;">브라질 가족계획 발전 과정</h2>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1960</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">높은 출산율과 불법 낙태 문제</div>
+                    <p>합계출산율 6.2명, 높은 불법 낙태율로 인한 사회 문제 심각</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1964-1985</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">군사정권 시대 - 인구 성장 억제에 무관심</div>
+                    <p>군사정권은 인구 증가 억제에 전혀 관심이 없었음. 1985년까지 정부 보건 서비스를 통한 가족계획은 불규칙적이었음</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1985</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">정부 서비스 시작</div>
+                    <p>가족계획이 정부 보건 서비스에 처음 포함되었지만 공급은 여전히 불안정</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="three-pillars">
+            <div class="pillar">
+                <div class="pillar-icon">🏥</div>
+                <div class="pillar-title">1. BEMFAM</div>
+                <p>1964년 설립된 국제가족계획연맹 브라질 지부. 불법 낙태 문제를 우려한 의사들이 창설. 1970년까지 국제 자금으로 많은 지방자치단체와 협정을 맺어 가족계획 서비스 제공</p>
+            </div>
+
+            <div class="pillar">
+                <div class="pillar-icon">💊</div>
+                <div class="pillar-title">2. 제약회사</div>
+                <p>피임약 시장 성장을 인식한 제약업계가 약국을 통해 경구피임약 판매 시작. 시장 수요에 따른 상업적 공급 체계 구축</p>
+            </div>
+
+            <div class="pillar">
+                <div class="pillar-icon">⚕️</div>
+                <div class="pillar-title">3. 공중보건 의사들</div>
+                <p>난관 결찰을 금지하는 법을 우회하여 선택적 제왕절개와 함께 결찰 수술 제공. 결찰 비용을 제왕절개 비용에 포함시키고 추가 비용 징수</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3 style="text-align: center; margin-top: 0;">브라질 출산율 변화 및 피임법 사용 현황</h3>
+            <div id="brazilChart" style="height: 400px;"></div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">6.2 → 2.5</div>
+                <div class="stat-label">합계출산율 변화<br>(1960 → 1996)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">77%</div>
+                <div class="stat-label">1996년 기혼여성<br>피임 실행률</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">불임수술<br>(가장 많이 사용)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">21%</div>
+                <div class="stat-label">경구피임약<br>사용률</div>
+            </div>
+        </div>
+
+        <div class="comparison-table">
+            <h3 style="text-align: center; margin-top: 0;">1996년 피임법 사용 현황 상세</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>피임법</th>
+                        <th>사용률</th>
+                        <th>특징</th>
+                        <th>공급원</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td><strong>불임수술</strong></td>
+                        <td>40%</td>
+                        <td>3/4이 공공병원에서 시행</td>
+                        <td>공공병원 (75%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>경구피임약</strong></td>
+                        <td>21%</td>
+                        <td>4/5가 약국에서 구입</td>
+                        <td>약국 (80%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>콘돔</strong></td>
+                        <td>4%</td>
+                        <td>상업적 유통</td>
+                        <td>약국/상점</td>
+                    </tr>
+                    <tr>
+                        <td><strong>기타</strong></td>
+                        <td>12%</td>
+                        <td>IUD, 자연피임법 등</td>
+                        <td>다양</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tv-influence">
+            <h2 style="color: #8a2be2; margin-top: 0;">📺 텔레비전과 텔레노벨라의 영향</h2>
+            <p style="font-size: 1.2em; line-height: 1.6;">
+                <strong>의도하지 않은 가족계획 촉진 요인</strong><br>
+                텔레비전의 확산과 인기 있는 연속극(텔레노벨라)에 등장하는 소가족이
+                새로운 가족계획 아이디어 확산에 결정적 역할을 했을 가능성
+            </p>
+        </div>
+
+        <div class="success-factors">
+            <h2 style="color: #4caf50; margin-top: 0;">🎯 성공 요인</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ <strong>자발적 수요 창출:</strong> 아동 사망률 감소와 기대 변화로 인한 소가족 선호</li>
+                <li>✅ <strong>다양한 접근 경로:</strong> NGO, 상업 부문, 의료진의 협력</li>
+                <li>✅ <strong>법적 유연성:</strong> 피임약 수입과 처방전 없는 판매 허용</li>
+                <li>✅ <strong>정부의 묵인:</strong> 이론적으로 불법인 불임수술에 대한 정부의 묵인</li>
+                <li>✅ <strong>미디어 영향:</strong> 텔레비전과 연속극을 통한 문화적 변화</li>
+            </ul>
+        </div>
+
+        <div class="problems-section">
+            <h2 style="color: #ff9800; margin-top: 0;">⚠️ 자유방임 정책의 문제점</h2>
+
+            <div class="problem-item">
+                <strong>제왕절개 수술의 과도한 증가</strong><br>
+                불임수술과 연계된 불필요한 제왕절개 수술 급증
+            </div>
+
+            <div class="problem-item">
+                <strong>최빈층의 불임수술 접근성 제약</strong><br>
+                경제적 부담으로 인한 빈곤층의 서비스 접근 한계
+            </div>
+
+            <div class="problem-item">
+                <strong>지역간·계층간 출산율 격차 확대</strong><br>
+                1986년 농촌 출산율이 도시보다 66% 높음
+            </div>
+
+            <div class="problem-item">
+                <strong>교육 수준별 격차</strong><br>
+                교육받은 계층과 교육받지 못한 계층 간 큰 출산율 차이
+            </div>
+        </div>
+
+        <div class="key-insight">
+            <h3 style="margin-top: 0;">핵심 교훈</h3>
+            <p style="font-size: 1.1em; line-height: 1.6;">
+                브라질은 <strong>강력한 소가족 수요가 자발적으로 발생</strong>한 경우 피임약 수입 금지나
+                처방전 없는 경구피임약 판매 금지, 이론적으로 불법인 불임수술에 대한 정부 묵인과 결합되어
+                수요에 대응하는 피임 서비스가 발생할 수 있음을 보여주는 좋은 사례입니다.
+                <br><br>
+                그러나 이런 자유방임 상황에는 <strong>비용이 따랐습니다</strong>: 제왕절개 발생률이 불필요하게 높아졌고,
+                최빈층을 위한 불임수술의 접근성이 장벽이 되었으며, 부유층과 빈곤층, 도시와 농촌,
+                교육받은 사람과 교육받지 못한 사람 사이에 큰 출산율 격차가 나타났습니다.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Brazil fertility and contraceptive use chart
+        const years = [1960, 1970, 1980, 1986, 1990, 1996];
+        const fertility = [6.2, 5.8, 4.4, 3.5, 2.9, 2.5];
+        const contraceptiveUse = [10, 25, 50, 65, 70, 77];
+        const abortionComplications = [null, null, null, null, 340, 240]; // thousands per year
+
+        const trace1 = {
+            x: years,
+            y: fertility,
+            mode: 'lines+markers',
+            name: '합계출산율',
+            line: { color: '#ff6b6b', width: 3 },
+            marker: { size: 8 },
+            yaxis: 'y'
+        };
+
+        const trace2 = {
+            x: years,
+            y: contraceptiveUse,
+            mode: 'lines+markers',
+            name: '피임 실행률 (%)',
+            line: { color: '#4caf50', width: 3 },
+            marker: { size: 8 },
+            yaxis: 'y2'
+        };
+
+        const trace3 = {
+            x: [1990, 1998],
+            y: [340, 240],
+            mode: 'lines+markers',
+            name: '낙태 합병증 (천명/년)',
+            line: { color: '#ff9800', width: 3 },
+            marker: { size: 10 },
+            yaxis: 'y2'
+        };
+
+        const layout = {
+            title: '',
+            xaxis: { title: '연도' },
+            yaxis: {
+                title: '합계출산율',
+                side: 'left',
+                range: [0, 7]
+            },
+            yaxis2: {
+                title: '피임 실행률 (%) / 낙태 합병증 (천명)',
+                side: 'right',
+                overlaying: 'y',
+                range: [0, 400]
+            },
+            font: { family: 'Segoe UI' },
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            annotations: [
+                {
+                    x: 1986,
+                    y: 3.5,
+                    text: '출산율 급격한 감소<br>(6.2→3.5명)',
+                    showarrow: true,
+                    arrowhead: 2,
+                    arrowcolor: '#ff6b6b',
+                    font: { color: '#ff6b6b', size: 12 }
+                },
+                {
+                    x: 1996,
+                    y: 77,
+                    text: '높은 피임 실행률<br>달성 (77%)',
+                    showarrow: true,
+                    arrowhead: 2,
+                    arrowcolor: '#4caf50',
+                    font: { color: '#4caf50', size: 12 }
+                }
+            ]
+        };
+
+        Plotly.newPlot('brazilChart', [trace1, trace2, trace3], layout, {responsive: true});
+    </script>
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!-- Slide 40: Urban vs Rural Gap -->
+<div class="slide" id="slide-urban-rural-gap">
+    <div class="slide-header">
+        <h1>도농 격차 (Urban-Rural Gap in Family Planning)</h1>
+        <div class="badge-container">
+            <span class="badge geography">지역 격차</span>
+            <span class="badge inequality">불평등</span>
+        </div>
+    </div>
+    <div class="slide-content">
+        <div class="gap-overview">
+            <h3>도농간 가족계획 격차 현황</h3>
+            <div class="chart-container">
+                <canvas id="urbanRuralGapChart"></canvas>
+            </div>
+        </div>
+
+        <div class="gap-analysis">
+            <h3>주요 격차 지표</h3>
+            <div class="indicators-grid">
+                <div class="indicator unmet-need">
+                    <h4>📊 미충족 수요</h4>
+                    <div class="comparison">
+                        <div class="urban-stat">
+                            <span class="value">12-15%</span>
+                            <span class="label">도시 지역</span>
+                        </div>
+                        <div class="rural-stat">
+                            <span class="value">25-30%</span>
+                            <span class="label">농촌 지역</span>
+                        </div>
+                        <div class="gap-ratio">
+                            <span class="ratio">2:1</span>
+                            <span class="label">격차 비율</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="indicator contraceptive-use">
+                    <h4>💊 피임 사용률</h4>
+                    <div class="comparison">
+                        <div class="urban-stat">
+                            <span class="value">65-75%</span>
+                            <span class="label">도시 지역</span>
+                        </div>
+                        <div class="rural-stat">
+                            <span class="value">35-45%</span>
+                            <span class="label">농촌 지역</span>
+                        </div>
+                        <div class="gap-ratio">
+                            <span class="ratio">1.7:1</span>
+                            <span class="label">격차 비율</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="indicator method-mix">
+                    <h4>🔄 방법의 다양성</h4>
+                    <div class="comparison">
+                        <div class="urban-stat">
+                            <span class="value">8-12</span>
+                            <span class="label">도시 이용 가능 방법</span>
+                        </div>
+                        <div class="rural-stat">
+                            <span class="value">3-5</span>
+                            <span class="label">농촌 이용 가능 방법</span>
+                        </div>
+                        <div class="gap-ratio">
+                            <span class="ratio">2.5:1</span>
+                            <span class="label">격차 비율</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="indicator service-quality">
+                    <h4>🏥 서비스 품질</h4>
+                    <div class="comparison">
+                        <div class="urban-stat">
+                            <span class="value">Good</span>
+                            <span class="label">도시 서비스 품질</span>
+                        </div>
+                        <div class="rural-stat">
+                            <span class="value">Poor</span>
+                            <span class="label">농촌 서비스 품질</span>
+                        </div>
+                        <div class="gap-ratio">
+                            <span class="ratio">3:1</span>
+                            <span class="label">만족도 격차</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="barriers-analysis">
+            <h3>농촌 지역 특수 장벽</h3>
+            <div class="barriers-categories">
+                <div class="barrier-category access">
+                    <h4>🚧 접근성 장벽</h4>
+                    <div class="barrier-details">
+                        <div class="geographic">
+                            <h5>지리적 제약</h5>
+                            <ul>
+                                <li>클리닉까지 평균 거리: 20-50km</li>
+                                <li>대중교통 부족</li>
+                                <li>계절적 접근 제약</li>
+                                <li>도로 인프라 미비</li>
+                            </ul>
+                        </div>
+                        <div class="service-availability">
+                            <h5>서비스 가용성</h5>
+                            <ul>
+                                <li>의료진 부족 (도시의 1/5 수준)</li>
+                                <li>운영 시간 제한</li>
+                                <li>정기적 서비스 중단</li>
+                                <li>응급 상황 대응 부족</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="barrier-category economic">
+                    <h4>💰 경제적 장벽</h4>
+                    <div class="barrier-details">
+                        <div class="cost-burden">
+                            <h5>비용 부담</h5>
+                            <ul>
+                                <li>교통비: 일일 소득의 20-30%</li>
+                                <li>기회비용: 농업 활동 중단</li>
+                                <li>숙박비: 원거리 방문시</li>
+                                <li>동반자 비용: 안전상 필요</li>
+                            </ul>
+                        </div>
+                        <div class="income-constraints">
+                            <h5>소득 제약</h5>
+                            <ul>
+                                <li>계절적 소득 변동</li>
+                                <li>현금 수입 부족</li>
+                                <li>신용 접근 제한</li>
+                                <li>보험 미가입</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="barrier-category social-cultural">
+                    <h4>👥 사회문화적 장벽</h4>
+                    <div class="barrier-details">
+                        <div class="traditional-values">
+                            <h5>전통적 가치관</h5>
+                            <ul>
+                                <li>대가족 선호 문화</li>
+                                <li>자녀 = 노동력 인식</li>
+                                <li>종교적 제약</li>
+                                <li>전통 치료사 선호</li>
+                            </ul>
+                        </div>
+                        <div class="social-pressure">
+                            <h5>사회적 압력</h5>
+                            <ul>
+                                <li>지역사회 감시</li>
+                                <li>가족 장로 의견</li>
+                                <li>또래 집단 압력</li>
+                                <li>프라이버시 부족</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="barrier-category information">
+                    <h4>📚 정보 접근 장벽</h4>
+                    <div class="barrier-details">
+                        <div class="education-gap">
+                            <h5>교육 격차</h5>
+                            <ul>
+                                <li>여성 문해율 낮음</li>
+                                <li>보건 교육 부족</li>
+                                <li>미디어 접근 제한</li>
+                                <li>언어 장벽</li>
+                            </ul>
+                        </div>
+                        <div class="misinformation">
+                            <h5>잘못된 정보</h5>
+                            <ul>
+                                <li>구전 정보 의존</li>
+                                <li>부작용 과장</li>
+                                <li>효과성 의심</li>
+                                <li>안전성 우려</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="urban-advantages">
+            <h3>도시 지역의 이점</h3>
+            <div class="advantages-analysis">
+                <div class="advantage infrastructure">
+                    <h4>🏗️ 인프라 우위</h4>
+                    <div class="advantage-details">
+                        <ul>
+                            <li>병원과 클리닉의 집중</li>
+                            <li>대중교통 접근성</li>
+                            <li>전문의 이용 가능</li>
+                            <li>24시간 응급 서비스</li>
+                            <li>약국과 상점 네트워크</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="advantage socioeconomic">
+                    <h4>📈 사회경제적 이점</h4>
+                    <div class="advantage-details">
+                        <ul>
+                            <li>높은 교육 수준</li>
+                            <li>정기적 현금 소득</li>
+                            <li>보험 가입률 높음</li>
+                            <li>여성 경제 활동 참여</li>
+                            <li>핵가족 구조</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="advantage cultural">
+                    <h4>🌆 문화적 개방성</h4>
+                    <div class="advantage-details">
+                        <ul>
+                            <li>개방적 성 인식</li>
+                            <li>개인주의 가치관</li>
+                            <li>미디어 영향</li>
+                            <li>다양성 수용</li>
+                            <li>프라이버시 보장</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="advantage information">
+                    <h4>📱 정보 접근성</h4>
+                    <div class="advantage-details">
+                        <ul>
+                            <li>인터넷과 모바일</li>
+                            <li>다양한 미디어</li>
+                            <li>교육 자료 풍부</li>
+                            <li>전문가 상담</li>
+                            <li>또래 네트워크</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="successful-interventions">
+            <h3>성공적인 농촌 개입 사례</h3>
+            <div class="intervention-examples">
+                <div class="example community-based">
+                    <h4>🏠 지역사회 기반 배급 (CBD)</h4>
+                    <div class="example-details">
+                        <div class="description">
+                            <h5>모델 설명</h5>
+                            <p>훈련받은 지역 자원봉사자가 가정을 방문하여 피임법 제공과 상담 실시</p>
+                        </div>
+                        <div class="success-factors">
+                            <h5>성공 요인</h5>
+                            <ul>
+                                <li>문화적 수용성</li>
+                                <li>접근성 획기적 개선</li>
+                                <li>비용 효율성</li>
+                                <li>지속가능성</li>
+                            </ul>
+                        </div>
+                        <div class="countries">
+                            <h5>성공 국가</h5>
+                            <ul>
+                                <li>케냐: 미충족 수요 40% 감소</li>
+                                <li>가나: 피임 사용률 3배 증가</li>
+                                <li>방글라데시: 전국적 확산</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example mobile-services">
+                    <h4>🚛 이동 클리닉</h4>
+                    <div class="example-details">
+                        <div class="description">
+                            <h5>모델 설명</h5>
+                            <p>정기적으로 농촌 지역을 순회하며 종합적인 가족계획 서비스 제공</p>
+                        </div>
+                        <div class="advantages">
+                            <h5>주요 장점</h5>
+                            <ul>
+                                <li>전문 의료진 서비스</li>
+                                <li>다양한 방법 제공</li>
+                                <li>정기적 방문 일정</li>
+                                <li>종합 건강 검진</li>
+                            </ul>
+                        </div>
+                        <div name="countries">
+                            <h5>성공 국가</h5>
+                            <ul>
+                                <li>브라질: 아마존 지역</li>
+                                <li>인도: 라자스탄 주</li>
+                                <li>나이지리아: 북부 지역</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example social-marketing">
+                    <h4>📻 사회적 마케팅</h4>
+                    <div class="example-details">
+                        <div class="description">
+                            <h5>모델 설명</h5>
+                            <p>라디오, TV 등 대중매체를 활용한 행동 변화 커뮤니케이션</p>
+                        </div>
+                        <div class="strategies">
+                            <h5>핵심 전략</h5>
+                            <ul>
+                                <li>현지 언어 방송</li>
+                                <li>문화적 메시지</li>
+                                <li>연예인 활용</li>
+                                <li>드라마 형식</li>
+                            </ul>
+                        </div>
+                        <div class="impact">
+                            <h5>효과</h5>
+                            <ul>
+                                <li>인지도 80% 증가</li>
+                                <li>태도 변화 60%</li>
+                                <li>행동 변화 40%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example integration">
+                    <h4>🔗 통합 서비스</h4>
+                    <div class="example-details">
+                        <div class="description">
+                            <h5>모델 설명</h5>
+                            <p>모자보건, 영양, 예방접종 등과 가족계획 서비스 통합 제공</p>
+                        </div>
+                        <div class="benefits">
+                            <h5>통합의 이점</h5>
+                            <ul>
+                                <li>비용 효율성</li>
+                                <li>접촉 기회 증가</li>
+                                <li>종합적 관리</li>
+                                <li>지속성 향상</li>
+                            </ul>
+                        </div>
+                        <div class="examples">
+                            <h5>성공 사례</h5>
+                            <ul>
+                                <li>르완다: 통합 건강소</li>
+                                <li>에티오피아: HEW 프로그램</li>
+                                <li>말라위: 지역사회 건강</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bridging-strategies">
+            <h3>도농 격차 해소 전략</h3>
+            <div class="strategies-framework">
+                <div class="strategy immediate">
+                    <h4>⚡ 즉시 조치</h4>
+                    <div class="strategy-actions">
+                        <div class="supply-chain">
+                            <h5>공급망 강화</h5>
+                            <ul>
+                                <li>농촌 클리닉 피임법 정기 공급</li>
+                                <li>콜드체인 구축</li>
+                                <li>재고 관리 시스템</li>
+                                <li>응급 공급 체계</li>
+                            </ul>
+                        </div>
+                        <div class="outreach">
+                            <h5>아웃리치 확대</h5>
+                            <ul>
+                                <li>이동 클리닉 운영</li>
+                                <li>정기 방문 일정</li>
+                                <li>캠프 형식 서비스</li>
+                                <li>지역 행사 활용</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy medium-term">
+                    <h4>📅 중기 전략</h4>
+                    <div class="strategy-actions">
+                        <div class="infrastructure">
+                            <h5>인프라 구축</h5>
+                            <ul>
+                                <li>농촌 보건소 신설</li>
+                                <li>기존 시설 업그레이드</li>
+                                <li>교통 접근성 개선</li>
+                                <li>통신 인프라</li>
+                            </ul>
+                        </div>
+                        <div class="capacity-building">
+                            <h5>역량 강화</h5>
+                            <ul>
+                                <li>농촌 의료진 훈련</li>
+                                <li>지역 자원봉사자 양성</li>
+                                <li>관리 시스템 구축</li>
+                                <li>품질 관리</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy long-term">
+                    <h4>🔮 장기 비전</h4>
+                    <div class="strategy-actions">
+                        <div class="transformation">
+                            <h5>구조적 변화</h5>
+                            <ul>
+                                <li>농촌 경제 발전</li>
+                                <li>교육 기회 확대</li>
+                                <li>여성 권한 강화</li>
+                                <li>사회 규범 변화</li>
+                            </ul>
+                        </div>
+                        <div class="sustainability">
+                            <h5>지속가능성</h5>
+                            <ul>
+                                <li>지역 자원 동원</li>
+                                <li>자립 체계 구축</li>
+                                <li>제도화</li>
+                                <li>문화적 정착</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-metrics">
+            <h3>성공 지표</h3>
+            <div class="metrics-framework">
+                <div class="target-2015">
+                    <h4>🎯 2015년 목표</h4>
+                    <ul>
+                        <li>도농 미충족 수요 격차 50% 감소</li>
+                        <li>농촌 피임 사용률 60% 달성</li>
+                        <li>도농 서비스 접근성 격차 해소</li>
+                        <li>농촌 여성 만족도 80% 달성</li>
+                    </ul>
+                </div>
+                <div class="monitoring-indicators">
+                    <h4>📊 모니터링 지표</h4>
+                    <ul>
+                        <li>지역별 미충족 수요 조사</li>
+                        <li>서비스 접근 시간 측정</li>
+                        <li>비용 부담 평가</li>
+                        <li>품질 만족도 조사</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). p. 1821">Cleland et al. (2006). Urban-rural disparities in family planning access (p. 1821)</span>
+        <span class="slide-number">40 / 60</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Urban-Rural Gap Chart
+    const ctx = document.getElementById('urbanRuralGapChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['미충족 수요', '피임 사용률', '서비스 접근성', '방법 다양성', '서비스 품질'],
+                datasets: [{
+                    label: '도시 지역',
+                    data: [13, 70, 85, 90, 80],
+                    backgroundColor: '#3498db',
+                    borderWidth: 1
+                }, {
+                    label: '농촌 지역',
+                    data: [27, 40, 45, 35, 30],
+                    backgroundColor: '#e74c3c',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: { color: '#ecf0f1', font: { size: 11 } },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: '백분율 (%)',
+                            color: '#ecf0f1'
+                        },
+                        ticks: {
+                            color: '#ecf0f1',
+                            callback: function(value) { return value + '%'; }
+                        },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: '#ecf0f1', font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: '도농간 가족계획 지표 비교',
+                        color: '#ecf0f1',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+
+<style>
+.comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.urban-stat, .rural-stat, .gap-ratio {
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.urban-stat {
+    background: rgba(52, 152, 219, 0.2);
+    border: 2px solid #3498db;
+}
+
+.rural-stat {
+    background: rgba(231, 76, 60, 0.2);
+    border: 2px solid #e74c3c;
+}
+
+.gap-ratio {
+    background: rgba(241, 196, 15, 0.2);
+    border: 2px solid #f1c40f;
+}
+
+.urban-stat .value, .rural-stat .value, .gap-ratio .ratio {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.urban-stat .label, .rural-stat .label, .gap-ratio .label {
+    display: block;
+    font-size: 12px;
+    opacity: 0.8;
+}
+</style>

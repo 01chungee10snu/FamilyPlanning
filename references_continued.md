@@ -1,0 +1,21 @@
+## References (참고문헌) - Continued
+
+| English | Korean |
+|---------|--------|
+| 11. World Bank. Niger: Providing all Nigerians with food, education and health care: a demographic perspective. Washington: The World Bank, Report No. 34219-NE, 2005. | 11. 세계은행. 니제르: 모든 니제르인에게 식량, 교육, 의료 서비스 제공: 인구학적 관점. 워싱턴: 세계은행, 보고서 번호 34219-NE, 2005. |
+| 12. Alexandratos N. Countries with rapid population growth and resource constraints: issues of food, agriculture and development. Popul Dev Rev 2005; 31: 237–58. | 12. Alexandratos N. 급속한 인구 성장과 자원 제약을 가진 국가들: 식량, 농업 및 개발 문제. Popul Dev Rev 2005; 31: 237–58. |
+| 13. Chen S, Ravallion M. How have the world's poorest fared since the early 1980s? Washington: The World Bank, Policy Research Working Paper WPS3341, 2004. | 13. Chen S, Ravallion M. 1980년대 초 이후 세계 최빈곤층은 어떻게 되었는가? 워싱턴: 세계은행, 정책 연구 워킹 페이퍼 WPS3341, 2004. |
+| 14. US National Academy of Sciences. Population growth and economic development. Washington: National Academy of Sciences, 1986. | 14. 미국 국립과학원. 인구 성장과 경제 발전. 워싱턴: 국립과학원, 1986. |
+| 15. Birdsall N, Kelley AC, Sinding SW, eds. Population matters: demographic change, economic growth, and poverty in the developing world. Oxford: Oxford University Press, 2001. | 15. Birdsall N, Kelley AC, Sinding SW, 편. 인구 문제: 개발도상국의 인구 변화, 경제 성장, 빈곤. 옥스퍼드: 옥스퍼드 대학 출판부, 2001. |
+| 16. Eastwood R, Lipton M. The impact of changes in human fertility on poverty. J Dev Stud 1999; 36: 1–30. | 16. Eastwood R, Lipton M. 인간 출산율 변화가 빈곤에 미치는 영향. J Dev Stud 1999; 36: 1–30. |
+| 17. Eastwood R, Lipton M. Demographic transition and poverty: effects via economic growth, distribution, and conversion. In: Birdsall N. Kelley AC. Sinding SW, eds. Population matters: demographic change, economic growth, and poverty in the developing world. Oxford: Oxford University Press, 2001: 213–59. | 17. Eastwood R, Lipton M. 인구 전환과 빈곤: 경제 성장, 분배, 전환을 통한 영향. In: Birdsall N. Kelley AC. Sinding SW, 편. 인구 문제: 개발도상국의 인구 변화, 경제 성장, 빈곤. 옥스퍼드: 옥스퍼드 대학 출판부, 2001: 213–59. |
+| 18. Bloom D. Williamson JG. Demographic transitions and economic miracles in emerging Asia. World Bank Econ Rev 1998; 12: 419–55. | 18. Bloom D. Williamson JG. 신흥 아시아의 인구 전환과 경제 기적. World Bank Econ Rev 1998; 12: 419–55. |
+| 19. UN Development Programme and World Bank. Attacking Poverty. World Development Report 2000/01. Washington: The World Bank, 2001. | 19. UN 개발계획과 세계은행. 빈곤 퇴치. 세계 개발 보고서 2000/01. 워싱턴: 세계은행, 2001. |
+| 20. Gwatkin DR, Rutstein S, Johnson K, Suliman EA, Wagstaff A. Initial country level information about socio-economic differences in health, nutrition and population 2nd edn. Washington: The World Bank, 2004. | 20. Gwatkin DR, Rutstein S, Johnson K, Suliman EA, Wagstaff A. 건강, 영양 및 인구의 사회경제적 차이에 대한 초기 국가 수준 정보 제2판. 워싱턴: 세계은행, 2004. |
+| 21. Aassve A, Engelhardt H, Francavilla F, et al. Fertility and poverty in less developed countries: a comparative analysis. Paper presented at International Population Conference. Tours, France: 2005. | 21. Aassve A, Engelhardt H, Francavilla F, 외. 저개발 국가의 출산율과 빈곤: 비교 분석. 국제 인구 회의 발표 논문. 투르, 프랑스: 2005. |
+| 22. Greene ME, Merrick T. Poverty reduction: does reproductive health matter? Health, Nutrition and Population Discussion Paper. Washington: The World Bank. 2005. | 22. Greene ME, Merrick T. 빈곤 감소: 생식 건강이 중요한가? 건강, 영양 및 인구 토론 문서. 워싱턴: 세계은행. 2005. |
+| 23. Lloyd CB. Investing in the next generation: the implications of high fertility at the level of the family. In: Cassen R, ed. Population and development: old debates, new conclusions. Washington: Overseas Development Council 1994: 181–202. | 23. Lloyd CB. 다음 세대에 대한 투자: 가족 수준에서 높은 출산율의 함의. In: Cassen R, 편. 인구와 개발: 오래된 논쟁, 새로운 결론. 워싱턴: 해외개발위원회 1994: 181–202. |
+| 24. Schultz TP. Investments in the schooling and health of women and men: quantities and returns. J Hum Resour 1993; 28: 694–734. | 24. Schultz TP. 여성과 남성의 교육과 건강에 대한 투자: 수량과 수익. J Hum Resour 1993; 28: 694–734. |
+| 25. Lipton M. Population and poverty: how do they interact? In Livi-Bacci M, De Santis G eds. Population and poverty in developing countries. Oxford: Clarendon Press, 1998: 25–48. | 25. Lipton M. 인구와 빈곤: 어떻게 상호작용하는가? In Livi-Bacci M, De Santis G 편. 개발도상국의 인구와 빈곤. 옥스퍼드: 클래런던 출판사, 1998: 25–48. |
+
+(References 26-50 continue...)

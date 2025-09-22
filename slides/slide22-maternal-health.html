@@ -1,0 +1,386 @@
+<!-- Slide 22: Family Planning and Maternal Health with Interactive Visualizations -->
+<div class="slide" id="slide-maternal-health">
+    <div class="slide-header">
+        <h1>가족계획과 모성 건강 (Family Planning & Maternal Health)</h1>
+        <div class="interactive-badge">인터랙티브</div>
+    </div>
+    <div class="slide-content">
+        <!-- Interactive Impact Overview -->
+        <div class="health-impact-overview">
+            <h3>모성 사망 예방 효과</h3>
+            <div class="chart-container impact-overview" id="maternal-impact-chart"
+                 data-chart-type="chartjs"
+                 data-chart-data='{
+                   "impactMetrics": {
+                     "preventable": 32,
+                     "totalDeaths": 625000,
+                     "preventableDeaths": 200000,
+                     "highRiskPrevention": 40,
+                     "breakdown": {
+                       "tooYoung": 8,
+                       "tooClose": 12,
+                       "tooMany": 7,
+                       "tooOld": 5
+                     }
+                   },
+                   "visualization": {
+                     "type": "donut-with-center-stat",
+                     "centerValue": 32,
+                     "centerLabel": "예방 가능 %",
+                     "segments": [
+                       {"label": "예방 가능", "value": 32, "color": "#4ECDC4"},
+                       {"label": "기타 요인", "value": 68, "color": "#E8E8E8"}
+                     ]
+                   }
+                 }'>
+            </div>
+
+            <!-- Supporting Statistics Cards -->
+            <div class="stats-cards" id="supporting-stats"
+                 data-chart-type="custom"
+                 data-chart-data='{
+                   "cards": [
+                     {"number": "200,000", "label": "연간 예방 가능한 모성 사망자 수", "icon": "👩‍⚕️", "color": "#FF6B6B"},
+                     {"number": "40%", "label": "고위험 임신 예방 효과", "icon": "⚠️", "color": "#FFA726"},
+                     {"number": "13%", "label": "전체 모성 사망 중 비율", "icon": "📊", "color": "#45B7D1"}
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Risk Factors Visualization -->
+        <div class="risk-factors">
+            <h3>가족계획이 감소시키는 모성 건강 위험요인</h3>
+            <div class="chart-container risk-matrix" id="risk-factors-chart"
+                 data-chart-type="d3"
+                 data-chart-data='{
+                   "riskFactors": [
+                     {
+                       "category": "age",
+                       "title": "너무 어린 나이",
+                       "icon": "👶",
+                       "ageGroup": "18세 미만 임신",
+                       "riskLevel": "high",
+                       "riskMultiplier": 3.5,
+                       "prevalence": 15,
+                       "complications": ["분만 중 출혈", "산과적 누공", "조산 위험"],
+                       "prevention": "청소년 피임 교육 + 접근성",
+                       "color": "#FF6B6B",
+                       "position": {"x": 0, "y": 0}
+                     },
+                     {
+                       "category": "spacing",
+                       "title": "너무 짧은 터울",
+                       "icon": "⏰",
+                       "ageGroup": "출산 간격 < 2년",
+                       "riskLevel": "medium",
+                       "riskMultiplier": 2.2,
+                       "prevalence": 25,
+                       "complications": ["영양 결핍", "자궁 파열", "저체중아 출산"],
+                       "prevention": "산후 피임 상담 + 서비스",
+                       "color": "#FFA726",
+                       "position": {"x": 1, "y": 0}
+                     },
+                     {
+                       "category": "parity",
+                       "title": "너무 많은 출산",
+                       "icon": "👥",
+                       "ageGroup": "4회 이상 출산",
+                       "riskLevel": "high",
+                       "riskMultiplier": 3.0,
+                       "prevalence": 20,
+                       "complications": ["자궁 무력증", "산후 출혈", "빈혈 악화"],
+                       "prevention": "가족 완성 후 영구 피임",
+                       "color": "#4ECDC4",
+                       "position": {"x": 0, "y": 1}
+                     },
+                     {
+                       "category": "late-age",
+                       "title": "너무 늦은 나이",
+                       "icon": "👩‍🦳",
+                       "ageGroup": "35세 이상 임신",
+                       "riskLevel": "medium",
+                       "riskMultiplier": 1.7,
+                       "prevalence": 18,
+                       "complications": ["임신성 고혈압", "임신성 당뇨", "염색체 이상"],
+                       "prevention": "적정 연령 임신 완료",
+                       "color": "#45B7D1",
+                       "position": {"x": 1, "y": 1}
+                     }
+                   ],
+                   "preventionImpact": {
+                     "overall": 32,
+                     "byCategory": {
+                       "age": 8,
+                       "spacing": 12,
+                       "parity": 7,
+                       "late-age": 5
+                     }
+                   }
+                 }'>
+            </div>
+
+            <!-- Risk Level Indicators -->
+            <div class="chart-container risk-indicators" id="risk-level-chart"
+                 data-chart-type="chartjs"
+                 data-chart-data='{
+                   "riskComparison": {
+                     "baseline": 1.0,
+                     "risks": [
+                       {"factor": "너무 어린 나이", "multiplier": 3.5, "color": "#FF6B6B"},
+                       {"factor": "너무 많은 출산", "multiplier": 3.0, "color": "#4ECDC4"},
+                       {"factor": "너무 짧은 터울", "multiplier": 2.2, "color": "#FFA726"},
+                       {"factor": "너무 늦은 나이", "multiplier": 1.7, "color": "#45B7D1"}
+                     ]
+                   }
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Unsafe Abortion Prevention Chart -->
+        <div class="unsafe-abortion">
+            <h3>안전하지 않은 낙태 예방</h3>
+            <div class="chart-container abortion-prevention" id="abortion-prevention-chart"
+                 data-chart-type="chartjs"
+                 data-chart-data='{
+                   "globalImpact": {
+                     "unsafeAbortions": 20000000,
+                     "abortionDeaths": 68000,
+                     "mortalityPercentage": 13,
+                     "preventablePercentage": 75
+                   },
+                   "preventionEffectiveness": [
+                     {"intervention": "피임법 제공", "prevention": 85, "cost": 30},
+                     {"intervention": "생식보건 교육", "prevention": 70, "cost": 15},
+                     {"intervention": "안전 낙태 서비스", "prevention": 95, "cost": 120},
+                     {"intervention": "산후 피임", "prevention": 80, "cost": 25}
+                   ],
+                   "visualization": {
+                     "type": "before-after-comparison",
+                     "before": {
+                       "unsafeAbortions": 20000000,
+                       "deaths": 68000,
+                       "complications": 5000000
+                     },
+                     "after": {
+                       "unsafeAbortions": 5000000,
+                       "deaths": 17000,
+                       "complications": 1250000
+                     },
+                     "reduction": {
+                       "abortions": 75,
+                       "deaths": 75,
+                       "complications": 75
+                     }
+                   }
+                 }'>
+            </div>
+
+            <!-- Prevention Impact Meter -->
+            <div class="chart-container prevention-meters" id="prevention-impact-meters"
+                 data-chart-type="custom"
+                 data-chart-data='{
+                   "meters": [
+                     {"label": "의도하지 않은 임신 예방", "value": 85, "color": "#4ECDC4", "icon": "🛡️"},
+                     {"label": "안전하지 않은 낙태 감소", "value": 75, "color": "#45B7D1", "icon": "📉"},
+                     {"label": "모성 사망 예방", "value": 68, "color": "#66BB6A", "icon": "💚"}
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Country Evidence Dashboard -->
+        <div class="country-evidence">
+            <h3>국가별 증거</h3>
+            <div class="chart-container country-results" id="country-evidence-chart"
+                 data-chart-type="plotly"
+                 data-chart-data='{
+                   "countries": [
+                     {
+                       "name": "이란",
+                       "flag": "🇮🇷",
+                       "period": "1989-1999",
+                       "intervention": "국가 가족계획 프로그램 강화",
+                       "before": {
+                         "tfr": 5.5,
+                         "contraceptiveUse": 20,
+                         "maternalMortality": 300
+                       },
+                       "after": {
+                         "tfr": 2.0,
+                         "contraceptiveUse": 75,
+                         "maternalMortality": 75
+                       },
+                       "improvement": {
+                         "tfr": 64,
+                         "contraceptiveUse": 275,
+                         "maternalMortality": 75
+                       },
+                       "color": "#FF6B6B"
+                     },
+                     {
+                       "name": "이집트",
+                       "flag": "🇪🇬",
+                       "period": "1980-2000",
+                       "intervention": "피임 보급 확대 + 산전 관리",
+                       "before": {
+                         "tfr": 4.8,
+                         "contraceptiveUse": 24,
+                         "maternalMortality": 174
+                       },
+                       "after": {
+                         "tfr": 3.2,
+                         "contraceptiveUse": 60,
+                         "maternalMortality": 84
+                       },
+                       "improvement": {
+                         "tfr": 33,
+                         "contraceptiveUse": 150,
+                         "maternalMortality": 52
+                       },
+                       "color": "#4ECDC4"
+                     },
+                     {
+                       "name": "르완다",
+                       "flag": "🇷🇼",
+                       "period": "2005-2015",
+                       "intervention": "가족계획 + 모성 건강 통합 프로그램",
+                       "before": {
+                         "tfr": 6.0,
+                         "contraceptiveUse": 17,
+                         "maternalMortality": 1300
+                       },
+                       "after": {
+                         "tfr": 4.2,
+                         "contraceptiveUse": 53,
+                         "maternalMortality": 210
+                       },
+                       "improvement": {
+                         "tfr": 30,
+                         "contraceptiveUse": 211,
+                         "maternalMortality": 84
+                       },
+                       "color": "#45B7D1"
+                     }
+                   ]
+                 }'>
+            </div>
+
+            <!-- Progress Indicators -->
+            <div class="chart-container progress-indicators" id="maternal-progress-chart"
+                 data-chart-type="custom"
+                 data-chart-data='{
+                   "indicators": [
+                     {"country": "이란", "progress": 75, "color": "#FF6B6B", "icon": "🇮🇷"},
+                     {"country": "이집트", "progress": 52, "color": "#4ECDC4", "icon": "🇪🇬"},
+                     {"country": "르완다", "progress": 84, "color": "#45B7D1", "icon": "🇷🇼"}
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Mechanism Flow -->
+        <div class="mechanisms">
+            <h3>모성 건강 개선 메커니즘</h3>
+            <div class="chart-container mechanism-flow" id="mechanism-flow-chart"
+                 data-chart-type="d3"
+                 data-chart-data='{
+                   "mechanisms": {
+                     "direct": {
+                       "title": "직접적 효과",
+                       "steps": [
+                         {"step": "의도하지 않은 임신 예방", "impact": 85, "color": "#FF6B6B"},
+                         {"step": "고위험 임신 감소", "impact": 40, "color": "#FFA726"},
+                         {"step": "안전하지 않은 낙태 예방", "impact": 75, "color": "#4ECDC4"},
+                         {"step": "모성 사망 감소", "impact": 32, "color": "#45B7D1"}
+                       ]
+                     },
+                     "indirect": {
+                       "title": "간접적 효과",
+                       "steps": [
+                         {"step": "출산 터울 조절", "impact": 60, "color": "#66BB6A"},
+                         {"step": "산전 관리 개선", "impact": 45, "color": "#AB47BC"},
+                         {"step": "영양 상태 향상", "impact": 35, "color": "#26A69A"},
+                         {"step": "전반적 건강 증진", "impact": 50, "color": "#78909C"}
+                       ]
+                     }
+                   }
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Cost-Effectiveness Analysis -->
+        <div class="cost-effectiveness">
+            <h3>비용 효과성</h3>
+            <div class="chart-container cost-analysis" id="cost-effectiveness-chart"
+                 data-chart-type="chartjs"
+                 data-chart-data='{
+                   "costComparison": {
+                     "prevention": {
+                       "cost": 40,
+                       "unit": "여성 1명당 연간",
+                       "description": "피임법 제공 + 상담",
+                       "effectiveness": 95,
+                       "color": "#4ECDC4"
+                     },
+                     "treatment": {
+                       "cost": 9000,
+                       "unit": "모성 사망 1건당",
+                       "description": "응급 산과 치료",
+                       "effectiveness": 30,
+                       "color": "#FF6B6B"
+                     },
+                     "costRatio": 225,
+                     "effectivenessRatio": 3.2
+                   },
+                   "interventions": [
+                     {"name": "피임법 제공", "cost": 30, "effectiveness": 85, "roi": 28},
+                     {"name": "생식보건 교육", "cost": 15, "effectiveness": 70, "roi": 47},
+                     {"name": "산전 관리", "cost": 50, "effectiveness": 60, "roi": 12},
+                     {"name": "응급 치료", "cost": 9000, "effectiveness": 30, "roi": 0.03}
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- MDG Connection Dashboard -->
+        <div class="mdg-connection">
+            <h3>MDG 5(모성 건강 개선)과의 직접적 연관</h3>
+            <div class="chart-container mdg-targets" id="mdg-connection-chart"
+                 data-chart-type="custom"
+                 data-chart-data='{
+                   "targets": [
+                     {
+                       "id": "5A",
+                       "title": "모성 사망비 75% 감소",
+                       "description": "가족계획이 이 목표 달성의 핵심 전략",
+                       "fpContribution": 32,
+                       "progress": 65,
+                       "icon": "💚",
+                       "color": "#4ECDC4"
+                     },
+                     {
+                       "id": "5B",
+                       "title": "생식 건강 서비스 보편적 접근",
+                       "description": "가족계획 서비스가 생식 건강의 핵심 구성 요소",
+                       "fpContribution": 60,
+                       "progress": 45,
+                       "icon": "🏥",
+                       "color": "#45B7D1"
+                     }
+                   ],
+                   "synergies": [
+                     {"name": "MDG 1 (빈곤 감소)", "connection": 25},
+                     {"name": "MDG 2 (교육)", "connection": 40},
+                     {"name": "MDG 3 (성평등)", "connection": 70},
+                     {"name": "MDG 4 (아동 사망 감소)", "connection": 55}
+                   ]
+                 }'>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). p. 1816-1817">Cleland et al. (2006). Family planning and maternal health (p. 1816-1817)</span>
+        <span class="slide-number">22 / 60</span>
+    </div>
+</div>

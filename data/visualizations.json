@@ -1,0 +1,174 @@
+{
+  "visualizations": [
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "title": {
+        "ko": "가족계획 정책의 역사적 발전",
+        "en": "Historical Development of Family Planning Policy"
+      },
+      "config": {
+        "chartType": "timeline",
+        "data": [
+          {
+            "year": 1960,
+            "event": {
+              "ko": "인구 폭발 우려 시작",
+              "en": "Population explosion concerns begin"
+            }
+          },
+          {
+            "year": 1970,
+            "event": {
+              "ko": "대규모 가족계획 프로그램 확산",
+              "en": "Large-scale family planning programs expand"
+            }
+          },
+          {
+            "year": 1994,
+            "event": {
+              "ko": "카이로 회의: 인권 기반 접근법",
+              "en": "Cairo Conference: Rights-based approach"
+            }
+          },
+          {
+            "year": 2000,
+            "event": {
+              "ko": "MDGs와 가족계획 연계",
+              "en": "MDGs link with family planning"
+            }
+          },
+          {
+            "year": 2015,
+            "event": {
+              "ko": "SDGs 시대의 새로운 도전",
+              "en": "New challenges in SDGs era"
+            }
+          }
+        ],
+        "colors": ["#2E86AB", "#A23B72", "#F18F01", "#C73E1D", "#592E83"]
+      },
+      "source": "cite-3",
+      "notes": {
+        "ko": "가족계획 정책 발전의 주요 이정표",
+        "en": "Major milestones in family planning policy development"
+      }
+    },
+    {
+      "id": "unmet-need-chart",
+      "type": "bar",
+      "title": {
+        "ko": "지역별 피임 미충족 요구",
+        "en": "Unmet Contraceptive Need by Region"
+      },
+      "config": {
+        "chartType": "horizontalBar",
+        "data": {
+          "labels": ["Sub-Saharan Africa", "South Asia", "Latin America", "East Asia", "Middle East"],
+          "values": [25, 22, 12, 8, 15],
+          "unit": "%"
+        },
+        "colors": ["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FECA57"],
+        "yAxis": {
+          "title": {
+            "ko": "지역",
+            "en": "Region"
+          }
+        },
+        "xAxis": {
+          "title": {
+            "ko": "미충족 요구 비율 (%)",
+            "en": "Unmet Need Rate (%)"
+          }
+        }
+      },
+      "source": "cite-2",
+      "notes": {
+        "ko": "2006년 기준 지역별 피임 미충족 요구 현황",
+        "en": "Regional unmet contraceptive need status as of 2006"
+      }
+    },
+    {
+      "id": "population-projection",
+      "type": "line",
+      "title": {
+        "ko": "세계 인구 증가 예측",
+        "en": "Global Population Growth Projections"
+      },
+      "config": {
+        "chartType": "line",
+        "data": {
+          "labels": ["1950", "1975", "2000", "2025", "2050"],
+          "datasets": [
+            {
+              "label": {
+                "ko": "세계 인구 (십억)",
+                "en": "World Population (Billions)"
+              },
+              "data": [2.5, 4.1, 6.1, 8.0, 9.3],
+              "borderColor": "#3498db",
+              "backgroundColor": "#3498db20"
+            }
+          ]
+        },
+        "yAxis": {
+          "title": {
+            "ko": "인구 (십억)",
+            "en": "Population (Billions)"
+          }
+        },
+        "xAxis": {
+          "title": {
+            "ko": "연도",
+            "en": "Year"
+          }
+        }
+      },
+      "source": "cite-5",
+      "notes": {
+        "ko": "유엔 인구 전망 데이터 기반",
+        "en": "Based on UN Population Prospects data"
+      }
+    }
+  ],
+  "chartTypes": {
+    "timeline": "시간순 이벤트 표시",
+    "bar": "막대 그래프",
+    "line": "선 그래프",
+    "pie": "원형 차트",
+    "scatter": "산점도",
+    "area": "영역 차트",
+    "donut": "도넛 차트",
+    "radar": "레이더 차트"
+  },
+  "visualizationTemplate": {
+    "id": "chart-{number}",
+    "type": "chart-type",
+    "title": {
+      "ko": "Korean title",
+      "en": "English title"
+    },
+    "config": {
+      "chartType": "specific chart type",
+      "data": "chart data structure",
+      "colors": ["color array"],
+      "xAxis": {
+        "title": {
+          "ko": "Korean x-axis title",
+          "en": "English x-axis title"
+        }
+      },
+      "yAxis": {
+        "title": {
+          "ko": "Korean y-axis title",
+          "en": "English y-axis title"
+        }
+      }
+    },
+    "source": "citation-id",
+    "notes": {
+      "ko": "Korean notes",
+      "en": "English notes"
+    }
+  }
+}

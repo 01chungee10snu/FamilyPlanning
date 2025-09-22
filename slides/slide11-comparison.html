@@ -1,0 +1,76 @@
+<!-- Slide 11: Case Study - Bangladesh vs Pakistan with World Map -->
+<div class="slide" id="slide-comparison">
+    <div class="slide-header">
+        <h1>비교 연구: 서로 다른 길</h1>
+        <div class="interactive-badge">인터랙티브 맵</div>
+    </div>
+    <div class="slide-content">
+        <div style="height: 35vh; position: relative; margin-bottom: 2vh;">
+            <div id="comparison-map" style="height: 100%; border-radius: 0.8vw; overflow: hidden;"></div>
+
+            <!-- Country Cards Overlay -->
+            <div style="position: absolute; top: 1vh; left: 1vw; background: rgba(255,255,255,0.95); padding: 1vh 1vw; border-radius: 0.5vw; box-shadow: 0 0.2vh 1vh rgba(0,0,0,0.2); max-width: 20vw;">
+                <div style="display: flex; align-items: center; margin-bottom: 0.5vh;">
+                    <div style="width: 2.5vw; height: 1.8vw; background: linear-gradient(to bottom, #006a4e 50%, #f42a41 50%); border-radius: 0.2vw; margin-right: 0.5vw;"></div>
+                    <strong style="color: #16a085;">방글라데시 - 성공 모델</strong>
+                </div>
+                <div style="font-size: 0.8vw; line-height: 1.2;">
+                    <div>• TFR: 6.3 → 3.0 (53% 감소)</div>
+                    <div>• CPR: 8% → 58% (7배 증가)</div>
+                    <div>• 여성 현장요원 5만명</div>
+                </div>
+            </div>
+
+            <div style="position: absolute; top: 1vh; right: 1vw; background: rgba(255,255,255,0.95); padding: 1vh 1vw; border-radius: 0.5vw; box-shadow: 0 0.2vh 1vh rgba(0,0,0,0.2); max-width: 20vw;">
+                <div style="display: flex; align-items: center; margin-bottom: 0.5vh;">
+                    <div style="width: 2.5vw; height: 1.8vw; background: linear-gradient(90deg, #01411C 33%, white 33% 66%, #01411C 66%); border-radius: 0.2vw; margin-right: 0.5vw; position: relative;">
+                        <div style="position: absolute; left: 33%; top: 20%; width: 0.8vw; height: 0.8vw; border: 0.1vw solid #01411C; border-radius: 50%; background: transparent;">
+                            <div style="position: absolute; left: 50%; top: 10%; width: 0.3vw; height: 0.3vw; background: #01411C; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); transform: translate(-50%, 0);"></div>
+                        </div>
+                    </div>
+                    <strong style="color: #e74c3c;">파키스탄 - 제한적 성과</strong>
+                </div>
+                <div style="font-size: 0.8vw; line-height: 1.2;">
+                    <div>• TFR: 6.3 → 4.3 (32% 감소)</div>
+                    <div>• CPR: 5% → 28% (5.6배 증가)</div>
+                    <div>• 시설 중심 접근</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-column" style="margin-top: 1vh;">
+            <div>
+                <h3 style="color: #16a085; margin-bottom: 0.5vh;">🏆 방글라데시 성공 요인</h3>
+                <div style="background: #e8f8f5; padding: 1vh 1vw; border-radius: 0.5vw;">
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 0.5vh 1vw; font-size: 0.9vw;">
+                        <span>🚶‍♀️</span><span>가정방문 프로그램 (Doorstep delivery)</span>
+                        <span>👩‍⚕️</span><span>50,000명 여성 현장요원 배치</span>
+                        <span>🤝</span><span>BRAC, Grameen 등 NGO 협력</span>
+                        <span>📚</span><span>문맹 여성도 접근 가능한 서비스</span>
+                        <span>🏛️</span><span>정부의 일관된 정책 지원</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: #e74c3c; margin-bottom: 0.5vh;">⚠️ 파키스탄 제약 요인</h3>
+                <div style="background: #fdedec; padding: 1vh 1vw; border-radius: 0.5vw;">
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 0.5vh 1vw; font-size: 0.9vw;">
+                        <span>🏥</span><span>시설 중심 접근 (Facility-based)</span>
+                        <span>🚫</span><span>여성 이동 제약 (Purdah)</span>
+                        <span>❌</span><span>남성 의료진에 대한 거부감</span>
+                        <span>📉</span><span>농촌 지역 접근성 부족</span>
+                        <span>💔</span><span>정치적 의지 부족</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container" style="height: 25vh;">
+            <canvas id="comparisonChart"></canvas>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation">Cleland et al. (2006). Lancet - Panel 8 (pp. 1827-1828)</span>
+        <span class="slide-number">11 / 16</span>
+    </div>
+</div>

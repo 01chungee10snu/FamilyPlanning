@@ -1,0 +1,303 @@
+<!-- Slide 21: Family Planning and Poverty Reduction with Interactive Visualizations -->
+<div class="slide" id="slide-poverty-reduction">
+    <div class="slide-header">
+        <h1>가족계획과 빈곤 감소 (Family Planning & Poverty Reduction)</h1>
+        <div class="interactive-badge">인터랙티브</div>
+    </div>
+    <div class="slide-content">
+        <!-- Interactive Poverty Reduction Mechanism -->
+        <div class="poverty-mechanism">
+            <h3>가족계획이 빈곤을 줄이는 메커니즘</h3>
+            <div class="chart-container mechanism-flow" id="poverty-mechanism-chart"
+                 data-chart-type="d3"
+                 data-chart-data='{
+                   "mechanism": [
+                     {
+                       "step": 1,
+                       "title": "출산율 감소",
+                       "description": "소가족 형성",
+                       "impact": 85,
+                       "timeline": "1-3년",
+                       "color": "#FF6B6B",
+                       "metrics": {"tfr": "5.2→2.8", "familySize": "7→4명"}
+                     },
+                     {
+                       "step": 2,
+                       "title": "가계 부담 감소",
+                       "description": "육아·교육비 절약",
+                       "impact": 90,
+                       "timeline": "3-5년",
+                       "color": "#FFA726",
+                       "metrics": {"childCost": "40-60% 감소", "savings": "$200-500/년"}
+                     },
+                     {
+                       "step": 3,
+                       "title": "자원 집중",
+                       "description": "아이 1명당 투자 증가",
+                       "impact": 85,
+                       "timeline": "5-10년",
+                       "color": "#66BB6A",
+                       "metrics": {"perChildInvestment": "2-3배 증가", "education": "100% 입학"}
+                     },
+                     {
+                       "step": 4,
+                       "title": "인적자본 향상",
+                       "description": "교육·건강 개선",
+                       "impact": 80,
+                       "timeline": "10-15년",
+                       "color": "#42A5F5",
+                       "metrics": {"literacy": "85%→95%", "health": "50% 개선"}
+                     },
+                     {
+                       "step": 5,
+                       "title": "빈곤 탈출",
+                       "description": "세대간 상향이동",
+                       "impact": 95,
+                       "timeline": "15-20년",
+                       "color": "#AB47BC",
+                       "metrics": {"povertyReduction": "25-40%", "incomeIncrease": "3-5배"}
+                     }
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Evidence Dashboard -->
+        <div class="evidence-section">
+            <h3>실증적 증거</h3>
+            <div class="chart-container evidence-dashboard" id="evidence-charts"
+                 data-chart-type="chartjs"
+                 data-chart-data='{
+                   "evidenceTypes": [
+                     {
+                       "level": "household",
+                       "title": "가구 수준 효과",
+                       "icon": "👨‍👩‍👧‍👦",
+                       "charts": [
+                         {
+                           "type": "doughnut",
+                           "title": "가계 지출 구성",
+                           "data": {"childCare": 50, "education": 20, "health": 15, "other": 15},
+                           "colors": ["#FF6B6B", "#4ECDC4", "#45B7D1", "#FFA726"]
+                         },
+                         {
+                           "type": "bar",
+                           "title": "가족 크기별 1인당 교육투자",
+                           "data": {"2children": 1000, "4children": 400, "6children": 200},
+                           "labels": ["2명", "4명", "6명"]
+                         }
+                       ]
+                     },
+                     {
+                       "level": "women",
+                       "title": "여성 경제활동",
+                       "icon": "👩",
+                       "charts": [
+                         {
+                           "type": "line",
+                           "title": "피임 사용과 경제활동 상관관계",
+                           "data": {
+                             "contraceptiveUse": [10, 25, 45, 60, 75],
+                             "laborParticipation": [15, 30, 50, 65, 80]
+                           }
+                         },
+                         {
+                           "type": "scatter",
+                           "title": "여성 소득과 빈곤율 관계",
+                           "data": [
+                             {"income": 500, "poverty": 60},
+                             {"income": 800, "poverty": 45},
+                             {"income": 1200, "poverty": 30},
+                             {"income": 1800, "poverty": 15}
+                           ]
+                         }
+                       ]
+                     },
+                     {
+                       "level": "national",
+                       "title": "국가 수준 효과",
+                       "icon": "🏛️",
+                       "charts": [
+                         {
+                           "type": "scatter",
+                           "title": "출산율과 GDP 성장률 관계",
+                           "data": [
+                             {"tfr": 6.0, "gdpGrowth": 2.5},
+                             {"tfr": 4.5, "gdpGrowth": 4.2},
+                             {"tfr": 3.0, "gdpGrowth": 6.8},
+                             {"tfr": 2.1, "gdpGrowth": 5.2}
+                           ]
+                         },
+                         {
+                           "type": "stacked-bar",
+                           "title": "인구 배당의 경제성장 기여",
+                           "data": {
+                             "demographics": 25,
+                             "education": 30,
+                             "labor": 25,
+                             "investment": 20
+                           }
+                         }
+                       ]
+                     }
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Country Success Cases -->
+        <div class="country-examples">
+            <h3>국가별 성공 사례</h3>
+            <div class="chart-container success-cases" id="country-success-chart"
+                 data-chart-type="plotly"
+                 data-chart-data='{
+                   "successStories": [
+                     {
+                       "country": "방글라데시",
+                       "flag": "🇧🇩",
+                       "timeline": {
+                         "1970s": {"tfr": 6.3, "poverty": 80, "gdpPerCapita": 70},
+                         "1980s": {"tfr": 5.8, "poverty": 70, "gdpPerCapita": 120},
+                         "1990s": {"tfr": 4.5, "poverty": 60, "gdpPerCapita": 200},
+                         "2000s": {"tfr": 3.3, "poverty": 50, "gdpPerCapita": 350},
+                         "2010s": {"tfr": 2.8, "poverty": 35, "gdpPerCapita": 520}
+                       },
+                       "strategy": "강력한 가족계획 + 마이크로크레딧",
+                       "color": "#4ECDC4"
+                     },
+                     {
+                       "country": "한국",
+                       "flag": "🇰🇷",
+                       "timeline": {
+                         "1960s": {"tfr": 6.0, "poverty": 70, "gdpPerCapita": 80},
+                         "1970s": {"tfr": 4.2, "poverty": 50, "gdpPerCapita": 600},
+                         "1980s": {"tfr": 2.8, "poverty": 30, "gdpPerCapita": 2500},
+                         "1990s": {"tfr": 1.8, "poverty": 15, "gdpPerCapita": 8000},
+                         "2000s": {"tfr": 1.2, "poverty": 8, "gdpPerCapita": 20000}
+                       },
+                       "strategy": "가족계획 + 교육투자 + 수출지향",
+                       "color": "#FF6B6B"
+                     },
+                     {
+                       "country": "태국",
+                       "flag": "🇹🇭",
+                       "timeline": {
+                         "1960s": {"tfr": 6.4, "poverty": 60, "gdpPerCapita": 100},
+                         "1970s": {"tfr": 5.2, "poverty": 50, "gdpPerCapita": 300},
+                         "1980s": {"tfr": 3.8, "poverty": 35, "gdpPerCapita": 800},
+                         "1990s": {"tfr": 2.5, "poverty": 25, "gdpPerCapita": 1500},
+                         "2000s": {"tfr": 1.8, "poverty": 10, "gdpPerCapita": 3000}
+                       },
+                       "strategy": "혁신적 콘돔 캠페인 + 종합적 개발",
+                       "color": "#45B7D1"
+                     }
+                   ]
+                 }'>
+            </div>
+
+            <!-- Correlation Analysis -->
+            <div class="chart-container correlation-analysis" id="correlation-chart"
+                 data-chart-type="plotly"
+                 data-chart-data='{
+                   "correlations": {
+                     "tfrVsPoverty": {
+                       "title": "출산율 vs 빈곤율 상관관계",
+                       "data": [
+                         {"tfr": 6.3, "poverty": 80, "country": "방글라데시(1970s)"},
+                         {"tfr": 6.0, "poverty": 70, "country": "한국(1960s)"},
+                         {"tfr": 5.2, "poverty": 50, "country": "태국(1970s)"},
+                         {"tfr": 3.3, "poverty": 50, "country": "방글라데시(2000s)"},
+                         {"tfr": 2.8, "poverty": 35, "country": "태국(1990s)"},
+                         {"tfr": 1.8, "poverty": 15, "country": "한국(1990s)"},
+                         {"tfr": 1.2, "poverty": 8, "country": "한국(2000s)"}
+                       ],
+                       "correlation": 0.89
+                     }
+                   }
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Poverty Trap Cycle -->
+        <div class="poverty-trap">
+            <h3>높은 출산율의 빈곤 함정</h3>
+            <div class="chart-container poverty-cycle" id="poverty-trap-chart"
+                 data-chart-type="d3"
+                 data-chart-data='{
+                   "cycle": [
+                     {
+                       "stage": "poverty",
+                       "title": "빈곤",
+                       "description": "낮은 소득, 제한된 기회",
+                       "metrics": {"income": "<$2/일", "opportunities": "30%"},
+                       "color": "#FF6B6B",
+                       "position": {"x": 0, "y": 0}
+                     },
+                     {
+                       "stage": "high-fertility",
+                       "title": "높은 출산율",
+                       "description": "피임 접근 부족, 사회적 압박",
+                       "metrics": {"tfr": ">5.0", "contraceptiveAccess": "<25%"},
+                       "color": "#FFA726",
+                       "position": {"x": 1, "y": 0}
+                     },
+                     {
+                       "stage": "resource-dilution",
+                       "title": "자원 희석",
+                       "description": "많은 아이, 적은 1인당 투자",
+                       "metrics": {"children": "6-8명", "perChildSpending": "$50/년"},
+                       "color": "#66BB6A",
+                       "position": {"x": 1, "y": 1}
+                     },
+                     {
+                       "stage": "low-human-capital",
+                       "title": "낮은 인적자본",
+                       "description": "교육 부족, 건강 악화",
+                       "metrics": {"literacy": "<60%", "healthAccess": "<40%"},
+                       "color": "#42A5F5",
+                       "position": {"x": 0, "y": 1}
+                     }
+                   ],
+                   "breakingPoint": {
+                     "intervention": "가족계획 접근성 확대",
+                     "pathway": [
+                       "피임법 제공",
+                       "계획된 임신",
+                       "소가족 형성",
+                       "집중 투자",
+                       "빈곤 탈출"
+                     ]
+                   }
+                 }'>
+            </div>
+        </div>
+
+        <!-- MDG Connection Chart -->
+        <div class="mdg-connection">
+            <h3>MDG 1(빈곤 및 기아 퇴치)과의 연관성</h3>
+            <div class="chart-container mdg-impact" id="mdg-impact-chart"
+                 data-chart-type="chartjs"
+                 data-chart-data='{
+                   "impact": {
+                     "overall": 35,
+                     "mechanisms": [
+                       {"name": "가구당 소득 증가", "contribution": 30, "description": "여성 경제활동 참여"},
+                       {"name": "지출 감소", "contribution": 25, "description": "육아비, 교육비"},
+                       {"name": "자산 축적", "contribution": 25, "description": "저축 및 투자 기회"},
+                       {"name": "세대간 빈곤 차단", "contribution": 20, "description": "교육을 통한 상향이동"}
+                     ],
+                     "timeline": {
+                       "shortTerm": {"years": "1-5", "impact": 15},
+                       "mediumTerm": {"years": "5-15", "impact": 35},
+                       "longTerm": {"years": "15-25", "impact": 50}
+                     }
+                   }
+                 }'>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). p. 1815-1816">Cleland et al. (2006). Family planning and poverty reduction (p. 1815-1816)</span>
+        <span class="slide-number">21 / 60</span>
+    </div>
+</div>

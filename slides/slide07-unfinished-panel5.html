@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미완의 과제 및 Panel 5: 미충족 수요</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .overview-section {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .unmet-need-explanation {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid #ffd700;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 5px solid #ffd700;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            color: #333;
+        }
+        .causes-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .cause-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #ff9800;
+        }
+        .cause-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .impact-section {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4caf50;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .regional-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .region-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .region-name {
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .key-insight {
+            background: rgba(255, 152, 0, 0.2);
+            border: 2px solid #ff9800;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .data-table {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .highlight-stat {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">미완의 과제 및 Panel 5: 미충족 수요</h1>
+            <p style="opacity: 0.8;">Nature and Extent of Unfinished Business & Causes of Unmet Need</p>
+        </div>
+
+        <div class="overview-section">
+            <h2 style="color: #ffd700; margin-top: 0;">미완의 과제 규모</h2>
+            <p style="font-size: 1.1em; line-height: 1.6;">
+                가족계획 프로그램이 많은 개발도상국에서 큰 성공을 거두었지만, 모든 개발도상국에서
+                최우선 개발 과제로 재설정해야 한다고 주장하는 것은 도움이 되지 않고 사실이 아닙니다.
+                그렇다면 국가들을 필요에 따라 어떻게 순위를 매겨야 할까요?
+            </p>
+        </div>
+
+        <div class="unmet-need-explanation">
+            <h2 style="color: #ffd700; text-align: center; margin-top: 0;">미충족 수요 (Unmet Need) 정의</h2>
+            <p style="font-size: 1.1em; text-align: center; margin-bottom: 20px;">
+                <strong>임신 가능한 기혼 여성 중 더 이상의 출산을 원하지 않거나 다음 출산을 최소 2년 연기하고 싶지만
+                피임법을 사용하지 않는 여성의 비율</strong>
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">57</div>
+                    <div>DHS 조사를 실시한<br>개발도상국 수</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">13</div>
+                    <div>미충족 수요 30% 초과<br>국가 수 (9개 아프리카)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">18</div>
+                    <div>미충족 수요 20-30%<br>국가 수 (15개 아프리카)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3 style="text-align: center; margin-top: 0;">Figure 2: DHS 소득 계층별 미충족 수요</h3>
+            <div id="unmetNeedChart" style="height: 400px;"></div>
+        </div>
+
+        <div class="data-table">
+            <h3 style="text-align: center; margin-top: 0;">지역별 미충족 수요 현황</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>지역</th>
+                        <th>최빈층 미충족 수요</th>
+                        <th>최부유층 미충족 수요</th>
+                        <th>격차</th>
+                        <th>특징</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>아시아·라틴아메리카</strong></td>
+                        <td class="highlight-stat">25%</td>
+                        <td>12%</td>
+                        <td>2배</td>
+                        <td>뚜렷한 소득 격차</td>
+                    </tr>
+                    <tr>
+                        <td><strong>사하라 이남 아프리카</strong></td>
+                        <td>30%</td>
+                        <td>25%</td>
+                        <td>1.2배</td>
+                        <td>전반적으로 높음</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="causes-section">
+            <h2 style="color: #ffd700; text-align: center; margin-top: 0;">Panel 5: 미충족 수요의 원인과 함의</h2>
+
+            <div class="cause-item">
+                <div class="cause-title">1. 인식 부족 (10-25%)</div>
+                <p>임신 위험성에 대한 낮은 인식이 주된 이유인 경우는 소수에 불과함</p>
+            </div>
+
+            <div class="cause-item">
+                <div class="cause-title">2. 지식 부족</div>
+                <p>피임법에 대한 지식 부족과 사용법을 모르는 경우</p>
+            </div>
+
+            <div class="cause-item">
+                <div class="cause-title">3. 사회적 불승인에 대한 두려움</div>
+                <p>가족계획에 대한 사회적 반대와 비난에 대한 우려</p>
+            </div>
+
+            <div class="cause-item">
+                <div class="cause-title">4. 부작용 및 건강 우려</div>
+                <p>피임법의 부작용과 건강에 미칠 영향에 대한 걱정</p>
+            </div>
+
+            <div class="cause-item">
+                <div class="cause-title">5. 남편의 반대</div>
+                <p>여성이 인식하는 남편의 반대 (실제와 다를 수 있음)</p>
+            </div>
+        </div>
+
+        <div class="impact-section">
+            <h2 style="color: #4caf50; text-align: center; margin-top: 0;">미충족 수요 해결의 출산율 감소 효과</h2>
+
+            <div class="regional-comparison">
+                <div class="region-box">
+                    <div class="region-name">라틴아메리카·카리브</div>
+                    <div class="stat-number">35%</div>
+                    <div>출산율 감소</div>
+                </div>
+                <div class="region-box">
+                    <div class="region-name">아랍 국가</div>
+                    <div class="stat-number">20%</div>
+                    <div>출산율 감소</div>
+                </div>
+                <div class="region-box">
+                    <div class="region-name">동·남부 아프리카</div>
+                    <div class="stat-number">20%</div>
+                    <div>출산율 감소</div>
+                </div>
+                <div class="region-box">
+                    <div class="region-name">아시아</div>
+                    <div class="stat-number">15%</div>
+                    <div>출산율 감소</div>
+                </div>
+                <div class="region-box">
+                    <div class="region-name">서부 아프리카</div>
+                    <div class="stat-number">15%</div>
+                    <div>출산율 감소<br>(5.6 → 4.8명)</div>
+                </div>
+            </div>
+
+            <div class="key-insight">
+                <strong>중요한 발견:</strong> 서부 아프리카에서는 미충족 수요를 완전히 해결해도
+                출산율이 5.6명에서 4.8명으로만 감소한다. 이는 높은 희망 가족 크기 때문이다.
+            </div>
+        </div>
+
+        <div class="causes-section">
+            <h2 style="color: #ffd700; margin-top: 0;">남편의 반대에 대한 오해</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li>👥 남성 조사 결과: 남성이 여성보다 피임 사용을 더 많이 보고</li>
+                <li>🤝 부부 조사: 남성과 여성의 태도가 유사함</li>
+                <li>👶 출산 희망: 일부다처제 사회를 제외하고 부부간 출산 희망 수 유사</li>
+                <li>💭 여성의 오인: 남편의 실제 의견과 여성이 인식하는 의견 간 차이</li>
+                <li>🗣️ 소통 부족: 부부간 논의 부족이 실제 문제일 수 있음</li>
+            </ul>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin: 30px 0; text-align: center;">
+            <h3 style="color: #ffd700; margin-top: 0;">핵심 메시지</h3>
+            <p style="font-size: 1.1em; line-height: 1.6;">
+                미충족 수요 해결을 통한 점진적 만족은 프로그램의 핵심 역사적 사명으로 남아있으며,
+                아프리카를 제외한 모든 지역에서 명확한 진전이 이루어졌다.
+                <br><br>
+                <strong>미충족 수요는 모든 잠재적 의도하지 않은 임신 위험에 있는 사람들이
+                피임법을 사용하는 이상적 상태로의 진전을 측정하는 유용하고 견고한 척도이다.</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Unmet Need by Wealth Quintiles Chart
+        const regions = ['아시아 & 라틴아메리카', '사하라 이남 아프리카'];
+        const poorest = [25, 30];
+        const middle = [18, 28];
+        const richest = [12, 25];
+
+        const trace1 = {
+            x: regions,
+            y: poorest,
+            name: '최빈층 (20%)',
+            type: 'bar',
+            marker: { color: '#ff6b6b' }
+        };
+
+        const trace2 = {
+            x: regions,
+            y: middle,
+            name: '중간층 (20%)',
+            type: 'bar',
+            marker: { color: '#ffa726' }
+        };
+
+        const trace3 = {
+            x: regions,
+            y: richest,
+            name: '최부유층 (20%)',
+            type: 'bar',
+            marker: { color: '#4caf50' }
+        };
+
+        const layout = {
+            title: '',
+            xaxis: { title: '지역' },
+            yaxis: {
+                title: '미충족 수요 (%)',
+                range: [0, 35]
+            },
+            barmode: 'group',
+            font: { family: 'Segoe UI' },
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            annotations: [
+                {
+                    x: 0,
+                    y: 25,
+                    text: '2배 격차',
+                    showarrow: true,
+                    arrowhead: 2,
+                    arrowcolor: '#ff6b6b',
+                    font: { color: '#ff6b6b', size: 12 }
+                },
+                {
+                    x: 1,
+                    y: 30,
+                    text: '전반적으로<br>높은 수준',
+                    showarrow: true,
+                    arrowhead: 2,
+                    arrowcolor: '#ff9800',
+                    font: { color: '#ff9800', size: 12 }
+                }
+            ]
+        };
+
+        Plotly.newPlot('unmetNeedChart', [trace1, trace2, trace3], layout, {responsive: true});
+    </script>
+</body>
+</html>

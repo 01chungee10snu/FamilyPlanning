@@ -1,0 +1,2674 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Planning: The Unfinished Agenda - Enhanced</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            display: none;
+            padding: 40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .slide-header {
+            flex: 0 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .slide-content {
+            flex: 1 1 auto;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .slide-footer {
+            flex: 0 0 auto;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .citation {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .slide-number {
+            font-size: 14px;
+            color: #666;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+
+        p, li {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 32px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding-left: 35px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        ul li:before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .emphasis {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 350px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .full-height {
+            height: calc(100vh - 180px);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            height: 100%;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: start;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            background: linear-gradient(to bottom, #3498db, #9b59b6);
+        }
+
+        .timeline-item {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #3498db;
+            border: 3px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .panel-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+        }
+
+        .panel-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .panel-content {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        /* Title Slide Specific Styles */
+        .title-slide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title-slide h1 {
+            color: white;
+            font-size: 72px;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .title-slide .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 32px;
+        }
+
+        .title-slide .author {
+            position: absolute;
+            bottom: 100px;
+            font-size: 24px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .title-slide .date {
+            position: absolute;
+            bottom: 70px;
+            font-size: 20px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Section Title Slide */
+        .section-title {
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-title h1 {
+            color: white;
+            font-size: 64px;
+        }
+
+        .section-title h2 {
+            color: rgba(255,255,255,0.8);
+            font-size: 36px;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Pretendard Variable', Pretendard;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+
+        .nav-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .slide-indicator {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            color: #333;
+        }
+
+        /* Data visualization specific */
+        .data-point {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .data-point:hover {
+            transform: scale(1.2);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+
+        /* Animation classes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            h1 { font-size: 48px; }
+            h2 { font-size: 36px; }
+            h3 { font-size: 28px; }
+            p, li { font-size: 20px; }
+            .two-column { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <h1>Family Planning:<br>The Unfinished Agenda</h1>
+            <p class="subtitle">가족계획이 MDGs 달성과 지속가능발전에 미치는 영향</p>
+            <p class="author">발표자: [이름]</p>
+            <p class="date">2025년 2월 | Lancet 2006 Series Review</p>
+            <div class="slide-footer" style="border: none; position: absolute; bottom: 30px; width: calc(100% - 120px);">
+                <span class="citation">Cleland et al. (2006). Family planning: the unfinished agenda. Lancet, 368(9549), 1810-1827.</span>
+                <span class="slide-number">1 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 2: Table of Contents with Visual Layout -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="slide-header">
+                    <h1>목차 및 학습목표</h1>
+                </div>
+                <div class="slide-content">
+                <div class="two-column" style="height: 100%;">
+                    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3>📚 6개 Part 구성</h3>
+                            <div style="background: #f8f9fa; padding: 20px; border-radius: 12px;">
+                                <ul>
+                                    <li><strong>Part 1:</strong> 핵심 개념 이해 (5분)</li>
+                                    <li><strong>Part 2:</strong> 시간순 스토리텔링 (10분)</li>
+                                    <li><strong>Part 3:</strong> 8개 패널 시계열 분석 (10분)</li>
+                                    <li><strong>Part 4:</strong> 지역별 데이터 시각화 (10분)</li>
+                                    <li><strong>Part 5:</strong> 자금과 정책 분석 (5분)</li>
+                                    <li><strong>Part 6:</strong> 핵심 논쟁과 결론 (5분)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="stat-box" style="margin-top: 20px;">
+                            <p class="stat-label">총 소요시간</p>
+                            <p class="stat-number">50분</p>
+                            <p class="stat-label">질의응답 10분 포함</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>🎯 핵심 질문</h3>
+                        <div class="panel-box">
+                            <p class="panel-content">
+                                1. 왜 가족계획이 다른 개입보다 효과적인가?<br><br>
+                                2. 아프리카는 왜 아시아의 성공을 반복하지 못하는가?<br><br>
+                                3. 2015 MDGs 달성을 위해 무엇이 필요한가?
+                            </p>
+                        </div>
+                        <div style="margin-top: 20px; padding: 20px; background: #fff3cd; border-radius: 8px;">
+                            <p style="font-size: 18px; color: #856404;">
+                                <strong>학습 목표:</strong><br>
+                                • 가족계획의 다면적 효과 이해<br>
+                                • 지역별 격차와 원인 분석<br>
+                                • 정책 개입 방향 도출
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Introduction section (pp. 1810-1811)</span>
+                <span class="slide-number">2 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 3: Why Now with Data Visualization -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>왜 지금 가족계획인가?</h1>
+            </div>
+            <div class="slide-content">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <p class="stat-number">$460M</p>
+                        <p class="stat-label">2003년 국제지원</p>
+                        <p class="stat-label" style="font-size: 14px;">1995년 대비 18% ↓</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <p class="stat-number">201M</p>
+                        <p class="stat-label">피임 미충족 여성</p>
+                        <p class="stat-label" style="font-size: 14px;">전체 가임여성의 17%</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <p class="stat-number">3%</p>
+                        <p class="stat-label">보건 ODA 중 비중</p>
+                        <p class="stat-label" style="font-size: 14px;">HIV/AIDS의 1/30</p>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 30px;">
+                    <canvas id="fundingChart"></canvas>
+                </div>
+
+                <div style="background: #ffe5e5; padding: 20px; border-radius: 12px; margin-top: 20px;">
+                    <h3 style="color: #c0392b;">2006년 위기 상황</h3>
+                    <ul>
+                        <li><span class="highlight">MDGs 중간평가:</span> 2015년 목표 달성 위기, 특히 모성 건강(MDG 5)</li>
+                        <li><span class="highlight">아프리카 인구폭발:</span> 연 2.5% 증가, 2050년까지 인구 2배 예상</li>
+                        <li><span class="highlight">자금 불균형:</span> HIV/AIDS $10B vs 가족계획 $0.46B (22배 차이)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Panel 1 & Introduction (pp. 1810-1812)</span>
+                <span class="slide-number">3 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 4: Multi-dimensionality with Visual Connections -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>가족계획의 다면성 (Multiple Benefits)</h1>
+            </div>
+            <div class="slide-content">
+                <div class="panel-box">
+                    <p class="panel-title">핵심 메시지 (Panel 1)</p>
+                    <p class="panel-content">"가족계획은 빈곤 감소, 모성·아동 건강, 여성 권한 강화, 환경 지속가능성에 동시 기여하는 유일한 개입"</p>
+                </div>
+
+                <div style="position: relative; height: 400px; margin: 30px 0;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; height: 150px; background: #3498db; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; z-index: 10;">
+                        가족계획
+                    </div>
+
+                    <div class="data-point" style="top: 0; left: 20%; background: #e74c3c;">
+                        MDG 1<br>빈곤
+                    </div>
+                    <div class="data-point" style="top: 0; right: 20%; background: #9b59b6;">
+                        MDG 3<br>성평등
+                    </div>
+                    <div class="data-point" style="bottom: 0; left: 20%; background: #f39c12;">
+                        MDG 4<br>아동건강
+                    </div>
+                    <div class="data-point" style="bottom: 0; right: 20%; background: #27ae60;">
+                        MDG 5<br>모성건강
+                    </div>
+                    <div class="data-point" style="top: 50%; left: 0; transform: translateY(-50%); background: #16a085;">
+                        MDG 7<br>환경
+                    </div>
+                </div>
+
+                <div class="three-column">
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                        <h4 style="font-size: 20px; color: #e74c3c;">경제적 효과</h4>
+                        <ul style="font-size: 16px;">
+                            <li>가구당 자원 증가</li>
+                            <li>여성 노동참여 상승</li>
+                            <li>인구배당 효과</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                        <h4 style="font-size: 20px; color: #27ae60;">보건 효과</h4>
+                        <ul style="font-size: 16px;">
+                            <li>모성사망 32% 감소</li>
+                            <li>영아사망 10% 감소</li>
+                            <li>HIV 전파 감소</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                        <h4 style="font-size: 20px; color: #16a085;">사회적 효과</h4>
+                        <ul style="font-size: 16px;">
+                            <li>여성 교육 증가</li>
+                            <li>아동 복지 개선</li>
+                            <li>환경 압력 완화</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Panel 1 & Box 1 (pp. 1811-1812)</span>
+                <span class="slide-number">4 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 5: Key Indicators with Visual Gauges -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>핵심 지표 이해</h1>
+            </div>
+            <div class="slide-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>지표</th>
+                            <th>정의</th>
+                            <th>목표 수준</th>
+                            <th>현재 격차 (2005)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>TFR</strong><br>(Total Fertility Rate)</td>
+                            <td>여성 1인당 평균 출산 자녀 수</td>
+                            <td>2.1 (인구대체수준)</td>
+                            <td>사하라이남: 5.5<br>남아시아: 3.2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CPR</strong><br>(Contraceptive Prevalence)</td>
+                            <td>가임기 여성 중 현대적 피임 실천 비율</td>
+                            <td>60% 이상</td>
+                            <td>아프리카: 17%<br>아시아: 60%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unmet Need</strong></td>
+                            <td>피임 희망하나 실천 못하는 비율</td>
+                            <td>10% 미만</td>
+                            <td>사하라이남: 24%<br>남아시아: 17%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MMR</strong><br>(Maternal Mortality Ratio)</td>
+                            <td>출생 10만명당 모성 사망</td>
+                            <td>70 미만</td>
+                            <td>아프리카: 900<br>남아시아: 450</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="chart-container" style="margin-top: 30px;">
+                    <canvas id="indicatorsChart"></canvas>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Table 1 & Figure 1 (pp. 1812-1813)</span>
+                <span class="slide-number">5 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 6: Evidence-Based Effects with Impact Visualization -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>증거 기반 효과 (Evidence-Based Impact)</h1>
+            </div>
+            <div class="slide-content">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <p class="stat-number">32%</p>
+                        <p class="stat-label">모성 사망 감소</p>
+                        <p style="font-size: 14px; margin-top: 10px;">76,000명/년 생명 구조</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <p class="stat-number">10%</p>
+                        <p class="stat-label">5세 미만 아동 사망 감소</p>
+                        <p style="font-size: 14px; margin-top: 10px;">150,000명/년 구조</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <p class="stat-number">20%</p>
+                        <p class="stat-label">빈곤 감소 가속</p>
+                        <p style="font-size: 14px; margin-top: 10px;">0.9-2.3명 자녀 감소 시</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px;">작동 메커니즘</h3>
+                <div class="two-column">
+                    <div style="background: #e8f4e8; padding: 20px; border-radius: 12px;">
+                        <h4 style="color: #27ae60;">직접 효과</h4>
+                        <ul style="font-size: 20px;">
+                            <li>고위험 임신 감소 (4 Too's 예방)</li>
+                            <li>출산 간격 최적화 (2년 이상)</li>
+                            <li>안전하지 않은 낙태 예방</li>
+                        </ul>
+                    </div>
+                    <div style="background: #e8e8f4; padding: 20px; border-radius: 12px;">
+                        <h4 style="color: #3498db;">간접 효과</h4>
+                        <ul style="font-size: 20px;">
+                            <li>여성 교육 수준 향상</li>
+                            <li>가구 경제력 증대</li>
+                            <li>인구 구조 개선 (Demographic Dividend)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-box" style="margin-top: 20px;">
+                    <p class="panel-content">
+                        <strong>4 Too's:</strong> Too young (너무 어린), Too old (너무 늦은), Too many (너무 많은), Too close (너무 빈번한)
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Section on Health Benefits (pp. 1813-1815)</span>
+                <span class="slide-number">6 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 7: Cost-Effectiveness with Comparative Chart -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>투자 대비 효과 (Cost-Effectiveness)</h1>
+            </div>
+            <div class="slide-content">
+                <div class="panel-box">
+                    <p class="panel-title">$1 투자 시 경제적 수익</p>
+                    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                        <div style="text-align: center;">
+                            <p style="font-size: 36px; font-weight: bold;">$3</p>
+                            <p>의료비 절감</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="font-size: 36px; font-weight: bold;">$2</p>
+                            <p>교육비 절감</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="font-size: 36px; font-weight: bold;">$4</p>
+                            <p>빈곤 관련 절감</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px;">보건 개입 비용효과 비교</h3>
+                <div class="chart-container">
+                    <canvas id="costEffectivenessChart"></canvas>
+                </div>
+
+                <table style="margin-top: 30px;">
+                    <thead>
+                        <tr>
+                            <th>개입</th>
+                            <th>DALY당 비용</th>
+                            <th>비용 효과성</th>
+                            <th>확산 가능성</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #d4edda;">
+                            <td><strong>가족계획</strong></td>
+                            <td>$20-30</td>
+                            <td>매우 높음</td>
+                            <td>높음</td>
+                        </tr>
+                        <tr>
+                            <td>예방접종</td>
+                            <td>$12-17</td>
+                            <td>매우 높음</td>
+                            <td>중간</td>
+                        </tr>
+                        <tr>
+                            <td>HIV 치료 (ARV)</td>
+                            <td>$350-500</td>
+                            <td>중간</td>
+                            <td>낮음</td>
+                        </tr>
+                        <tr>
+                            <td>말라리아 방지</td>
+                            <td>$5-10</td>
+                            <td>매우 높음</td>
+                            <td>높음</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Economic Benefits section (pp. 1815-1816)</span>
+                <span class="slide-number">7 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 8: Section Title - Historical Development -->
+        <div class="slide section-title">
+            <h1>Part 2</h1>
+            <h2>역사적 전개 (1960-2006)</h2>
+            <h2 style="font-size: 28px; margin-top: 20px;">Historical Development</h2>
+            <div class="slide-footer" style="border: none; position: absolute; bottom: 30px; width: calc(100% - 120px);">
+                <span class="citation" style="color: rgba(255,255,255,0.7);">Source: Lancet 2006 - Historical Overview (pp. 1816-1818)</span>
+                <span class="slide-number" style="color: rgba(255,255,255,0.7);">8 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 9: 1960s-1970s with Timeline -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>1960-1970년대: 두 가지 경로</h1>
+            </div>
+            <div class="slide-content">
+                <div class="two-column" style="height: 100%;">
+                    <div>
+                        <h3>🌏 아시아 모델 (정부 주도)</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1952 인도</div>
+                                <div class="timeline-content">세계 최초 국가 프로그램 시작<br>네루 정부의 선도적 결정</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1962 한국</div>
+                                <div class="timeline-content">경제개발 5개년 계획과 연계<br>"덮어놓고 낳다보면 거지꼴"</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1964 중국</div>
+                                <div class="timeline-content">인구 억제 정책 공식화<br>"늦게, 드물게, 적게"</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">동기</div>
+                                <div class="timeline-content" style="color: #e74c3c;">급속한 경제 성장을 위한 인구 통제</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>🌎 라틴아메리카 모델 (NGO 주도)</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">콜롬비아</div>
+                                <div class="timeline-content">Profamilia 설립 (1965)<br>민간 주도 서비스 제공</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">멕시코</div>
+                                <div class="timeline-content">불법 낙태 위기 대응<br>연간 140,000건 위험 낙태</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">브라질</div>
+                                <div class="timeline-content">BEMFAM 네트워크 확산<br>정부 개입 없이 TFR 감소</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">동기</div>
+                                <div class="timeline-content" style="color: #3498db;">모성 사망 감소, 공중 보건 위기 대응</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-box" style="margin-top: 20px;">
+                    <p class="panel-content" style="text-align: center;">
+                        확산 속도: 1960년 2개국 → 1975년 74개국 (37배 증가)
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Historical Overview & Panel 4 (pp. 1816-1817)</span>
+                <span class="slide-number">9 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 10: 1980s Golden Age with Line Chart -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>1980년대: 황금기 (Golden Era)</h1>
+            </div>
+            <div class="slide-content">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <p class="stat-number">$512M</p>
+                        <p class="stat-label">1985년 국제 지원</p>
+                        <p style="font-size: 14px;">역대 최고 (1971년 대비 3배)</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <p class="stat-number">60%</p>
+                        <p class="stat-label">아시아 CPR</p>
+                        <p style="font-size: 14px;">1970년 10% → 1985년 60%</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <p class="stat-number">3.0</p>
+                        <p class="stat-label">동아시아 TFR</p>
+                        <p style="font-size: 14px;">1970년 6.0 → 1985년 3.0</p>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 30px;">
+                    <canvas id="goldenEraChart"></canvas>
+                </div>
+
+                <div class="two-column" style="margin-top: 30px;">
+                    <div style="background: #e8f4e8; padding: 20px; border-radius: 12px;">
+                        <h4>✅ 주요 성과</h4>
+                        <ul style="font-size: 18px;">
+                            <li><strong>태국:</strong> TFR 6.3 → 2.0 (20년)</li>
+                            <li><strong>한국:</strong> GDP 성장 8-10% 동반</li>
+                            <li><strong>인도네시아:</strong> 세계 최대 프로그램</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ffe5e5; padding: 20px; border-radius: 12px;">
+                        <h4>⚠️ 어두운 면</h4>
+                        <ul style="font-size: 18px;">
+                            <li><strong>인도:</strong> 1976-77 긴급사태</li>
+                            <li>강제 불임시술 800만 명</li>
+                            <li>국제사회 비판 → 카이로 전환</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Figure 2 & Panel 3 (pp. 1817-1818)</span>
+                <span class="slide-number">10 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 11: 1994 Cairo Paradigm Shift -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>1994년 카이로: 패러다임 전환</h1>
+            </div>
+            <div class="slide-content">
+                <div class="panel-box">
+                    <p class="panel-title">ICPD (International Conference on Population and Development)</p>
+                    <p class="panel-content">179개국 참가 | 20년 행동계획 (Programme of Action) 채택</p>
+                </div>
+
+                <div class="two-column" style="margin-top: 30px;">
+                    <div style="background: #ffe5e5; padding: 25px; border-radius: 12px;">
+                        <h3 style="color: #c0392b;">Before (인구 통제)</h3>
+                        <ul>
+                            <li><strong>목표:</strong> 인구 증가율 감소</li>
+                            <li><strong>지표:</strong> 출산율, 피임 실천율</li>
+                            <li><strong>접근:</strong> Top-down, 수량 중심</li>
+                            <li><strong>주체:</strong> 정부, 국제기구</li>
+                            <li><strong>방법:</strong> 목표치 할당, 인센티브</li>
+                        </ul>
+                    </div>
+                    <div style="background: #e8f4e8; padding: 25px; border-radius: 12px;">
+                        <h3 style="color: #27ae60;">After (생식 건강과 권리)</h3>
+                        <ul>
+                            <li><strong>목표:</strong> 개인의 건강과 권리</li>
+                            <li><strong>지표:</strong> 삶의 질, 선택권</li>
+                            <li><strong>접근:</strong> Bottom-up, 권리 중심</li>
+                            <li><strong>주체:</strong> 개인, 시민사회</li>
+                            <li><strong>방법:</strong> 포괄적 서비스, 자발성</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
+                    <p style="font-size: 28px; font-weight: 600;">
+                        "여성의 자기결정권이 인구 정책의 핵심"
+                    </p>
+                    <p style="font-size: 18px; margin-top: 10px;">
+                        Women's autonomy is at the heart of population policy
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Cairo Conference section (pp. 1818-1819)</span>
+                <span class="slide-number">11 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 12: 1995-2005 Lost Decade with Funding Decline Chart -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>1995-2005: 잊혀진 10년 (The Lost Decade)</h1>
+            </div>
+            <div class="slide-content">
+                <div class="chart-container">
+                    <canvas id="lostDecadeChart"></canvas>
+                </div>
+
+                <div class="two-column" style="margin-top: 30px;">
+                    <div>
+                        <h3>🚫 MDGs 누락의 영향</h3>
+                        <div style="background: #ffe5e5; padding: 20px; border-radius: 12px;">
+                            <ul style="font-size: 18px;">
+                                <li>8개 목표 중 직접 언급 없음</li>
+                                <li>측정 지표에서 CPR 제외</li>
+                                <li>모성 건강(MDG 5)에만 부분 포함</li>
+                                <li>정책 우선순위에서 배제</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>💊 HIV/AIDS 우선순위화</h3>
+                        <div style="background: #fff3cd; padding: 20px; border-radius: 12px;">
+                            <ul style="font-size: 18px;">
+                                <li>PEPFAR: $15B (2003-2008)</li>
+                                <li>Global Fund: $10B/년</li>
+                                <li>가족계획: $460M (3% 수준)</li>
+                                <li>22배 자금 격차 발생</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-box" style="margin-top: 30px; background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);">
+                    <p class="panel-title">결과: 아프리카 위기</p>
+                    <p class="panel-content">
+                        • 가족계획 프로그램 정체 및 후퇴<br>
+                        • 미충족 수요 증가 (17% → 24%)<br>
+                        • 청년 인구 폭증 시작
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Funding trends & MDGs (pp. 1819-1820)</span>
+                <span class="slide-number">12 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 13: 2006 Re-evaluation with Africa Focus -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>2006년: 재평가의 시점</h1>
+            </div>
+            <div class="slide-content">
+                <h3>아프리카의 시한폭탄</h3>
+                <div class="stats-grid">
+                    <div class="stat-box" style="background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);">
+                        <p class="stat-number">5.5</p>
+                        <p class="stat-label">사하라이남 TFR</p>
+                        <p style="font-size: 14px;">아시아 1.8의 3배</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);">
+                        <p class="stat-number">17%</p>
+                        <p class="stat-label">아프리카 CPR</p>
+                        <p style="font-size: 14px;">아시아 60%의 1/4</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #fc6767 0%, #ec008c 100%);">
+                        <p class="stat-number">2배</p>
+                        <p class="stat-label">2050년 인구</p>
+                        <p style="font-size: 14px;">17억 → 34억</p>
+                    </div>
+                </div>
+
+                <div id="africaMap" class="map-container"></div>
+
+                <h3 style="margin-top: 30px;">재활성화 필요성</h3>
+                <div class="three-column">
+                    <div style="background: #ffe5e5; padding: 15px; border-radius: 8px;">
+                        <h4 style="font-size: 18px; color: #c0392b;">MDGs 달성 불가</h4>
+                        <p style="font-size: 16px;">가족계획 없이 5개 목표 달성 불가능</p>
+                    </div>
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 8px;">
+                        <h4 style="font-size: 18px; color: #856404;">빈곤 감소 정체</h4>
+                        <p style="font-size: 16px;">인구 증가가 경제 성장 상쇄</p>
+                    </div>
+                    <div style="background: #d1ecf1; padding: 15px; border-radius: 8px;">
+                        <h4 style="font-size: 18px; color: #0c5460;">환경 위기</h4>
+                        <p style="font-size: 16px;">자원 고갈과 기후 변화 가속</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Current Status & Panel 2 (pp. 1820-1821)</span>
+                <span class="slide-number">13 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 14: Section Title - Panel Analysis -->
+        <div class="slide section-title">
+            <h1>Part 3</h1>
+            <h2>8개 패널 심층 분석</h2>
+            <h2 style="font-size: 28px; margin-top: 20px;">Panel Deep-Dive Analysis</h2>
+            <div class="slide-footer" style="border: none; position: absolute; bottom: 30px; width: calc(100% - 120px);">
+                <span class="citation" style="color: rgba(255,255,255,0.7);">Source: Lancet 2006 - Panels 1-8 (pp. 1811-1825)</span>
+                <span class="slide-number" style="color: rgba(255,255,255,0.7);">14 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 15: Panel 1 - Core Message with Benefits Matrix -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Panel 1: 가족계획의 독특한 가치</h1>
+            </div>
+            <div class="slide-content">
+                <div class="panel-box">
+                    <p class="panel-title">핵심 메시지</p>
+                    <p class="panel-content">"가족계획은 빈곤, 모성·아동 사망, 성평등, 환경에 동시 기여하는 독특한 개입"</p>
+                </div>
+
+                <h3 style="margin-top: 30px;">Multiple Benefits Matrix</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>영역</th>
+                            <th>직접 효과</th>
+                            <th>간접 효과</th>
+                            <th>측정 지표</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>보건</strong></td>
+                            <td>모성 사망 32% 감소</td>
+                            <td>전반적 건강 개선</td>
+                            <td>MMR 감소</td>
+                        </tr>
+                        <tr>
+                            <td><strong>경제</strong></td>
+                            <td>가구 저축 증가</td>
+                            <td>인구 배당 효과</td>
+                            <td>1인당 GDP 상승</td>
+                        </tr>
+                        <tr>
+                            <td><strong>교육</strong></td>
+                            <td>여아 교육 기회 증가</td>
+                            <td>인적 자본 향상</td>
+                            <td>여성 문해율</td>
+                        </tr>
+                        <tr>
+                            <td><strong>환경</strong></td>
+                            <td>자원 압력 감소</td>
+                            <td>지속가능성 향상</td>
+                            <td>1인당 자원 소비</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HIV/AIDS</strong></td>
+                            <td>수직 감염 감소</td>
+                            <td>취약 인구 감소</td>
+                            <td>감염률 75-80% 감소</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="background: #e8f4e8; padding: 20px; border-radius: 12px; margin-top: 30px;">
+                    <p style="font-size: 20px;">
+                        <strong>시사점:</strong> 단일 개입으로 5개 MDGs에 기여하는 유일한 프로그램
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Panel 1 (pp. 1811-1812)</span>
+                <span class="slide-number">15 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 16: Panel 3 - Niger Crisis with Projections -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Panel 3: 니제르 - 최악의 시나리오</h1>
+            </div>
+            <div class="slide-content">
+                <div class="stats-grid">
+                    <div class="stat-box" style="background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);">
+                        <p class="stat-number">7.5</p>
+                        <p class="stat-label">TFR (세계 최고)</p>
+                        <p style="font-size: 14px;">여성당 평균 출산</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);">
+                        <p class="stat-number">4.6%</p>
+                        <p class="stat-label">CPR (세계 최저)</p>
+                        <p style="font-size: 14px;">현대적 피임 실천</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);">
+                        <p class="stat-number">3.8배</p>
+                        <p class="stat-label">2050년 인구</p>
+                        <p style="font-size: 14px;">14M → 53M</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="nigerProjectionChart"></canvas>
+                </div>
+
+                <h3 style="margin-top: 30px;">연쇄 위기 (Cascade Crisis)</h3>
+                <div class="two-column">
+                    <div style="background: #ffe5e5; padding: 20px; border-radius: 12px;">
+                        <h4>🌾 자원 고갈</h4>
+                        <ul style="font-size: 18px;">
+                            <li>농지: 0.7ha → 0.2ha/인 (2050)</li>
+                            <li>수자원: 연간 20% 감소</li>
+                            <li>삼림: 매년 3% 파괴</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fff3cd; padding: 20px; border-radius: 12px;">
+                        <h4>🏥 사회 서비스 붕괴</h4>
+                        <ul style="font-size: 18px;">
+                            <li>학교: 3배 필요, 예산 없음</li>
+                            <li>병원: 산부인과 90% 부족</li>
+                            <li>영양실조: 아동 45%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-box" style="margin-top: 20px; background: linear-gradient(135deg, #e52d27 0%, #b31217 100%);">
+                    <p class="panel-content" style="text-align: center; font-size: 24px;">
+                        "가족계획 없이 개발 불가능 - Without family planning, development is impossible"
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Panel 3 & Niger case study (pp. 1814-1815)</span>
+                <span class="slide-number">16 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 17: Panel 4 - Korea Success Story -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Panel 4: 한국 - 극적인 성공 사례</h1>
+            </div>
+            <div class="slide-content" style="display: flex; flex-direction: row; gap: 40px;">
+                <div style="flex: 1;">
+                    <div class="timeline" style="height: 450px;">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1960년대</div>
+                            <div class="timeline-content">
+                                TFR 6.0 | CPR <10%<br>
+                                1인당 GDP $158<br>
+                                "아들 딸 구별 말고 둘만 낳아 잘 기르자"
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1970년대</div>
+                            <div class="timeline-content">
+                                새마을 운동과 연계<br>
+                                마을 보건소 전국 확대<br>
+                                "잘 키운 딸 하나 열 아들 안 부럽다"
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1980년대</div>
+                            <div class="timeline-content">
+                                TFR 2.8 | CPR 60%<br>
+                                경제성장 8-10%/년<br>
+                                "하나씩만 낳아도 삼천리는 초만원"
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2000년대</div>
+                            <div class="timeline-content">
+                                TFR 1.2 | CPR 80%<br>
+                                1인당 GDP $20,000<br>
+                                초저출산 새로운 도전
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex: 1;">
+                    <div class="chart-container" style="height: 250px;">
+                        <canvas id="koreaSuccessChart"></canvas>
+                    </div>
+
+                    <h3 style="margin-top: 30px;">성공 요인</h3>
+                    <div style="background: #e8f4e8; padding: 20px; border-radius: 12px;">
+                        <ul>
+                            <li>경제개발계획과 인구정책 통합</li>
+                            <li>강력한 정치적 의지 (박정희 정부)</li>
+                            <li>효과적인 서비스 전달 체계</li>
+                            <li>문화적 맥락에 맞는 슬로건</li>
+                            <li>교육과 경제 기회 동시 제공</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel-box" style="margin-top: 20px;">
+                        <p class="panel-content">
+                            인구 배당 효과: 경제 성장의 25-40% 기여
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Panel 4 & East Asia analysis (pp. 1815-1816)</span>
+                <span class="slide-number">17 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 18: Panel 7 - Kenya Political Will -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Panel 7: 케냐 - 정치적 의지의 부침</h1>
+            </div>
+            <div class="slide-content">
+                <div class="chart-container">
+                    <canvas id="kenyaPoliticalChart"></canvas>
+                </div>
+
+                <div class="two-column" style="margin-top: 30px;">
+                    <div style="background: #e8f4e8; padding: 25px; border-radius: 12px;">
+                        <h3 style="color: #27ae60;">✅ 황금기 (1967-1990)</h3>
+                        <ul>
+                            <li>Kenyatta & Moi 대통령 직접 지원</li>
+                            <li>National Council 설립</li>
+                            <li>TFR: 8.0 → 6.5</li>
+                            <li>CPR: 7% → 27%</li>
+                            <li>아프리카 모범 사례</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ffe5e5; padding: 25px; border-radius: 12px;">
+                        <h3 style="color: #c0392b;">❌ 위기 (2000-2004)</h3>
+                        <ul>
+                            <li>정치적 무관심 (Kibaki 정부)</li>
+                            <li>공공 의료 시스템 붕괴</li>
+                            <li>피임약 재고 부족 만성화</li>
+                            <li>TFR 재상승: 4.8</li>
+                            <li>청년 인구 급증</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-box" style="margin-top: 30px;">
+                    <p class="panel-title">교훈 (Lesson Learned)</p>
+                    <p class="panel-content">
+                        지속적인 정치적 의지가 프로그램 성패를 좌우<br>
+                        Political commitment must be sustained for program success
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Panel 7 & Kenya case study (pp. 1822-1823)</span>
+                <span class="slide-number">18 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 19: Panel 8 - Bangladesh vs Pakistan -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Panel 8: 방글라데시 vs 파키스탄 - 분단 후 다른 길</h1>
+            </div>
+            <div class="slide-content">
+                <h3 style="text-align: center;">1971년 분단 이후 divergent paths</h3>
+
+                <table style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>지표</th>
+                            <th>방글라데시 🇧🇩</th>
+                            <th>파키스탄 🇵🇰</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f9f9f9;">
+                            <td><strong>1971년 TFR (출발점)</strong></td>
+                            <td>6.9</td>
+                            <td>6.9</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2005년 TFR</strong></td>
+                            <td style="background: #d4edda;">3.0</td>
+                            <td style="background: #f8d7da;">4.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2005년 CPR</strong></td>
+                            <td style="background: #d4edda;">58%</td>
+                            <td style="background: #f8d7da;">28%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>핵심 프로그램</strong></td>
+                            <td>Matlab 실험 성공</td>
+                            <td>Lady Health Workers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>정치적 지원</strong></td>
+                            <td style="background: #d4edda;">지속적 지원</td>
+                            <td style="background: #f8d7da;">간헐적, 약함</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2050년 인구 예상</strong></td>
+                            <td>243M (×1.7)</td>
+                            <td>349M (×2.2)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="chart-container" style="margin-top: 30px;">
+                    <canvas id="bangladeshPakistanChart"></canvas>
+                </div>
+
+                <div class="panel-box" style="margin-top: 30px;">
+                    <p class="panel-title">결정적 차이</p>
+                    <p class="panel-content">
+                        방글라데시: 독립 직후 가족계획 우선순위화, 커뮤니티 기반 접근<br>
+                        파키스탄: 종교적 반대, 정치적 무관심, 분절된 프로그램
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Panel 8 & South Asia comparison (pp. 1823-1824)</span>
+                <span class="slide-number">19 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 20: Section Title - Data Visualization -->
+        <div class="slide section-title">
+            <h1>Part 4</h1>
+            <h2>데이터 시각화</h2>
+            <h2 style="font-size: 28px; margin-top: 20px;">Regional Data Visualization</h2>
+            <div class="slide-footer" style="border: none; position: absolute; bottom: 30px; width: calc(100% - 120px);">
+                <span class="citation" style="color: rgba(255,255,255,0.7);">Source: Lancet 2006 - Figures & Tables (pp. 1811-1825)</span>
+                <span class="slide-number" style="color: rgba(255,255,255,0.7);">20 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 21: Global Overview Map -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>글로벌 현황 - TFR 세계 지도 (2005)</h1>
+            </div>
+            <div class="slide-content">
+                <div id="worldMap" class="map-container" style="height: 400px;"></div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #d73027;"></span>
+                        <span>매우 높음 (>5.0): 사하라이남 아프리카</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #fc8d59;"></span>
+                        <span>높음 (3.5-5.0): 남아시아, 중동</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #fee08b;"></span>
+                        <span>중간 (2.5-3.5): 동남아시아, 북아프리카</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #91bfdb;"></span>
+                        <span>낮음 (1.5-2.5): 라틴아메리카, 동유럽</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #4575b4;"></span>
+                        <span>매우 낮음 (<1.5): 동아시아, 서유럽</span>
+                    </div>
+                </div>
+
+                <div class="stats-grid" style="margin-top: 20px;">
+                    <div class="stat-box" style="background: linear-gradient(135deg, #d73027 0%, #fc8d59 100%);">
+                        <p class="stat-label">사하라이남</p>
+                        <p class="stat-number">5.5</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #fc8d59 0%, #fee08b 100%);">
+                        <p class="stat-label">남아시아</p>
+                        <p class="stat-number">3.2</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #91bfdb 0%, #4575b4 100%);">
+                        <p class="stat-label">동아시아</p>
+                        <p class="stat-number">1.8</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Figure 1 & Table 1 (pp. 1812-1813)</span>
+                <span class="slide-number">21 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 22: Country Comparison Dashboard -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>주요 국가 비교 대시보드 (2005)</h1>
+            </div>
+            <div class="slide-content">
+                <table style="font-size: 18px;">
+                    <thead>
+                        <tr>
+                            <th>국가</th>
+                            <th>인구(백만)</th>
+                            <th>TFR</th>
+                            <th>CPR(%)</th>
+                            <th>미충족수요(%)</th>
+                            <th>MMR</th>
+                            <th>2050 예상</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #fee;">
+                            <td><strong>니제르</strong></td>
+                            <td>14</td>
+                            <td>7.5</td>
+                            <td>4.6</td>
+                            <td>30+</td>
+                            <td>1,800</td>
+                            <td>53M (×3.8)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>케냐</strong></td>
+                            <td>35</td>
+                            <td>4.8</td>
+                            <td>39</td>
+                            <td>24</td>
+                            <td>560</td>
+                            <td>85M (×2.4)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>파키스탄</strong></td>
+                            <td>158</td>
+                            <td>4.0</td>
+                            <td>28</td>
+                            <td>32</td>
+                            <td>320</td>
+                            <td>349M (×2.2)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>방글라데시</strong></td>
+                            <td>142</td>
+                            <td>3.0</td>
+                            <td>58</td>
+                            <td>16</td>
+                            <td>320</td>
+                            <td>243M (×1.7)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>인도</strong></td>
+                            <td>1,103</td>
+                            <td>2.9</td>
+                            <td>56</td>
+                            <td>16</td>
+                            <td>450</td>
+                            <td>1,658M (×1.5)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>브라질</strong></td>
+                            <td>186</td>
+                            <td>2.5</td>
+                            <td>77</td>
+                            <td>6</td>
+                            <td>110</td>
+                            <td>253M (×1.4)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>중국</strong></td>
+                            <td>1,304</td>
+                            <td>1.8</td>
+                            <td>87</td>
+                            <td>2</td>
+                            <td>45</td>
+                            <td>1,437M (×1.1)</td>
+                        </tr>
+                        <tr style="background: #e8f4e8;">
+                            <td><strong>한국</strong></td>
+                            <td>48</td>
+                            <td>1.2</td>
+                            <td>80</td>
+                            <td><10</td>
+                            <td>14</td>
+                            <td>42M (×0.9)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="chart-container" style="margin-top: 30px;">
+                    <canvas id="countryComparisonChart"></canvas>
+                </div>
+
+                <div class="three-column" style="margin-top: 30px;">
+                    <div style="background: #e8f4e8; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #27ae60;">최고 성과국</h4>
+                        <p style="font-size: 16px;">동아시아 (한국, 중국)<br>CPR >80%, TFR <2.0</p>
+                    </div>
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #856404;">중간 전환국</h4>
+                        <p style="font-size: 16px;">남미, 남아시아<br>CPR 50-70%, TFR 2.5-3.5</p>
+                    </div>
+                    <div style="background: #ffe5e5; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #c0392b;">위기 상황국</h4>
+                        <p style="font-size: 16px;">사하라이남 아프리카<br>CPR <20%, TFR >5.0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Table 1 & Panel 2 (pp. 1812-1814)</span>
+                <span class="slide-number">22 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 23: Unmet Need Analysis -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>미충족 수요 분석 (Unmet Need)</h1>
+            </div>
+            <div class="slide-content">
+                <div class="panel-box">
+                    <p class="panel-title">201백만 여성</p>
+                    <p class="panel-content">피임을 원하지만 실천하지 못하는 개발도상국 여성 수<br>
+                    전체 가임기 여성의 17% (사하라이남 아프리카는 24%)</p>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="unmetNeedChart"></canvas>
+                </div>
+
+                <h3 style="margin-top: 30px;">장벽 유형별 분석</h3>
+                <div class="stats-grid">
+                    <div class="stat-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <p class="stat-number">60%</p>
+                        <p class="stat-label">접근성 장벽</p>
+                        <p style="font-size: 14px;">서비스 부재, 거리, 비용</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <p class="stat-number">20%</p>
+                        <p class="stat-label">태도 장벽</p>
+                        <p style="font-size: 14px;">가족/남편 반대, 종교</p>
+                    </div>
+                    <div class="stat-box" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <p class="stat-number">20%</p>
+                        <p class="stat-label">지식 장벽</p>
+                        <p style="font-size: 14px;">정보 부족, 오해</p>
+                    </div>
+                </div>
+
+                <div class="panel-box" style="margin-top: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <p class="panel-title">해결 전략</p>
+                    <p class="panel-content">
+                        • 서비스 접근성: 커뮤니티 기반 배포, 모바일 클리닉<br>
+                        • 태도 변화: 남성 참여, 종교 지도자 협력<br>
+                        • 정보 제공: 대중매체 캠페인, 또래 교육
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Panel 5 & Unmet Need section (pp. 1818-1819)</span>
+                <span class="slide-number">23 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 24: 2050 Scenarios -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>2050년 시나리오 - 선택의 갈림길</h1>
+            </div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div style="background: #ffe5e5; padding: 25px; border-radius: 12px;">
+                        <h3 style="color: #c0392b;">📉 시나리오 A: 현상유지</h3>
+                        <ul>
+                            <li>아프리카 인구 <strong>2배</strong> (17억→34억)</li>
+                            <li>MDGs/SDGs 달성 <strong>실패</strong></li>
+                            <li>환경 위기 <strong>심화</strong></li>
+                            <li>대규모 이주와 <strong>분쟁</strong></li>
+                            <li>빈곤의 <strong>악순환</strong> 지속</li>
+                            <li>모성 사망 <strong>증가</strong></li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.5); border-radius: 8px;">
+                            <p style="font-size: 18px; color: #721c24;">
+                                <strong>결과:</strong> 인구 92억, 극심한 자원 부족
+                            </p>
+                        </div>
+                    </div>
+                    <div style="background: #e8f4e8; padding: 25px; border-radius: 12px;">
+                        <h3 style="color: #27ae60;">📈 시나리오 B: 가족계획 강화</h3>
+                        <ul>
+                            <li>아프리카 인구 <strong>1.5배</strong></li>
+                            <li>모성 사망 <strong>32% 감소</strong></li>
+                            <li>아동 사망 <strong>10% 감소</strong></li>
+                            <li>빈곤 <strong>20% 추가 감소</strong></li>
+                            <li>지속가능발전 <strong>가능</strong></li>
+                            <li>인구 배당 <strong>실현</strong></li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.5); border-radius: 8px;">
+                            <p style="font-size: 18px; color: #155724;">
+                                <strong>결과:</strong> 인구 82억, 지속가능한 발전
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 30px;">
+                    <canvas id="scenarioChart"></canvas>
+                </div>
+
+                <div class="panel-box" style="margin-top: 30px; background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);">
+                    <p class="panel-title">투자 요구</p>
+                    <p class="panel-content" style="text-align: center; font-size: 24px;">
+                        필요 투자: 연간 <strong>$3.9B</strong> (현재 $460M의 8.5배)<br>
+                        <span style="font-size: 18px;">BUT: HIV/AIDS 투자의 39%에 불과</span>
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Future Projections & Panel 2 (pp. 1813-1814, 1824-1825)</span>
+                <span class="slide-number">24 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 25: Section Title - Policy -->
+        <div class="slide section-title">
+            <h1>Part 5</h1>
+            <h2>정책 제언</h2>
+            <h2 style="font-size: 28px; margin-top: 20px;">Policy Recommendations</h2>
+            <div class="slide-footer" style="border: none; position: absolute; bottom: 30px; width: calc(100% - 120px);">
+                <span class="citation" style="color: rgba(255,255,255,0.7);">Source: Lancet 2006 - Policy Implications (pp. 1824-1826)</span>
+                <span class="slide-number" style="color: rgba(255,255,255,0.7);">25 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 26: Funding Strategy -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>자금 동원 전략</h1>
+            </div>
+            <div class="slide-content">
+                <div class="chart-container" style="height: 350px;">
+                    <canvas id="fundingGapChart"></canvas>
+                </div>
+
+                <h3 style="margin-top: 30px;">새로운 파트너십 모델</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>주체</th>
+                            <th>역할</th>
+                            <th>예상 기여</th>
+                            <th>전략</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>전통 공여국</strong></td>
+                            <td>ODA 증액</td>
+                            <td>$1.5B</td>
+                            <td>GDP 0.7% 목표 달성</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gates Foundation</strong></td>
+                            <td>기술 혁신 지원</td>
+                            <td>$500M</td>
+                            <td>장기작용 피임법 개발</td>
+                        </tr>
+                        <tr>
+                            <td><strong>World Bank</strong></td>
+                            <td>차관 프로그램</td>
+                            <td>$1B</td>
+                            <td>보건 시스템 강화</td>
+                        </tr>
+                        <tr>
+                            <td><strong>신흥 공여국</strong></td>
+                            <td>남남협력</td>
+                            <td>$400M</td>
+                            <td>중국, 인도 경험 공유</td>
+                        </tr>
+                        <tr>
+                            <td><strong>수원국 정부</strong></td>
+                            <td>국내 자원 동원</td>
+                            <td>$500M</td>
+                            <td>보건 예산 15% 할당</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="panel-box" style="margin-top: 30px;">
+                    <p class="panel-title">핵심 메시지</p>
+                    <p class="panel-content">
+                        "가족계획 투자는 최고의 비용효과적 개발 투자"<br>
+                        Every $1 invested saves $3 in health costs and accelerates development
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Financing section (pp. 1824-1825)</span>
+                <span class="slide-number">26 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 27: Program Innovation -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>프로그램 혁신 전략</h1>
+            </div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div>
+                        <h3>🏥 서비스 혁신</h3>
+                        <div style="background: #e8f4f8; padding: 20px; border-radius: 12px;">
+                            <ul>
+                                <li><strong>의료화 해제</strong><br>
+                                <span style="font-size: 18px;">간호사, CHW 권한 확대</span></li>
+                                <li><strong>커뮤니티 배포</strong><br>
+                                <span style="font-size: 18px;">약국, 상점 활용</span></li>
+                                <li><strong>모바일 클리닉</strong><br>
+                                <span style="font-size: 18px;">외딴 지역 접근</span></li>
+                                <li><strong>사회적 프랜차이즈</strong><br>
+                                <span style="font-size: 18px;">민간 부문 활용</span></li>
+                                <li><strong>통합 서비스</strong><br>
+                                <span style="font-size: 18px;">MCH, HIV와 연계</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>💡 기술 혁신</h3>
+                        <div style="background: #fff3cd; padding: 20px; border-radius: 12px;">
+                            <ul>
+                                <li><strong>장기작용 피임법</strong><br>
+                                <span style="font-size: 18px;">3-5년 임플란트, IUD</span></li>
+                                <li><strong>모바일 헬스</strong><br>
+                                <span style="font-size: 18px;">SMS 리마인더, 상담</span></li>
+                                <li><strong>공급망 디지털화</strong><br>
+                                <span style="font-size: 18px;">재고 관리 자동화</span></li>
+                                <li><strong>데이터 분석</strong><br>
+                                <span style="font-size: 18px;">타겟팅, 모니터링</span></li>
+                                <li><strong>원격 의료</strong><br>
+                                <span style="font-size: 18px;">화상 상담 서비스</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px;">성공 모델 확산</h3>
+                <div class="three-column">
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <h4 style="color: #3498db;">방글라데시</h4>
+                        <p style="font-size: 18px;">Matlab 모델<br>커뮤니티 보건요원</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <h4 style="color: #27ae60;">태국</h4>
+                        <p style="font-size: 18px;">100% 접근성<br>마을 보건 자원봉사</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <h4 style="color: #e74c3c;">르완다</h4>
+                        <p style="font-size: 18px;">급속 확산<br>성과 기반 지불</p>
+                    </div>
+                </div>
+
+                <div class="panel-box" style="margin-top: 30px;">
+                    <p class="panel-content" style="text-align: center;">
+                        핵심: 접근성 + 품질 + 선택권 + 지속가능성
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Service Delivery Innovation (pp. 1822-1824)</span>
+                <span class="slide-number">27 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 28: Political Will -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>정치적 의지 구축</h1>
+            </div>
+            <div class="slide-content">
+                <h3>성공적 리더십 사례</h3>
+                <div class="timeline" style="height: 300px;">
+                    <div class="timeline-item">
+                        <div class="timeline-year">방글라데시</div>
+                        <div class="timeline-content">Sheikh Hasina의 지속적 지원<br>
+                        "가족계획은 국가 발전의 핵심"</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">에티오피아</div>
+                        <div class="timeline-content">보건 확장 프로그램 (HEP)<br>
+                        38,000명 보건요원 훈련</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">르완다</div>
+                        <div class="timeline-content">Kagame 정부의 강력한 의지<br>
+                        TFR 6.1 → 4.6 (5년간)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">인도네시아</div>
+                        <div class="timeline-content">Suharto의 BKKBN 설립<br>
+                        세계 최대 가족계획 프로그램</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px;">시민사회 역할</h3>
+                <div class="two-column">
+                    <div style="background: #e8f4e8; padding: 20px; border-radius: 12px;">
+                        <h4>옹호 활동 (Advocacy)</h4>
+                        <ul>
+                            <li>정책 대화 주도</li>
+                            <li>예산 모니터링</li>
+                            <li>책무성 강화</li>
+                            <li>언론 캠페인</li>
+                            <li>국제 연대</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fff3cd; padding: 20px; border-radius: 12px;">
+                        <h4>서비스 제공</h4>
+                        <ul>
+                            <li>정부 공백 보완</li>
+                            <li>혁신 모델 시범</li>
+                            <li>품질 개선 지원</li>
+                            <li>취약계층 접근</li>
+                            <li>교육 프로그램</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-box" style="margin-top: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <p class="panel-content" style="text-align: center; font-size: 24px;">
+                        "정치적 의지 없이는 어떤 프로그램도 성공할 수 없다"<br>
+                        <span style="font-size: 18px;">Without political will, no program can succeed</span>
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Political Commitment section (pp. 1825-1826)</span>
+                <span class="slide-number">28 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 29: Key Messages -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>핵심 메시지 - Take Home Messages</h1>
+            </div>
+            <div class="slide-content" style="display: flex; flex-direction: column; justify-content: center;">
+                <div class="panel-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <p class="panel-title" style="text-align: center; font-size: 32px;">3가지 핵심 포인트</p>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <div style="background: #e8f4f8; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
+                        <h2 style="color: #2c3e50;">1️⃣ 독특한 다면성</h2>
+                        <p style="font-size: 24px;">가족계획은 빈곤, 건강, 교육, 환경을 동시에 해결하는 <strong>유일한 개입</strong></p>
+                    </div>
+
+                    <div style="background: #fff3cd; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
+                        <h2 style="color: #856404;">2️⃣ 증명된 효과성</h2>
+                        <p style="font-size: 24px;">40년간의 성공 경험과 과학적 증거가 <strong>충분히 축적</strong></p>
+                    </div>
+
+                    <div style="background: #ffe5e5; padding: 30px; border-radius: 12px;">
+                        <h2 style="color: #721c24;">3️⃣ 미완의 과제</h2>
+                        <p style="font-size: 24px;">아프리카 중심 재투자로 2015 MDGs 달성 <strong>아직 가능</strong></p>
+                    </div>
+                </div>
+
+                <div class="panel-box" style="margin-top: 40px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <p class="panel-title" style="text-align: center;">Call to Action</p>
+                    <p class="panel-content" style="text-align: center; font-size: 28px;">
+                        "정치적 의지 + 충분한 자금 + 혁신적 접근 = 미완의 과제 완성"
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Conclusion (pp. 1826-1827)</span>
+                <span class="slide-number">29 / 30</span>
+            </div>
+        </div>
+
+        <!-- Slide 30: Q&A -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>질의응답 및 토론</h1>
+            </div>
+            <div class="slide-content" style="display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="text-align: center; margin-bottom: 30px;">예상 질문 Top 10</h3>
+                <div class="two-column">
+                    <ol style="font-size: 22px; line-height: 2;">
+                        <li>왜 HIV/AIDS보다 가족계획이 중요한가?</li>
+                        <li>강압적 정책과 어떻게 구별하는가?</li>
+                        <li>종교적 반대를 어떻게 극복하는가?</li>
+                        <li>한국의 초저출산과 어떤 관련이 있는가?</li>
+                        <li>기후변화와 인구의 관계는?</li>
+                    </ol>
+                    <ol start="6" style="font-size: 22px; line-height: 2;">
+                        <li>가족계획이 여성 인권을 침해하지 않는가?</li>
+                        <li>빈곤층에게 자녀는 노동력 아닌가?</li>
+                        <li>문화적 저항을 어떻게 해결하는가?</li>
+                        <li>비용 대비 효과를 어떻게 측정하는가?</li>
+                        <li>SDGs에서는 어떻게 다루어지는가?</li>
+                    </ol>
+                </div>
+
+                <div style="text-align: center; margin-top: 50px;">
+                    <h2 style="color: #3498db; font-size: 48px;">감사합니다</h2>
+                    <p style="font-size: 24px; margin-top: 20px;">Thank You</p>
+                    <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+                        <p style="font-size: 18px;">
+                            <strong>참고문헌:</strong><br>
+                            Cleland, J., Bernstein, S., Ezeh, A., Faundes, A., Glasier, A., & Innis, J. (2006).<br>
+                            Family planning: the unfinished agenda.<br>
+                            <em>The Lancet</em>, 368(9549), 1810-1827.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span class="citation">Source: Lancet 2006 - Full Article (pp. 1810-1827)</span>
+                <span class="slide-number">30 / 30</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">이전</button>
+        <span class="slide-indicator" id="slideIndicator">1 / 30</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">다음</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 30;
+
+        // Chart configurations
+        const chartConfigs = {
+            fundingChart: {
+                type: 'line',
+                data: {
+                    labels: ['1971', '1975', '1980', '1985', '1990', '1995', '2000', '2003'],
+                    datasets: [{
+                        label: '국제 자금 지원 (Million USD)',
+                        data: [168, 260, 400, 512, 490, 560, 520, 460],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '가족계획 국제 자금 지원 추이 (1971-2003)'
+                        }
+                    }
+                }
+            },
+
+            indicatorsChart: {
+                type: 'bar',
+                data: {
+                    labels: ['사하라이남', '남아시아', '동남아시아', '라틴아메리카', '동아시아'],
+                    datasets: [{
+                        label: 'TFR',
+                        data: [5.5, 3.2, 2.8, 2.5, 1.8],
+                        backgroundColor: '#e74c3c'
+                    }, {
+                        label: 'CPR (%/10)',
+                        data: [1.7, 5.6, 6.0, 7.2, 8.0],
+                        backgroundColor: '#3498db'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '지역별 TFR과 CPR 비교 (2005)'
+                        }
+                    }
+                }
+            },
+
+            costEffectivenessChart: {
+                type: 'horizontalBar',
+                data: {
+                    labels: ['말라리아 방지', '예방접종', '가족계획', 'HIV 치료'],
+                    datasets: [{
+                        label: 'DALY당 비용 (USD)',
+                        data: [10, 17, 30, 500],
+                        backgroundColor: ['#27ae60', '#27ae60', '#27ae60', '#f39c12']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '보건 개입별 비용효과성 비교'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Cost per DALY (USD)'
+                            }
+                        }
+                    }
+                }
+            },
+
+            goldenEraChart: {
+                type: 'line',
+                data: {
+                    labels: ['1970', '1975', '1980', '1985', '1990'],
+                    datasets: [{
+                        label: '동아시아 TFR',
+                        data: [6.0, 4.5, 3.5, 3.0, 2.8],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)'
+                    }, {
+                        label: '동아시아 CPR (%)',
+                        data: [10, 25, 40, 60, 65],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '1980년대 아시아의 극적 변화'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'TFR'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'CPR (%)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            },
+
+            lostDecadeChart: {
+                type: 'line',
+                data: {
+                    labels: ['1995', '1997', '1999', '2001', '2003', '2005'],
+                    datasets: [{
+                        label: '가족계획 자금 (Million USD)',
+                        data: [560, 520, 480, 470, 460, 450],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)'
+                    }, {
+                        label: 'HIV/AIDS 자금 (Billion USD)',
+                        data: [2, 3, 5, 7, 10, 12],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '잊혀진 10년: 자금 지원 격차 확대'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: '가족계획 (Million USD)'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'HIV/AIDS (Billion USD)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            },
+
+            nigerProjectionChart: {
+                type: 'line',
+                data: {
+                    labels: ['2005', '2015', '2025', '2035', '2045', '2050'],
+                    datasets: [{
+                        label: '현상유지 시나리오',
+                        data: [14, 20, 28, 38, 48, 53],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        borderDash: [5, 5]
+                    }, {
+                        label: '개입 강화 시나리오',
+                        data: [14, 18, 22, 27, 32, 35],
+                        borderColor: '#27ae60',
+                        backgroundColor: 'rgba(39, 174, 96, 0.1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '니제르 인구 예측 시나리오 (백만 명)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: '인구 (백만 명)'
+                            }
+                        }
+                    }
+                }
+            },
+
+            koreaSuccessChart: {
+                type: 'line',
+                data: {
+                    labels: ['1960', '1970', '1980', '1990', '2000', '2005'],
+                    datasets: [{
+                        label: 'TFR',
+                        data: [6.0, 4.5, 2.8, 1.6, 1.4, 1.2],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        yAxisID: 'y'
+                    }, {
+                        label: '1인당 GDP (천 USD)',
+                        data: [0.158, 0.279, 1.7, 6.5, 11.9, 16.0],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '한국: TFR 감소와 경제 성장'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'TFR'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '1인당 GDP (천 USD)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            },
+
+            kenyaPoliticalChart: {
+                type: 'line',
+                data: {
+                    labels: ['1967', '1975', '1985', '1990', '1995', '2000', '2004'],
+                    datasets: [{
+                        label: 'TFR',
+                        data: [8.0, 7.5, 7.0, 6.5, 5.5, 5.0, 4.8],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)'
+                    }, {
+                        label: 'CPR (%)',
+                        data: [7, 12, 20, 27, 32, 35, 39],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '케냐: 정치적 의지와 프로그램 성과'
+                        },
+                        annotation: {
+                            annotations: {
+                                line1: {
+                                    type: 'line',
+                                    xMin: '1990',
+                                    xMax: '1990',
+                                    borderColor: 'rgb(255, 99, 132)',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: '정치적 지원 감소',
+                                        enabled: true
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'TFR'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'CPR (%)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            },
+
+            countryComparisonChart: {
+                type: 'radar',
+                data: {
+                    labels: ['TFR', 'CPR (%/20)', 'MMR/100', '인구증가율', '경제발전'],
+                    datasets: [{
+                        label: '니제르',
+                        data: [7.5, 0.23, 18, 3.8, 1],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.2)'
+                    }, {
+                        label: '방글라데시',
+                        data: [3.0, 2.9, 3.2, 1.7, 5],
+                        borderColor: '#27ae60',
+                        backgroundColor: 'rgba(39, 174, 96, 0.2)'
+                    }, {
+                        label: '한국',
+                        data: [1.2, 4.0, 0.14, 0.9, 9],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '주요 국가 다차원 비교'
+                        }
+                    }
+                }
+            },
+
+            unmetNeedChart: {
+                type: 'doughnut',
+                data: {
+                    labels: ['접근성 장벽', '태도 장벽', '지식 장벽'],
+                    datasets: [{
+                        data: [60, 20, 20],
+                        backgroundColor: ['#f093fb', '#4facfe', '#43e97b'],
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '미충족 수요 장벽 분포 (%)'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            },
+
+            scenarioChart: {
+                type: 'line',
+                data: {
+                    labels: ['2005', '2015', '2025', '2035', '2045', '2050'],
+                    datasets: [{
+                        label: '현상유지 - 아프리카',
+                        data: [0.9, 1.2, 1.6, 2.2, 2.8, 3.4],
+                        borderColor: '#e74c3c',
+                        borderDash: [5, 5]
+                    }, {
+                        label: '가족계획 강화 - 아프리카',
+                        data: [0.9, 1.1, 1.3, 1.5, 1.7, 1.8],
+                        borderColor: '#27ae60'
+                    }, {
+                        label: '세계 전체',
+                        data: [6.5, 7.3, 8.0, 8.6, 9.0, 9.2],
+                        borderColor: '#3498db',
+                        borderDash: [10, 5]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '2050년 인구 시나리오 (십억 명)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: '인구 (십억)'
+                            }
+                        }
+                    }
+                }
+            },
+
+            fundingGapChart: {
+                type: 'bar',
+                data: {
+                    labels: ['현재 지원', '필요 자금', '격차'],
+                    datasets: [{
+                        label: '금액 (Billion USD)',
+                        data: [0.46, 3.9, 3.44],
+                        backgroundColor: ['#3498db', '#27ae60', '#e74c3c']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '가족계획 자금 격차 (2006)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Billion USD'
+                            }
+                        }
+                    }
+                }
+            },
+
+            bangladeshPakistanChart: {
+                type: 'line',
+                data: {
+                    labels: ['1971', '1980', '1990', '2000', '2005'],
+                    datasets: [{
+                        label: '방글라데시 TFR',
+                        data: [6.9, 5.5, 4.3, 3.3, 3.0],
+                        borderColor: '#27ae60',
+                        backgroundColor: 'rgba(39, 174, 96, 0.1)'
+                    }, {
+                        label: '파키스탄 TFR',
+                        data: [6.9, 6.5, 5.8, 4.5, 4.0],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '1971년 분단 후 다른 경로'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Total Fertility Rate'
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Initialize charts when slide becomes active
+        function initializeCharts() {
+            Object.keys(chartConfigs).forEach(chartId => {
+                const canvas = document.getElementById(chartId);
+                if (canvas && !canvas.chart) {
+                    const ctx = canvas.getContext('2d');
+                    canvas.chart = new Chart(ctx, chartConfigs[chartId]);
+                }
+            });
+        }
+
+        // Initialize Africa map
+        function initAfricaMap() {
+            const mapElement = document.getElementById('africaMap');
+            if (mapElement && !mapElement._map) {
+                const map = L.map('africaMap').setView([0, 20], 3);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                // Add markers for key countries
+                const countries = [
+                    {name: '니제르', lat: 13.5, lng: 2.1, tfr: 7.5, cpr: 4.6},
+                    {name: '케냐', lat: -1.3, lng: 36.8, tfr: 4.8, cpr: 39},
+                    {name: '나이지리아', lat: 9.1, lng: 8.7, tfr: 5.7, cpr: 13},
+                    {name: '에티오피아', lat: 9.0, lng: 38.7, tfr: 5.4, cpr: 14},
+                    {name: '남아공', lat: -30.6, lng: 22.9, tfr: 2.8, cpr: 60}
+                ];
+
+                countries.forEach(country => {
+                    const color = country.tfr > 5 ? '#d73027' : country.tfr > 3 ? '#fee08b' : '#91bfdb';
+                    L.circleMarker([country.lat, country.lng], {
+                        radius: country.tfr * 3,
+                        fillColor: color,
+                        color: '#000',
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    }).addTo(map).bindPopup(`<b>${country.name}</b><br>TFR: ${country.tfr}<br>CPR: ${country.cpr}%`);
+                });
+
+                mapElement._map = map;
+            }
+        }
+
+        // Initialize world map
+        function initWorldMap() {
+            const mapElement = document.getElementById('worldMap');
+            if (mapElement && !mapElement._map) {
+                const map = L.map('worldMap').setView([20, 0], 2);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                // This would be enhanced with actual country boundaries and data
+                mapElement._map = map;
+            }
+        }
+
+        function showSlide(n) {
+            const slides = document.getElementsByClassName('slide');
+
+            if (n > totalSlides) { currentSlide = totalSlides; }
+            if (n < 1) { currentSlide = 1; }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+
+            slides[currentSlide - 1].classList.add('active');
+
+            // Initialize charts and maps when needed
+            setTimeout(() => {
+                initializeCharts();
+                if (currentSlide === 13) initAfricaMap();
+                if (currentSlide === 21) initWorldMap();
+            }, 100);
+
+            document.getElementById('slideIndicator').textContent = `${currentSlide} / ${totalSlides}`;
+
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+
+        function changeSlide(n) {
+            currentSlide += n;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            } else if (event.key === 'Home') {
+                currentSlide = 1;
+                showSlide(currentSlide);
+            } else if (event.key === 'End') {
+                currentSlide = totalSlides;
+                showSlide(currentSlide);
+            } else if (event.key === 'f' || event.key === 'F') {
+                // Toggle fullscreen
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        // Initialize
+        showSlide(1);
+    </script>
+</body>
+</html>

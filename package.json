@@ -1,0 +1,70 @@
+{
+  "name": "family-planning-presentation",
+  "version": "1.0.0",
+  "description": "Interactive presentation system for family planning research",
+  "main": "js/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.config.js",
+    "start": "npm run dev",
+    "test": "echo \"Test suite placeholder - implement with Jest or similar testing framework\" && exit 0",
+    "build": "echo \"Production build placeholder - implement with bundler (Vite, Webpack, etc.)\" && exit 0",
+    "lint": "echo \"Linting placeholder - implement with ESLint\" && exit 0",
+    "format": "echo \"Code formatting placeholder - implement with Prettier\" && exit 0",
+    "serve": "npm run dev",
+    "preview": "npm run dev"
+  },
+  "keywords": [
+    "presentation",
+    "family-planning",
+    "research",
+    "demographics",
+    "visualization",
+    "es6-modules"
+  ],
+  "author": "Family Planning Research Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "comment": "Development dependencies will be added as needed for testing and building"
+  },
+  "dependencies": {
+    "comment": "Runtime dependencies managed via CDN for simplicity"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "local-development"
+  },
+  "bugs": {
+    "url": "mailto:developer@example.com"
+  },
+  "homepage": ".",
+  "configuration": {
+    "development": {
+      "server": {
+        "port": 8080,
+        "host": "localhost",
+        "autoOpen": true
+      },
+      "modules": {
+        "type": "es6",
+        "strict": true
+      }
+    },
+    "production": {
+      "optimization": {
+        "minify": true,
+        "bundle": true,
+        "treeshake": true
+      }
+    }
+  }
+}

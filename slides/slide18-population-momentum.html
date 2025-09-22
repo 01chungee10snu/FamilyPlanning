@@ -1,0 +1,122 @@
+<!-- Slide 18: Population Momentum with Interactive Visualizations -->
+<div class="slide" id="slide-population-momentum">
+    <div class="slide-header">
+        <h1>인구 모멘텀과 연령 구조 (Population Momentum & Age Structure)</h1>
+        <div class="interactive-badge">인터랙티브</div>
+    </div>
+    <div class="slide-content">
+        <div class="momentum-explanation">
+            <h3>인구 모멘텀이란?</h3>
+            <div class="definition-box">
+                <p><strong>인구 모멘텀</strong>: 출산율이 인구 대체율(2.1명) 수준으로 감소해도 젊은 연령구조로 인해 인구가 계속 증가하는 현상</p>
+            </div>
+        </div>
+
+        <div class="momentum-diagram">
+            <h3>연령구조에 따른 인구 증가 패턴</h3>
+
+            <!-- Interactive Age Pyramids -->
+            <div class="chart-container" id="age-pyramids-chart"
+                 data-chart-type="plotly"
+                 data-chart-data='{
+                   "countries": [
+                     {
+                       "name": "케냐 (높은 모멘텀)",
+                       "tfr": 5.0,
+                       "projection": "2.5배 증가",
+                       "male": [-21, -15, -8, -3, -1],
+                       "female": [21, 15, 8, 3, 1],
+                       "ages": ["0-14", "15-29", "30-49", "50-64", "65+"],
+                       "color": "#FF6B6B"
+                     },
+                     {
+                       "name": "방글라데시 (중간 모멘텀)",
+                       "tfr": 2.8,
+                       "projection": "1.6배 증가",
+                       "male": [-17.5, -18, -12, -6, -3],
+                       "female": [17.5, 18, 12, 6, 3],
+                       "ages": ["0-14", "15-29", "30-49", "50-64", "65+"],
+                       "color": "#4ECDC4"
+                     },
+                     {
+                       "name": "한국 (음의 모멘텀)",
+                       "tfr": 1.1,
+                       "projection": "20% 감소",
+                       "male": [-6.5, -8, -14, -12, -8.5],
+                       "female": [6.5, 8, 14, 12, 8.5],
+                       "ages": ["0-14", "15-29", "30-49", "50-64", "65+"],
+                       "color": "#45B7D1"
+                     }
+                   ]
+                 }'>
+            </div>
+
+            <!-- Population Projection Chart -->
+            <div class="chart-container population-projection" id="population-projection-chart"
+                 data-chart-type="plotly"
+                 data-chart-data='{
+                   "projections": {
+                     "kenya": [52.6, 67.2, 85.4, 106.1, 131.3],
+                     "bangladesh": [164.7, 186.2, 202.8, 215.4, 224.1],
+                     "korea": [51.8, 51.2, 49.6, 47.2, 43.8],
+                     "years": [2020, 2030, 2040, 2050, 2060]
+                   }
+                 }'>
+            </div>
+        </div>
+
+        <!-- Momentum Comparison Meter -->
+        <div class="momentum-meter-container" id="momentum-meters"
+             data-chart-type="custom"
+             data-chart-data='{
+               "meters": [
+                 {"country": "케냐", "momentum": 0.85, "color": "#FF6B6B", "risk": "high"},
+                 {"country": "방글라데시", "momentum": 0.55, "color": "#4ECDC4", "risk": "medium"},
+                 {"country": "한국", "momentum": -0.25, "color": "#45B7D1", "risk": "aging"}
+               ]
+             }'>
+        </div>
+
+        <div class="implications-box">
+            <h3>정책적 함의</h3>
+            <div class="implication-grid animated-cards">
+                <div class="implication urgent" data-delay="0">
+                    <div class="icon-container">⏰</div>
+                    <h4>시급성</h4>
+                    <p>젊은 인구가 생식연령에 도달하기 전에 가족계획 프로그램 강화 필요</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="implication planning" data-delay="200">
+                    <div class="icon-container">📊</div>
+                    <h4>장기 계획</h4>
+                    <p>현재 연령구조를 고려한 30-50년 장기 인구 전망 필수</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="75%"></div>
+                    </div>
+                </div>
+                <div class="implication investment" data-delay="400">
+                    <div class="icon-container">💰</div>
+                    <h4>투자 효과</h4>
+                    <p>가족계획 투자는 향후 수십 년간 지속적인 인구 안정화 효과</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="implication target" data-delay="600">
+                    <div class="icon-container">🎯</div>
+                    <h4>타겟 집중</h4>
+                    <p>15-24세 청년층 대상 생식보건 서비스 우선 제공</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). Panel 2, p. 1813">Cleland et al. (2006). Population momentum and demographic transition (p. 1813)</span>
+        <span class="slide-number">18 / 60</span>
+    </div>
+</div>

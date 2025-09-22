@@ -1,0 +1,133 @@
+{
+  "sections": [
+    {
+      "id": "title-intro",
+      "title": {
+        "ko": "제목 및 도입부",
+        "en": "Title & Introduction"
+      },
+      "description": {
+        "ko": "발표 제목과 전체 개요",
+        "en": "Presentation title and overview"
+      },
+      "order": 1,
+      "slideCount": 5,
+      "estimatedDuration": "5 minutes"
+    },
+    {
+      "id": "abstract-summary",
+      "title": {
+        "ko": "초록/요약",
+        "en": "Abstract/Summary"
+      },
+      "description": {
+        "ko": "논문의 핵심 내용 요약",
+        "en": "Summary of key paper content"
+      },
+      "order": 2,
+      "slideCount": 8,
+      "estimatedDuration": "8 minutes"
+    },
+    {
+      "id": "intro-background",
+      "title": {
+        "ko": "서론 및 배경",
+        "en": "Introduction & Background"
+      },
+      "description": {
+        "ko": "가족계획의 역사적 맥락과 현재 상황",
+        "en": "Historical context and current situation of family planning"
+      },
+      "order": 3,
+      "slideCount": 7,
+      "estimatedDuration": "7 minutes"
+    },
+    {
+      "id": "population-growth",
+      "title": {
+        "ko": "인구 증가 및 예측",
+        "en": "Population Growth & Projections"
+      },
+      "description": {
+        "ko": "세계 인구 변화 트렌드와 미래 전망",
+        "en": "Global population change trends and future projections"
+      },
+      "order": 4,
+      "slideCount": 8,
+      "estimatedDuration": "8 minutes"
+    },
+    {
+      "id": "why-family-planning",
+      "title": {
+        "ko": "왜 가족계획이 중요한가",
+        "en": "Why Family Planning Matters"
+      },
+      "description": {
+        "ko": "가족계획의 중요성과 다차원적 효과",
+        "en": "Importance and multidimensional effects of family planning"
+      },
+      "order": 5,
+      "slideCount": 8,
+      "estimatedDuration": "8 minutes"
+    },
+    {
+      "id": "unfinished-business",
+      "title": {
+        "ko": "미완의 과제",
+        "en": "Unfinished Business"
+      },
+      "description": {
+        "ko": "현재 가족계획에서 해결되지 않은 문제들",
+        "en": "Current unresolved issues in family planning"
+      },
+      "order": 6,
+      "slideCount": 8,
+      "estimatedDuration": "8 minutes"
+    },
+    {
+      "id": "what-works",
+      "title": {
+        "ko": "무엇이 효과적인가",
+        "en": "What Works"
+      },
+      "description": {
+        "ko": "효과적인 가족계획 프로그램과 정책",
+        "en": "Effective family planning programs and policies"
+      },
+      "order": 7,
+      "slideCount": 8,
+      "estimatedDuration": "8 minutes"
+    },
+    {
+      "id": "finance-cost",
+      "title": {
+        "ko": "재정 및 비용",
+        "en": "Finance & Cost"
+      },
+      "description": {
+        "ko": "가족계획 프로그램의 비용과 재정 지원",
+        "en": "Costs and financing of family planning programs"
+      },
+      "order": 8,
+      "slideCount": 5,
+      "estimatedDuration": "5 minutes"
+    },
+    {
+      "id": "what-to-do",
+      "title": {
+        "ko": "무엇을 해야 하는가",
+        "en": "What Needs to be Done"
+      },
+      "description": {
+        "ko": "향후 과제와 정책 제언",
+        "en": "Future tasks and policy recommendations"
+      },
+      "order": 9,
+      "slideCount": 5,
+      "estimatedDuration": "5 minutes"
+    }
+  ],
+  "totalSections": 9,
+  "totalSlides": 60,
+  "totalEstimatedDuration": "70 minutes"
+}

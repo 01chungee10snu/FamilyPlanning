@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel 7: 케냐 - 위기에 처한 성공사례</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .warning-banner {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        .timeline-section {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 5px solid #4caf50;
+        }
+        .timeline-item.warning {
+            border-left-color: #ff9800;
+        }
+        .timeline-item.danger {
+            border-left-color: #ff6b6b;
+        }
+        .timeline-year {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffd700;
+            min-width: 100px;
+            margin-right: 20px;
+        }
+        .timeline-content {
+            flex: 1;
+        }
+        .timeline-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ffd700;
+        }
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            color: #333;
+        }
+        .success-factors {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4caf50;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .decline-factors {
+            background: rgba(255, 107, 107, 0.2);
+            border: 2px solid #ff6b6b;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .stats-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid;
+        }
+        .stat-box.success {
+            border-color: #4caf50;
+        }
+        .stat-box.warning {
+            border-color: #ff9800;
+        }
+        .stat-box.danger {
+            border-color: #ff6b6b;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .success .stat-number { color: #4caf50; }
+        .warning .stat-number { color: #ff9800; }
+        .danger .stat-number { color: #ff6b6b; }
+        .funding-comparison {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .highlight-row {
+            background-color: #ffebee !important;
+            font-weight: bold;
+        }
+        .key-insight {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #ffd700;
+            font-weight: bold;
+            text-align: center;
+        }
+        .lessons-section {
+            background: rgba(138, 43, 226, 0.2);
+            border: 2px solid #8a2be2;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .lesson-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 5px solid #8a2be2;
+        }
+        .projection-impact {
+            background: rgba(255, 152, 0, 0.2);
+            border: 2px solid #ff9800;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Panel 7: 케냐 - 위기에 처한 성공사례</h1>
+            <p style="opacity: 0.8;">Kenyan Success in Jeopardy</p>
+        </div>
+
+        <div class="warning-banner">
+            ⚠️ 케냐: 사하라 이남 아프리카 최초의 가족계획 성공국에서 정체 상태로 ⚠️
+        </div>
+
+        <div class="timeline-section">
+            <h2 style="color: #ffd700; margin-top: 0;">케냐 가족계획 프로그램 발전사</h2>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1967</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">최초 정책 채택</div>
+                    <p>케냐는 사하라 이남 아프리카에서 <strong>최초로</strong> 인구 증가 감소 정책을 채택한 국가</p>
+                </div>
+            </div>
+
+            <div class="timeline-item warning">
+                <div class="timeline-year">1967-1982</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">소극적 이행</div>
+                    <p>정책은 있었지만 15년간 실행에 대한 열의 부족</p>
+                </div>
+            </div>
+
+            <div class="timeline-item danger">
+                <div class="timeline-year">1979</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">충격적인 조사 결과</div>
+                    <p><strong>세계 최고 수준의 출산율 발견:</strong><br>
+                    • 합계출산율: 8명<br>
+                    • 평균 희망 자녀수: 7.2명<br>
+                    • 기혼여성 중 출산 중단 희망: 16%<br>
+                    • 피임 사용률: 7%<br>
+                    • 인구 배가 기간: 19년</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1980년대</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">적극적 개입 시작</div>
+                    <p>모이 대통령과 키바키 부통령이 행동이 필요한 때임을 인식하고 적극적 프로그램 시작</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1989</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">놀라운 변화</div>
+                    <p>10년도 안 되어 극적인 변화:<br>
+                    • 희망 가족 크기: 7.2명 → 4.8명<br>
+                    • 출산 중단 희망: 16% → 49%<br>
+                    • 피임 사용률: 7% → 27%<br>
+                    • 출산 지지 문화 완전히 붕괴</p>
+                </div>
+            </div>
+
+            <div class="timeline-item warning">
+                <div class="timeline-year">1998</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">출산율 정체 시작</div>
+                    <p>합계출산율이 4.8명까지 감소했지만 이후 정체되고, 최빈층에서는 오히려 상승</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3 style="text-align: center; margin-top: 0;">Figure 4: 케냐의 출산율 및 피임 실행률 변화 (1975-2005)</h3>
+            <div id="kenyaChart" style="height: 400px;"></div>
+        </div>
+
+        <div class="stats-comparison">
+            <div class="stat-box success">
+                <div class="stat-number">8 → 4.8</div>
+                <div>합계출산율 변화<br>(1979-1998)</div>
+            </div>
+            <div class="stat-box success">
+                <div class="stat-number">35%</div>
+                <div>1998년 피임 실행률</div>
+            </div>
+            <div class="stat-box warning">
+                <div class="stat-number">정체</div>
+                <div>1998년 이후<br>출산율 변화</div>
+            </div>
+            <div class="stat-box danger">
+                <div class="stat-number">상승</div>
+                <div>최빈층 출산율<br>(1998-2003)</div>
+            </div>
+        </div>
+
+        <div class="success-factors">
+            <h2 style="color: #4caf50; margin-top: 0;">🎯 1980년대 성공 요인</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ <strong>엘리트 그룹의 지지 확보</strong></li>
+                <li>✅ <strong>대규모 정보 캠페인 전개</strong></li>
+                <li>✅ <strong>정부 보건소를 통한 피임약 접근성 증대</strong></li>
+                <li>✅ <strong>사회적 마케팅 시작</strong></li>
+                <li>✅ <strong>지역사회 기반 프로모션 도입</strong></li>
+                <li>✅ <strong>강력한 정치적 의지</strong> (모이 대통령, 키바키 부통령)</li>
+            </ul>
+        </div>
+
+        <div class="decline-factors">
+            <h2 style="color: #ff6b6b; margin-top: 0;">📉 출산율 정체의 원인</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li>❌ <strong>HIV/AIDS로의 자원과 관심 이동</strong></li>
+                <li>❌ <strong>가족계획 서비스 질 저하</strong></li>
+                <li>❌ <strong>보건시설에서의 피임약 공급 불안정</strong></li>
+                <li>❌ <strong>아웃리치 서비스 악화</strong></li>
+                <li>❌ <strong>공공 부문 의존도 감소:</strong> 68%(1993) → 53%(2003)</li>
+                <li>❌ <strong>원치 않는 출산 증가:</strong> 11%(1998) → 21%(2003)</li>
+            </ul>
+        </div>
+
+        <div class="funding-comparison">
+            <h3 style="text-align: center; margin-top: 0;">USAID 케냐 지원 예산 변화</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>프로그램</th>
+                        <th>1995년</th>
+                        <th>2006년</th>
+                        <th>변화</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td><strong>AIDS</strong></td>
+                        <td>$2백만</td>
+                        <td>$108백만</td>
+                        <td>54배 증가</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>가족계획</strong></td>
+                        <td>$12백만</td>
+                        <td>$8.9백만</td>
+                        <td>26% 감소</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="projection-impact">
+            <h2 style="color: #ff9800; margin-top: 0;">📊 정체의 인구학적 결과</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 20px 0;">
+                <div>
+                    <div class="stat-number" style="color: #ff9800;">44백만</div>
+                    <div>2004년 이전 예상<br>(2050년 인구)</div>
+                </div>
+                <div>
+                    <div class="stat-number" style="color: #ff6b6b;">83백만</div>
+                    <div>2004년 수정 예상<br>(2050년 인구)</div>
+                </div>
+            </div>
+            <p style="font-size: 1.1em; margin-top: 20px;">
+                <strong>예상치 못한 출산율 정체로 인해 UN이 2050년 인구 전망을 44백만에서 83백만으로 상향 조정</strong>
+            </p>
+        </div>
+
+        <div class="lessons-section">
+            <h2 style="color: #8a2be2; margin-top: 0;">📚 케냐 사례의 교훈</h2>
+
+            <div class="lesson-item">
+                <strong>1. 급속한 인구증가 시 지연의 대가</strong><br>
+                인구가 급속히 증가하는 상황에서 출산율 감소 시작이 10년 정도 지연되면
+                미래 인구 규모에 큰 영향을 미친다
+            </div>
+
+            <div class="lesson-item">
+                <strong>2. 광범위한 지지 연합의 중요성</strong><br>
+                가족계획에 대한 광범위한 지지 연합 구축이 매우 중요하다
+            </div>
+
+            <div class="lesson-item">
+                <strong>3. 문화적·사회적 적합성</strong><br>
+                문화적, 사회적으로 적절한 서비스 제공 방식을 찾는 것이 효과성의 핵심 요소다
+            </div>
+        </div>
+
+        <div class="key-insight">
+            <h3 style="margin-top: 0;">핵심 메시지</h3>
+            <p style="font-size: 1.1em; line-height: 1.6;">
+                케냐의 사례는 <strong>지속적인 출산율 감소를 달성하기 위해서는
+                가족계획 서비스 제공에 대한 지속적이고 강력한 재정 지원의 필요성</strong>을 강조합니다.
+                <br><br>
+                케냐의 미래 복지에 미칠 영향은 심각할 것으로 예상됩니다.
+                또한 이 사례는 HIV/AIDS에 대한 관심이 가족계획에서 자원을 빼앗아 갔을 때의
+                <strong>의도하지 않은 결과</strong>를 보여줍니다.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Kenya fertility and contraceptive use trends
+        const years = [1975, 1978, 1984, 1989, 1993, 1998, 2003];
+        const fertility = [8.1, 8.0, 7.7, 6.7, 5.4, 4.7, 4.9];
+        const contraceptiveUse = [5, 7, 17, 27, 33, 35, 39];
+
+        const trace1 = {
+            x: years,
+            y: fertility,
+            mode: 'lines+markers',
+            name: '합계출산율',
+            line: { color: '#ff6b6b', width: 4 },
+            marker: { size: 10 },
+            yaxis: 'y'
+        };
+
+        const trace2 = {
+            x: years,
+            y: contraceptiveUse,
+            mode: 'lines+markers',
+            name: '피임 실행률 (%)',
+            line: { color: '#4caf50', width: 4 },
+            marker: { size: 10 },
+            yaxis: 'y2'
+        };
+
+        const layout = {
+            title: '',
+            xaxis: {
+                title: '연도',
+                range: [1975, 2005]
+            },
+            yaxis: {
+                title: '합계출산율',
+                side: 'left',
+                range: [0, 9]
+            },
+            yaxis2: {
+                title: '피임 실행률 (%)',
+                side: 'right',
+                overlaying: 'y',
+                range: [0, 45]
+            },
+            font: { family: 'Segoe UI' },
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            annotations: [
+                {
+                    x: 1989,
+                    y: 6.7,
+                    text: '급격한 감소<br>(1980년대)',
+                    showarrow: true,
+                    arrowhead: 2,
+                    arrowcolor: '#4caf50',
+                    font: { color: '#4caf50', size: 12 }
+                },
+                {
+                    x: 2000,
+                    y: 4.8,
+                    text: '정체 시작<br>(1998년 이후)',
+                    showarrow: true,
+                    arrowhead: 2,
+                    arrowcolor: '#ff9800',
+                    font: { color: '#ff9800', size: 12 }
+                },
+                {
+                    x: 1995,
+                    y: 35,
+                    text: '피임 사용 증가<br>35% 달성',
+                    showarrow: true,
+                    arrowhead: 2,
+                    arrowcolor: '#4caf50',
+                    font: { color: '#4caf50', size: 12 }
+                }
+            ],
+            shapes: [
+                {
+                    type: 'rect',
+                    x0: 1979,
+                    x1: 1989,
+                    y0: 0,
+                    y1: 9,
+                    fillcolor: 'rgba(76, 175, 80, 0.1)',
+                    line: { width: 0 },
+                    layer: 'below'
+                },
+                {
+                    type: 'rect',
+                    x0: 1998,
+                    x1: 2005,
+                    y0: 0,
+                    y1: 9,
+                    fillcolor: 'rgba(255, 152, 0, 0.1)',
+                    line: { width: 0 },
+                    layer: 'below'
+                }
+            ]
+        };
+
+        Plotly.newPlot('kenyaChart', [trace1, trace2], layout, {responsive: true});
+    </script>
+</body>
+</html>

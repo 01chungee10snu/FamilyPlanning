@@ -1,0 +1,485 @@
+<!-- Slide 38: Regional Unmet Need Map -->
+<div class="slide" id="slide-regional-unmet-need">
+    <div class="slide-header">
+        <h1>지역별 미충족 수요 분포 (Regional Distribution of Unmet Need)</h1>
+        <div class="badge-container">
+            <span class="badge geographic">지리적 분포</span>
+            <span class="badge regional">지역 분석</span>
+        </div>
+    </div>
+    <div class="slide-content">
+        <div class="global-map">
+            <h3>전 세계 미충족 수요 분포</h3>
+            <div class="map-container">
+                <div class="world-map-visualization" id="worldMapViz">
+                    <canvas id="worldMapChart"></canvas>
+                </div>
+                <div class="map-legend">
+                    <h4>미충족 수요 수준</h4>
+                    <div class="legend-items">
+                        <div class="legend-item very-high">
+                            <span class="color-box"></span>
+                            <span class="label">매우 높음 (>30%)</span>
+                        </div>
+                        <div class="legend-item high">
+                            <span class="color-box"></span>
+                            <span class="label">높음 (20-30%)</span>
+                        </div>
+                        <div class="legend-item medium">
+                            <span class="color-box"></span>
+                            <span class="label">중간 (10-20%)</span>
+                        </div>
+                        <div class="legend-item low">
+                            <span class="color-box"></span>
+                            <span class="label">낮음 (<10%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="regional-analysis">
+            <h3>지역별 상세 분석</h3>
+            <div class="regions-grid">
+                <div class="region sub-saharan-africa">
+                    <h4>🌍 사하라 이남 아프리카</h4>
+                    <div class="region-stats">
+                        <div class="stat-highlight">
+                            <span class="value">24.2%</span>
+                            <span class="label">평균 미충족 수요</span>
+                        </div>
+                        <div class="country-breakdown">
+                            <h5>국가별 현황</h5>
+                            <div class="countries-data">
+                                <div class="country-group worst">
+                                    <h6>최고 수준 (>30%)</h6>
+                                    <ul>
+                                        <li>차드: 36%</li>
+                                        <li>니제르: 34%</li>
+                                        <li>말리: 32%</li>
+                                        <li>부르키나파소: 31%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group high">
+                                    <h6>높은 수준 (20-30%)</h6>
+                                    <ul>
+                                        <li>나이지리아: 28%</li>
+                                        <li>에티오피아: 26%</li>
+                                        <li>우간다: 25%</li>
+                                        <li>탄자니아: 24%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group improving">
+                                    <h6>개선 중 (15-20%)</h6>
+                                    <ul>
+                                        <li>케냐: 19%</li>
+                                        <li>가나: 18%</li>
+                                        <li>잠비아: 17%</li>
+                                        <li>르완다: 16%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="key-challenges">
+                            <h5>주요 도전과제</h5>
+                            <ul>
+                                <li>높은 출산율과 인구 증가</li>
+                                <li>제한된 의료 인프라</li>
+                                <li>낮은 여성 교육 수준</li>
+                                <li>전통적 가치관</li>
+                                <li>빈곤과 접근성 제약</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region south-asia">
+                    <h4>🏔️ 남아시아</h4>
+                    <div class="region-stats">
+                        <div class="stat-highlight">
+                            <span class="value">16.8%</span>
+                            <span class="label">평균 미충족 수요</span>
+                        </div>
+                        <div class="country-breakdown">
+                            <h5>국가별 현황</h5>
+                            <div class="countries-data">
+                                <div class="country-group problematic">
+                                    <h6>문제 지역</h6>
+                                    <ul>
+                                        <li>파키스탄: 25%</li>
+                                        <li>아프가니스탄: 24%</li>
+                                        <li>네팔: 18%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group moderate">
+                                    <h6>중간 수준</h6>
+                                    <ul>
+                                        <li>인도: 16%</li>
+                                        <li>방글라데시: 15%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group advanced">
+                                    <h6>진전된 국가</h6>
+                                    <ul>
+                                        <li>스리랑카: 8%</li>
+                                        <li>몰디브: 6%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="key-features">
+                            <h5>지역 특성</h5>
+                            <ul>
+                                <li>큰 인구 규모의 영향</li>
+                                <li>도농 격차 심화</li>
+                                <li>카스트/계급 기반 불평등</li>
+                                <li>종교적 다양성</li>
+                                <li>정부 프로그램의 영향</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region southeast-asia">
+                    <h4>🌴 동남아시아</h4>
+                    <div class="region-stats">
+                        <div class="stat-highlight">
+                            <span class="value">11.3%</span>
+                            <span class="label">평균 미충족 수요</span>
+                        </div>
+                        <div class="country-breakdown">
+                            <h5>국가별 현황</h5>
+                            <div class="countries-data">
+                                <div class="country-group lagging">
+                                    <h6>뒤처진 국가</h6>
+                                    <ul>
+                                        <li>라오스: 19%</li>
+                                        <li>캄보디아: 17%</li>
+                                        <li>필리핀: 15%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group progressing">
+                                    <h6>진전 중</h6>
+                                    <ul>
+                                        <li>인도네시아: 12%</li>
+                                        <li>미얀마: 11%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group successful">
+                                    <h6>성공 사례</h6>
+                                    <ul>
+                                        <li>태국: 4%</li>
+                                        <li>베트남: 6%</li>
+                                        <li>말레이시아: 7%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="success-factors">
+                            <h5>성공 요인</h5>
+                            <ul>
+                                <li>강력한 정부 프로그램</li>
+                                <li>경제 발전과 연계</li>
+                                <li>교육 수준 향상</li>
+                                <li>문화적 개방성</li>
+                                <li>국제 지원 활용</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region latin-america">
+                    <h4>🌎 라틴 아메리카</h4>
+                    <div class="region-stats">
+                        <div class="stat-highlight">
+                            <span class="value">10.7%</span>
+                            <span class="label">평균 미충족 수요</span>
+                        </div>
+                        <div class="country-breakdown">
+                            <h5>국가별 현황</h5>
+                            <div class="countries-data">
+                                <div class="country-group challenging">
+                                    <h6>도전 지역</h6>
+                                    <ul>
+                                        <li>과테말라: 20%</li>
+                                        <li>아이티: 18%</li>
+                                        <li>볼리비아: 16%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group average">
+                                    <h6>평균 수준</h6>
+                                    <ul>
+                                        <li>온두라스: 12%</li>
+                                        <li>니카라과: 11%</li>
+                                        <li>페루: 10%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group advanced">
+                                    <h6>선진 수준</h6>
+                                    <ul>
+                                        <li>브라질: 6%</li>
+                                        <li>멕시코: 7%</li>
+                                        <li>칠레: 5%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="regional-patterns">
+                            <h5>지역 패턴</h5>
+                            <ul>
+                                <li>도시화 진전의 영향</li>
+                                <li>카톨릭 문화의 영향</li>
+                                <li>소득 불평등과 연관</li>
+                                <li>원주민 인구의 특수성</li>
+                                <li>민주화와 여성 권리</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region middle-east-north-africa">
+                    <h4>🏛️ 중동·북아프리카</h4>
+                    <div class="region-stats">
+                        <div class="stat-highlight">
+                            <span class="value">14.5%</span>
+                            <span class="label">평균 미충족 수요</span>
+                        </div>
+                        <div class="country-breakdown">
+                            <h5>국가별 현황</h5>
+                            <div class="countries-data">
+                                <div class="country-group conflict">
+                                    <h6>분쟁 영향 지역</h6>
+                                    <ul>
+                                        <li>예멘: 26%</li>
+                                        <li>이라크: 22%</li>
+                                        <li>수단: 20%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group transitional">
+                                    <h6>전환기 국가</h6>
+                                    <ul>
+                                        <li>이집트: 15%</li>
+                                        <li>모로코: 13%</li>
+                                        <li>요단: 12%</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group successful">
+                                    <h6>성공 사례</h6>
+                                    <ul>
+                                        <li>튀니지: 6%</li>
+                                        <li>이란: 8%</li>
+                                        <li>터키: 9%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contextual-factors">
+                            <h5>맥락적 요인</h5>
+                            <ul>
+                                <li>정치적 불안정</li>
+                                <li>종교적 보수주의</li>
+                                <li>석유 경제의 영향</li>
+                                <li>여성 지위 변화</li>
+                                <li>난민 및 이주 문제</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region east-asia">
+                    <h4>🏮 동아시아</h4>
+                    <div class="region-stats">
+                        <div class="stat-highlight">
+                            <span class="value">3.2%</span>
+                            <span class="label">평균 미충족 수요</span>
+                        </div>
+                        <div class="country-breakdown">
+                            <h5>국가별 현황</h5>
+                            <div class="countries-data">
+                                <div class="country-group leaders">
+                                    <h6>선도 국가</h6>
+                                    <ul>
+                                        <li>한국: 2%</li>
+                                        <li>일본: 3%</li>
+                                        <li>중국: 4%</li>
+                                        <li>대만: 2%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="success-elements">
+                            <h5>성공 요소</h5>
+                            <ul>
+                                <li>강력한 국가 프로그램</li>
+                                <li>빠른 경제 발전</li>
+                                <li>높은 교육 수준</li>
+                                <li>도시화 완성</li>
+                                <li>작은 가족 규범</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hotspot-analysis">
+            <h3>미충족 수요 핫스팟 분석</h3>
+            <div class="hotspots-grid">
+                <div class="hotspot sahel">
+                    <h4>🔥 사헬 지역 (서아프리카)</h4>
+                    <div class="hotspot-details">
+                        <div class="characteristics">
+                            <h5>특징</h5>
+                            <ul>
+                                <li>세계 최고 수준의 미충족 수요</li>
+                                <li>최고 출산율 (TFR 6-7)</li>
+                                <li>극도로 제한된 서비스</li>
+                                <li>사막화와 기후 변화</li>
+                            </ul>
+                        </div>
+                        <div class="urgency">
+                            <h5>시급성</h5>
+                            <p>인구 폭발과 환경 압력으로 인한 인도주의적 위기 가능성</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotspot south-asia-belt">
+                    <h4>🔥 남아시아 빈곤 벨트</h4>
+                    <div class="hotspot-details">
+                        <div class="characteristics">
+                            <h5>특징</h5>
+                            <ul>
+                                <li>거대한 절대 규모</li>
+                                <li>농촌 집중</li>
+                                <li>카스트 기반 불평등</li>
+                                <li>교육 격차</li>
+                            </ul>
+                        </div>
+                        <div class="impact">
+                            <h5>영향</h5>
+                            <p>전 세계 미충족 수요의 40% 차지하는 핵심 지역</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotspot fragile-states">
+                    <h4>🔥 취약 국가군</h4>
+                    <div class="hotspot-details">
+                        <div class="characteristics">
+                            <h5>특징</h5>
+                            <ul>
+                                <li>분쟁과 정치적 불안정</li>
+                                <li>인도주의적 위기</li>
+                                <li>기본 서비스 붕괴</li>
+                                <li>난민 및 실향민</li>
+                            </ul>
+                        </div>
+                        <div name="challenges">
+                            <h5>도전과제</h5>
+                            <p>안정성 회복과 서비스 재건의 이중 과제</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="geographic-targeting">
+            <h3>지리적 표적화 전략</h3>
+            <div class="targeting-framework">
+                <div class="priority-1">
+                    <h4>1순위: 사헬 및 동아프리카</h4>
+                    <ul>
+                        <li>긴급 개입 프로그램</li>
+                        <li>기본 서비스 구축</li>
+                        <li>대규모 국제 지원</li>
+                        <li>정치적 의지 동원</li>
+                    </ul>
+                </div>
+                <div class="priority-2">
+                    <h4>2순위: 남아시아 농촌</h4>
+                    <ul>
+                        <li>형평성 중심 접근</li>
+                        <li>지역사회 기반 프로그램</li>
+                        <li>교육과 연계</li>
+                        <li>사회 규범 변화</li>
+                    </ul>
+                </div>
+                <div class="priority-3">
+                    <h4>3순위: 분쟁 후 재건</h4>
+                    <ul>
+                        <li>인도주의적 지원</li>
+                        <li>서비스 복구</li>
+                        <li>평화 구축 연계</li>
+                        <li>장기 발전 계획</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). p. 1822">Cleland et al. (2006). Regional patterns of unmet need for family planning (p. 1822)</span>
+        <span class="slide-number">38 / 60</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // World Map Chart (simplified regional representation)
+    const ctx = document.getElementById('worldMapChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['사하라 이남\n아프리카', '남아시아', '중동·북아프리카', '동남아시아', '라틴 아메리카', '동아시아'],
+                datasets: [{
+                    label: '미충족 수요 (%)',
+                    data: [24.2, 16.8, 14.5, 11.3, 10.7, 3.2],
+                    backgroundColor: [
+                        '#8B0000',  // 사하라 이남 아프리카 (매우 높음)
+                        '#DC143C',  // 남아시아 (높음)
+                        '#FF6347',  // 중동·북아프리카 (중간-높음)
+                        '#FFA500',  // 동남아시아 (중간)
+                        '#FFD700',  // 라틴 아메리카 (낮음-중간)
+                        '#90EE90'   // 동아시아 (낮음)
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#2c3e50'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: { color: '#ecf0f1', font: { size: 10 } },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 30,
+                        title: {
+                            display: true,
+                            text: '미충족 수요 (%)',
+                            color: '#ecf0f1'
+                        },
+                        ticks: {
+                            color: '#ecf0f1',
+                            callback: function(value) { return value + '%'; }
+                        },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: '지역별 가족계획 미충족 수요 분포',
+                        color: '#ecf0f1',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>

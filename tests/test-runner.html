@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation System Test Runner</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #48bb78, #38a169);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .summary {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .summary-card {
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .summary-card.passed {
+            background: #f0fff4;
+            border: 1px solid #68d391;
+            color: #22543d;
+        }
+
+        .summary-card.failed {
+            background: #fff5f5;
+            border: 1px solid #fc8181;
+            color: #742a2a;
+        }
+
+        .summary-card.total {
+            background: #ebf8ff;
+            border: 1px solid #63b3ed;
+            color: #2c5282;
+        }
+
+        .summary-card h3 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .summary-card p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .test-results {
+            padding: 20px;
+        }
+
+        .test-suite {
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .test-suite-header {
+            background: #f7fafc;
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .test-suite-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .test-suite-stats {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .test-case {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f7fafc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .test-case:last-child {
+            border-bottom: none;
+        }
+
+        .test-case.passed {
+            background: #f0fff4;
+        }
+
+        .test-case.failed {
+            background: #fff5f5;
+        }
+
+        .test-name {
+            font-weight: 500;
+        }
+
+        .test-status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .test-status.passed {
+            background: #68d391;
+            color: white;
+        }
+
+        .test-status.failed {
+            background: #fc8181;
+            color: white;
+        }
+
+        .test-status.running {
+            background: #fbb96b;
+            color: white;
+        }
+
+        .error-details {
+            margin-top: 8px;
+            padding: 8px;
+            background: #fed7d7;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: #742a2a;
+            white-space: pre-wrap;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 50%;
+            border-top-color: #667eea;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .timestamp {
+            font-size: 12px;
+            color: #a0aec0;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .progress-bar {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .summary {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Presentation System Test Runner</h1>
+            <p>Comprehensive test suite for slide management, visualizations, and citations</p>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="runAllTests()">Run All Tests</button>
+            <button class="btn btn-secondary" onclick="runUnitTests()">Unit Tests Only</button>
+            <button class="btn btn-secondary" onclick="runIntegrationTests()">Integration Tests Only</button>
+            <button class="btn btn-secondary" onclick="clearResults()">Clear Results</button>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <span class="timestamp" id="timestamp"></span>
+        </div>
+
+        <div class="summary">
+            <div class="summary-card total">
+                <h3 id="totalTests">0</h3>
+                <p>Total Tests</p>
+            </div>
+            <div class="summary-card passed">
+                <h3 id="passedTests">0</h3>
+                <p>Passed</p>
+            </div>
+            <div class="summary-card failed">
+                <h3 id="failedTests">0</h3>
+                <p>Failed</p>
+            </div>
+        </div>
+
+        <div class="test-results" id="testResults">
+            <div class="loading">
+                <div class="spinner"></div>
+                Click "Run All Tests" to begin testing
+            </div>
+        </div>
+    </div>
+
+    <!-- Load test files -->
+    <script src="SlideManager.test.js"></script>
+    <script src="VisualizationRenderer.test.js"></script>
+    <script src="CitationManager.test.js"></script>
+    <script src="integration/navigation.test.js"></script>
+    <script src="integration/visualization.test.js"></script>
+    <script src="integration/citation.test.js"></script>
+
+    <script>
+        // Test runner state
+        let testResults = {
+            total: 0,
+            passed: 0,
+            failed: 0,
+            suites: []
+        };
+
+        // Test suites configuration
+        const testSuites = [
+            {
+                name: 'SlideManager',
+                tests: window.SlideManagerTests,
+                type: 'unit'
+            },
+            {
+                name: 'VisualizationRenderer',
+                tests: window.VisualizationRendererTests,
+                type: 'unit'
+            },
+            {
+                name: 'CitationManager',
+                tests: window.CitationManagerTests,
+                type: 'unit'
+            },
+            {
+                name: 'Navigation Integration',
+                tests: window.NavigationIntegrationTests,
+                type: 'integration'
+            },
+            {
+                name: 'Visualization Integration',
+                tests: window.VisualizationIntegrationTests,
+                type: 'integration'
+            },
+            {
+                name: 'Citation Integration',
+                tests: window.CitationIntegrationTests,
+                type: 'integration'
+            }
+        ];
+
+        // Run all tests
+        async function runAllTests() {
+            await runTests(testSuites);
+        }
+
+        // Run only unit tests
+        async function runUnitTests() {
+            const unitSuites = testSuites.filter(suite => suite.type === 'unit');
+            await runTests(unitSuites);
+        }
+
+        // Run only integration tests
+        async function runIntegrationTests() {
+            const integrationSuites = testSuites.filter(suite => suite.type === 'integration');
+            await runTests(integrationSuites);
+        }
+
+        // Main test runner
+        async function runTests(suitesToRun) {
+            clearResults();
+            updateTimestamp();
+
+            testResults = {
+                total: 0,
+                passed: 0,
+                failed: 0,
+                suites: []
+            };
+
+            const resultsContainer = document.getElementById('testResults');
+            resultsContainer.innerHTML = '<div class="loading"><div class="spinner"></div>Running tests...</div>';
+
+            // Count total tests
+            let totalTestCount = 0;
+            suitesToRun.forEach(suite => {
+                totalTestCount += Object.keys(suite.tests).length;
+            });
+
+            let completedTests = 0;
+
+            for (const suite of suitesToRun) {
+                const suiteResult = {
+                    name: suite.name,
+                    type: suite.type,
+                    tests: [],
+                    passed: 0,
+                    failed: 0
+                };
+
+                for (const [testName, testFunction] of Object.entries(suite.tests)) {
+                    try {
+                        const result = await testFunction();
+                        suiteResult.tests.push({
+                            name: testName,
+                            status: 'passed',
+                            result: result,
+                            error: null
+                        });
+                        suiteResult.passed++;
+                        testResults.passed++;
+                    } catch (error) {
+                        suiteResult.tests.push({
+                            name: testName,
+                            status: 'failed',
+                            result: null,
+                            error: error.message
+                        });
+                        suiteResult.failed++;
+                        testResults.failed++;
+                    }
+
+                    completedTests++;
+                    updateProgress(completedTests, totalTestCount);
+                }
+
+                testResults.suites.push(suiteResult);
+                testResults.total += suiteResult.tests.length;
+            }
+
+            renderResults();
+        }
+
+        // Update progress bar
+        function updateProgress(completed, total) {
+            const percentage = (completed / total) * 100;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+        }
+
+        // Update timestamp
+        function updateTimestamp() {
+            const now = new Date();
+            document.getElementById('timestamp').textContent =
+                `Last run: ${now.toLocaleTimeString()}`;
+        }
+
+        // Render test results
+        function renderResults() {
+            // Update summary
+            document.getElementById('totalTests').textContent = testResults.total;
+            document.getElementById('passedTests').textContent = testResults.passed;
+            document.getElementById('failedTests').textContent = testResults.failed;
+
+            // Render test suites
+            const resultsContainer = document.getElementById('testResults');
+            resultsContainer.innerHTML = '';
+
+            testResults.suites.forEach(suite => {
+                const suiteElement = createSuiteElement(suite);
+                resultsContainer.appendChild(suiteElement);
+            });
+        }
+
+        // Create suite element
+        function createSuiteElement(suite) {
+            const suiteDiv = document.createElement('div');
+            suiteDiv.className = 'test-suite';
+
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'test-suite-header';
+            headerDiv.innerHTML = `
+                <div class="test-suite-title">
+                    ${suite.name} <span style="font-weight: normal; color: #718096;">(${suite.type})</span>
+                </div>
+                <div class="test-suite-stats">
+                    ${suite.passed} passed, ${suite.failed} failed
+                </div>
+            `;
+
+            suiteDiv.appendChild(headerDiv);
+
+            suite.tests.forEach(test => {
+                const testDiv = document.createElement('div');
+                testDiv.className = `test-case ${test.status}`;
+
+                testDiv.innerHTML = `
+                    <div class="test-name">${formatTestName(test.name)}</div>
+                    <div class="test-status ${test.status}">${test.status.toUpperCase()}</div>
+                `;
+
+                if (test.error) {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'error-details';
+                    errorDiv.textContent = test.error;
+                    testDiv.appendChild(errorDiv);
+                }
+
+                suiteDiv.appendChild(testDiv);
+            });
+
+            return suiteDiv;
+        }
+
+        // Format test name for display
+        function formatTestName(testName) {
+            return testName
+                .replace(/^test/, '')
+                .replace(/([A-Z])/g, ' $1')
+                .trim()
+                .toLowerCase()
+                .replace(/^./, str => str.toUpperCase());
+        }
+
+        // Clear results
+        function clearResults() {
+            testResults = {
+                total: 0,
+                passed: 0,
+                failed: 0,
+                suites: []
+            };
+
+            document.getElementById('totalTests').textContent = '0';
+            document.getElementById('passedTests').textContent = '0';
+            document.getElementById('failedTests').textContent = '0';
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('testResults').innerHTML =
+                '<div class="loading"><div class="spinner"></div>Click "Run All Tests" to begin testing</div>';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTimestamp();
+
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey || e.metaKey) {
+                    switch(e.key) {
+                        case 'Enter':
+                            e.preventDefault();
+                            runAllTests();
+                            break;
+                        case 'u':
+                            e.preventDefault();
+                            runUnitTests();
+                            break;
+                        case 'i':
+                            e.preventDefault();
+                            runIntegrationTests();
+                            break;
+                        case 'r':
+                            e.preventDefault();
+                            clearResults();
+                            break;
+                    }
+                }
+            });
+
+            // Add help text for keyboard shortcuts
+            const helpText = document.createElement('div');
+            helpText.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgba(0,0,0,0.8);
+                color: white;
+                padding: 10px;
+                border-radius: 4px;
+                font-size: 12px;
+                opacity: 0.7;
+            `;
+            helpText.innerHTML = `
+                Keyboard shortcuts:<br>
+                Ctrl+Enter: Run all tests<br>
+                Ctrl+U: Unit tests<br>
+                Ctrl+I: Integration tests<br>
+                Ctrl+R: Clear results
+            `;
+            document.body.appendChild(helpText);
+        });
+    </script>
+</body>
+</html>

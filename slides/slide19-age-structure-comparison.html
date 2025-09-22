@@ -1,0 +1,177 @@
+<!-- Slide 19: Age Structure Comparison with Interactive Visualizations -->
+<div class="slide" id="slide-age-structure-comparison">
+    <div class="slide-header">
+        <h1>연령구조 비교: 개발수준별 차이 (Age Structure by Development Level)</h1>
+        <div class="interactive-badge">인터랙티브</div>
+    </div>
+    <div class="slide-content">
+        <!-- Interactive Population Pyramids Comparison -->
+        <div class="chart-container pyramids-comparison" id="development-pyramids-chart"
+             data-chart-type="plotly"
+             data-chart-data='{
+               "categories": [
+                 {
+                   "name": "최빈국 (LDCs)",
+                   "color": "#FF6B6B",
+                   "male": [-22, -18, -14, -10, -6, -3, -1.5],
+                   "female": [21, 17, 13, 9, 5, 2.5, 1.5],
+                   "ages": ["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60+"],
+                   "indicators": {"tfr": 5.2, "medianAge": 18, "dependencyRatio": 85},
+                   "challenges": ["높은 청소년 인구", "높은 부양비", "빠른 인구증가"]
+                 },
+                 {
+                   "name": "중소득국",
+                   "color": "#4ECDC4",
+                   "male": [-14, -15, -16, -12, -8, -5, -3],
+                   "female": [14, 15, 16, 12, 8, 5, 3],
+                   "ages": ["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60+"],
+                   "indicators": {"tfr": 2.4, "medianAge": 28, "dependencyRatio": 52},
+                   "opportunities": ["높은 생산가능인구", "낮은 부양비", "경제성장 잠재력"]
+                 },
+                 {
+                   "name": "선진국",
+                   "color": "#45B7D1",
+                   "male": [-8, -8.5, -9, -9.5, -10, -9, -9.5],
+                   "female": [8, 8.5, 9, 9.5, 10, 9, 9.5],
+                   "ages": ["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60+"],
+                   "indicators": {"tfr": 1.6, "medianAge": 42, "dependencyRatio": 54},
+                   "concerns": ["낮은 출산율", "높은 고령화비율", "노동력 부족"]
+                 }
+               ]
+             }'>
+        </div>
+
+        <!-- Demographic Indicators Dashboard -->
+        <div class="indicators-dashboard" id="demographic-indicators"
+             data-chart-type="chartjs"
+             data-chart-data='{
+               "charts": [
+                 {
+                   "type": "radar",
+                   "title": "인구학적 지표 비교",
+                   "data": {
+                     "LDCs": [85, 18, 5.2, 43, 3],
+                     "Middle": [52, 28, 2.4, 28, 6],
+                     "Developed": [54, 42, 1.6, 16, 19]
+                   },
+                   "labels": ["부양비", "중위연령", "TFR", "청소년%", "고령자%"]
+                 }
+               ]
+             }'>
+        </div>
+
+        <!-- Animated Transition Pathway -->
+        <div class="transition-pathway">
+            <h3>인구전환 경로 (Demographic Transition Path)</h3>
+            <div class="chart-container transition-chart" id="transition-animation"
+                 data-chart-type="d3"
+                 data-chart-data='{
+                   "stages": [
+                     {
+                       "stage": 1,
+                       "title": "높은 출산율·사망률",
+                       "description": "인구 안정, 평균수명 짧음",
+                       "birthRate": 45,
+                       "deathRate": 40,
+                       "populationGrowth": 0.5,
+                       "color": "#FF6B6B"
+                     },
+                     {
+                       "stage": 2,
+                       "title": "사망률 감소",
+                       "description": "인구 급증, 젊은 연령구조",
+                       "birthRate": 40,
+                       "deathRate": 20,
+                       "populationGrowth": 2.0,
+                       "color": "#FFA726"
+                     },
+                     {
+                       "stage": 3,
+                       "title": "출산율 감소",
+                       "description": "인구 배당, 경제성장 기회",
+                       "birthRate": 20,
+                       "deathRate": 15,
+                       "populationGrowth": 0.5,
+                       "color": "#4ECDC4"
+                     },
+                     {
+                       "stage": 4,
+                       "title": "낮은 출산율·사망률",
+                       "description": "인구 안정화, 고령화 진행",
+                       "birthRate": 12,
+                       "deathRate": 12,
+                       "populationGrowth": 0.0,
+                       "color": "#45B7D1"
+                     }
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Policy Priority Matrix -->
+        <div class="policy-implications">
+            <h3>가족계획 정책의 시급성</h3>
+            <div class="chart-container priority-matrix" id="policy-priority-chart"
+                 data-chart-type="d3"
+                 data-chart-data='{
+                   "regions": [
+                     {
+                       "name": "사하라이남 아프리카",
+                       "urgency": 90,
+                       "impact": 95,
+                       "tfr": 5.4,
+                       "youthPercent": 45,
+                       "priority": "highest",
+                       "color": "#FF4757",
+                       "description": "젊은 인구 구조 + 높은 TFR → 인구폭발 위험"
+                     },
+                     {
+                       "name": "남아시아",
+                       "urgency": 70,
+                       "impact": 75,
+                       "tfr": 2.8,
+                       "youthPercent": 35,
+                       "priority": "high",
+                       "color": "#FFA502",
+                       "description": "인구 모멘텀 존재 → 지속적 관리 필요"
+                     },
+                     {
+                       "name": "중동",
+                       "urgency": 65,
+                       "impact": 70,
+                       "tfr": 3.2,
+                       "youthPercent": 38,
+                       "priority": "high",
+                       "color": "#FF6348",
+                       "description": "정치적 불안정 + 높은 출산율"
+                     },
+                     {
+                       "name": "동아시아",
+                       "urgency": 40,
+                       "impact": 45,
+                       "tfr": 1.7,
+                       "youthPercent": 18,
+                       "priority": "medium",
+                       "color": "#2ED573",
+                       "description": "안정화 단계 → 질 중심 서비스"
+                     },
+                     {
+                       "name": "라틴아메리카",
+                       "urgency": 45,
+                       "impact": 50,
+                       "tfr": 2.1,
+                       "youthPercent": 25,
+                       "priority": "medium",
+                       "color": "#1E90FF",
+                       "description": "대체율 근접 → 유지 관리"
+                     }
+                   ]
+                 }'>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). Panel 2, p. 1813-1814">Cleland et al. (2006). Age structure and demographic transition (p. 1813-1814)</span>
+        <span class="slide-number">19 / 60</span>
+    </div>
+</div>

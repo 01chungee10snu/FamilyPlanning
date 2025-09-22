@@ -1,0 +1,209 @@
+<!-- Slide 20: Demographic Dividend with Interactive Visualizations -->
+<div class="slide" id="slide-demographic-dividend">
+    <div class="slide-header">
+        <h1>인구 배당과 가족계획 (Demographic Dividend & Family Planning)</h1>
+        <div class="interactive-badge">인터랙티브</div>
+    </div>
+    <div class="slide-content">
+        <div class="dividend-concept">
+            <h3>인구 배당이란?</h3>
+            <div class="concept-box">
+                <p><strong>인구 배당</strong>: 생산가능인구(15-64세) 비율이 높고 부양인구(0-14세, 65+세) 비율이 낮아 경제성장에 유리한 인구구조</p>
+                <div class="formula">
+                    <span class="formula-text">부양비 = (0-14세 + 65+세) / (15-64세) × 100</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Demographic Dividend Timeline -->
+        <div class="dividend-timeline">
+            <h3>인구 배당 실현 과정</h3>
+            <div class="chart-container dividend-process" id="dividend-timeline-chart"
+                 data-chart-type="d3"
+                 data-chart-data='{
+                   "phases": [
+                     {
+                       "phase": 1,
+                       "title": "높은 부양비",
+                       "timeframe": "가족계획 도입 전",
+                       "tfr": 5.5,
+                       "dependencyRatio": 85,
+                       "gdpGrowth": 2.5,
+                       "duration": 0,
+                       "color": "#FF6B6B",
+                       "description": "많은 아이들로 인한 경제적 부담"
+                     },
+                     {
+                       "phase": 2,
+                       "title": "전환기",
+                       "timeframe": "가족계획 확산",
+                       "tfr": 4.0,
+                       "dependencyRatio": 70,
+                       "gdpGrowth": 4.2,
+                       "duration": 15,
+                       "color": "#FFA726",
+                       "description": "출산율 감소로 부담 완화"
+                     },
+                     {
+                       "phase": 3,
+                       "title": "인구 배당",
+                       "timeframe": "배당 기간 (20-30년)",
+                       "tfr": 2.5,
+                       "dependencyRatio": 50,
+                       "gdpGrowth": 7.8,
+                       "duration": 25,
+                       "color": "#4ECDC4",
+                       "description": "최적 연령구조로 경제성장 극대화",
+                       "highlight": true
+                     },
+                     {
+                       "phase": 4,
+                       "title": "고령화",
+                       "timeframe": "배당 종료",
+                       "tfr": 1.8,
+                       "dependencyRatio": 65,
+                       "gdpGrowth": 3.5,
+                       "duration": 40,
+                       "color": "#45B7D1",
+                       "description": "고령화로 인한 부양 부담 증가"
+                     }
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Success Cases Chart -->
+        <div class="success-examples">
+            <h3>인구 배당 성공 사례</h3>
+            <div class="chart-container success-timeline" id="success-cases-chart"
+                 data-chart-type="plotly"
+                 data-chart-data='{
+                   "countries": [
+                     {
+                       "name": "한국",
+                       "period": "1970-2010",
+                       "gdpGrowth": [3.2, 5.8, 8.6, 9.2, 7.8, 5.4, 3.1],
+                       "tfr": [4.5, 3.8, 2.8, 2.1, 1.6, 1.3, 1.2],
+                       "dependencyRatio": [80, 72, 58, 48, 42, 52, 62],
+                       "years": [1970, 1975, 1980, 1985, 1990, 1995, 2000],
+                       "color": "#FF6B6B",
+                       "dividendPeriod": [1975, 2005]
+                     },
+                     {
+                       "name": "태국",
+                       "period": "1980-2015",
+                       "gdpGrowth": [5.2, 6.4, 8.1, 7.8, 6.2, 4.8, 3.5],
+                       "tfr": [4.2, 3.5, 2.8, 2.1, 1.8, 1.5, 1.4],
+                       "dependencyRatio": [78, 68, 55, 47, 45, 48, 55],
+                       "years": [1980, 1985, 1990, 1995, 2000, 2005, 2010],
+                       "color": "#4ECDC4",
+                       "dividendPeriod": [1985, 2010]
+                     },
+                     {
+                       "name": "중국",
+                       "period": "1980-2015",
+                       "gdpGrowth": [7.8, 9.4, 11.2, 10.8, 9.6, 8.2, 6.8],
+                       "tfr": [2.6, 2.4, 2.0, 1.8, 1.6, 1.5, 1.6],
+                       "dependencyRatio": [68, 58, 48, 44, 42, 45, 52],
+                       "years": [1980, 1985, 1990, 1995, 2000, 2005, 2010],
+                       "color": "#45B7D1",
+                       "dividendPeriod": [1985, 2015]
+                     }
+                   ]
+                 }'>
+            </div>
+
+            <!-- Country Comparison Cards -->
+            <div class="comparison-cards" id="country-comparison"
+                 data-chart-type="custom"
+                 data-chart-data='{
+                   "metrics": [
+                     {"country": "한국", "gdp": 8.6, "tfr": "6.0→1.6", "duration": 40, "strategy": "강력한 가족계획 + 교육투자 + 수출지향"},
+                     {"country": "태국", "gdp": 6.4, "tfr": "5.0→1.5", "duration": 35, "strategy": "혁신적 가족계획 + 제조업 발달"},
+                     {"country": "중국", "gdp": 9.4, "tfr": "2.8→1.6", "duration": 35, "strategy": "한 자녀 정책 + 개혁개방"}
+                   ]
+                 }'>
+            </div>
+        </div>
+
+        <!-- Interactive Conditions Framework -->
+        <div class="dividend-conditions">
+            <h3>인구 배당 실현 조건</h3>
+            <div class="chart-container conditions-radar" id="conditions-framework"
+                 data-chart-type="chartjs"
+                 data-chart-data='{
+                   "framework": {
+                     "demographic": {
+                       "title": "인구학적 조건",
+                       "icon": "👥",
+                       "factors": [
+                         {"출산율 지속 감소", "importance": 95, "difficulty": 70},
+                         {"사망률 안정화", "importance": 85, "difficulty": 60},
+                         {"연령구조 점진적 변화", "importance": 90, "difficulty": 80}
+                       ]
+                     },
+                     "economic": {
+                       "title": "경제적 조건",
+                       "icon": "💼",
+                       "factors": [
+                         {"충분한 일자리 창출", "importance": 90, "difficulty": 85},
+                         {"노동시장 유연성", "importance": 80, "difficulty": 75},
+                         {"생산성 향상 투자", "importance": 85, "difficulty": 70}
+                       ]
+                     },
+                     "social": {
+                       "title": "사회적 조건",
+                       "icon": "🎓",
+                       "factors": [
+                         {"교육 기회 확대", "importance": 85, "difficulty": 65},
+                         {"보건의료 개선", "importance": 80, "difficulty": 70},
+                         {"여성 경제활동 참여", "importance": 75, "difficulty": 80}
+                       ]
+                     },
+                     "policy": {
+                       "title": "정책적 조건",
+                       "icon": "📋",
+                       "factors": [
+                         {"효과적 가족계획", "importance": 95, "difficulty": 60},
+                         {"경제개발 정책", "importance": 90, "difficulty": 75},
+                         {"사회보장 제도", "importance": 70, "difficulty": 80}
+                       ]
+                     }
+                   }
+                 }'>
+            </div>
+        </div>
+
+        <!-- Africa Opportunity-Challenge Matrix -->
+        <div class="africa-opportunity">
+            <h3>아프리카의 기회와 도전</h3>
+            <div class="chart-container africa-matrix" id="africa-opportunity-chart"
+                 data-chart-type="d3"
+                 data-chart-data='{
+                   "opportunities": [
+                     {"factor": "젊은 인구구조", "impact": 85, "feasibility": 90, "category": "demographic"},
+                     {"경제성장 잠재력", "impact": 90, "feasibility": 70, "category": "economic"},
+                     {"부양비 감소 가능성", "impact": 80, "feasibility": 75, "category": "demographic"},
+                     {"아시아 경험 학습", "impact": 75, "feasibility": 85, "category": "policy"}
+                   ],
+                   "challenges": [
+                     {"factor": "높은 출산율 (TFR>5)", "severity": 90, "urgency": 95, "category": "demographic"},
+                     {"가족계획 미충족 수요", "severity": 85, "urgency": 90, "category": "healthcare"},
+                     {"제한적 일자리 창출", "severity": 80, "urgency": 85, "category": "economic"},
+                     {"인프라 부족", "severity": 75, "urgency": 80, "category": "infrastructure"}
+                   ],
+                   "interventions": [
+                     {"강력한 가족계획", "priority": 95, "feasibility": 80},
+                     {"교육투자", "priority": 90, "feasibility": 85},
+                     {"일자리 창출", "priority": 85, "feasibility": 70},
+                     {"거버넌스 개선", "priority": 80, "feasibility": 65}
+                   ]
+                 }'>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). Panel 2, p. 1814">Cleland et al. (2006). Demographic dividend and economic development (p. 1814)</span>
+        <span class="slide-number">20 / 60</span>
+    </div>
+</div>

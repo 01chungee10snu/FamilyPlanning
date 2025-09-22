@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가족계획이 중요한 이유</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .benefit-section {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #ffd700;
+        }
+        .benefit-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .benefit-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .stats-highlight {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #ffd700;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .detail-list {
+            list-style: none;
+            padding: 0;
+        }
+        .detail-list li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .detail-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .poverty-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .poverty-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .stat-label {
+            font-size: 1em;
+            margin-top: 5px;
+        }
+        .quote-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffd700;
+            font-style: italic;
+            font-size: 1.1em;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .comparison-table {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            color: #333;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">가족계획이 중요한 이유</h1>
+            <p style="opacity: 0.8; font-size: 1.1em;">Why Does Family Planning Still Matter?</p>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-section">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-title">1. 빈곤 감소 (Poverty Reduction)</div>
+                <div class="stats-highlight">
+                    출생률 5‰ 감소 시 → 빈곤율 1/3 감소
+                </div>
+                <ul class="detail-list">
+                    <li>급속한 인구증가 (연 2% 이상)는 빈곤을 악화시킴</li>
+                    <li>사하라 이남 아프리카: 하루 1달러 미만 생활자가 1981년 164백만 → 2001년 316백만으로 증가</li>
+                    <li>인구 모멘텀으로 인한 '인구 배당' 효과</li>
+                    <li>동아시아 경제성장의 1/3이 인구구조 변화 덕분</li>
+                </ul>
+            </div>
+
+            <div class="benefit-section">
+                <div class="benefit-icon">🏥</div>
+                <div class="benefit-title">2. 건강 혜택 (Health Benefits)</div>
+                <div class="stats-highlight">
+                    모성사망 32% 감소 + 아동사망 10% 감소 가능
+                </div>
+                <ul class="detail-list">
+                    <li>150,000명의 모성사망 예방 가능 (전체의 32%)</li>
+                    <li>약 100만명의 5세 미만 아동사망 예방</li>
+                    <li>18개월 미만 출산간격으로 인한 위험 감소</li>
+                    <li>안전하지 않은 낙태로 인한 사망 90% 예방 가능</li>
+                </ul>
+            </div>
+
+            <div class="benefit-section">
+                <div class="benefit-icon">👩‍🎓</div>
+                <div class="benefit-title">3. 성평등 및 교육 (Gender Equality & Education)</div>
+                <div class="stats-highlight">
+                    여성 노동 참여 증가 + 교육 기회 확대
+                </div>
+                <ul class="detail-list">
+                    <li>여성을 비자발적 출산에서 해방</li>
+                    <li>출산율 감소와 함께 여성 노동참여 증가</li>
+                    <li>보편적 초등교육 달성에 필수적</li>
+                    <li>교육 투자 부담 경감 효과</li>
+                    <li>"과도한 출산의 폭정에서의 자유" - 제5의 자유</li>
+                </ul>
+            </div>
+
+            <div class="benefit-section">
+                <div class="benefit-icon">🌍</div>
+                <div class="benefit-title">4. 환경 지속가능성 (Environmental Sustainability)</div>
+                <div class="stats-highlight">
+                    120억 vs 80억 인구의 환경 부담 차이
+                </div>
+                <ul class="detail-list">
+                    <li>농지 확장 압력 감소로 생물다양성 보존</li>
+                    <li>물 부족 문제 완화 (현재 1/3 → 2025년 2/3 예상)</li>
+                    <li>중국·인도의 CO2 배출 급증 문제</li>
+                    <li>원치 않는 출산 방지가 환경보존의 비용효과적 방법</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="poverty-section">
+            <h2 style="color: #ffd700; text-align: center; margin-top: 0;">빈곤과 출산율의 상관관계</h2>
+
+            <div class="comparison-table">
+                <h3 style="text-align: center; margin-top: 0;">56개 개발도상국 소득계층별 출산율 비교</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>소득 계층</th>
+                            <th>평균 출산율</th>
+                            <th>미충족 수요</th>
+                            <th>특징</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>최빈층 (20%)</strong></td>
+                            <td>6.0명</td>
+                            <td>높음</td>
+                            <td>선택권 부족, 접근성 문제</td>
+                        </tr>
+                        <tr>
+                            <td><strong>최부유층 (20%)</strong></td>
+                            <td>3.2명</td>
+                            <td>낮음</td>
+                            <td>선택권 보장, 접근성 양호</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="poverty-stats">
+                <div class="stat-box">
+                    <div class="stat-number">2배</div>
+                    <div class="stat-label">빈곤층 vs 부유층<br>출산율 격차</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1/3</div>
+                    <div class="stat-label">동아시아 경제성장 중<br>인구구조 기여도</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">25-30년</div>
+                    <div class="stat-label">인구 배당<br>지속 기간</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            "가족계획은 의료 개입 중 가장 광범위한 잠재적 혜택을 가진 유일한 개입이다:
+            빈곤 감소, 모성 및 아동 사망률 감소, 과도한 출산 부담을 덜어주는 여성 권한 강화,
+            지구 인구 안정화를 통한 환경 지속가능성 향상"
+        </div>
+
+        <div class="stats-highlight" style="font-size: 1.2em; margin-top: 30px;">
+            <strong>결론:</strong> 출산율과 인구증가 감소만으로는 자동으로 더 나은 세상을 만들 수 없지만,
+            MDG 달성을 훨씬 더 실현 가능하게 만든다.
+        </div>
+    </div>
+</body>
+</html>

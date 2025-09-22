@@ -1,0 +1,383 @@
+<!-- Slide 37: Birth Spacing Issues -->
+<div class="slide" id="slide-birth-spacing">
+    <div class="slide-header">
+        <h1>출산 간격 조절의 중요성 (Importance of Birth Spacing)</h1>
+        <div class="badge-container">
+            <span class="badge health">건강</span>
+            <span class="badge timing">타이밍</span>
+        </div>
+    </div>
+    <div class="slide-content">
+        <div class="spacing-overview">
+            <h3>출산 간격의 건강 영향</h3>
+            <div class="health-impact-chart">
+                <canvas id="birthSpacingChart"></canvas>
+            </div>
+        </div>
+
+        <div class="optimal-intervals">
+            <h3>권장 출산 간격</h3>
+            <div class="intervals-grid">
+                <div class="interval-box optimal">
+                    <h4>🟢 최적 간격</h4>
+                    <div class="interval-details">
+                        <span class="interval-value">3-5년</span>
+                        <p>가장 낮은 모성·영유아 사망률과 최적의 영양 상태</p>
+                    </div>
+                </div>
+                <div class="interval-box acceptable">
+                    <h4>🟡 수용 가능</h4>
+                    <div class="interval-details">
+                        <span class="interval-value">2-3년</span>
+                        <p>여전히 양호한 건강 결과, 약간의 위험 증가</p>
+                    </div>
+                </div>
+                <div class="interval-box risky">
+                    <h4>🔴 위험 구간</h4>
+                    <div class="interval-details">
+                        <span class="interval-value"><2년</span>
+                        <p>모성·영유아 건강에 심각한 위험 초래</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="current-situation">
+            <h3>현재 상황 분석</h3>
+            <div class="situation-data">
+                <div class="global-stats">
+                    <h4>📊 전 세계 현황</h4>
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <span class="value">35%</span>
+                            <span class="label">2년 미만 출산 간격 비율</span>
+                        </div>
+                        <div class="stat">
+                            <span class="value">78 million</span>
+                            <span class="label">출산 간격 조절 미충족 수요를 가진 여성</span>
+                        </div>
+                        <div class="stat">
+                            <span class="value">15-20%</span>
+                            <span class="label">피임 실패로 인한 조기 임신</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="regional-variation">
+                    <h4>🌍 지역별 변이</h4>
+                    <div class="regions-comparison">
+                        <div class="region worst">
+                            <h5>사하라 이남 아프리카</h5>
+                            <ul>
+                                <li>평균 간격: 2.3년</li>
+                                <li><2년 간격: 45%</li>
+                                <li>미충족 수요: 28%</li>
+                            </ul>
+                        </div>
+                        <div class="region moderate">
+                            <h5>남아시아</h5>
+                            <ul>
+                                <li>평균 간격: 2.8년</li>
+                                <li><2년 간격: 32%</li>
+                                <li>미충족 수요: 22%</li>
+                            </ul>
+                        </div>
+                        <div class="region better">
+                            <h5>라틴 아메리카</h5>
+                            <ul>
+                                <li>평균 간격: 3.2년</li>
+                                <li><2년 간격: 25%</li>
+                                <li>미충족 수요: 16%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="barriers-analysis">
+            <h3>출산 간격 조절의 장벽</h3>
+            <div class="barriers-categories">
+                <div class="barrier-category knowledge">
+                    <h4>📚 지식·정보 부족</h4>
+                    <div class="barrier-items">
+                        <div class="barrier-item">
+                            <h5>출산 간격의 중요성</h5>
+                            <ul>
+                                <li>건강상 이익에 대한 무지</li>
+                                <li>위험에 대한 인식 부족</li>
+                                <li>최적 간격에 대한 정보 부족</li>
+                            </ul>
+                        </div>
+                        <div class="barrier-item">
+                            <h5>피임법 지식</h5>
+                            <ul>
+                                <li>모유수유 기간 피임의 필요성</li>
+                                <li>효과적인 방법 선택</li>
+                                <li>일시적 vs 영구적 방법</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="barrier-category access">
+                    <h4>🏥 서비스 접근성</h4>
+                    <div class="barrier-items">
+                        <div class="barrier-item">
+                            <h5>산후 서비스 부족</h5>
+                            <ul>
+                                <li>산후 관리 프로그램 미흡</li>
+                                <li>출산 후 즉시 피임 상담 부족</li>
+                                <li>모유수유 중 피임 옵션 제한</li>
+                            </ul>
+                        </div>
+                        <div class="barrier-item">
+                            <h5>지속적 관리 부족</h5>
+                            <ul>
+                                <li>정기 추후 관리 시스템 부재</li>
+                                <li>피임법 교체 지원 부족</li>
+                                <li>부작용 관리 서비스 미흡</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="barrier-category cultural">
+                    <h4>🎭 사회문화적 요인</h4>
+                    <div class="barrier-items">
+                        <div class="barrier-item">
+                            <h5>전통적 관념</h5>
+                            <ul>
+                                <li>"자연스러운" 출산 간격 선호</li>
+                                <li>신의 뜻에 맡기는 태도</li>
+                                <li>인위적 개입에 대한 거부감</li>
+                            </ul>
+                        </div>
+                        <div class="barrier-item">
+                            <h5>사회적 압력</h5>
+                            <ul>
+                                <li>빠른 출산에 대한 기대</li>
+                                <li>가족 확대 압력</li>
+                                <li>성별 선호로 인한 연속 출산</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="barrier-category economic">
+                    <h4>💰 경제적 제약</h4>
+                    <div class="barrier-items">
+                        <div class="barrier-item">
+                            <h5>비용 부담</h5>
+                            <ul>
+                                <li>산후 피임법 비용</li>
+                                <li>정기 방문 비용</li>
+                                <li>교통비 및 기회비용</li>
+                            </ul>
+                        </div>
+                        <div class="barrier-item">
+                            <h5>경제적 인센티브</h5>
+                            <ul>
+                                <li>아동 노동력 기대</li>
+                                <li>노후 보장 목적</li>
+                                <li>사회보장 부족</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="intervention-strategies">
+            <h3>개입 전략</h3>
+            <div class="strategies-framework">
+                <div class="strategy education">
+                    <h4>📢 교육 및 정보 제공</h4>
+                    <div class="strategy-actions">
+                        <div class="action-group">
+                            <h5>대상별 교육</h5>
+                            <ul>
+                                <li>임신부 대상 산전 교육</li>
+                                <li>산모 대상 산후 상담</li>
+                                <li>남편 및 가족 교육</li>
+                                <li>지역사회 리더 교육</li>
+                            </ul>
+                        </div>
+                        <div class="action-group">
+                            <h5>매체 활용</h5>
+                            <ul>
+                                <li>미디어 캠페인</li>
+                                <li>교육 자료 개발</li>
+                                <li>모바일 메시지</li>
+                                <li>상호작용적 도구</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy service-integration">
+                    <h4>🏥 서비스 통합</h4>
+                    <div class="strategy-actions">
+                        <div class="action-group">
+                            <h5>모자보건 통합</h5>
+                            <ul>
+                                <li>산전관리에 가족계획 포함</li>
+                                <li>분만 후 즉시 상담</li>
+                                <li>영유아 검진시 상담</li>
+                                <li>예방접종 연계</li>
+                            </ul>
+                        </div>
+                        <div class="action-group">
+                            <h5>서비스 연속성</h5>
+                            <ul>
+                                <li>정기 추후 관리</li>
+                                <li>방법 변경 지원</li>
+                                <li>부작용 모니터링</li>
+                                <li>상담 지속</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy community-mobilization">
+                    <h4>👥 지역사회 동원</h4>
+                    <div class="strategy-actions">
+                        <div class="action-group">
+                            <h5>참여적 접근</h5>
+                            <ul>
+                                <li>지역사회 대화</li>
+                                <li>전통 치료자 참여</li>
+                                <li>여성 그룹 활용</li>
+                                <li>종교 지도자 협력</li>
+                            </ul>
+                        </div>
+                        <div class="action-group">
+                            <h5>사회 규범 변화</h5>
+                            <ul>
+                                <li>모범 사례 홍보</li>
+                                <li>성공 스토리 공유</li>
+                                <li>또래 지지 그룹</li>
+                                <li>남성 참여 확대</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy policy-support">
+                    <h4>📋 정책 지원</h4>
+                    <div class="strategy-actions">
+                        <div class="action-group">
+                            <h5>제도적 지원</h5>
+                            <ul>
+                                <li>가이드라인 개발</li>
+                                <li>프로토콜 표준화</li>
+                                <li>훈련 프로그램</li>
+                                <li>품질 보장</li>
+                            </ul>
+                        </div>
+                        <div class="action-group">
+                            <h5>재정적 지원</h5>
+                            <ul>
+                                <li>무료 서비스 제공</li>
+                                <li>보험 적용 확대</li>
+                                <li>교통비 지원</li>
+                                <li>인센티브 제공</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-indicators">
+            <h3>성공 지표</h3>
+            <div class="indicators-grid">
+                <div class="indicator">
+                    <h4>📊 평균 출산 간격 증가</h4>
+                    <p>목표: 3년 이상 달성</p>
+                </div>
+                <div class="indicator">
+                    <h4>📉 단간격 출산 감소</h4>
+                    <p>목표: 2년 미만 간격 20% 미만</p>
+                </div>
+                <div class="indicator">
+                    <h4>📈 산후 피임 증가</h4>
+                    <p>목표: 산후 6개월 내 80% 피임 시작</p>
+                </div>
+                <div class="indicator">
+                    <h4>💊 효과적 방법 선택</h4>
+                    <p>목표: 장기간 효과적 방법 60% 이상</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). p. 1821">Cleland et al. (2006). Birth spacing and maternal and child health (p. 1821)</span>
+        <span class="slide-number">37 / 60</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Birth Spacing Health Impact Chart
+    const ctx = document.getElementById('birthSpacingChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['<18개월', '18-23개월', '24-35개월', '36-47개월', '48-59개월', '60개월+'],
+                datasets: [{
+                    label: '모성 사망률',
+                    data: [150, 120, 80, 60, 55, 58],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderWidth: 3,
+                    yAxisID: 'y'
+                }, {
+                    label: '영유아 사망률',
+                    data: [180, 140, 90, 70, 65, 68],
+                    borderColor: '#f39c12',
+                    backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                    borderWidth: 3,
+                    yAxisID: 'y'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '출산 간격',
+                            color: '#ecf0f1'
+                        },
+                        ticks: { color: '#ecf0f1', font: { size: 10 } },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '사망률 (출생 10만 명당)',
+                            color: '#ecf0f1'
+                        },
+                        ticks: { color: '#ecf0f1' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: '#ecf0f1', font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: '출산 간격별 모성 및 영유아 사망률',
+                        color: '#ecf0f1',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>

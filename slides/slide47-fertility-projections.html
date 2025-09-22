@@ -1,0 +1,610 @@
+<!-- Slide 47: Fertility Projections (Figure 5) -->
+<div class="slide" id="slide-fertility-projections">
+    <div class="slide-header">
+        <h1>출산율 전망 시나리오 (Fertility Projection Scenarios)</h1>
+        <div class="badge-container">
+            <span class="badge data">Figure 5</span>
+            <span class="badge projections">전망</span>
+        </div>
+    </div>
+    <div class="slide-content">
+        <div class="projections-overview">
+            <h3>가족계획 개입에 따른 출산율 전망</h3>
+            <div class="chart-container">
+                <canvas id="fertilityProjectionsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="scenario-analysis">
+            <h3>시나리오별 분석</h3>
+            <div class="scenarios-grid">
+                <div class="scenario baseline">
+                    <h4>📊 기준선 시나리오 (현상 유지)</h4>
+                    <div class="scenario-details">
+                        <div class="assumptions">
+                            <h5>가정</h5>
+                            <ul>
+                                <li>현재 가족계획 프로그램 수준 유지</li>
+                                <li>자금 지원 현상 유지</li>
+                                <li>정책 우선순위 변화 없음</li>
+                                <li>서비스 접근성 점진적 개선</li>
+                            </ul>
+                        </div>
+                        <div class="projections">
+                            <h5>2020년 전망</h5>
+                            <ul>
+                                <li>전 세계 TFR: <strong>2.4</strong></li>
+                                <li>개발도상국 TFR: <strong>2.8</strong></li>
+                                <li>최빈국 TFR: <strong>4.2</strong></li>
+                                <li>세계 인구: <strong>77억 명</strong></li>
+                            </ul>
+                        </div>
+                        <div class="implications">
+                            <h5>함의</h5>
+                            <ul>
+                                <li>인구 증가 지속</li>
+                                <li>MDG 달성 어려움</li>
+                                <li>지역별 격차 확대</li>
+                                <li>환경 압력 증가</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenario improved">
+                    <h4>📈 개선 시나리오</h4>
+                    <div class="scenario-details">
+                        <div class="assumptions">
+                            <h5>가정</h5>
+                            <ul>
+                                <li>가족계획 프로그램 점진적 강화</li>
+                                <li>자금 지원 2배 증가</li>
+                                <li>정책 우선순위 중간 수준 향상</li>
+                                <li>서비스 접근성 꾸준한 개선</li>
+                            </ul>
+                        </div>
+                        <div class="projections">
+                            <h5>2020년 전망</h5>
+                            <ul>
+                                <li>전 세계 TFR: <strong>2.2</strong></li>
+                                <li>개발도상국 TFR: <strong>2.5</strong></li>
+                                <li>최빈국 TFR: <strong>3.7</strong></li>
+                                <li>세계 인구: <strong>75억 명</strong></li>
+                            </ul>
+                        </div>
+                        <div class="benefits">
+                            <h5>효과</h5>
+                            <ul>
+                                <li>인구 증가 둔화</li>
+                                <li>일부 MDG 달성</li>
+                                <li>지역별 격차 일부 완화</li>
+                                <li>경제 발전 기여</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenario accelerated">
+                    <h4>🚀 가속화 시나리오</h4>
+                    <div class="scenario-details">
+                        <div class="assumptions">
+                            <h5>가정</h5>
+                            <ul>
+                                <li>가족계획 프로그램 대폭 강화</li>
+                                <li>자금 지원 5배 증가</li>
+                                <li>정책 최고 우선순위 격상</li>
+                                <li>혁신적 서비스 전달 모델</li>
+                            </ul>
+                        </div>
+                        <div class="projections">
+                            <h5>2020년 전망</h5>
+                            <ul>
+                                <li>전 세계 TFR: <strong>1.9</strong></li>
+                                <li>개발도상국 TFR: <strong>2.1</strong></li>
+                                <li>최빈국 TFR: <strong>3.0</strong></li>
+                                <li>세계 인구: <strong>72억 명</strong></li>
+                            </ul>
+                        </div>
+                        <div class="benefits">
+                            <h5>효과</h5>
+                            <ul>
+                                <li>인구 안정화 달성</li>
+                                <li>모든 MDG 달성</li>
+                                <li>지역별 격차 해소</li>
+                                <li>지속가능한 발전</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="regional-variations">
+            <h3>지역별 전망 변이</h3>
+            <div class="regional-projections">
+                <div class="region sub-saharan-africa">
+                    <h4>🌍 사하라 이남 아프리카</h4>
+                    <div class="region-chart">
+                        <canvas id="africaProjectionsChart"></canvas>
+                    </div>
+                    <div class="region-analysis">
+                        <div class="current-status">
+                            <h5>현재 상황 (2005)</h5>
+                            <ul>
+                                <li>TFR: 5.4</li>
+                                <li>피임 사용률: 23%</li>
+                                <li>미충족 수요: 24%</li>
+                            </ul>
+                        </div>
+                        <div class="scenario-outcomes">
+                            <h5>2020년 시나리오별 결과</h5>
+                            <div class="outcomes-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>시나리오</th>
+                                            <th>TFR</th>
+                                            <th>피임률</th>
+                                            <th>미충족 수요</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>현상 유지</td>
+                                            <td>4.8</td>
+                                            <td>35%</td>
+                                            <td>22%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>개선</td>
+                                            <td>4.2</td>
+                                            <td>45%</td>
+                                            <td>18%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>가속화</td>
+                                            <td>3.5</td>
+                                            <td>60%</td>
+                                            <td>12%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region south-asia">
+                    <h4>🏔️ 남아시아</h4>
+                    <div class="region-chart">
+                        <canvas id="asiaProjectionsChart"></canvas>
+                    </div>
+                    <div class="region-analysis">
+                        <div class="current-status">
+                            <h5>현재 상황 (2005)</h5>
+                            <ul>
+                                <li>TFR: 3.2</li>
+                                <li>피임 사용률: 54%</li>
+                                <li>미충족 수요: 17%</li>
+                            </ul>
+                        </div>
+                        <div class="scenario-outcomes">
+                            <h5>2020년 시나리오별 결과</h5>
+                            <div class="outcomes-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>시나리오</th>
+                                            <th>TFR</th>
+                                            <th>피임률</th>
+                                            <th>미충족 수요</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>현상 유지</td>
+                                            <td>2.6</td>
+                                            <td>62%</td>
+                                            <td>15%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>개선</td>
+                                            <td>2.2</td>
+                                            <td>70%</td>
+                                            <td>12%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>가속화</td>
+                                            <td>1.8</td>
+                                            <td>80%</td>
+                                            <td>8%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="impact-analysis">
+            <h3>시나리오별 영향 분석</h3>
+            <div class="impact-dimensions">
+                <div class="dimension demographic">
+                    <h4>📊 인구학적 영향</h4>
+                    <div class="impact-details">
+                        <div class="population-size">
+                            <h5>인구 규모</h5>
+                            <ul>
+                                <li><strong>현상 유지</strong>: 2050년 92억 명</li>
+                                <li><strong>개선</strong>: 2050년 89억 명</li>
+                                <li><strong>가속화</strong>: 2050년 85억 명</li>
+                                <li><strong>차이</strong>: 최대 7억 명 격차</li>
+                            </ul>
+                        </div>
+                        <div class="age-structure">
+                            <h5>연령 구조</h5>
+                            <ul>
+                                <li>가속화 시나리오에서 인구 배당 효과 극대화</li>
+                                <li>부양비 감소로 경제 성장 잠재력 증대</li>
+                                <li>고령화 대비 시간 확보</li>
+                            </ul>
+                        </div>
+                        <div class="momentum">
+                            <h5>인구 모멘텀</h5>
+                            <ul>
+                                <li>조기 개입할수록 장기적 효과 극대화</li>
+                                <li>2020년 이후 개입 효과 급속 감소</li>
+                                <li>현재가 마지막 기회창</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dimension economic">
+                    <h4>💰 경제적 영향</h4>
+                    <div class="impact-details">
+                        <div class="gdp-impact">
+                            <h5>GDP 성장</h5>
+                            <ul>
+                                <li><strong>가속화 시나리오</strong>: 연간 0.5-1.0%p 추가 성장</li>
+                                <li><strong>1인당 소득</strong>: 30-50% 빠른 증가</li>
+                                <li><strong>빈곤 감소</strong>: 2배 빠른 속도</li>
+                            </ul>
+                        </div>
+                        <div class="savings">
+                            <h5>비용 절약</h5>
+                            <ul>
+                                <li>교육비 절약: 연간 200억 달러</li>
+                                <li>보건비 절약: 연간 150억 달러</li>
+                                <li>인프라 비용: 연간 300억 달러</li>
+                                <li>총 절약: 연간 650억 달러</li>
+                            </ul>
+                        </div>
+                        <div class="investment-returns">
+                            <h5>투자 수익률</h5>
+                            <ul>
+                                <li>가족계획 투자 1달러당 4-7달러 수익</li>
+                                <li>교육 투자 효과 2배 증폭</li>
+                                <li>보건 투자 효과 3배 증폭</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dimension social">
+                    <h4>👥 사회적 영향</h4>
+                    <div class="impact-details">
+                        <div class="gender-equality">
+                            <h5>성평등</h5>
+                            <ul>
+                                <li>여성 교육 기회 확대</li>
+                                <li>경제 활동 참여 증가</li>
+                                <li>정치적 참여 확대</li>
+                                <li>의사결정권 강화</li>
+                            </ul>
+                        </div>
+                        <div class="child-welfare">
+                            <h5>아동 복지</h5>
+                            <ul>
+                                <li>아동 사망률 50% 감소</li>
+                                <li>영양실조 40% 감소</li>
+                                <li>교육 기회 증대</li>
+                                <li>아동 노동 감소</li>
+                            </ul>
+                        </div>
+                        <div class="family-stability">
+                            <h5>가족 안정성</h5>
+                            <ul>
+                                <li>가족 계획된 임신 증가</li>
+                                <li>가족 자원 집중</li>
+                                <li>부모-자녀 관계 개선</li>
+                                <li>가족 빈곤 탈출</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dimension environmental">
+                    <h4>🌍 환경적 영향</h4>
+                    <div class="impact-details">
+                        <div class="resource-pressure">
+                            <h5>자원 압력</h5>
+                            <ul>
+                                <li>물 수요 20% 감소</li>
+                                <li>식량 수요 15% 감소</li>
+                                <li>에너지 수요 18% 감소</li>
+                                <li>토지 압력 25% 완화</li>
+                            </ul>
+                        </div>
+                        <div class="climate-impact">
+                            <h5>기후 변화</h5>
+                            <ul>
+                                <li>CO2 배출 12% 감소</li>
+                                <li>산림 벌채 압력 완화</li>
+                                <li>생물다양성 보호</li>
+                                <li>지속가능한 발전 촉진</li>
+                            </ul>
+                        </div>
+                        <div class="urban-pressure">
+                            <h5>도시화 압력</h5>
+                            <ul>
+                                <li>무계획 도시 확산 억제</li>
+                                <li>인프라 압력 완화</li>
+                                <li>환경 오염 감소</li>
+                                <li>생활 질 개선</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-implications">
+            <h3>정책적 함의</h3>
+            <div class="implications-framework">
+                <div class="implication urgency">
+                    <h4>⏰ 시급성</h4>
+                    <div class="urgency-message">
+                        <p><strong>지금이 마지막 기회창</strong></p>
+                        <ul>
+                            <li>2020년 이후 개입 효과 급격히 감소</li>
+                            <li>인구 모멘텀으로 인한 자연적 증가</li>
+                            <li>젊은 인구의 생식연령 진입 완료</li>
+                            <li>기회비용 기하급수적 증가</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="implication investment">
+                    <h4>💸 투자 정당성</h4>
+                    <div class="investment-case">
+                        <p><strong>투자 대비 수익의 명확성</strong></p>
+                        <ul>
+                            <li>단기 비용 vs 장기 편익의 압도적 차이</li>
+                            <li>다차원적 개발 효과</li>
+                            <li>MDG 달성 핵심 수단</li>
+                            <li>지속가능한 발전의 전제조건</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="implication differentiation">
+                    <h4>🎯 차별화 전략</h4>
+                    <div class="strategy-needs">
+                        <p><strong>지역별 맞춤 접근 필요성</strong></p>
+                        <ul>
+                            <li>사하라 이남 아프리카: 긴급 개입</li>
+                            <li>남아시아: 형평성 중심</li>
+                            <li>라틴 아메리카: 품질 개선</li>
+                            <li>중동: 문화적 민감성</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="implication monitoring">
+                    <h4>📊 모니터링 필요성</h4>
+                    <div class="monitoring-framework">
+                        <p><strong>진전 상황 지속적 추적</strong></p>
+                        <ul>
+                            <li>연간 진전 평가</li>
+                            <li>시나리오 수정과 업데이트</li>
+                            <li>조기 경보 시스템</li>
+                            <li>정책 조정 메커니즘</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). Figure 5">Cleland et al. (2006). Figure 5: Fertility projections under different family planning scenarios</span>
+        <span class="slide-number">47 / 60</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Global Fertility Projections Chart
+    const ctx1 = document.getElementById('fertilityProjectionsChart');
+    if (ctx1) {
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['2005', '2010', '2015', '2020'],
+                datasets: [{
+                    label: '현상 유지',
+                    data: [2.7, 2.6, 2.5, 2.4],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderWidth: 3
+                }, {
+                    label: '개선 시나리오',
+                    data: [2.7, 2.5, 2.3, 2.2],
+                    borderColor: '#f39c12',
+                    backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                    borderWidth: 3
+                }, {
+                    label: '가속화 시나리오',
+                    data: [2.7, 2.3, 2.1, 1.9],
+                    borderColor: '#2ecc71',
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: { display: true, text: '연도', color: '#ecf0f1' },
+                        ticks: { color: '#ecf0f1' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        beginAtZero: false,
+                        min: 1.5,
+                        max: 3.0,
+                        title: { display: true, text: '합계출산율 (TFR)', color: '#ecf0f1' },
+                        ticks: { color: '#ecf0f1' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: '#ecf0f1', font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: '전 세계 출산율 전망 시나리오',
+                        color: '#ecf0f1',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+
+    // Africa Projections Chart
+    const ctx2 = document.getElementById('africaProjectionsChart');
+    if (ctx2) {
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['2005 현재', '2020 현상유지', '2020 개선', '2020 가속화'],
+                datasets: [{
+                    label: 'TFR',
+                    data: [5.4, 4.8, 4.2, 3.5],
+                    backgroundColor: ['#34495e', '#e74c3c', '#f39c12', '#2ecc71'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: { color: '#ecf0f1', font: { size: 10 } },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 6,
+                        title: { display: true, text: 'TFR', color: '#ecf0f1' },
+                        ticks: { color: '#ecf0f1' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: '사하라 이남 아프리카',
+                        color: '#ecf0f1',
+                        font: { size: 14, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+
+    // Asia Projections Chart
+    const ctx3 = document.getElementById('asiaProjectionsChart');
+    if (ctx3) {
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ['2005 현재', '2020 현상유지', '2020 개선', '2020 가속화'],
+                datasets: [{
+                    label: 'TFR',
+                    data: [3.2, 2.6, 2.2, 1.8],
+                    backgroundColor: ['#34495e', '#e74c3c', '#f39c12', '#2ecc71'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: { color: '#ecf0f1', font: { size: 10 } },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 4,
+                        title: { display: true, text: 'TFR', color: '#ecf0f1' },
+                        ticks: { color: '#ecf0f1' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: '남아시아',
+                        color: '#ecf0f1',
+                        font: { size: 14, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+
+<style>
+.outcomes-table {
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+.outcomes-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.outcomes-table th,
+.outcomes-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.outcomes-table th {
+    background: rgba(255,255,255,0.1);
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+.outcomes-table td {
+    color: rgba(255,255,255,0.9);
+}
+
+.region-chart {
+    height: 300px;
+    margin: 15px 0;
+}
+</style>

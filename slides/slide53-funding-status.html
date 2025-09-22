@@ -1,0 +1,549 @@
+<!-- Slide 53: Current Funding Status -->
+<div class="slide" id="slide-funding-status">
+    <div class="slide-header">
+        <h1>현재 자금 조달 현황 (Current Funding Status)</h1>
+        <div class="badge-container">
+            <span class="badge financing">재정</span>
+            <span class="badge gap">자금 부족</span>
+        </div>
+    </div>
+    <div class="slide-content">
+        <div class="funding-overview">
+            <h3>2005년 가족계획 자금 현황</h3>
+            <div class="funding-chart">
+                <canvas id="currentFundingChart"></canvas>
+            </div>
+            <div class="funding-summary">
+                <div class="total-funding">
+                    <span class="value">$3.1 billion</span>
+                    <span class="label">연간 총 자금 규모</span>
+                </div>
+                <div class="funding-gap">
+                    <span class="value">$8.1 billion</span>
+                    <span class="label">필요 자금과의 격차</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="funding-sources">
+            <h3>자금원별 분석</h3>
+            <div class="sources-breakdown">
+                <div class="source domestic">
+                    <h4>🏠 국내 자원 (55%)</h4>
+                    <div class="source-details">
+                        <div class="amount">
+                            <span class="value">$1.7 billion</span>
+                            <span class="label">연간 규모</span>
+                        </div>
+                        <div class="characteristics">
+                            <h5>특징</h5>
+                            <ul>
+                                <li>정부 예산 배정</li>
+                                <li>사회보험 지원</li>
+                                <li>본인 부담금</li>
+                                <li>지역별 편차 심함</li>
+                            </ul>
+                        </div>
+                        <div class="challenges">
+                            <h5>도전과제</h5>
+                            <ul>
+                                <li>최빈국 재정 능력 제약</li>
+                                <li>경쟁하는 우선순위</li>
+                                <li>정치적 의지 부족</li>
+                                <li>효율성 문제</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="source bilateral">
+                    <h4>🤝 양자 공여 (25%)</h4>
+                    <div class="source-details">
+                        <div class="amount">
+                            <span class="value">$0.8 billion</span>
+                            <span class="label">연간 규모</span>
+                        </div>
+                        <div class="major-donors">
+                            <h5>주요 공여국</h5>
+                            <ul>
+                                <li>미국 (40%): $320M</li>
+                                <li>영국 (15%): $120M</li>
+                                <li>네덜란드 (12%): $96M</li>
+                                <li>독일 (10%): $80M</li>
+                                <li>기타 (23%): $184M</li>
+                            </ul>
+                        </div>
+                        <div class="trends">
+                            <h5>최근 동향</h5>
+                            <ul>
+                                <li>전반적 감소 추세</li>
+                                <li>조건부 지원 증가</li>
+                                <li>HIV/AIDS로 우선순위 이동</li>
+                                <li>정치적 제약 증가</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="source multilateral">
+                    <h4>🌍 다자 기구 (15%)</h4>
+                    <div class="source-details">
+                        <div class="amount">
+                            <span class="value">$0.5 billion</span>
+                            <span class="label">연간 규모</span>
+                        </div>
+                        <div class="key-agencies">
+                            <h5>주요 기구</h5>
+                            <ul>
+                                <li>UNFPA (30%): $150M</li>
+                                <li>World Bank (25%): $125M</li>
+                                <li>WHO (20%): $100M</li>
+                                <li>UNICEF (15%): $75M</li>
+                                <li>기타 (10%): $50M</li>
+                            </ul>
+                        </div>
+                        <div class="advantages">
+                            <h5>장점</h5>
+                            <ul>
+                                <li>정치적 중립성</li>
+                                <li>전문성과 경험</li>
+                                <li>글로벌 네트워크</li>
+                                <li>기술 지원 연계</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="source private">
+                    <h4>🏢 민간 부문 (5%)</h4>
+                    <div class="source-details">
+                        <div class="amount">
+                            <span class="value">$0.1 billion</span>
+                            <span class="label">연간 규모</span>
+                        </div>
+                        <div class="private-actors">
+                            <h5>주요 행위자</h5>
+                            <ul>
+                                <li>재단: Gates, Ford, Hewlett</li>
+                                <li>제약회사: 사회적 마케팅</li>
+                                <li>NGO: 서비스 제공</li>
+                                <li>종교 단체: 지역 프로그램</li>
+                            </ul>
+                        </div>
+                        <div class="potential">
+                            <h5>잠재력</h5>
+                            <ul>
+                                <li>혁신적 접근법</li>
+                                <li>효율성 강조</li>
+                                <li>지속가능한 모델</li>
+                                <li>확장 가능성</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="funding-trends">
+            <h3>자금 조달 동향 분석</h3>
+            <div class="trends-chart">
+                <canvas id="fundingTrendsChart"></canvas>
+            </div>
+            <div class="trend-analysis">
+                <div class="declining-trend">
+                    <h4>📉 감소 추세</h4>
+                    <div class="trend-details">
+                        <ul>
+                            <li><strong>1995-2005년</strong>: 연평균 2% 감소</li>
+                            <li><strong>실질 가치</strong>: 인플레이션 고려시 더 큰 감소</li>
+                            <li><strong>비중 감소</strong>: 전체 보건 원조에서 차지하는 비율 하락</li>
+                            <li><strong>우선순위 하락</strong>: 정책 의제에서 소외</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="shifting-priorities">
+                    <h4>🔄 우선순위 변화</h4>
+                    <div class="priority-shifts">
+                        <div class="from-to">
+                            <div class="from">
+                                <h5>감소 영역</h5>
+                                <ul>
+                                    <li>기본 피임법 공급</li>
+                                    <li>서비스 전달 시스템</li>
+                                    <li>정보·교육·소통</li>
+                                    <li>역량 강화</li>
+                                </ul>
+                            </div>
+                            <div class="to">
+                                <h5>증가 영역</h5>
+                                <ul>
+                                    <li>HIV/AIDS 프로그램</li>
+                                    <li>모성 사망 감소</li>
+                                    <li>말라리아 퇴치</li>
+                                    <li>결핵 치료</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="regional-disparities">
+                    <h4>🌍 지역별 격차</h4>
+                    <div class="regional-funding">
+                        <div class="region-data">
+                            <h5>1인당 연간 지원액</h5>
+                            <ul>
+                                <li><strong>사하라 이남 아프리카</strong>: $1.2</li>
+                                <li><strong>남아시아</strong>: $0.8</li>
+                                <li><strong>라틴 아메리카</strong>: $2.1</li>
+                                <li><strong>중동·북아프리카</strong>: $0.6</li>
+                                <li><strong>동아시아</strong>: $0.3</li>
+                            </ul>
+                        </div>
+                        <div class="need-vs-funding">
+                            <h5>필요 대비 자금 비율</h5>
+                            <ul>
+                                <li>최고 수요 지역: 25% 충족</li>
+                                <li>중간 수요 지역: 45% 충족</li>
+                                <li>낮은 수요 지역: 80% 충족</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="funding-gaps">
+            <h3>자금 부족 분석</h3>
+            <div class="gap-analysis">
+                <div class="overall-gap">
+                    <h4>💰 전체 자금 격차</h4>
+                    <div class="gap-details">
+                        <div class="current-vs-needed">
+                            <div class="current">
+                                <span class="amount">$3.1B</span>
+                                <span class="label">현재 자금</span>
+                            </div>
+                            <div class="needed">
+                                <span class="amount">$11.2B</span>
+                                <span class="label">필요 자금</span>
+                            </div>
+                            <div class="gap">
+                                <span class="amount">$8.1B</span>
+                                <span class="label">부족 자금</span>
+                            </div>
+                        </div>
+                        <div class="gap-components">
+                            <h5>부족 자금 구성</h5>
+                            <ul>
+                                <li>서비스 확대: $4.2B</li>
+                                <li>품질 개선: $1.8B</li>
+                                <li>신기술 도입: $1.1B</li>
+                                <li>시스템 강화: $1.0B</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="consequences">
+                    <h4>⚠️ 자금 부족의 결과</h4>
+                    <div class="impact-areas">
+                        <div class="service-gaps">
+                            <h5>서비스 격차</h5>
+                            <ul>
+                                <li>2억 명 여성 미충족 수요</li>
+                                <li>연간 7,600만 원하지 않는 임신</li>
+                                <li>1,900만 안전하지 않은 낙태</li>
+                                <li>68,000명 예방 가능한 모성 사망</li>
+                            </ul>
+                        </div>
+                        <div class="development-impact">
+                            <h5>개발 영향</h5>
+                            <ul>
+                                <li>MDG 달성 지연</li>
+                                <li>빈곤 감소 둔화</li>
+                                <li>성평등 진전 제약</li>
+                                <li>경제 성장 기회 상실</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-cost">
+                    <h4>📊 기회비용 분석</h4>
+                    <div class="cost-comparison">
+                        <div class="investment-returns">
+                            <h5>투자 수익률</h5>
+                            <ul>
+                                <li>가족계획 $1 투자 → $4-7 수익</li>
+                                <li>교육비 절약: $20B/년</li>
+                                <li>보건비 절약: $15B/년</li>
+                                <li>경제 성장: GDP 0.5-1.0%p</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-costs">
+                            <h5>비교 비용</h5>
+                            <ul>
+                                <li>연간 필요 자금: $11.2B</li>
+                                <li>글로벌 군사비의 0.8%</li>
+                                <li>미국 스타벅스 매출의 50%</li>
+                                <li>FIFA 월드컵 비용의 70%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="financing-challenges">
+            <h3>자금 조달 도전과제</h3>
+            <div class="challenges-grid">
+                <div class="challenge political">
+                    <h4>🏛️ 정치적 도전</h4>
+                    <ul>
+                        <li>가족계획에 대한 정치적 논란</li>
+                        <li>종교적 반대와 문화적 저항</li>
+                        <li>선거 정치와 정권 교체 영향</li>
+                        <li>국제 정치 역학 변화</li>
+                    </ul>
+                </div>
+
+                <div class="challenge economic">
+                    <h4>💰 경제적 도전</h4>
+                    <ul>
+                        <li>공여국 재정 압박</li>
+                        <li>원조 피로감 증가</li>
+                        <li>경제 위기와 우선순위 변화</li>
+                        <li>수원국 재정 능력 제약</li>
+                    </ul>
+                </div>
+
+                <div class="challenge institutional">
+                    <h4>🏢 제도적 도전</h4>
+                    <ul>
+                        <li>분절화된 자금 조달</li>
+                        <li>조정 메커니즘 부족</li>
+                        <li>단기적 프로젝트 지원</li>
+                        <li>결과 기반 자금 조달 미흡</li>
+                    </ul>
+                </div>
+
+                <div class="challenge technical">
+                    <h4>⚙️ 기술적 도전</h4>
+                    <ul>
+                        <li>비용 효과성 증명 부족</li>
+                        <li>혁신적 자금 조달 모델 미개발</li>
+                        <li>민간 부문 참여 제한</li>
+                        <li>지속가능한 재정 모델 부재</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="funding-solutions">
+            <h3>자금 조달 해결 방안</h3>
+            <div class="solutions-framework">
+                <div class="solution mobilization">
+                    <h4>🚀 자원 동원 확대</h4>
+                    <div class="mobilization-strategies">
+                        <div name="domestic">
+                            <h5>국내 자원</h5>
+                            <ul>
+                                <li>정부 예산 배정 확대</li>
+                                <li>사회보험 적용 확대</li>
+                                <li>특별세 도입</li>
+                                <li>효율성 개선</li>
+                            </ul>
+                        </div>
+                        <div class="international">
+                            <h5>국제 지원</h5>
+                            <ul>
+                                <li>공여국 지원 확대</li>
+                                <li>다자 기구 역할 강화</li>
+                                <li>혁신적 금융 메커니즘</li>
+                                <li>민간 부문 참여</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution innovation">
+                    <h4>💡 혁신적 메커니즘</h4>
+                    <div class="innovative-mechanisms">
+                        <ul>
+                            <li><strong>결과 기반 지불</strong>: 성과에 따른 자금 지원</li>
+                            <li><strong>사회적 채권</strong>: 민간 투자와 사회적 수익</li>
+                            <li><strong>블록체인 자금</strong>: 투명성과 효율성</li>
+                            <li><strong>카본 크레딧</strong>: 환경 효과와 연계</li>
+                            <li><strong>디지털 플랫폼</strong>: 크라우드 펀딩과 소액 기부</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solution efficiency">
+                    <h4>⚡ 효율성 개선</h4>
+                    <div class="efficiency-measures">
+                        <ul>
+                            <li>중복 투자 제거</li>
+                            <li>조달 시스템 개선</li>
+                            <li>기술 혁신 활용</li>
+                            <li>비용 효과적 모델</li>
+                            <li>성과 기반 관리</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solution partnership">
+                    <h4>🤝 파트너십 강화</h4>
+                    <div class="partnership-models">
+                        <ul>
+                            <li>공공-민간 파트너십</li>
+                            <li>남남 협력 확대</li>
+                            <li>종교-세속 연합</li>
+                            <li>기업 사회 책임</li>
+                            <li>시민사회 네트워크</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span class="citation" data-citation="Cleland et al. (2006). p. 1824">Cleland et al. (2006). Current funding status and financial needs (p. 1824)</span>
+        <span class="slide-number">53 / 60</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Current Funding Chart
+    const ctx1 = document.getElementById('currentFundingChart');
+    if (ctx1) {
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['국내 자원', '양자 공여', '다자 기구', '민간 부문'],
+                datasets: [{
+                    data: [55, 25, 15, 5],
+                    backgroundColor: ['#3498db', '#e74c3c', '#f39c12', '#2ecc71'],
+                    borderWidth: 2,
+                    borderColor: '#2c3e50'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#ecf0f1', font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: '2005년 가족계획 자금원 구성 (%)',
+                        color: '#ecf0f1',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+
+    // Funding Trends Chart
+    const ctx2 = document.getElementById('fundingTrendsChart');
+    if (ctx2) {
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['1995', '1997', '1999', '2001', '2003', '2005'],
+                datasets: [{
+                    label: '총 자금 (십억 달러)',
+                    data: [3.8, 3.6, 3.4, 3.3, 3.2, 3.1],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderWidth: 3,
+                    fill: true
+                }, {
+                    label: '국제 지원',
+                    data: [2.1, 1.9, 1.7, 1.5, 1.4, 1.3],
+                    borderColor: '#f39c12',
+                    backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                    borderWidth: 3,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: { display: true, text: '연도', color: '#ecf0f1' },
+                        ticks: { color: '#ecf0f1' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: '십억 달러', color: '#ecf0f1' },
+                        ticks: { color: '#ecf0f1' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: '#ecf0f1', font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: '가족계획 자금 조달 추세 (1995-2005)',
+                        color: '#ecf0f1',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+
+<style>
+.current-vs-needed {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.current, .needed, .gap {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.current {
+    background: rgba(52, 152, 219, 0.2);
+    border: 2px solid #3498db;
+}
+
+.needed {
+    background: rgba(231, 76, 60, 0.2);
+    border: 2px solid #e74c3c;
+}
+
+.gap {
+    background: rgba(241, 196, 15, 0.2);
+    border: 2px solid #f1c40f;
+}
+
+.current .amount, .needed .amount, .gap .amount {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.current .label, .needed .label, .gap .label {
+    display: block;
+    font-size: 14px;
+    opacity: 0.8;
+}
+</style>

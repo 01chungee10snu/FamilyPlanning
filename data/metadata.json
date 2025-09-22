@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "presentation": {
+      "title": {
+        "ko": "가족계획: 미완성 과제",
+        "en": "Family Planning: The Unfinished Agenda"
+      },
+      "subtitle": {
+        "ko": "세계 인구 변화와 가족계획 정책의 현재와 미래",
+        "en": "Global Population Change and the Present and Future of Family Planning Policy"
+      },
+      "author": "발제자",
+      "institution": "서울대학교",
+      "course": "인구정책론",
+      "semester": "2025-2",
+      "date": "2025-09-22",
+      "version": "1.0"
+    },
+    "source": {
+      "paper": {
+        "title": "Family planning: the unfinished agenda",
+        "authors": ["John Cleland", "Stan Bernstein", "Alex Ezeh", "Anibal Faundes", "Anna Glasier", "Jolene Innis"],
+        "journal": "The Lancet",
+        "volume": 368,
+        "issue": 9549,
+        "pages": "1810-1827",
+        "year": 2006,
+        "doi": "10.1016/S0140-6736(06)69480-4"
+      },
+      "series": "The Lancet Series on Family Planning",
+      "pdfFile": "Family planning the unfi nished agenda.pdf"
+    },
+    "structure": {
+      "totalSlides": 60,
+      "totalSections": 9,
+      "estimatedDuration": "70 minutes",
+      "language": "bilingual (Korean/English)",
+      "format": "academic presentation"
+    },
+    "features": {
+      "bilingualContent": true,
+      "visualizations": true,
+      "citations": true,
+      "notes": true,
+      "responsiveDesign": true,
+      "printFriendly": true
+    },
+    "technical": {
+      "framework": "HTML/CSS/JavaScript",
+      "dataFormat": "JSON",
+      "chartLibrary": "Chart.js",
+      "fontStack": ["Noto Sans KR", "Inter", "system-ui"],
+      "colorScheme": {
+        "primary": "#2E86AB",
+        "secondary": "#A23B72",
+        "accent": "#F18F01",
+        "neutral": "#6B7280",
+        "background": "#FFFFFF"
+      }
+    },
+    "navigation": {
+      "keyboard": true,
+      "touch": true,
+      "presenter": true,
+      "overview": true,
+      "search": true
+    },
+    "export": {
+      "pdf": true,
+      "html": true,
+      "images": true
+    },
+    "lastUpdated": "2025-09-22T00:00:00Z",
+    "status": "in-development"
+  }
+}
