@@ -273,11 +273,45 @@ class PresentationApp {
                     const response = await fetch(slideFiles[i]);
                     if (response.ok) {
                         const html = await response.text();
-                        const slideDiv = document.createElement('div');
-                        slideDiv.innerHTML = html;
 
-                        // Ensure the slide has proper ID and class
-                        const slide = slideDiv.firstElementChild || slideDiv;
+                        const parser = new DOMParser();
+                        const parsedDocument = parser.parseFromString(html, 'text/html');
+                        const body = parsedDocument.body;
+
+                        let extractedNode = null;
+
+                        if (body) {
+                            extractedNode = body.querySelector('.slide')
+                                || body.querySelector('[data-slide-root]')
+                                || body.querySelector('div.container');
+
+                            if (!extractedNode) {
+                                if (body.childElementCount === 1) {
+                                    extractedNode = body.firstElementChild;
+                                } else if (body.childElementCount > 1) {
+                                    const wrapper = document.createElement('div');
+                                    Array.from(body.children).forEach((child) => {
+                                        wrapper.appendChild(child.cloneNode(true));
+                                    });
+                                    extractedNode = wrapper;
+                                }
+                            }
+                        }
+
+                        if (!extractedNode) {
+                            const template = document.createElement('template');
+                            template.innerHTML = html.trim();
+
+                            if (template.content.firstElementChild) {
+                                extractedNode = template.content.firstElementChild;
+                            } else {
+                                extractedNode = document.createElement('div');
+                                extractedNode.innerHTML = html;
+                            }
+                        }
+
+                        const slide = extractedNode.cloneNode(true);
+
                         if (!slide.id) {
                             slide.id = `slide-${i + 1}`;
                         }
