@@ -86,11 +86,11 @@
             'slides/slide07-unfinished-panel5.html',
             'slides/slide08-panel6-brazil.html',
             'slides/slide09-panel7-kenya.html',
-            'slides/slide10-panel8-bangladesh.html',
-            'slides/slide11-what-works.html',
-            'slides/slide12-supply-sources.html',
-            'slides/slide13-financial-agenda.html',
-            'slides/slide14-future-needs.html',
+            'slides/slide10-panel8-bangladesh-pakistan.html',
+            'slides/slide11-comparison.html',
+            'slides/slide12-table3-methods.html',
+            'slides/slide13-figure6-access.html',
+            'slides/slide14-funding.html',
             'slides/slide15-recommendations.html'
         ];
 
@@ -103,20 +103,23 @@
                     const response = await fetch(slideFiles[i]);
                     if (response.ok) {
                         const html = await response.text();
-                        const slideDiv = document.createElement('div');
-                        slideDiv.innerHTML = html;
 
-                        // Extract the slide content
-                        const slide = slideDiv.querySelector('.slide') || slideDiv.firstElementChild;
-                        if (slide) {
-                            slide.classList.add('slide');
-                            slide.id = `slide-${i + 1}`;
-                            if (i === 0) slide.classList.add('active');
-                            container.appendChild(slide);
+                        // Create a new slide div
+                        const slide = document.createElement('div');
+                        slide.classList.add('slide');
+                        slide.id = `slide-${i + 1}`;
+                        if (i === 0) slide.classList.add('active');
 
-                            // Initialize any charts in this slide
-                            initializeSlideCharts(slide);
-                        }
+                        // Extract body content from the HTML
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        const bodyContent = doc.body ? doc.body.innerHTML : html;
+
+                        slide.innerHTML = bodyContent;
+                        container.appendChild(slide);
+
+                        // Initialize any charts in this slide
+                        initializeSlideCharts(slide);
                     }
                 } catch (error) {
                     console.error(`Error loading slide ${i + 1}:`, error);

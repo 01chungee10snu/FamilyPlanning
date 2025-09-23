@@ -1,0 +1,306 @@
+/* Responsive CSS for Presentation System */
+
+/* Large Desktop (1920px and up) */
+@media (min-width: 1920px) {
+    .slide-content {
+        max-width: 1600px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .stat-number {
+        font-size: 4rem;
+    }
+}
+
+/* Desktop (1024px to 1919px) */
+@media (min-width: 1024px) and (max-width: 1919px) {
+    .slide-content {
+        max-width: 1200px;
+    }
+}
+
+/* Tablet Landscape (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .slide {
+        padding: 30px;
+    }
+
+    .slide-content {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .two-column {
+        gap: 20px;
+    }
+
+    .key-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* Mobile Landscape (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .slide {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .key-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .navigation {
+        padding: 8px 15px;
+    }
+
+    .navigation button {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+        margin: 0 5px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+/* Mobile Portrait (up to 479px) */
+@media (max-width: 479px) {
+    .slide {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .slide-header {
+        margin-bottom: 20px;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .key-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+    }
+
+    .navigation {
+        padding: 8px 10px;
+        bottom: 10px;
+    }
+
+    .navigation button {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+        margin: 0 3px;
+    }
+
+    .slide-counter {
+        font-size: 0.9rem;
+        margin: 0 10px;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    ul, ol {
+        margin-left: 1.5rem;
+    }
+
+    .panel {
+        padding: 15px;
+    }
+
+    .slide-footer {
+        font-size: 0.75rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .navigation button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .dot {
+        min-width: 15px;
+        min-height: 15px;
+    }
+
+    a {
+        padding: 5px;
+        display: inline-block;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .slide {
+        page-break-after: always;
+        height: auto;
+        padding: 20mm;
+    }
+
+    .navigation,
+    .slide-dots {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .slide-content {
+        max-width: 100%;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .stat-card,
+    .panel,
+    table {
+        box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #434343 0%, #000000 100%);
+        color: #f0f0f0;
+    }
+
+    .slide {
+        background: #1a1a1a;
+        color: #f0f0f0;
+    }
+
+    h1, h2, h3, strong {
+        color: #ffffff;
+    }
+
+    .stat-card,
+    .panel {
+        background: #2a2a2a;
+        color: #f0f0f0;
+    }
+
+    table {
+        background: #2a2a2a;
+        color: #f0f0f0;
+    }
+
+    th {
+        background: #333;
+        color: #fff;
+    }
+
+    td {
+        border-color: #444;
+    }
+
+    .slide-footer {
+        border-top-color: #444;
+        color: #aaa;
+    }
+}

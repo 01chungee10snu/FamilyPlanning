@@ -1,0 +1,19 @@
+# GitHub 원격 저장소 연결 및 푸시 명령어
+
+## 1. 원격 저장소 추가 (YOUR_USERNAME을 실제 GitHub 사용자명으로 변경)
+git remote add origin https://github.com/YOUR_USERNAME/family-planning-presentation.git
+
+## 2. 브랜치 이름을 main으로 변경
+git branch -M main
+
+## 3. GitHub에 푸시
+git push -u origin main
+
+## 만약 인증 오류가 발생하면:
+# 1. GitHub Personal Access Token을 생성하세요:
+#    - GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+#    - Generate new token → repo 체크 → Generate token
+# 2. 비밀번호 대신 이 토큰을 사용하세요
+
+## SSH를 사용하는 경우:
+# git remote add origin git@github.com:YOUR_USERNAME/family-planning-presentation.git

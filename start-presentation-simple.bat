@@ -9,7 +9,7 @@ echo ╚════════════════════════
 echo.
 
 :: Try to start with default browser
-start index.html
+start presentation-refined.html
 
 echo ✓ 브라우저에서 발표자료가 열렸습니다.
 echo.
