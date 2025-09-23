@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
 
     <style>
         /* ==================== 기본 설정 ==================== */
@@ -362,8 +363,16 @@
 
         .title-slide h1 {
             font-size: 52px;
-            color: #FFFFFF;
+            color: #FFFFFF !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-slide p {
+            color: #FFFFFF !important;
+        }
+
+        .title-slide h4 {
+            color: #FFFFFF !important;
         }
 
         .key-messages {
@@ -379,6 +388,10 @@
             padding: 15px;
             border-radius: 8px;
             backdrop-filter: blur(10px);
+        }
+
+        .key-message h4, .key-message p {
+            color: #FFFFFF !important;
         }
 
         .key-message h4 {
@@ -429,7 +442,7 @@
                         <p>인구·환경 균형</p>
                     </div>
                 </div>
-                <p style="margin-top: 40px; font-size: 14px; opacity: 0.8;">
+                <p style="margin-top: 40px; font-size: 14px; color: #FFFFFF;">
                     Cleland, J., Bernstein, S., Ezeh, A., Faundes, A., Glasier, A., & Innis, J. (2006). Family planning: the unfinished agenda. The Lancet, 368(9549), 1810-1827.
                 </p>
             </div>
@@ -659,24 +672,38 @@
             <!-- Slide 6: 남아시아 비교 -->
             <div class="slide">
                 <h1>남아시아 대조: 방글라데시 vs 파키스탄</h1>
-                <div id="southAsiaMap" class="map-container" style="height: 320px;"></div>
-                <div class="two-column" style="margin-top: 20px; height: auto;">
+                <div class="main-with-side">
                     <div>
-                        <h3>🇧🇩 방글라데시: 혁신적 성공</h3>
-                        <div class="chart-container small-chart">
-                            <canvas id="bangladeshChart"></canvas>
+                        <h3>합계출산율(TFR) 비교</h3>
+                        <div class="chart-container" style="height: 350px;">
+                            <canvas id="southAsiaComparison"></canvas>
                         </div>
-                        <p style="font-size: 12px; margin-top: 10px;">
-                            <strong>핵심 전략 (Cleland et al., 2006):</strong> 여성 지역보건요원, 문맹 여성 대상 프로그램, 소액금융 연계
-                        </p>
                     </div>
                     <div>
-                        <h3>🇵🇰 파키스탄: 정체 상태</h3>
-                        <div class="chart-container small-chart">
-                            <canvas id="pakistanChart"></canvas>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #e5f5e0 0%, #c8e6c9 100%);">
+                            <h4>🇧🇩 방글라데시: 성공 사례</h4>
+                            <p style="font-size: 12px;">
+                                <strong>TFR 감소:</strong> 6.3 → 3.0<br>
+                                <strong>피임률:</strong> 58% 달성<br>
+                                <strong>핵심 전략:</strong><br>
+                                • 여성 지역보건요원<br>
+                                • 문맹 여성 프로그램<br>
+                                • 소액금융 연계
+                            </p>
                         </div>
-                        <p style="font-size: 12px; margin-top: 10px;">
-                            <strong>장애 요인 (Cleland et al., 2006):</strong> 정치적 불안정, 종교적 반대, 여성 이동 제한
+                        <div class="panel-box" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); margin-top: 15px;">
+                            <h4>🇵🇰 파키스탄: 정체 상태</h4>
+                            <p style="font-size: 12px;">
+                                <strong>TFR 정체:</strong> 6.0 → 4.3<br>
+                                <strong>피임률:</strong> 30% 정체<br>
+                                <strong>장애 요인:</strong><br>
+                                • 정치적 불안정<br>
+                                • 종교적 반대<br>
+                                • 여성 이동 제한
+                            </p>
+                        </div>
+                        <p style="font-size: 10px; margin-top: 15px; font-style: italic;">
+                            (Cleland et al., 2006)
                         </p>
                     </div>
                 </div>
@@ -687,46 +714,53 @@
                 <h1>밀레니엄 개발목표(MDG)와 가족계획</h1>
                 <div class="two-column">
                     <div>
-                        <h3>MDG 달성을 위한 가족계획의 기여</h3>
+                        <h3>MDG와 가족계획 연계</h3>
                         <div class="panel-box">
-                            <h4>MDG 1: 빈곤 퇴치</h4>
+                            <h4>MDG 5: 모성 건강 개선</h4>
                             <p style="font-size: 13px;">
-                                • 인구 증가율 감소 → 1인당 소득 증가<br>
-                                • 가구당 자녀수 감소 → 교육 투자 증대<br>
-                                • 여성 경제활동 참여 증가
+                                <strong>목표 5A:</strong> 모성 사망률 75% 감소<br>
+                                <strong>목표 5B:</strong> 생식건강 보편적 접근<br>
+                                • 2007년 추가 (초기 MDG에서 제외)<br>
+                                • 모성 사망 32% 예방 가능 (Cleland et al., 2006)
                             </p>
                         </div>
                         <div class="panel-box">
-                            <h4>MDG 4 & 5: 모성·아동 건강</h4>
+                            <h4>MDG 4: 아동 사망률 감소</h4>
                             <p style="font-size: 13px;">
-                                • 모성 사망 32% 예방 가능 (Cleland et al., 2006)<br>
+                                • 출산 간격 조절로 영아 사망 감소<br>
                                 • 아동 사망 10% 감소 가능<br>
-                                • 출산 간격 조절로 건강 개선<br>
-                                • 가족계획 보편화로 산모 1인당 11% 모성사망률 감소<br>
-                                • 임신 간격 2년 이상 유지 시 영아사망률 13% 감소
+                                • 산전 관리 접근성 개선
                             </p>
                         </div>
                         <div class="panel-box">
-                            <h4>MDG 3: 성평등</h4>
+                            <h4>MDG 1 & 3: 빈곤 퇴치와 성평등</h4>
                             <p style="font-size: 13px;">
-                                • 여성의 생식건강 자기결정권<br>
-                                • 교육 및 경제활동 기회 확대<br>
-                                • 가정 내 의사결정 참여 증대
+                                • 가구 규모 감소로 자원 집중<br>
+                                • 여성 노동 참여 증가<br>
+                                • 교육 기회 확대
                             </p>
                         </div>
                     </div>
                     <div>
-                        <h3>비용 효과성</h3>
-                        <div class="chart-container">
-                            <canvas id="costEffectiveness"></canvas>
+                        <h3>생식건강 목표의 역사</h3>
+                        <div class="quote-box" style="background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);">
+                            <p style="font-size: 14px;">
+                                <strong>1994년:</strong> 카이로 회의 - 생식건강권 합의<br>
+                                <strong>2000년:</strong> MDG 제정 - 생식건강 제외<br>
+                                <strong>2007년:</strong> MDG 5B 추가 (13년 지연)
+                            </p>
                         </div>
-                        <div class="data-card" style="margin-top: 15px; background: #69b7a4; color: white;">
-                            <h4 style="color: white;">투자 대비 효과 (Cleland et al., 2006)</h4>
-                            <p style="font-size: 24px; font-weight: 800;">1:120</p>
-                            <p style="font-size: 12px;">가족계획 $1 투자 → $120 경제적 편익</p>
+                        <div class="panel-box" style="margin-top: 15px;">
+                            <h4>달성 현황 (2015년)</h4>
+                            <ul style="font-size: 12px;">
+                                <li><strong>모성 사망률:</strong> 45% 감소 (목표 75% 미달)</li>
+                                <li><strong>피임률:</strong> 64% (55%에서 증가)</li>
+                                <li><strong>미충족 수요:</strong> 12% 여성</li>
+                                <li><strong>산전 관리(4회+):</strong> 64%</li>
+                            </ul>
                         </div>
                         <div class="quote-box" style="margin-top: 15px;">
-                            <p>"가족계획은 모든 MDG 달성에 기여하는 핵심 개입"</p>
+                            <p>"가족계획은 모든 MDG 달성의 핵심 개입"</p>
                         </div>
                     </div>
                 </div>
@@ -742,175 +776,155 @@
                             <canvas id="healthImpactChart"></canvas>
                         </div>
                         <div class="data-card" style="margin-top: 15px;">
-                            <p>모성 사망 감소 (Cleland et al., 2006)</p>
-                            <div class="stat-number" style="font-size: 32px;">거의 10%</div>
-                            <p style="font-size: 11px;">영아 사망률 - 가족계획 보편화 시</p>
+                            <p>가족계획으로 예방 가능한 사망 (Cleland et al., 2006)</p>
+                            <div class="stat-number" style="font-size: 28px;">모성: 32%</div>
+                            <div class="stat-number" style="font-size: 28px;">영아: 거의 10%</div>
                         </div>
                     </div>
                     <div>
-                        <h3>피임의 추가 건강 혜택</h3>
+                        <h3>출산 간격의 중요성</h3>
                         <div class="panel-box">
-                            <h4>경구피임약 효과</h4>
-                            <ul style="font-size: 12px;">
-                                <li>난소암 위험 <strong>50% 감소</strong></li>
-                                <li>자궁내막암 <strong>50% 감소</strong></li>
-                                <li>대장암 위험 감소</li>
-                                <li>월경 관련 빈혈 개선</li>
-                            </ul>
+                            <h4>권장 출산 간격</h4>
+                            <p style="font-size: 13px;">
+                                • 최소 2년 이상 권장<br>
+                                • 모성 및 영아 건강 개선<br>
+                                • 영양 상태 회복 기간 확보
+                            </p>
                         </div>
                         <div class="panel-box" style="background: #fef3c7;">
-                            <h4>간격 조절 효과</h4>
-                            <ul style="font-size: 12px;">
-                                <li>조산 위험 <strong>40% 감소</strong></li>
-                                <li>저체중아 <strong>30% 감소</strong></li>
-                                <li>영아 사망률 <strong>20% 감소</strong></li>
-                            </ul>
-                        </div>
-                        <div class="quote-box" style="margin-top: 15px;">
-                            <p>"가족계획은 가장 비용효과적인 보건 개입"</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9: 경제적 영향 -->
-            <div class="slide">
-                <h1>경제적 영향과 인구 배당</h1>
-                <div class="main-with-side">
-                    <div>
-                        <h3>인구 배당 효과</h3>
-                        <div class="chart-container">
-                            <canvas id="demographicDividend"></canvas>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-                            <div class="panel-box">
-                                <h4>동아시아 기적 (Cleland et al., 2006)</h4>
-                                <p style="font-size: 12px;">
-                                    1965-1990년 경제성장의 <strong>약 1/3</strong>이 인구구조 변화(인구 배당) 기여
-                                </p>
-                            </div>
-                            <div class="panel-box">
-                                <h4>비용 효과성</h4>
-                                <p style="font-size: 12px;">
-                                    $1 투자 → <strong>$120</strong> 경제적 편익 (장기)
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>경제 효과 경로</h3>
-                        <div class="data-card">
-                            <h4>가계 수준</h4>
-                            <ul style="font-size: 11px; text-align: left;">
-                                <li>교육 투자 증가</li>
-                                <li>저축률 상승</li>
-                                <li>여성 노동참여</li>
-                            </ul>
-                        </div>
-                        <div class="data-card" style="margin-top: 10px;">
-                            <h4>국가 수준</h4>
-                            <ul style="font-size: 11px; text-align: left;">
-                                <li>부양비 감소</li>
-                                <li>인적자본 축적</li>
-                                <li>생산성 향상</li>
-                            </ul>
-                        </div>
-                        <div class="data-card" style="margin-top: 10px; background: #ecfdf5;">
-                            <h4>글로벌 수준</h4>
-                            <ul style="font-size: 11px; text-align: left;">
-                                <li>빈곤 감소</li>
-                                <li>불평등 완화</li>
-                                <li>지속가능 발전</li>
-                            </ul>
-                        </div>
-                        <div class="panel-box" style="margin-top: 10px;">
-                            <h4>남한 사례연구 (Panel 4)</h4>
-                            <p style="font-size: 11px;">
-                                1960-1990년 TFR 6.0→1.6 감소<br>
-                                • 강력한 정부 정책<br>
-                                • 경제 인센티브 제공<br>
-                                • 교육 확대와 연계<br>
-                                • 급속한 경제 성장 달성
+                            <h4>위험 임신 예방</h4>
+                            <p style="font-size: 13px;">
+                                • 너무 이른 임신 (18세 이하)<br>
+                                • 너무 늦은 임신 (35세 이상)<br>
+                                • 너무 잦은 임신 (간격 2년 미만)<br>
+                                • 너무 많은 임신 (4회 이상)
                             </p>
                         </div>
+                        <div class="quote-box" style="margin-top: 15px;">
+                            <p>"가족계획은 가장 비용효과적인 보건 개입"<br>
+                            <span style="font-size: 10px;">(Cleland et al., 2006)</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-
-            <!-- Slide 11: 미충족 수요 분석 (지도) -->
+            <!-- Slide 9: 경제적 영향과 남한 사례 -->
             <div class="slide">
-                <h1>미충족 수요: 글로벌 현황</h1>
-                <div id="unmetNeedMap" class="map-container" style="height: 320px;"></div>
-                <div class="three-column" style="margin-top: 20px; height: auto;">
-                    <div class="panel-box">
-                        <h4>총 미충족 수요</h4>
-                        <div class="stat-number" style="font-size: 28px;">2.01억명</div>
-                        <p style="font-size: 11px;">가임기 기혼 여성</p>
-                    </div>
-                    <div class="panel-box">
-                        <h4>주요 원인</h4>
-                        <ul style="font-size: 11px;">
-                            <li>접근성 부족 (45%)</li>
-                            <li>부작용 우려 (26%)</li>
-                            <li>문화적 반대 (23%)</li>
-                            <li>비용 문제 (6%)</li>
-                        </ul>
-                    </div>
-                    <div class="panel-box">
-                        <h4>경제 수준별</h4>
-                        <ul style="font-size: 11px;">
-                            <li>최빈층: <strong>36%</strong></li>
-                            <li>빈곤층: 28%</li>
-                            <li>중산층: 19%</li>
-                            <li>부유층: 12%</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 12: 서비스 전달 -->
-            <div class="slide">
-                <h1>서비스 전달 모델과 접근성 개선</h1>
+                <h1>인구 배당과 경제 성장: 남한 사례</h1>
                 <div class="two-column">
                     <div>
-                        <h3>효과적인 전달 모델</h3>
-                        <div class="panel-box">
-                            <h4>1. 지역사회 기반</h4>
-                            <p style="font-size: 12px;">
-                                • 마을 보건요원 활용<br>
-                                • 이동식 클리닉<br>
-                                • 또래 교육자 프로그램
-                            </p>
+                        <h3>남한의 인구 전환 (Panel 4)</h3>
+                        <div class="chart-container">
+                            <canvas id="southKoreaChart"></canvas>
                         </div>
-                        <div class="panel-box">
-                            <h4>2. 시설 기반</h4>
-                            <p style="font-size: 12px;">
-                                • 원스톱 서비스<br>
-                                • 산후 즉시 제공<br>
-                                • 청소년 친화적 공간
-                            </p>
-                        </div>
-                        <div class="panel-box">
-                            <h4>3. 혁신적 접근</h4>
-                            <p style="font-size: 12px;">
-                                • 모바일 헬스 (mHealth)<br>
-                                • 바우처 시스템<br>
-                                • 소셜 프랜차이즈
-                            </p>
+                        <div class="panel-box" style="margin-top: 15px;">
+                            <h4>주요 정책 개입</h4>
+                            <ul style="font-size: 12px;">
+                                <li><strong>1961년:</strong> 가족계획 국가 프로그램 시작</li>
+                                <li><strong>1973년:</strong> 모자보건법 제정</li>
+                                <li><strong>1983년:</strong> 두 자녀 정책 강화</li>
+                            </ul>
                         </div>
                     </div>
                     <div>
-                        <h3>접근성 장벽 제거</h3>
-                        <div class="chart-container">
-                            <canvas id="accessBarriers"></canvas>
+                        <h3>경제적 영향</h3>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #e5f5e0 0%, #c8e6c9 100%);">
+                            <h4>인구 배당 효과</h4>
+                            <p style="font-size: 13px;">
+                                <strong>동아시아 경제 기적:</strong><br>
+                                1965-1990년 경제성장의 <strong>약 1/3</strong>이 인구구조 변화에 기인
+                            </p>
+                            <p style="font-size: 11px; margin-top: 10px;">
+                                (Cleland et al., 2006)
+                            </p>
                         </div>
-                        <div class="quote-box" style="margin-top: 15px;">
-                            <p>"마지막 1마일 문제 해결이 핵심"</p>
+                        <div class="data-card" style="margin-top: 15px;">
+                            <h4>TFR 감소</h4>
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 24px; font-weight: bold;">6.0</span>
+                                <span style="font-size: 18px; margin: 0 10px;">→</span>
+                                <span style="font-size: 24px; font-weight: bold;">1.6</span>
+                            </div>
+                            <p style="font-size: 11px;">1960-1990년</p>
+                        </div>
+                        <div class="data-card" style="margin-top: 10px;">
+                            <h4>경제 성장</h4>
+                            <p style="font-size: 13px;">
+                                • GDP 연평균 8% 성장<br>
+                                • 1인당 소득 20배 증가<br>
+                                • 저축률 35% 달성
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+            <!-- Slide 10: 미충족 수요 -->
+            <div class="slide">
+                <h1>미충족 수요: 정의와 영향</h1>
+                <div class="two-column">
+                    <div>
+                        <h3>미충족 수요란?</h3>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);">
+                            <h4>정의</h4>
+                            <p style="font-size: 13px;">
+                                임신을 원하지 않거나 연기하고 싶지만 피임법을 사용하지 않는 가임기 여성의 비율
+                            </p>
+                        </div>
+                        <div class="panel-box">
+                            <h4>측정 기준</h4>
+                            <ul style="font-size: 12px;">
+                                <li>성생활이 활발한 기혼/동거 여성</li>
+                                <li>임신을 원하지 않거나 2년 이상 연기 희망</li>
+                                <li>현재 피임법 미사용</li>
+                                <li>임신 중이거나 산후 무월경 제외</li>
+                            </ul>
+                        </div>
+                        <div class="panel-box">
+                            <h4>주요 원인</h4>
+                            <ul style="font-size: 12px;">
+                                <li>서비스 접근성 부족</li>
+                                <li>부작용에 대한 우려</li>
+                                <li>문화적/종교적 반대</li>
+                                <li>파트너의 반대</li>
+                                <li>정보 부족</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>범위와 영향</h3>
+                        <div class="panel-box">
+                            <h4>지역별 분포</h4>
+                            <ul style="font-size: 12px;">
+                                <li><strong>사하라이남 아프리카:</strong> 24%</li>
+                                <li><strong>남아시아:</strong> 13%</li>
+                                <li><strong>라틴아메리카:</strong> 10%</li>
+                                <li><strong>동아시아:</strong> 6%</li>
+                            </ul>
+                        </div>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                            <h4>건강 영향</h4>
+                            <p style="font-size: 12px;">
+                                • 의도하지 않은 임신 증가<br>
+                                • 안전하지 않은 낙태 위험<br>
+                                • 모성 및 영아 사망률 증가<br>
+                                • 빈곤의 악순환 지속
+                            </p>
+                        </div>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);">
+                            <h4>해결 시 효과</h4>
+                            <p style="font-size: 12px;">
+                                • 모성 사망 1/3 감소 가능<br>
+                                • 영아 사망 대폭 감소<br>
+                                • 여성 임파워먼트 증진<br>
+                                • 경제 발전 가속화
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <!-- Slide 13: 피임 방법과 효과성 -->
             <div class="slide">
@@ -1620,6 +1634,34 @@
                                     display: true,
                                     text: '세계 평균 합계출산율 변화',
                                     font: { family: 'SeoulHangang', weight: 700 }
+                                },
+                                annotation: {
+                                    annotations: {
+                                        line1: {
+                                            type: 'line',
+                                            xMin: '1960',
+                                            xMax: '1960',
+                                            borderColor: 'rgb(255, 99, 132)',
+                                            borderWidth: 2,
+                                            label: {
+                                                display: true,
+                                                content: '1960년대: 인구폭발 우려',
+                                                position: 'start'
+                                            }
+                                        },
+                                        line2: {
+                                            type: 'line',
+                                            xMin: '1994',
+                                            xMax: '1994',
+                                            borderColor: 'rgb(54, 162, 235)',
+                                            borderWidth: 2,
+                                            label: {
+                                                display: true,
+                                                content: '1994 카이로 회의',
+                                                position: 'center'
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1663,48 +1705,29 @@
                     break;
 
                 case 5: // 남아시아 비교
-                    setTimeout(() => {
-                        const map = createMap('southAsiaMap', [25, 80], 4);
-                        if (map) {
-                            addCountryMarker(map, 'bangladesh');
-                            addCountryMarker(map, 'pakistan');
-                        }
-                    }, 100);
-
-                    createChart('bangladeshChart', {
+                    createChart('southAsiaComparison', {
                         type: 'line',
                         data: {
                             labels: ['1975', '1985', '1995', '2005', '2015'],
-                            datasets: [{
-                                label: 'TFR',
-                                data: [6.3, 5.1, 3.4, 2.9, 2.3],
-                                borderColor: '#69b7a4',
-                                tension: 0.3
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                title: {
-                                    display: true,
-                                    text: '방글라데시 TFR 감소',
-                                    font: { family: 'SeoulHangang' }
+                            datasets: [
+                                {
+                                    label: '방글라데시',
+                                    data: [6.3, 5.1, 3.4, 2.9, 2.3],
+                                    borderColor: '#69b7a4',
+                                    backgroundColor: 'rgba(105, 183, 164, 0.1)',
+                                    borderWidth: 3,
+                                    tension: 0.3
+                                },
+                                {
+                                    label: '파키스탄',
+                                    data: [6.3, 6.0, 5.4, 4.3, 3.7],
+                                    borderColor: '#c4a977',
+                                    backgroundColor: 'rgba(196, 169, 119, 0.1)',
+                                    borderWidth: 3,
+                                    borderDash: [5, 5],
+                                    tension: 0.3
                                 }
-                            }
-                        }
-                    });
-
-                    createChart('pakistanChart', {
-                        type: 'line',
-                        data: {
-                            labels: ['1975', '1985', '1995', '2005', '2015'],
-                            datasets: [{
-                                label: 'TFR',
-                                data: [6.3, 6.0, 5.4, 4.3, 3.7],
-                                borderColor: '#c4a977',
-                                tension: 0.3
-                            }]
+                            ]
                         },
                         options: {
                             responsive: true,
@@ -1712,8 +1735,39 @@
                             plugins: {
                                 title: {
                                     display: true,
-                                    text: '파키스탄 TFR 정체',
-                                    font: { family: 'SeoulHangang' }
+                                    text: 'TFR 변화 비교: 성공 vs 정체',
+                                    font: {
+                                        family: 'SeoulHangang',
+                                        size: 16,
+                                        weight: 700
+                                    }
+                                },
+                                legend: {
+                                    display: true,
+                                    position: 'top',
+                                    labels: {
+                                        font: { family: 'SeoulNamsan', size: 13 },
+                                        usePointStyle: true
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: false,
+                                    min: 2,
+                                    max: 7,
+                                    title: {
+                                        display: true,
+                                        text: '합계출산율(TFR)',
+                                        font: { family: 'SeoulNamsan' }
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: '연도',
+                                        font: { family: 'SeoulNamsan' }
+                                    }
                                 }
                             }
                         }
@@ -1724,37 +1778,96 @@
                     createChart('healthImpactChart', {
                         type: 'bar',
                         data: {
-                            labels: ['모성 사망', '영아 사망', '5세 이하 사망'],
+                            labels: ['모성 사망', '영아 사망'],
                             datasets: [{
-                                label: '감소율 (%)',
-                                data: [32, 20, 25],
-                                backgroundColor: ['#c97064', '#c4a977', '#69b7a4']
+                                label: '예방 가능 비율 (%)',
+                                data: [32, 10],
+                                backgroundColor: ['#c97064', '#69b7a4']
                             }]
                         },
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
                             plugins: {
-                                legend: { display: false }
+                                legend: { display: false },
+                                title: {
+                                    display: true,
+                                    text: '가족계획으로 예방 가능한 사망',
+                                    font: { family: 'SeoulHangang' }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 40
+                                }
                             }
                         }
                     });
                     break;
 
-                case 8: // 경제 영향
-                    createChart('demographicDividend', {
-                        type: 'bar',
+                case 8: // 남한 사례
+                    createChart('southKoreaChart', {
+                        type: 'line',
                         data: {
-                            labels: ['동아시아', '남아시아', '라틴아메리카', '사하라이남'],
+                            labels: ['1960', '1970', '1980', '1990', '2000'],
                             datasets: [{
-                                label: '경제성장 기여도 (%)',
-                                data: [33, 18, 22, 8],
-                                backgroundColor: '#69b7a4'
+                                label: 'TFR',
+                                data: [6.0, 4.5, 2.8, 1.6, 1.5],
+                                borderColor: '#69b7a4',
+                                backgroundColor: 'rgba(105, 183, 164, 0.1)',
+                                yAxisID: 'y',
+                                tension: 0.3
+                            }, {
+                                label: 'GDP 성장률 (%)',
+                                data: [5, 9, 8, 9, 4],
+                                borderColor: '#c4a977',
+                                backgroundColor: 'rgba(196, 169, 119, 0.1)',
+                                yAxisID: 'y1',
+                                borderDash: [5, 5],
+                                tension: 0.3
                             }]
                         },
                         options: {
                             responsive: true,
-                            maintainAspectRatio: false
+                            maintainAspectRatio: false,
+                            interaction: {
+                                mode: 'index',
+                                intersect: false
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'TFR 감소와 경제 성장의 상관관계',
+                                    font: { family: 'SeoulHangang' }
+                                },
+                                legend: {
+                                    display: true
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'left',
+                                    title: {
+                                        display: true,
+                                        text: 'TFR'
+                                    }
+                                },
+                                y1: {
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'right',
+                                    title: {
+                                        display: true,
+                                        text: 'GDP 성장률 (%)'
+                                    },
+                                    grid: {
+                                        drawOnChartArea: false
+                                    }
+                                }
+                            }
                         }
                     });
                     break;
@@ -1799,24 +1912,38 @@
                     });
                     break;
 
-                case 11: // 피임 방법 (원래 case 12)
+                case 11: // 피임 방법 효과성
                     createChart('methodEffectiveness', {
-                        type: 'horizontalBar',
+                        type: 'bar',
                         data: {
                             labels: ['임플란트', 'IUD', '불임수술', '주사', '경구약', '콘돔'],
                             datasets: [{
                                 label: '효과성 (%)',
                                 data: [99.95, 99.2, 99.5, 94, 91, 82],
-                                backgroundColor: '#69b7a4'
+                                backgroundColor: ['#69b7a4', '#7db8b5', '#8fa68e', '#a8957e', '#c4a977', '#c97064']
                             }]
                         },
                         options: {
+                            indexAxis: 'y',
                             responsive: true,
                             maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                title: {
+                                    display: true,
+                                    text: '피임 방법별 효과성 (%)',
+                                    font: { family: 'SeoulHangang' }
+                                }
+                            },
                             scales: {
                                 x: {
-                                    min: 80,
-                                    max: 100
+                                    min: 75,
+                                    max: 100,
+                                    ticks: {
+                                        callback: function(value) {
+                                            return value + '%';
+                                        }
+                                    }
                                 }
                             }
                         }
