@@ -63,6 +63,16 @@ export const DATA_CONFIG = {
     retryDelay: 1000
 };
 
+// Data Paths
+export const DATA_PATHS = Object.freeze({
+    BASE: 'data',
+    SLIDES: 'data/slides.json',
+    SECTIONS: 'data/sections.json',
+    VISUALIZATIONS: 'data/visualizations.json',
+    CITATIONS: 'data/citations.json',
+    METADATA: 'data/metadata.json'
+});
+
 // Citation Configuration
 export const CITATION_CONFIG = {
     style: 'apa',                // Citation style: apa, mla, chicago
