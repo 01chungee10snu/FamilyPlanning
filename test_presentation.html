@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>프레젠테이션 테스트</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; padding: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .pass { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>프레젠테이션 검증 테스트</h1>
+    <iframe id="presentation" src="integrated-presentation.html" width="100%" height="400"></iframe>
+
+    <div id="results"></div>
+
+    <script>
+        const tests = [];
+        const iframe = document.getElementById('presentation');
+
+        iframe.onload = function() {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // 테스트 1: 중복 ID 확인
+            const ids = Array.from(doc.querySelectorAll('[id]')).map(el => el.id);
+            const uniqueIds = [...new Set(ids)];
+            tests.push({
+                name: '중복 ID 없음',
+                pass: ids.length === uniqueIds.length,
+                details: `총 ${ids.length}개 ID, ${uniqueIds.length}개 고유 ID`
+            });
+
+            // 테스트 2: Chart.js 로드 확인
+            tests.push({
+                name: 'Chart.js 라이브러리 로드',
+                pass: typeof iframe.contentWindow.Chart !== 'undefined',
+                details: iframe.contentWindow.Chart ? '성공' : '실패'
+            });
+
+            // 테스트 3: 슬라이드 개수
+            const slides = doc.querySelectorAll('.slide');
+            tests.push({
+                name: '40개 슬라이드 존재',
+                pass: slides.length === 40,
+                details: `${slides.length}개 슬라이드 발견`
+            });
+
+            // 테스트 4: 캔버스 요소
+            const canvases = doc.querySelectorAll('canvas');
+            tests.push({
+                name: '차트 캔버스 요소',
+                pass: canvases.length > 0,
+                details: `${canvases.length}개 캔버스 요소`
+            });
+
+            // 테스트 5: 접근성 속성
+            const ariaLabels = doc.querySelectorAll('[aria-label]');
+            tests.push({
+                name: '접근성 속성 추가',
+                pass: ariaLabels.length > 0,
+                details: `${ariaLabels.length}개 aria-label 속성`
+            });
+
+            // 결과 표시
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<h2>테스트 결과</h2>';
+
+            let passCount = 0;
+            tests.forEach(test => {
+                if (test.pass) passCount++;
+                const div = document.createElement('div');
+                div.className = `test-result ${test.pass ? 'pass' : 'fail'}`;
+                div.innerHTML = `<strong>${test.pass ? '✓' : '✗'} ${test.name}</strong><br>${test.details}`;
+                resultsDiv.appendChild(div);
+            });
+
+            const summary = document.createElement('div');
+            summary.innerHTML = `<h3>요약: ${passCount}/${tests.length} 테스트 통과</h3>`;
+            resultsDiv.appendChild(summary);
+        };
+    </script>
+</body>
+</html>
