@@ -32,7 +32,7 @@ import { TimelineRenderer } from './visualizations/TimelineRenderer.js';
 import { ChartJSRenderer } from './visualizations/ChartJSRenderer.js';
 
 // Utility imports
-import { TOTAL_SLIDES, TOTAL_SECTIONS, PERFORMANCE_TARGETS } from './utils/constants.js';
+import { TOTAL_SLIDES, TOTAL_SECTIONS, PERFORMANCE_TARGETS, DATA_PATHS } from './utils/constants.js';
 import * as helpers from './utils/helpers.js';
 
 class PresentationApp {
@@ -66,7 +66,7 @@ class PresentationApp {
 
             try {
                 await this.citationManager.initialize({
-                    dataPath: '/data/citations.json',
+                    dataPath: DATA_PATHS.CITATIONS,
                     locale: 'ko',
                     validateOnLoad: false
                 });
@@ -207,10 +207,10 @@ class PresentationApp {
         try {
             // Try to load data files if they exist
             const dataFiles = [
-                '/data/slides.json',
-                '/data/sections.json',
-                '/data/citations.json',
-                '/data/visualizations.json'
+                DATA_PATHS.SLIDES,
+                DATA_PATHS.SECTIONS,
+                DATA_PATHS.CITATIONS,
+                DATA_PATHS.VISUALIZATIONS
             ];
 
             for (const file of dataFiles) {

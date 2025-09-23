@@ -10,7 +10,8 @@ import {
     PRELOAD_RANGE,
     PERFORMANCE_TARGETS,
     ERROR_MESSAGES,
-    SECTIONS
+    SECTIONS,
+    DATA_PATHS
 } from '../utils/constants.js';
 
 import { performance as perfHelpers } from '../utils/helpers.js';
@@ -87,7 +88,7 @@ export class SlideManager {
      */
     async loadSlidesData() {
         try {
-            const response = await fetch('/data/slides.json');
+            const response = await fetch(DATA_PATHS.SLIDES);
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
@@ -104,7 +105,7 @@ export class SlideManager {
      */
     async loadSectionsData() {
         try {
-            const response = await fetch('/data/sections.json');
+            const response = await fetch(DATA_PATHS.SECTIONS);
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
@@ -121,7 +122,7 @@ export class SlideManager {
      */
     async loadVisualizationsData() {
         try {
-            const response = await fetch('/data/visualizations.json');
+            const response = await fetch(DATA_PATHS.VISUALIZATIONS);
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
@@ -138,7 +139,7 @@ export class SlideManager {
      */
     async loadCitationsData() {
         try {
-            const response = await fetch('/data/citations.json');
+            const response = await fetch(DATA_PATHS.CITATIONS);
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
