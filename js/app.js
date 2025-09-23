@@ -238,24 +238,24 @@ class PresentationApp {
      */
     async loadLegacySlides() {
         try {
-            // 15 refined slides with all panels, tables, and figures from the Lancet paper
-            const slideFiles = [
-                // Core slides based on PDF structure
-                'slides/slide01-overview.html',                // Summary with key statistics
-                'slides/slide02-introduction-panel1.html',     // Introduction & Panel 1
-                'slides/slide03-population-growth-panel2.html', // Panel 2 - Population scenarios
-                'slides/slide04-why-matters.html',             // Why family planning matters
-                'slides/slide05-panel3-niger.html',            // Panel 3 - Niger case study
-                'slides/slide06-panel4-korea.html',            // Panel 4 - Korea transformation
-                'slides/slide07-unfinished-panel5.html',       // Panel 5 - Unfinished agenda
-                'slides/slide08-panel6-brazil.html',           // Panel 6 - Brazil case
-                'slides/slide09-panel7-kenya.html',            // Panel 7 - Kenya success
-                'slides/slide10-panel8-bangladesh.html',       // Panel 8 - Bangladesh/Pakistan
-                'slides/slide11-what-works.html',              // What works - interventions
-                'slides/slide12-supply-sources.html',          // Service supply sources
-                'slides/slide13-financial-agenda.html',        // Financial agenda
-                'slides/slide14-future-needs.html',            // Future needs and goals
-                'slides/slide15-recommendations.html'          // Final recommendations
+            // Legacy slide deck with updated file references
+            const slides = [
+                { file: 'slides/slide01-title.html', menuTitle: '1. 제목' },
+                { file: 'slides/slide02-core-message.html', menuTitle: '2. 핵심 메시지' },
+                { file: 'slides/slide03-timeline.html', menuTitle: '3. 역사적 발전 과정' },
+                { file: 'slides/slide04-population.html', menuTitle: '4. 인구 증가 전망' },
+                { file: 'slides/slide05-world-map.html', menuTitle: '5. 세계 현황 지도' },
+                { file: 'slides/slide06-impact.html', menuTitle: '6. 가족계획의 영향' },
+                { file: 'slides/slide07-health-benefits.html', menuTitle: '7. 보건 효과' },
+                { file: 'slides/slide08-economic.html', menuTitle: '8. 경제 효과' },
+                { file: 'slides/slide09-niger.html', menuTitle: '9. 니제르: 위기 진단' },
+                { file: 'slides/slide10-kenya.html', menuTitle: '10. 케냐: 성공과 도전' },
+                { file: 'slides/slide11-comparison.html', menuTitle: '11. 방글라데시 vs 파키스탄' },
+                { file: 'slides/slide12-cases.html', menuTitle: '12. 현장 접근 혁신' },
+                { file: 'slides/slide13-methods.html', menuTitle: '13. 피임 방법 효과성' },
+                { file: 'slides/slide14-funding.html', menuTitle: '14. 자금 조달 위기' },
+                { file: 'slides/slide15-scenarios.html', menuTitle: '15. 미래 시나리오' },
+                { file: 'slides/slide16-recommendations.html', menuTitle: '16. 정책 권고' }
             ];
 
             const container = document.getElementById('slideContainer');
@@ -268,9 +268,9 @@ class PresentationApp {
             }
 
             // Load each slide file
-            for (let i = 0; i < slideFiles.length; i++) {
+            for (let i = 0; i < slides.length; i++) {
                 try {
-                    const response = await fetch(slideFiles[i]);
+                    const response = await fetch(slides[i].file);
                     if (response.ok) {
                         const html = await response.text();
 
@@ -325,9 +325,10 @@ class PresentationApp {
                         const placeholder = document.createElement('div');
                         placeholder.className = 'slide';
                         placeholder.id = `slide-${i + 1}`;
+                        const placeholderTitle = slides[i]?.menuTitle || `슬라이드 ${i + 1}`;
                         placeholder.innerHTML = `
                             <div class="slide-header">
-                                <h1>슬라이드 ${i + 1}</h1>
+                                <h1>${placeholderTitle}</h1>
                             </div>
                             <div class="slide-content">
                                 <p>슬라이드를 로드할 수 없습니다.</p>
@@ -346,6 +347,12 @@ class PresentationApp {
             if (totalSlidesEl) {
                 totalSlidesEl.textContent = totalSlides;
             }
+
+            if (this.slideManager) {
+                this.slideManager.totalSlides = totalSlides;
+            }
+
+            this.updateSlideMenu(slides);
 
             // Show first slide
             this.showSlide(1);
@@ -461,6 +468,28 @@ class PresentationApp {
     }
 
     /**
+     * Update slide menu with dynamically loaded slides
+     */
+    updateSlideMenu(slides) {
+        const menuList = document.getElementById('slideMenuList');
+        if (!menuList) return;
+
+        menuList.innerHTML = '';
+
+        slides.forEach((slideInfo, index) => {
+            const menuItem = document.createElement('li');
+            menuItem.dataset.slide = String(index + 1);
+            menuItem.textContent = slideInfo?.menuTitle || `슬라이드 ${index + 1}`;
+            menuItem.addEventListener('click', () => {
+                this.showSlide(index + 1);
+                this.toggleMenu(false);
+            });
+
+            menuList.appendChild(menuItem);
+        });
+    }
+
+    /**
      * Update navigation button states
      */
     updateNavigationButtons(currentSlide, totalSlides) {
@@ -500,11 +529,17 @@ class PresentationApp {
     /**
      * Toggle navigation menu
      */
-    toggleMenu() {
-        const menu = document.getElementById('navigationMenu');
-        if (menu) {
-            menu.classList.toggle('open');
+    toggleMenu(forceState) {
+        const menu = document.getElementById('slideMenu');
+        if (!menu) return;
+
+        if (typeof forceState === 'boolean') {
+            menu.style.display = forceState ? 'block' : 'none';
+            return;
         }
+
+        const isHidden = window.getComputedStyle(menu).display === 'none';
+        menu.style.display = isHidden ? 'block' : 'none';
     }
 
     /**
@@ -513,13 +548,13 @@ class PresentationApp {
     goToSection(sectionNumber) {
         const sectionMap = {
             1: 1,   // Title
-            2: 3,   // Global Trends
-            3: 6,   // Health Impact
-            4: 9,   // Country Cases
-            5: 12,  // Successful Cases
-            6: 13,  // Family Planning Methods
-            7: 14,  // Funding Trends
-            8: 15,  // Future Scenarios
+            2: 3,   // Global context & timeline
+            3: 7,   // Health impact
+            4: 9,   // Country cases
+            5: 11,  // Comparative success factors
+            6: 13,  // Family planning methods
+            7: 14,  // Funding trends
+            8: 15,  // Future scenarios
             9: 16   // Recommendations
         };
 
@@ -527,7 +562,7 @@ class PresentationApp {
         this.showSlide(targetSlide);
 
         // Close menu after navigation
-        this.toggleMenu();
+        this.toggleMenu(false);
     }
 
     /**
