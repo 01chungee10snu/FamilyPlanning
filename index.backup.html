@@ -333,22 +333,6 @@
             display: none !important;
         }
 
-        /* ==================== 페이지 카운터 ==================== */
-        .page-counter {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-family: 'SeoulHangang', sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            color: #2d3a3a;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 8px 16px;
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-
         /* ==================== 타이틀 슬라이드 ==================== */
         .title-slide {
             background: linear-gradient(135deg, #576066 0%, #3e4948 100%);
@@ -362,7 +346,7 @@
 
         .title-slide h1 {
             font-size: 52px;
-            color: #FFFFFF;
+            color: white;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -430,7 +414,7 @@
                     </div>
                 </div>
                 <p style="margin-top: 40px; font-size: 14px; opacity: 0.8;">
-                    Cleland, J., Bernstein, S., Ezeh, A., Faundes, A., Glasier, A., & Innis, J. (2006). Family planning: the unfinished agenda. The Lancet, 368(9549), 1810-1827.
+                    Lancet 2006 | Cleland J, et al.
                 </p>
             </div>
 
@@ -464,7 +448,7 @@
                             <canvas id="historicalTrend"></canvas>
                         </div>
                         <div class="data-card" style="margin-top: 15px;">
-                            <p style="font-size: 13px;">전 세계 피임 사용률 (Cleland et al., 2006)</p>
+                            <p style="font-size: 13px;">전 세계 피임 사용률</p>
                             <div class="stat-number">10% → 60%</div>
                             <p style="font-size: 12px; color: #718096;">1960 → 2005</p>
                         </div>
@@ -529,18 +513,6 @@
                                     <td>783M</td>
                                     <td style="color: #4299e1;">+40%</td>
                                 </tr>
-                                <tr>
-                                    <td>서아시아</td>
-                                    <td>192M</td>
-                                    <td>383M</td>
-                                    <td style="color: #ed8936;">+99%</td>
-                                </tr>
-                                <tr>
-                                    <td>동남아시아</td>
-                                    <td>558M</td>
-                                    <td>750M</td>
-                                    <td style="color: #4299e1;">+34%</td>
-                                </tr>
                             </tbody>
                         </table>
                         <div class="panel-box" style="margin-top: 15px;">
@@ -565,8 +537,8 @@
                             <h3>니제르 현황</h3>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                 <div>
-                                    <p style="font-size: 11px; color: #718096;">합계출산율 (1998)</p>
-                                    <p style="font-size: 24px; font-weight: 800; color: #dc2626;">7.5명</p>
+                                    <p style="font-size: 11px; color: #718096;">합계출산율</p>
+                                    <p style="font-size: 24px; font-weight: 800; color: #dc2626;">7.4명</p>
                                 </div>
                                 <div>
                                     <p style="font-size: 11px; color: #718096;">피임 사용률</p>
@@ -579,10 +551,6 @@
                                 <div>
                                     <p style="font-size: 11px; color: #718096;">2050년 예측</p>
                                     <p style="font-size: 24px; font-weight: 800; color: #dc2626;">5천만명</p>
-                                </div>
-                                <div>
-                                    <p style="font-size: 11px; color: #718096;">현재 인구</p>
-                                    <p style="font-size: 24px; font-weight: 800; color: #dc2626;">1,250만명</p>
                                 </div>
                             </div>
                         </div>
@@ -616,15 +584,15 @@
                 <div id="successMap" class="map-container" style="height: 300px;"></div>
                 <div class="two-column" style="margin-top: 20px; height: auto;">
                     <div class="panel-box" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
-                        <h3>🇰🇪 케냐: 정부 주도 성공 (Cleland et al., 2006)</h3>
+                        <h3>🇰🇪 케냐: 정부 주도 성공</h3>
                         <div style="display: flex; gap: 10px; margin: 10px 0;">
                             <div class="data-card" style="flex: 1;">
                                 <p style="font-size: 11px;">TFR 변화</p>
-                                <p style="font-weight: 800; color: #059669;">8.0→4.8</p>
+                                <p style="font-weight: 800; color: #059669;">7.8→4.8</p>
                             </div>
                             <div class="data-card" style="flex: 1;">
                                 <p style="font-size: 11px;">피임률</p>
-                                <p style="font-weight: 800; color: #059669;">7→27%</p>
+                                <p style="font-weight: 800; color: #059669;">10→41%</p>
                             </div>
                         </div>
                         <p style="font-size: 12px;">
@@ -635,7 +603,7 @@
                         </p>
                     </div>
                     <div class="panel-box" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
-                        <h3>🇧🇷 브라질: 사회 주도 전환 (Cleland et al., 2006)</h3>
+                        <h3>🇧🇷 브라질: 사회 주도 전환</h3>
                         <div style="display: flex; gap: 10px; margin: 10px 0;">
                             <div class="data-card" style="flex: 1;">
                                 <p style="font-size: 11px;">TFR 변화</p>
@@ -667,7 +635,7 @@
                             <canvas id="bangladeshChart"></canvas>
                         </div>
                         <p style="font-size: 12px; margin-top: 10px;">
-                            <strong>핵심 전략 (Cleland et al., 2006):</strong> 여성 지역보건요원, 문맹 여성 대상 프로그램, 소액금융 연계
+                            <strong>핵심 전략:</strong> 여성 지역보건요원, 문맹 여성 대상 프로그램, 소액금융 연계
                         </p>
                     </div>
                     <div>
@@ -676,7 +644,7 @@
                             <canvas id="pakistanChart"></canvas>
                         </div>
                         <p style="font-size: 12px; margin-top: 10px;">
-                            <strong>장애 요인 (Cleland et al., 2006):</strong> 정치적 불안정, 종교적 반대, 여성 이동 제한
+                            <strong>장애 요인:</strong> 정치적 불안정, 종교적 반대, 여성 이동 제한
                         </p>
                     </div>
                 </div>
@@ -699,11 +667,9 @@
                         <div class="panel-box">
                             <h4>MDG 4 & 5: 모성·아동 건강</h4>
                             <p style="font-size: 13px;">
-                                • 모성 사망 32% 예방 가능 (Cleland et al., 2006)<br>
+                                • 모성 사망 32% 예방 가능<br>
                                 • 아동 사망 10% 감소 가능<br>
-                                • 출산 간격 조절로 건강 개선<br>
-                                • 가족계획 보편화로 산모 1인당 11% 모성사망률 감소<br>
-                                • 임신 간격 2년 이상 유지 시 영아사망률 13% 감소
+                                • 출산 간격 조절로 건강 개선
                             </p>
                         </div>
                         <div class="panel-box">
@@ -721,7 +687,7 @@
                             <canvas id="costEffectiveness"></canvas>
                         </div>
                         <div class="data-card" style="margin-top: 15px; background: #69b7a4; color: white;">
-                            <h4 style="color: white;">투자 대비 효과 (Cleland et al., 2006)</h4>
+                            <h4 style="color: white;">투자 대비 효과</h4>
                             <p style="font-size: 24px; font-weight: 800;">1:120</p>
                             <p style="font-size: 12px;">가족계획 $1 투자 → $120 경제적 편익</p>
                         </div>
@@ -742,9 +708,9 @@
                             <canvas id="healthImpactChart"></canvas>
                         </div>
                         <div class="data-card" style="margin-top: 15px;">
-                            <p>모성 사망 감소 (Cleland et al., 2006)</p>
-                            <div class="stat-number" style="font-size: 32px;">거의 10%</div>
-                            <p style="font-size: 11px;">영아 사망률 - 가족계획 보편화 시</p>
+                            <p>모성 사망 감소</p>
+                            <div class="stat-number" style="font-size: 32px;">-32%</div>
+                            <p style="font-size: 11px;">가족계획 보편화 시</p>
                         </div>
                     </div>
                     <div>
@@ -784,9 +750,9 @@
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
                             <div class="panel-box">
-                                <h4>동아시아 기적 (Cleland et al., 2006)</h4>
+                                <h4>동아시아 기적</h4>
                                 <p style="font-size: 12px;">
-                                    1965-1990년 경제성장의 <strong>약 1/3</strong>이 인구구조 변화(인구 배당) 기여
+                                    1965-1990년 경제성장의 <strong>1/3</strong>이 인구구조 변화 기여
                                 </p>
                             </div>
                             <div class="panel-box">
@@ -823,20 +789,60 @@
                                 <li>지속가능 발전</li>
                             </ul>
                         </div>
-                        <div class="panel-box" style="margin-top: 10px;">
-                            <h4>남한 사례연구 (Panel 4)</h4>
-                            <p style="font-size: 11px;">
-                                1960-1990년 TFR 6.0→1.6 감소<br>
-                                • 강력한 정부 정책<br>
-                                • 경제 인센티브 제공<br>
-                                • 교육 확대와 연계<br>
-                                • 급속한 경제 성장 달성
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Slide 10: 교육과 출산율 -->
+            <div class="slide">
+                <h1>교육과 출산율의 상관관계</h1>
+                <div class="two-column">
+                    <div>
+                        <div class="chart-container">
+                            <canvas id="educationFertility"></canvas>
+                        </div>
+                        <div class="panel-box" style="margin-top: 15px;">
+                            <h4>교육 효과</h4>
+                            <p style="font-size: 12px;">
+                                여성 중등교육 1년 증가 → TFR <strong>0.3명 감소</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>연령별 출산 패턴</h3>
+                        <div class="chart-container small-chart">
+                            <canvas id="agePatterns"></canvas>
+                        </div>
+                        <table class="data-table" style="margin-top: 15px;">
+                            <tr>
+                                <th>교육수준</th>
+                                <th>첫출산 연령</th>
+                                <th>완결출산율</th>
+                            </tr>
+                            <tr>
+                                <td>무학</td>
+                                <td>18.5세</td>
+                                <td>5.8명</td>
+                            </tr>
+                            <tr>
+                                <td>초등</td>
+                                <td>20.2세</td>
+                                <td>4.2명</td>
+                            </tr>
+                            <tr>
+                                <td>중등</td>
+                                <td>23.8세</td>
+                                <td>2.9명</td>
+                            </tr>
+                            <tr>
+                                <td>고등</td>
+                                <td>27.3세</td>
+                                <td>1.8명</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
             <!-- Slide 11: 미충족 수요 분석 (지도) -->
             <div class="slide">
@@ -1244,49 +1250,53 @@
                 </div>
             </div>
 
-            <!-- Slide 20: 참고문헌 (APA 7th Edition) -->
+            <!-- Slide 20: 참고문헌 -->
             <div class="slide">
-                <h1>참고문헌 (References)</h1>
-                <div style="overflow-y: auto; height: calc(100% - 100px); padding-right: 20px;">
-                    <div class="panel-box" style="background: #f9fafb; padding: 25px;">
-                        <p style="font-size: 13px; line-height: 2.0; text-align: left; color: #2d3a3a;">
+                <h1>참고문헌 및 추가 자료</h1>
+                <div class="two-column">
+                    <div>
+                        <h3>주요 문헌</h3>
+                        <div class="panel-box">
+                            <p style="font-size: 12px; line-height: 1.8;">
+                                <strong>Cleland J, Bernstein S, Ezeh A, et al.</strong><br>
+                                Family planning: the unfinished agenda.<br>
+                                <em>Lancet</em> 2006; 368: 1810-27.<br><br>
 
-                            Bloom, D. E., Canning, D., & Sevilla, J. (2003). <em>The demographic dividend: A new perspective on the economic consequences of population change</em>. RAND Corporation.<br><br>
+                                <strong>WHO</strong><br>
+                                Family Planning/Contraception Methods.<br>
+                                Geneva: World Health Organization, 2023.<br><br>
 
-                            Bongaarts, J., & Bruce, J. (1995). The causes of unmet need for contraception and the social content of services. <em>Studies in Family Planning, 26</em>(2), 57-75.<br><br>
-
-                            Cleland, J., Bernstein, S., Ezeh, A., Faundes, A., Glasier, A., & Innis, J. (2006). Family planning: The unfinished agenda. <em>The Lancet, 368</em>(9549), 1810-1827. https://doi.org/10.1016/S0140-6736(06)69480-4<br><br>
-
-                            Family Planning 2030. (2023). <em>FP2030 progress report 2023: The arc of progress</em>. https://fp2030.org<br><br>
-
-                            Guttmacher Institute. (2023). <em>Adding it up: Investing in sexual and reproductive health</em>. https://www.guttmacher.org<br><br>
-
-                            Population Council. (2023). <em>Evidence for action: Research to improve family planning programs</em>. https://www.popcouncil.org<br><br>
-
-                            Seltzer, J. R. (2002). <em>The origins and evolution of family planning programs in developing countries</em>. RAND Corporation.<br><br>
-
-                            Singh, S., Darroch, J. E., & Ashford, L. S. (2014). <em>Adding it up: The costs and benefits of investing in sexual and reproductive health</em>. Guttmacher Institute & UNFPA.<br><br>
-
-                            Track20. (2023). <em>Family planning estimation tool</em>. http://www.track20.org<br><br>
-
-                            United Nations, Department of Economic and Social Affairs, Population Division. (2022). <em>World population prospects 2022: Summary of results</em>. UN DESA/POP/2022/TR/NO. 3.<br><br>
-
-                            United Nations Population Fund. (2023). <em>State of world population 2023: 8 billion lives, infinite possibilities</em>. UNFPA.<br><br>
-
-                            World Bank. (2023). <em>World development indicators: Fertility rate, total (births per woman)</em>. https://data.worldbank.org<br><br>
-
-                            World Health Organization. (2023). <em>Family planning/contraception methods: Fact sheet</em>. WHO.<br><br>
-
-                            World Health Organization. (2022). <em>Medical eligibility criteria for contraceptive use</em> (5th ed.). WHO Press.<br><br>
-
-                            World Health Organization. (2018). <em>Family planning: A global handbook for providers</em> (3rd ed.). WHO Press & Johns Hopkins Bloomberg School of Public Health.
-
-                        </p>
+                                <strong>UNFPA</strong><br>
+                                State of World Population 2023.<br>
+                                New York: United Nations Population Fund.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>추가 자원</h3>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+                            <h4>온라인 리소스</h4>
+                            <ul style="font-size: 12px;">
+                                <li>FP2030 (fp2030.org)</li>
+                                <li>Guttmacher Institute</li>
+                                <li>Population Council</li>
+                                <li>Track20 데이터</li>
+                            </ul>
+                        </div>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+                            <h4>실무 도구</h4>
+                            <ul style="font-size: 12px;">
+                                <li>WHO 의료 자격 기준</li>
+                                <li>FP 글로벌 핸드북</li>
+                                <li>품질 보증 도구</li>
+                                <li>비용 계산기</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 20px;">
+                <div style="text-align: center; margin-top: 40px;">
                     <p style="font-size: 14px; color: #718096;">
-                        <strong>Note:</strong> 본 프레젠테이션의 주요 데이터는 Cleland et al. (2006)의 연구를 기반으로 하며, 최신 통계는 위 기관들의 2022-2023년 자료를 참조하였습니다.
+                        감사합니다
                     </p>
                 </div>
             </div>
@@ -1300,64 +1310,6 @@
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
 
-        // 페이지 카운터 생성
-        function createPageCounter() {
-            const counter = document.createElement('div');
-            counter.className = 'page-counter';
-            counter.id = 'pageCounter';
-            document.body.appendChild(counter);
-            updatePageCounter();
-        }
-
-        // 페이지 카운터 업데이트
-        function updatePageCounter() {
-            const counter = document.getElementById('pageCounter');
-            if (counter) {
-                counter.textContent = `${currentSlide + 1} | ${totalSlides}`;
-            }
-        }
-
-        // 툴팁 위치 계산 함수
-        function calculateTooltipPosition(tooltip, container) {
-            const tooltipRect = tooltip.getBoundingClientRect();
-            const containerRect = container.getBoundingClientRect();
-
-            let x = tooltip.style.left;
-            let y = tooltip.style.top;
-
-            // 오른쪽 경계 체크
-            if (tooltipRect.right > containerRect.right) {
-                x = containerRect.right - tooltipRect.width - 10 + 'px';
-            }
-
-            // 왼쪽 경계 체크
-            if (tooltipRect.left < containerRect.left) {
-                x = containerRect.left + 10 + 'px';
-            }
-
-            // 아래쪽 경계 체크
-            if (tooltipRect.bottom > containerRect.bottom) {
-                y = containerRect.bottom - tooltipRect.height - 10 + 'px';
-            }
-
-            // 위쪽 경계 체크
-            if (tooltipRect.top < containerRect.top) {
-                y = containerRect.top + 10 + 'px';
-            }
-
-            tooltip.style.left = x;
-            tooltip.style.top = y;
-        }
-
-        // 인용 형식화 함수들
-        function formatFullCitation() {
-            return "Cleland, J., Bernstein, S., Ezeh, A., Faundes, A., Glasier, A., & Innis, J. (2006). Family planning: the unfinished agenda. The Lancet, 368(9549), 1810-1827.";
-        }
-
-        function formatInTextCitation() {
-            return "(Cleland et al., 2006)";
-        }
-
         function showSlide(index) {
             if (index < 0) index = totalSlides - 1;
             if (index >= totalSlides) index = 0;
@@ -1365,9 +1317,6 @@
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
             currentSlide = index;
-
-            // 페이지 카운터 업데이트
-            updatePageCounter();
 
             // 슬라이드별 차트 및 지도 초기화
             initSlideContent(index);
@@ -1391,7 +1340,7 @@
             niger: {
                 name: '니제르',
                 coords: [13.5, 2.1],
-                tfr: 7.5,
+                tfr: 7.4,
                 contraceptive: 5,
                 unmetNeed: 19,
                 maternalMortality: 553,
@@ -1759,7 +1708,67 @@
                     });
                     break;
 
-                case 9: // 미충족 수요 (원래 case 10)
+                case 9: // 교육과 출산율
+                    createChart('educationFertility', {
+                        type: 'scatter',
+                        data: {
+                            datasets: [{
+                                label: '교육-출산율 상관관계',
+                                data: [
+                                    {x: 0, y: 5.8},
+                                    {x: 3, y: 4.5},
+                                    {x: 6, y: 3.2},
+                                    {x: 9, y: 2.4},
+                                    {x: 12, y: 1.8}
+                                ],
+                                backgroundColor: '#69b7a4'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: '여성 교육 연수'
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: '합계출산율'
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    createChart('agePatterns', {
+                        type: 'line',
+                        data: {
+                            labels: ['15-19', '20-24', '25-29', '30-34', '35-39', '40-44'],
+                            datasets: [
+                                {
+                                    label: '무학',
+                                    data: [150, 250, 200, 150, 80, 30],
+                                    borderColor: '#c97064'
+                                },
+                                {
+                                    label: '고등교육',
+                                    data: [20, 80, 180, 150, 60, 10],
+                                    borderColor: '#69b7a4'
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false
+                        }
+                    });
+                    break;
+
+                case 10: // 미충족 수요
                     setTimeout(() => {
                         const map = createMap('unmetNeedMap');
                         if (map) {
@@ -1782,7 +1791,7 @@
                     }, 100);
                     break;
 
-                case 10: // 서비스 전달 (원래 case 11)
+                case 11: // 서비스 전달
                     createChart('accessBarriers', {
                         type: 'doughnut',
                         data: {
@@ -1799,7 +1808,7 @@
                     });
                     break;
 
-                case 11: // 피임 방법 (원래 case 12)
+                case 12: // 피임 방법
                     createChart('methodEffectiveness', {
                         type: 'horizontalBar',
                         data: {
@@ -1823,7 +1832,7 @@
                     });
                     break;
 
-                case 12: // 남성 참여 (원래 case 13)
+                case 13: // 남성 참여
                     createChart('maleInvolvement', {
                         type: 'bar',
                         data: {
@@ -1841,7 +1850,7 @@
                     });
                     break;
 
-                case 13: // 자금 조달 (원래 case 14)
+                case 14: // 자금 조달
                     createChart('fundingTrends', {
                         type: 'line',
                         data: {
@@ -1875,11 +1884,7 @@
                     });
                     break;
 
-                case 14: // 정책 프레임워크 (원래 case 15)
-                    // 정책 프레임워크 슬라이드는 차트가 없음
-                    break;
-
-                case 15: // 연구 개발 (원래 case 16)
+                case 16: // 연구 개발
                     createChart('environmentImpact', {
                         type: 'line',
                         data: {
@@ -1912,7 +1917,7 @@
                     });
                     break;
 
-                case 16: // 글로벌 지도 (원래 case 17)
+                case 17: // 글로벌 지도
                     setTimeout(() => {
                         const map = createMap('globalMap', [20, 0], 2);
                         if (map) {
@@ -1946,7 +1951,6 @@
 
         // 초기 로드
         window.addEventListener('load', () => {
-            createPageCounter();
             showSlide(0);
         });
 
