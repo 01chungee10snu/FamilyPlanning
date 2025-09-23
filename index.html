@@ -80,7 +80,7 @@
         body {
             font-family: 'SeoulNamsan', 'Malgun Gothic', sans-serif;
             font-weight: 300;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2d3a3a 0%, #576066 100%);
             overflow: hidden;
             width: 100vw;
             height: 100vh;
@@ -129,7 +129,7 @@
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 800;
             font-size: 38px;
-            color: #1a365d;
+            color: #2d3a3a;
             line-height: 1.2;
             margin-bottom: 15px;
         }
@@ -138,7 +138,7 @@
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 700;
             font-size: 28px;
-            color: #2c5282;
+            color: #576066;
             margin-bottom: 12px;
         }
 
@@ -146,7 +146,7 @@
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 500;
             font-size: 20px;
-            color: #2d3748;
+            color: #3e4948;
             margin-bottom: 10px;
         }
 
@@ -154,7 +154,7 @@
             font-family: 'SeoulNamsan', sans-serif;
             font-weight: 700;
             font-size: 16px;
-            color: #4a5568;
+            color: #576066;
             margin-bottom: 8px;
         }
 
@@ -163,7 +163,7 @@
             font-weight: 300;
             font-size: 14px;
             line-height: 1.6;
-            color: #4a5568;
+            color: #576066;
         }
 
         strong, b {
@@ -195,11 +195,11 @@
 
         /* ==================== 컴포넌트 스타일 ==================== */
         .panel-box {
-            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            background: linear-gradient(135deg, #e5e7e7 0%, #d1d5d5 100%);
             border-radius: 10px;
             padding: 15px;
             margin: 10px 0;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #69b7a4;
         }
 
         .data-card {
@@ -220,7 +220,7 @@
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 800;
             font-size: 36px;
-            color: #667eea;
+            color: #69b7a4;
             margin: 8px 0;
         }
 
@@ -254,7 +254,7 @@
         .data-table th {
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 700;
-            background: #667eea;
+            background: #576066;
             color: white;
             padding: 8px;
             text-align: left;
@@ -271,8 +271,8 @@
         .quote-box {
             position: relative;
             padding: 15px 20px;
-            background: #f7fafc;
-            border-left: 3px solid #667eea;
+            background: #f5f6f6;
+            border-left: 3px solid #69b7a4;
             margin: 15px 0;
             font-style: italic;
         }
@@ -281,7 +281,7 @@
         .map-tooltip {
             font-family: 'SeoulNamsan', sans-serif;
             background: rgba(255, 255, 255, 0.98);
-            border: 2px solid #667eea;
+            border: 2px solid #69b7a4;
             border-radius: 8px;
             padding: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -313,7 +313,7 @@
         .tooltip-value {
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 700;
-            color: #2b6cb0;
+            color: #69b7a4;
         }
 
         .tooltip-trend {
@@ -324,8 +324,8 @@
             font-style: italic;
         }
 
-        .trend-positive { color: #48bb78; }
-        .trend-negative { color: #f56565; }
+        .trend-positive { color: #69b7a4; }
+        .trend-negative { color: #c97064; }
         .trend-neutral { color: #718096; }
 
         /* ==================== UI 컨트롤 숨김 ==================== */
@@ -335,7 +335,7 @@
 
         /* ==================== 타이틀 슬라이드 ==================== */
         .title-slide {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #576066 0%, #3e4948 100%);
             color: white;
             display: flex;
             flex-direction: column;
@@ -393,7 +393,7 @@
             <div class="slide title-slide active">
                 <h1>가족계획: 미완의 과제</h1>
                 <p style="font-size: 24px; margin-bottom: 30px;">
-                    The unfinished agenda of family planning
+                    Family planning: The unfinished agenda
                 </p>
                 <div class="key-messages">
                     <div class="key-message">
@@ -650,67 +650,51 @@
                 </div>
             </div>
 
-            <!-- Slide 7: 추가 성공 사례 -->
+            <!-- Slide 7: MDG와 가족계획 -->
             <div class="slide">
-                <h1>전 세계 성공 프로그램</h1>
-                <div class="three-column">
-                    <div class="panel-box">
-                        <h3>🇮🇷 이란</h3>
-                        <p style="font-size: 12px;">
-                            <strong>TFR: 5.5 → 2.0</strong><br>
-                            종교 지도자 참여<br>
-                            의무 혼전 교육<br>
-                            농촌 의료 확대
-                        </p>
+                <h1>밀레니엄 개발목표(MDG)와 가족계획</h1>
+                <div class="two-column">
+                    <div>
+                        <h3>MDG 달성을 위한 가족계획의 기여</h3>
+                        <div class="panel-box">
+                            <h4>MDG 1: 빈곤 퇴치</h4>
+                            <p style="font-size: 13px;">
+                                • 인구 증가율 감소 → 1인당 소득 증가<br>
+                                • 가구당 자녀수 감소 → 교육 투자 증대<br>
+                                • 여성 경제활동 참여 증가
+                            </p>
+                        </div>
+                        <div class="panel-box">
+                            <h4>MDG 4 & 5: 모성·아동 건강</h4>
+                            <p style="font-size: 13px;">
+                                • 모성 사망 32% 예방 가능<br>
+                                • 아동 사망 10% 감소 가능<br>
+                                • 출산 간격 조절로 건강 개선
+                            </p>
+                        </div>
+                        <div class="panel-box">
+                            <h4>MDG 3: 성평등</h4>
+                            <p style="font-size: 13px;">
+                                • 여성의 생식건강 자기결정권<br>
+                                • 교육 및 경제활동 기회 확대<br>
+                                • 가정 내 의사결정 참여 증대
+                            </p>
+                        </div>
                     </div>
-                    <div class="panel-box">
-                        <h3>🇹🇭 태국</h3>
-                        <p style="font-size: 12px;">
-                            <strong>TFR: 6.5 → 1.8</strong><br>
-                            창의적 캠페인<br>
-                            지역사회 참여<br>
-                            경제 인센티브
-                        </p>
+                    <div>
+                        <h3>비용 효과성</h3>
+                        <div class="chart-container">
+                            <canvas id="costEffectiveness"></canvas>
+                        </div>
+                        <div class="data-card" style="margin-top: 15px; background: #69b7a4; color: white;">
+                            <h4 style="color: white;">투자 대비 효과</h4>
+                            <p style="font-size: 24px; font-weight: 800;">1:120</p>
+                            <p style="font-size: 12px;">가족계획 $1 투자 → $120 경제적 편익</p>
+                        </div>
+                        <div class="quote-box" style="margin-top: 15px;">
+                            <p>"가족계획은 모든 MDG 달성에 기여하는 핵심 개입"</p>
+                        </div>
                     </div>
-                    <div class="panel-box">
-                        <h3>🇷🇼 르완다</h3>
-                        <p style="font-size: 12px;">
-                            <strong>피임률: 17 → 53%</strong><br>
-                            대통령 주도<br>
-                            보건 시스템 재건<br>
-                            성평등 정책
-                        </p>
-                    </div>
-                    <div class="panel-box">
-                        <h3>🇲🇽 멕시코</h3>
-                        <p style="font-size: 12px;">
-                            <strong>TFR: 6.8 → 2.2</strong><br>
-                            대중매체 활용<br>
-                            청소년 프로그램<br>
-                            남성 참여
-                        </p>
-                    </div>
-                    <div class="panel-box">
-                        <h3>🇮🇩 인도네시아</h3>
-                        <p style="font-size: 12px;">
-                            <strong>TFR: 5.6 → 2.4</strong><br>
-                            마을 단위 접근<br>
-                            종교 지도자 협력<br>
-                            가족계획 의무화
-                        </p>
-                    </div>
-                    <div class="panel-box">
-                        <h3>🇻🇳 베트남</h3>
-                        <p style="font-size: 12px;">
-                            <strong>TFR: 6.0 → 1.9</strong><br>
-                            2자녀 정책<br>
-                            지역 보건망<br>
-                            여성 교육
-                        </p>
-                    </div>
-                </div>
-                <div class="quote-box" style="margin-top: 20px;">
-                    <p>"성공의 공통점: 정치적 의지 + 지역사회 참여 + 서비스 접근성 + 여성 권한 강화"</p>
                 </div>
             </div>
 
@@ -943,42 +927,16 @@
                         <div class="chart-container">
                             <canvas id="methodEffectiveness"></canvas>
                         </div>
-                        <table class="data-table" style="margin-top: 15px;">
-                            <thead>
-                                <tr>
-                                    <th>방법</th>
-                                    <th>일반 사용</th>
-                                    <th>완벽 사용</th>
-                                    <th>지속기간</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>임플란트</td>
-                                    <td>99.95%</td>
-                                    <td>99.95%</td>
-                                    <td>3-5년</td>
-                                </tr>
-                                <tr>
-                                    <td>IUD</td>
-                                    <td>99.2%</td>
-                                    <td>99.8%</td>
-                                    <td>5-10년</td>
-                                </tr>
-                                <tr>
-                                    <td>주사</td>
-                                    <td>94%</td>
-                                    <td>99.8%</td>
-                                    <td>3개월</td>
-                                </tr>
-                                <tr>
-                                    <td>경구피임약</td>
-                                    <td>91%</td>
-                                    <td>99.7%</td>
-                                    <td>매일</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="panel-box" style="margin-top: 15px;">
+                            <h4>피임법 효과성 비교</h4>
+                            <ul style="font-size: 12px;">
+                                <li>장기지속형: 가장 효과적 (>99%)</li>
+                                <li>IUD: 높은 효과성, 장기 사용 가능</li>
+                                <li>호르몬 방법: 주사제, 경구약</li>
+                                <li>차단형: 콘돔, 페미돔</li>
+                                <li>자연 방법: 낮은 효과성</li>
+                            </ul>
+                        </div>
                     </div>
                     <div>
                         <h3>지역별 선호</h3>
@@ -1007,19 +965,19 @@
                 </div>
             </div>
 
-            <!-- Slide 14: 남성 참여와 혁신 -->
+            <!-- Slide 14: 남성 참여와 서비스 통합 -->
             <div class="slide">
-                <h1>남성 참여와 혁신적 접근</h1>
+                <h1>남성 참여와 서비스 통합</h1>
                 <div class="two-column">
                     <div>
-                        <h3>남성 참여 프로그램</h3>
+                        <h3>남성 참여의 중요성</h3>
                         <div class="panel-box">
-                            <h4>성공적 전략</h4>
+                            <h4>남성 참여 필요성</h4>
                             <ul style="font-size: 12px;">
-                                <li>부부 상담 프로그램</li>
-                                <li>직장 기반 교육</li>
-                                <li>종교 지도자 참여</li>
-                                <li>스포츠 이벤트 활용</li>
+                                <li>부부 의사결정 공유</li>
+                                <li>지속적 피임 사용 증가</li>
+                                <li>성평등 증진</li>
+                                <li>부부 간 의사소통 개선</li>
                             </ul>
                         </div>
                         <div class="chart-container small-chart">
@@ -1027,29 +985,29 @@
                         </div>
                     </div>
                     <div>
-                        <h3>혁신적 접근법</h3>
+                        <h3>서비스 통합 전략</h3>
                         <div class="panel-box" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
-                            <h4>디지털 혁신</h4>
+                            <h4>모자보건 통합</h4>
                             <p style="font-size: 12px;">
-                                • AI 챗봇 상담<br>
-                                • 원격의료 서비스<br>
-                                • 모바일 앱 추적
+                                • 산전/산후 관리와 연계<br>
+                                • 예방접종 시 가족계획 상담<br>
+                                • 안전한 출산 서비스
                             </p>
                         </div>
                         <div class="panel-box" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
-                            <h4>공급망 혁신</h4>
+                            <h4>HIV/STI 서비스 연계</h4>
                             <p style="font-size: 12px;">
-                                • 드론 배송<br>
-                                • 블록체인 추적<br>
-                                • 스마트 재고관리
+                                • 이중보호 전략<br>
+                                • VCT 센터 활용<br>
+                                • 통합 상담 서비스
                             </p>
                         </div>
                         <div class="panel-box" style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);">
-                            <h4>금융 혁신</h4>
+                            <h4>청소년 친화 서비스</h4>
                             <p style="font-size: 12px;">
-                                • 소액보험 연계<br>
-                                • 모바일 머니<br>
-                                • 성과기반 지불
+                                • 학교 보건 프로그램<br>
+                                • 또래 교육자 활용<br>
+                                • 비밀보장 서비스
                             </p>
                         </div>
                     </div>
@@ -1066,29 +1024,30 @@
                             <canvas id="fundingTrends"></canvas>
                         </div>
                         <div class="data-card" style="margin-top: 15px;">
-                            <p>연간 필요 자금</p>
-                            <div class="stat-number" style="font-size: 28px;">$71억</div>
-                            <p style="font-size: 11px;">현재 충족률: 55%</p>
+                            <p>자금 격차</p>
+                            <div class="stat-number" style="font-size: 28px;">증가 필요</div>
+                            <p style="font-size: 11px;">지속적 투자 확대 필요</p>
                         </div>
                     </div>
                     <div>
                         <h3>자금 출처와 배분</h3>
                         <div class="panel-box">
-                            <h4>주요 공여자</h4>
+                            <h4>자금 지원 필요</h4>
                             <ul style="font-size: 12px;">
-                                <li>미국 (USAID): 35%</li>
-                                <li>UNFPA: 18%</li>
-                                <li>빌게이츠 재단: 15%</li>
-                                <li>영국 (DFID): 12%</li>
-                                <li>기타: 20%</li>
+                                <li>국제 공여자 지원</li>
+                                <li>국내 자원 동원</li>
+                                <li>민간 부문 참여</li>
+                                <li>혁신적 자금 조달</li>
+                                <li>지속가능 재원 확보</li>
                             </ul>
                         </div>
                         <div class="panel-box" style="background: #fef3c7;">
-                            <h4>자금 격차</h4>
+                            <h4>투자 우선순위</h4>
                             <p style="font-size: 12px;">
-                                사하라이남: <strong>$25억 부족</strong><br>
-                                남아시아: $15억 부족<br>
-                                청소년 프로그램: 80% 미충족
+                                • 사하라이남 아프리카<br>
+                                • 청소년 프로그램<br>
+                                • 가장 취약한 계층<br>
+                                • 품질 개선 투자
                             </p>
                         </div>
                         <div class="quote-box" style="margin-top: 15px;">
@@ -1205,10 +1164,10 @@
                             <p>"인구 안정화는 기후 변화 대응의 핵심 전략"</p>
                         </div>
                         <div class="data-card" style="margin-top: 15px;">
-                            <h4>2050 영향</h4>
+                            <h4>환경 영향</h4>
                             <p style="font-size: 11px;">
-                                CO₂ 배출 <strong>37% 감소</strong> 가능<br>
-                                (가족계획 보편화 시)
+                                인구 안정화로 <strong>환경 부담 감소</strong><br>
+                                지속가능 발전 기여
                             </p>
                         </div>
                     </div>
@@ -1217,24 +1176,25 @@
 
             <!-- Slide 18: 글로벌 구현 지도 -->
             <div class="slide">
-                <h1>글로벌 가족계획 현황: 통합 지도</h1>
-                <div id="globalMap" class="map-container" style="height: 420px;"></div>
-                <div style="display: flex; gap: 15px; margin-top: 15px;">
-                    <div class="data-card" style="flex: 1;">
-                        <p style="font-size: 11px;">성공 국가</p>
-                        <p style="font-weight: 800; color: #059669;">15개국</p>
-                    </div>
-                    <div class="data-card" style="flex: 1;">
-                        <p style="font-size: 11px;">진행 중</p>
-                        <p style="font-weight: 800; color: #3b82f6;">42개국</p>
-                    </div>
-                    <div class="data-card" style="flex: 1;">
-                        <p style="font-size: 11px;">정체 상태</p>
-                        <p style="font-weight: 800; color: #f59e0b;">28개국</p>
-                    </div>
-                    <div class="data-card" style="flex: 1;">
-                        <p style="font-size: 11px;">위기 상황</p>
-                        <p style="font-weight: 800; color: #ef4444;">12개국</p>
+                <h1>가족계획 우선순위 국가 분류</h1>
+                <div id="globalMap" class="map-container" style="height: 380px;"></div>
+                <div class="panel-box" style="margin-top: 15px;">
+                    <h4>우선순위 설정 기준 (75개 저소득/중저소득 국가)</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;">
+                        <div>
+                            <p style="font-size: 12px;"><strong>높은 우선순위 (26개국)</strong><br>
+                            • 인구증가율 ≥2%/년<br>
+                            • 미충족 수요 ≥20%<br>
+                            • 피임 사용률 평균 17%<br>
+                            • TFR >5명</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px;"><strong>주요 특징</strong><br>
+                            • 대부분 사하라이남 아프리카<br>
+                            • 제한적 낙태법<br>
+                            • 높은 모성·아동 사망률<br>
+                            • MDG 달성 위험</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1248,9 +1208,9 @@
                         <div class="panel-box">
                             <ul style="font-size: 13px; line-height: 1.8;">
                                 <li>2억 명의 미충족 수요</li>
-                                <li>연 8만 명 모성 사망 예방 가능</li>
-                                <li>청소년 임신 문제 지속</li>
-                                <li>성평등 미달성</li>
+                                <li>높은 모성 사망률 지속</li>
+                                <li>청소년 임신 문제</li>
+                                <li>성평등 과제</li>
                             </ul>
                         </div>
                         <h3 style="margin-top: 20px;">기회의 창</h3>
@@ -1265,19 +1225,19 @@
                     </div>
                     <div>
                         <h3>행동 촉구</h3>
-                        <div class="data-card" style="background: #667eea; color: white;">
+                        <div class="data-card" style="background: #69b7a4; color: white;">
                             <h4 style="color: white;">정부</h4>
                             <p>정치적 의지와 자원 투입</p>
                         </div>
-                        <div class="data-card" style="margin-top: 10px; background: #764ba2; color: white;">
+                        <div class="data-card" style="margin-top: 10px; background: #8fa68e; color: white;">
                             <h4 style="color: white;">개발 파트너</h4>
                             <p>지속가능한 자금 지원</p>
                         </div>
-                        <div class="data-card" style="margin-top: 10px; background: #8b5cf6; color: white;">
+                        <div class="data-card" style="margin-top: 10px; background: #a8957e; color: white;">
                             <h4 style="color: white;">시민사회</h4>
                             <p>옹호와 모니터링</p>
                         </div>
-                        <div class="data-card" style="margin-top: 10px; background: #a78bfa; color: white;">
+                        <div class="data-card" style="margin-top: 10px; background: #c4a977; color: white;">
                             <h4 style="color: white;">개인</h4>
                             <p>정보 기반 선택</p>
                         </div>
@@ -1385,7 +1345,7 @@
                 unmetNeed: 19,
                 maternalMortality: 553,
                 trend: '위기 - 급속한 인구 증가',
-                color: '#dc2626'
+                color: '#c97064'
             },
             kenya: {
                 name: '케냐',
@@ -1395,7 +1355,7 @@
                 unmetNeed: 18,
                 maternalMortality: 342,
                 trend: '정체 - 추가 노력 필요',
-                color: '#f59e0b'
+                color: '#c4a977'
             },
             brazil: {
                 name: '브라질',
@@ -1405,7 +1365,7 @@
                 unmetNeed: 6,
                 maternalMortality: 60,
                 trend: '성공 - 자연적 감소',
-                color: '#10b981'
+                color: '#69b7a4'
             },
             bangladesh: {
                 name: '방글라데시',
@@ -1415,7 +1375,7 @@
                 unmetNeed: 12,
                 maternalMortality: 173,
                 trend: '빠른 진전',
-                color: '#3b82f6'
+                color: '#7db8b5'
             },
             pakistan: {
                 name: '파키스탄',
@@ -1425,7 +1385,7 @@
                 unmetNeed: 20,
                 maternalMortality: 140,
                 trend: '느린 진전',
-                color: '#f59e0b'
+                color: '#c4a977'
             },
             iran: {
                 name: '이란',
@@ -1435,7 +1395,7 @@
                 unmetNeed: 8,
                 maternalMortality: 16,
                 trend: '성공 사례',
-                color: '#10b981'
+                color: '#69b7a4'
             },
             thailand: {
                 name: '태국',
@@ -1445,7 +1405,7 @@
                 unmetNeed: 7,
                 maternalMortality: 37,
                 trend: '성공 사례',
-                color: '#10b981'
+                color: '#69b7a4'
             },
             rwanda: {
                 name: '르완다',
@@ -1455,7 +1415,7 @@
                 unmetNeed: 14,
                 maternalMortality: 248,
                 trend: '빠른 개선',
-                color: '#3b82f6'
+                color: '#7db8b5'
             },
             mexico: {
                 name: '멕시코',
@@ -1465,7 +1425,7 @@
                 unmetNeed: 10,
                 maternalMortality: 33,
                 trend: '지속적 개선',
-                color: '#10b981'
+                color: '#69b7a4'
             },
             indonesia: {
                 name: '인도네시아',
@@ -1475,7 +1435,7 @@
                 unmetNeed: 11,
                 maternalMortality: 177,
                 trend: '꾸준한 진전',
-                color: '#3b82f6'
+                color: '#7db8b5'
             },
             vietnam: {
                 name: '베트남',
@@ -1485,7 +1445,7 @@
                 unmetNeed: 9,
                 maternalMortality: 43,
                 trend: '성공 사례',
-                color: '#10b981'
+                color: '#69b7a4'
             }
         };
 
@@ -1595,8 +1555,8 @@
                             datasets: [{
                                 label: '세계 평균 TFR',
                                 data: [5.0, 4.5, 3.6, 3.0, 2.5, 2.4, 2.3],
-                                borderColor: '#667eea',
-                                backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                                borderColor: '#69b7a4',
+                                backgroundColor: 'rgba(105, 183, 164, 0.1)',
                                 tension: 0.3
                             }]
                         },
@@ -1667,7 +1627,7 @@
                             datasets: [{
                                 label: 'TFR',
                                 data: [6.3, 5.1, 3.4, 2.9, 2.3],
-                                borderColor: '#10b981',
+                                borderColor: '#69b7a4',
                                 tension: 0.3
                             }]
                         },
@@ -1691,7 +1651,7 @@
                             datasets: [{
                                 label: 'TFR',
                                 data: [6.3, 6.0, 5.4, 4.3, 3.7],
-                                borderColor: '#f59e0b',
+                                borderColor: '#c4a977',
                                 tension: 0.3
                             }]
                         },
@@ -1717,7 +1677,7 @@
                             datasets: [{
                                 label: '감소율 (%)',
                                 data: [32, 20, 25],
-                                backgroundColor: ['#dc2626', '#f59e0b', '#3b82f6']
+                                backgroundColor: ['#c97064', '#c4a977', '#69b7a4']
                             }]
                         },
                         options: {
@@ -1738,7 +1698,7 @@
                             datasets: [{
                                 label: '경제성장 기여도 (%)',
                                 data: [33, 18, 22, 8],
-                                backgroundColor: '#667eea'
+                                backgroundColor: '#69b7a4'
                             }]
                         },
                         options: {
@@ -1761,7 +1721,7 @@
                                     {x: 9, y: 2.4},
                                     {x: 12, y: 1.8}
                                 ],
-                                backgroundColor: '#667eea'
+                                backgroundColor: '#69b7a4'
                             }]
                         },
                         options: {
@@ -1792,12 +1752,12 @@
                                 {
                                     label: '무학',
                                     data: [150, 250, 200, 150, 80, 30],
-                                    borderColor: '#dc2626'
+                                    borderColor: '#c97064'
                                 },
                                 {
                                     label: '고등교육',
                                     data: [20, 80, 180, 150, 60, 10],
-                                    borderColor: '#10b981'
+                                    borderColor: '#69b7a4'
                                 }
                             ]
                         },
@@ -1815,8 +1775,8 @@
                             // 지역별 히트맵 오버레이 추가
                             Object.keys(countryData).forEach(country => {
                                 const data = countryData[country];
-                                const color = data.unmetNeed > 15 ? '#dc2626' :
-                                            data.unmetNeed > 10 ? '#f59e0b' : '#10b981';
+                                const color = data.unmetNeed > 15 ? '#c97064' :
+                                            data.unmetNeed > 10 ? '#c4a977' : '#69b7a4';
 
                                 L.circleMarker(data.coords, {
                                     radius: data.unmetNeed / 2,
@@ -1838,7 +1798,7 @@
                             labels: ['접근성', '부작용 우려', '문화적 반대', '비용'],
                             datasets: [{
                                 data: [45, 26, 23, 6],
-                                backgroundColor: ['#667eea', '#764ba2', '#8b5cf6', '#a78bfa']
+                                backgroundColor: ['#69b7a4', '#8fa68e', '#a8957e', '#c4a977']
                             }]
                         },
                         options: {
@@ -1856,7 +1816,7 @@
                             datasets: [{
                                 label: '효과성 (%)',
                                 data: [99.95, 99.2, 99.5, 94, 91, 82],
-                                backgroundColor: '#667eea'
+                                backgroundColor: '#69b7a4'
                             }]
                         },
                         options: {
@@ -1880,7 +1840,7 @@
                             datasets: [{
                                 label: '피임 사용률 (%)',
                                 data: [35, 62],
-                                backgroundColor: ['#f59e0b', '#10b981']
+                                backgroundColor: ['#c4a977', '#69b7a4']
                             }]
                         },
                         options: {
@@ -1899,13 +1859,13 @@
                                 {
                                     label: '필요 자금',
                                     data: [5.5, 5.8, 6.2, 6.5, 6.8, 7.0, 7.1],
-                                    borderColor: '#dc2626',
+                                    borderColor: '#c97064',
                                     borderDash: [5, 5]
                                 },
                                 {
                                     label: '실제 자금',
                                     data: [3.2, 3.5, 3.8, 3.7, 3.9, 3.8, 3.9],
-                                    borderColor: '#3b82f6'
+                                    borderColor: '#7db8b5'
                                 }
                             ]
                         },
@@ -1933,12 +1893,12 @@
                                 {
                                     label: '현재 추세',
                                     data: [36, 42, 48, 55],
-                                    borderColor: '#dc2626'
+                                    borderColor: '#c97064'
                                 },
                                 {
                                     label: 'FP 보편화',
                                     data: [36, 38, 37, 35],
-                                    borderColor: '#10b981'
+                                    borderColor: '#69b7a4'
                                 }
                             ]
                         },
@@ -1975,10 +1935,10 @@
                                 div.style.borderRadius = '5px';
                                 div.innerHTML = `
                                     <h4 style="margin: 0 0 5px 0;">프로그램 상태</h4>
-                                    <div><span style="background: #10b981; width: 12px; height: 12px; display: inline-block; border-radius: 50%;"></span> 성공</div>
-                                    <div><span style="background: #3b82f6; width: 12px; height: 12px; display: inline-block; border-radius: 50%;"></span> 진행 중</div>
-                                    <div><span style="background: #f59e0b; width: 12px; height: 12px; display: inline-block; border-radius: 50%;"></span> 정체</div>
-                                    <div><span style="background: #dc2626; width: 12px; height: 12px; display: inline-block; border-radius: 50%;"></span> 위기</div>
+                                    <div><span style="background: #69b7a4; width: 12px; height: 12px; display: inline-block; border-radius: 50%;"></span> 성공</div>
+                                    <div><span style="background: #7db8b5; width: 12px; height: 12px; display: inline-block; border-radius: 50%;"></span> 진행 중</div>
+                                    <div><span style="background: #c4a977; width: 12px; height: 12px; display: inline-block; border-radius: 50%;"></span> 정체</div>
+                                    <div><span style="background: #c97064; width: 12px; height: 12px; display: inline-block; border-radius: 50%;"></span> 위기</div>
                                 `;
                                 return div;
                             };
