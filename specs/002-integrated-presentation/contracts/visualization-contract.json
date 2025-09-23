@@ -1,0 +1,172 @@
+{
+  "contract": "VisualizationRendering",
+  "version": "1.0.0",
+  "description": "Contract for rendering data visualizations in presentation",
+
+  "interfaces": {
+    "IVisualizationRenderer": {
+      "render": {
+        "input": {
+          "type": "object",
+          "required": ["id", "type", "config", "data", "container"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^viz-\\d{3}$"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["chart", "map", "timeline", "composite"]
+            },
+            "config": {
+              "type": "object",
+              "description": "Type-specific configuration object"
+            },
+            "data": {
+              "type": "object",
+              "required": ["labels", "datasets"],
+              "properties": {
+                "labels": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                },
+                "datasets": {
+                  "type": "array",
+                  "minItems": 1
+                }
+              }
+            },
+            "container": {
+              "type": "string",
+              "description": "DOM element ID for rendering"
+            }
+          }
+        },
+        "output": {
+          "type": "object",
+          "required": ["success", "instance"],
+          "properties": {
+            "success": {"type": "boolean"},
+            "instance": {
+              "type": "object",
+              "description": "Chart.js or Leaflet instance"
+            },
+            "error": {
+              "type": "string",
+              "description": "Error message if success is false"
+            }
+          }
+        }
+      },
+
+      "update": {
+        "input": {
+          "type": "object",
+          "required": ["id", "data"],
+          "properties": {
+            "id": {"type": "string"},
+            "data": {"type": "object"}
+          }
+        },
+        "output": {
+          "type": "object",
+          "required": ["success"],
+          "properties": {
+            "success": {"type": "boolean"},
+            "error": {"type": "string"}
+          }
+        }
+      },
+
+      "destroy": {
+        "input": {
+          "type": "object",
+          "required": ["id"],
+          "properties": {
+            "id": {"type": "string"}
+          }
+        },
+        "output": {
+          "type": "object",
+          "required": ["success"],
+          "properties": {
+            "success": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  },
+
+  "validators": {
+    "dataAccuracy": {
+      "description": "Validate data matches PDF source",
+      "rules": [
+        "All numerical values must match source ±0.01",
+        "Country names must use ISO standard",
+        "Date formats must be ISO 8601",
+        "Missing data must be explicitly null"
+      ]
+    },
+
+    "visualizationQuality": {
+      "description": "Validate visualization meets standards",
+      "rules": [
+        "Interactive tooltips must show exact values",
+        "Colors must follow defined palette",
+        "Korean labels must be present",
+        "Accessibility descriptions required"
+      ]
+    }
+  },
+
+  "testCases": [
+    {
+      "name": "Render line chart with time series data",
+      "input": {
+        "id": "viz-001",
+        "type": "chart",
+        "config": {
+          "chartType": "line",
+          "options": {"responsive": true}
+        },
+        "data": {
+          "labels": ["1980", "1990", "2000"],
+          "datasets": [{
+            "label": "Kenya TFR",
+            "data": [7.8, 6.5, 5.0]
+          }]
+        },
+        "container": "chart-container"
+      },
+      "expected": {
+        "success": true,
+        "instance": {"_type": "Chart"}
+      }
+    },
+
+    {
+      "name": "Render choropleth map with country data",
+      "input": {
+        "id": "viz-002",
+        "type": "map",
+        "config": {
+          "style": "choropleth",
+          "center": [0, 0],
+          "zoom": 2
+        },
+        "data": {
+          "labels": ["Kenya", "Nigeria", "Brazil"],
+          "datasets": [{
+            "label": "TFR 2020",
+            "data": [3.4, 5.3, 1.7]
+          }]
+        },
+        "container": "map-container"
+      },
+      "expected": {
+        "success": true,
+        "instance": {"_type": "L.Map"}
+      }
+    }
+  ]
+}

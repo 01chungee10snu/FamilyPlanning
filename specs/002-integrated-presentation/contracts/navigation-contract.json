@@ -1,0 +1,185 @@
+{
+  "contract": "NavigationControl",
+  "version": "1.0.0",
+  "description": "Contract for slide navigation and timing control",
+
+  "interfaces": {
+    "INavigationController": {
+      "navigate": {
+        "input": {
+          "type": "object",
+          "required": ["action"],
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": ["next", "previous", "goto", "first", "last"]
+            },
+            "target": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 40,
+              "description": "Required when action is 'goto'"
+            }
+          }
+        },
+        "output": {
+          "type": "object",
+          "required": ["success", "currentSlide"],
+          "properties": {
+            "success": {"type": "boolean"},
+            "currentSlide": {"type": "integer"},
+            "message": {"type": "string"}
+          }
+        }
+      },
+
+      "startTimer": {
+        "input": {
+          "type": "object",
+          "properties": {
+            "autoAdvance": {
+              "type": "boolean",
+              "default": true
+            },
+            "speed": {
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 2.0,
+              "default": 1.0
+            }
+          }
+        },
+        "output": {
+          "type": "object",
+          "required": ["success", "timerId"],
+          "properties": {
+            "success": {"type": "boolean"},
+            "timerId": {"type": "string"}
+          }
+        }
+      },
+
+      "pauseTimer": {
+        "input": {},
+        "output": {
+          "type": "object",
+          "required": ["success", "elapsedTime"],
+          "properties": {
+            "success": {"type": "boolean"},
+            "elapsedTime": {"type": "integer"},
+            "remainingTime": {"type": "integer"}
+          }
+        }
+      },
+
+      "getState": {
+        "input": {},
+        "output": {
+          "type": "object",
+          "required": ["currentSlide", "elapsedTime", "totalSlides"],
+          "properties": {
+            "currentSlide": {"type": "integer"},
+            "elapsedTime": {"type": "integer"},
+            "totalSlides": {"type": "integer"},
+            "remainingTime": {"type": "integer"},
+            "isPaused": {"type": "boolean"},
+            "isAutoAdvance": {"type": "boolean"},
+            "section": {"type": "string"}
+          }
+        }
+      }
+    }
+  },
+
+  "events": {
+    "slideChanged": {
+      "description": "Fired when slide changes",
+      "payload": {
+        "from": {"type": "integer"},
+        "to": {"type": "integer"},
+        "section": {"type": "string"},
+        "timestamp": {"type": "string"}
+      }
+    },
+
+    "timerTick": {
+      "description": "Fired every second during presentation",
+      "payload": {
+        "currentSlide": {"type": "integer"},
+        "slideElapsed": {"type": "integer"},
+        "totalElapsed": {"type": "integer"}
+      }
+    },
+
+    "presentationComplete": {
+      "description": "Fired when presentation ends",
+      "payload": {
+        "totalDuration": {"type": "integer"},
+        "slidesViewed": {"type": "integer"}
+      }
+    }
+  },
+
+  "constraints": {
+    "timing": {
+      "totalDuration": {"min": 1140, "max": 1260, "target": 1200},
+      "slideMinDuration": 20,
+      "slideMaxDuration": 45
+    },
+
+    "navigation": {
+      "keyboardShortcuts": {
+        "ArrowLeft": "previous",
+        "ArrowRight": "next",
+        "Space": "next",
+        "Enter": "next",
+        "Home": "first",
+        "End": "last",
+        "Escape": "toggleFullscreen"
+      },
+
+      "touchGestures": {
+        "swipeLeft": "next",
+        "swipeRight": "previous",
+        "doubleTap": "togglePause"
+      }
+    }
+  },
+
+  "testCases": [
+    {
+      "name": "Navigate to next slide",
+      "input": {
+        "action": "next"
+      },
+      "initialState": {
+        "currentSlide": 5
+      },
+      "expected": {
+        "success": true,
+        "currentSlide": 6
+      }
+    },
+
+    {
+      "name": "Start auto-advance timer",
+      "input": {
+        "autoAdvance": true,
+        "speed": 1.0
+      },
+      "expected": {
+        "success": true,
+        "timerId": "timer-*"
+      }
+    },
+
+    {
+      "name": "Pause and resume presentation",
+      "sequence": [
+        {"action": "startTimer", "expected": {"success": true}},
+        {"action": "pauseTimer", "expected": {"success": true}},
+        {"action": "startTimer", "expected": {"success": true}}
+      ]
+    }
+  ]
+}

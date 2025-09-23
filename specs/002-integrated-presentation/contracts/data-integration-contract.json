@@ -1,0 +1,267 @@
+{
+  "contract": "DataIntegration",
+  "version": "1.0.0",
+  "description": "Contract for integrating PDF and slide data into unified presentation",
+
+  "interfaces": {
+    "IDataExtractor": {
+      "extractPanels": {
+        "input": {
+          "type": "object",
+          "required": ["source"],
+          "properties": {
+            "source": {
+              "type": "string",
+              "description": "PDF file path or content"
+            }
+          }
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "number", "title", "content", "sourcePage"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^panel-[1-8]$"},
+              "number": {"type": "integer", "minimum": 1, "maximum": 8},
+              "title": {"type": "string"},
+              "titleKo": {"type": "string"},
+              "content": {"type": "object"},
+              "sourcePage": {"type": "integer"}
+            }
+          },
+          "minItems": 8,
+          "maxItems": 8
+        }
+      },
+
+      "extractTables": {
+        "input": {
+          "type": "object",
+          "required": ["source"],
+          "properties": {
+            "source": {"type": "string"}
+          }
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "title", "headers", "data", "sourcePage"],
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "headers": {"type": "array"},
+              "data": {"type": "array"},
+              "sourcePage": {"type": "integer"}
+            }
+          }
+        }
+      },
+
+      "extractCountryData": {
+        "input": {
+          "type": "object",
+          "required": ["source"],
+          "properties": {
+            "source": {"type": "string"}
+          }
+        },
+        "output": {
+          "type": "object",
+          "patternProperties": {
+            "^[A-Z]{3}$": {
+              "type": "object",
+              "required": ["name", "coordinates", "data"],
+              "properties": {
+                "name": {"type": "string"},
+                "nameKo": {"type": "string"},
+                "coordinates": {
+                  "type": "array",
+                  "items": {"type": "number"},
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "tfr": {"type": "object"},
+                    "contraceptiveUse": {"type": "object"},
+                    "population": {"type": "object"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "ISlideIntegrator": {
+      "mergeSlides": {
+        "input": {
+          "type": "object",
+          "required": ["slidePaths"],
+          "properties": {
+            "slidePaths": {
+              "type": "array",
+              "items": {"type": "string"},
+              "minItems": 60,
+              "description": "Paths to all slide HTML files"
+            }
+          }
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "order", "section", "content"],
+            "properties": {
+              "id": {"type": "string"},
+              "order": {"type": "integer"},
+              "section": {"type": "string"},
+              "content": {"type": "object"},
+              "originalSources": {
+                "type": "array",
+                "items": {"type": "string"}
+              }
+            }
+          },
+          "minItems": 35,
+          "maxItems": 40
+        }
+      },
+
+      "assignPanels": {
+        "input": {
+          "type": "object",
+          "required": ["slides", "panels"],
+          "properties": {
+            "slides": {"type": "array"},
+            "panels": {"type": "array"}
+          }
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "slideId": {"type": "string"},
+              "panelId": {"type": "string"},
+              "placement": {"type": "string"}
+            }
+          }
+        }
+      },
+
+      "validateStructure": {
+        "input": {
+          "type": "object",
+          "required": ["presentation"],
+          "properties": {
+            "presentation": {"type": "object"}
+          }
+        },
+        "output": {
+          "type": "object",
+          "required": ["valid", "errors"],
+          "properties": {
+            "valid": {"type": "boolean"},
+            "errors": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "warnings": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "dataFormats": {
+    "panel": {
+      "example": {
+        "id": "panel-1",
+        "number": 1,
+        "title": "Key Messages",
+        "titleKo": "주요 메시지",
+        "content": {
+          "points": [
+            {
+              "text": "Family planning programs are critical",
+              "textKo": "가족계획 프로그램은 필수적이다"
+            }
+          ]
+        },
+        "sourcePage": 1810
+      }
+    },
+
+    "countryData": {
+      "example": {
+        "KEN": {
+          "name": "Kenya",
+          "nameKo": "케냐",
+          "coordinates": [-1.286389, 36.817223],
+          "data": {
+            "tfr": {
+              "1980": 7.8,
+              "2020": 3.4
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "validationRules": {
+    "dataAccuracy": [
+      "All numerical values must match PDF exactly",
+      "Panel content must be verbatim from source",
+      "Country coordinates must be valid lat/lng"
+    ],
+
+    "slideIntegration": [
+      "No duplicate content across merged slides",
+      "Maintain logical flow per specification",
+      "Each section must have appropriate number of slides"
+    ],
+
+    "panelPlacement": [
+      "All 8 panels must be placed",
+      "Panels must appear in contextually appropriate locations",
+      "Panel order should generally follow source order"
+    ]
+  },
+
+  "testCases": [
+    {
+      "name": "Extract all 8 panels from PDF",
+      "operation": "extractPanels",
+      "expectedCount": 8,
+      "validation": "All panels have required fields"
+    },
+
+    {
+      "name": "Merge 60+ slides into 35-40",
+      "operation": "mergeSlides",
+      "inputCount": 60,
+      "expectedRange": [35, 40],
+      "validation": "No content lost, duplicates removed"
+    },
+
+    {
+      "name": "Validate complete presentation structure",
+      "operation": "validateStructure",
+      "checks": [
+        "Panel count = 8",
+        "Slide count 35-40",
+        "Total duration 1140-1260 seconds",
+        "All sections present"
+      ]
+    }
+  ]
+}
