@@ -478,8 +478,33 @@
                         </div>
                     </div>
                     <div>
+                        <h3>인구증가 3대 주요 요인</h3>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%); margin-bottom: 10px;">
+                            <h4>1. 인구구조 모멘텀</h4>
+                            <p style="font-size: 11px;">
+                                개발도상국의 높은 출산율 유지는 <strong>생식연령대 인구비율이 높기 때문</strong><br>
+                                • 젊은 연령구조로 인한 지속적 출산<br>
+                                • 인구 피라미드 기저부 확대
+                            </p>
+                        </div>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); margin-bottom: 10px;">
+                            <h4>2. 원하지 않는 출생</h4>
+                            <p style="font-size: 11px;">
+                                <strong>피임에 대한 미충족 수요의 결과</strong><br>
+                                • 2억 명의 여성이 피임 접근 제한<br>
+                                • 계획되지 않은 임신 지속
+                            </p>
+                        </div>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); margin-bottom: 15px;">
+                            <h4>3. 높은 희망 가족 규모</h4>
+                            <p style="font-size: 11px;">
+                                <strong>문화적 선호와 사회경제적 요인</strong><br>
+                                • 대가족 전통과 자녀 경제적 가치<br>
+                                • 높은 영아 사망률에 대한 보상 심리
+                            </p>
+                        </div>
                         <h3>지역별 증가율</h3>
-                        <table class="data-table">
+                        <table class="data-table" style="font-size: 11px;">
                             <thead>
                                 <tr>
                                     <th>지역</th>
@@ -507,22 +532,8 @@
                                     <td>1,587M</td>
                                     <td style="color: #48bb78;">+4%</td>
                                 </tr>
-                                <tr>
-                                    <td>라틴아메리카</td>
-                                    <td>561M</td>
-                                    <td>783M</td>
-                                    <td style="color: #4299e1;">+40%</td>
-                                </tr>
                             </tbody>
                         </table>
-                        <div class="panel-box" style="margin-top: 15px;">
-                            <h4>핵심 인사이트</h4>
-                            <p style="font-size: 12px;">
-                                • 전체 증가의 <strong>95%</strong>가 개발도상국<br>
-                                • 사하라이남 아프리카 인구 <strong>2배 증가</strong><br>
-                                • 동아시아는 안정화 단계 진입
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -739,55 +750,34 @@
                 </div>
             </div>
 
-            <!-- Slide 9: 경제적 영향 -->
+            <!-- Slide 9: 한국 인구구조 변화 -->
             <div class="slide">
-                <h1>경제적 영향과 인구 배당</h1>
-                <div class="main-with-side">
-                    <div>
-                        <h3>인구 배당 효과</h3>
-                        <div class="chart-container">
-                            <canvas id="demographicDividend"></canvas>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-                            <div class="panel-box">
-                                <h4>동아시아 기적</h4>
-                                <p style="font-size: 12px;">
-                                    1965-1990년 경제성장의 <strong>1/3</strong>이 인구구조 변화 기여
-                                </p>
-                            </div>
-                            <div class="panel-box">
-                                <h4>비용 효과성</h4>
-                                <p style="font-size: 12px;">
-                                    $1 투자 → <strong>$120</strong> 경제적 편익 (장기)
-                                </p>
-                            </div>
-                        </div>
+                <h1>한국 인구구조 변화: 1960-2040</h1>
+                <div style="position: relative; height: 450px;">
+                    <div id="koreaPyramidContainer" style="position: relative; width: 100%; height: 400px;">
+                        <canvas id="koreaPyramid" style="width: 100%; height: 100%;"></canvas>
                     </div>
-                    <div>
-                        <h3>경제 효과 경로</h3>
-                        <div class="data-card">
-                            <h4>가계 수준</h4>
-                            <ul style="font-size: 11px; text-align: left;">
-                                <li>교육 투자 증가</li>
-                                <li>저축률 상승</li>
-                                <li>여성 노동참여</li>
-                            </ul>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                        <div style="flex: 1;">
+                            <h3 id="pyramidYear" style="font-size: 24px; color: #2d3a3a;">1960년</h3>
+                            <div class="data-card" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);">
+                                <p style="font-size: 11px;">생산연령인구(15-64세)</p>
+                                <p id="workingAgePercent" style="font-size: 20px; font-weight: 800; color: #0284c7;">54.8%</p>
+                            </div>
                         </div>
-                        <div class="data-card" style="margin-top: 10px;">
-                            <h4>국가 수준</h4>
-                            <ul style="font-size: 11px; text-align: left;">
-                                <li>부양비 감소</li>
-                                <li>인적자본 축적</li>
-                                <li>생산성 향상</li>
-                            </ul>
+                        <div style="flex: 2; text-align: center;">
+                            <div class="panel-box" style="background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);">
+                                <h4>인구구조 특징</h4>
+                                <p id="pyramidDescription" style="font-size: 12px;">
+                                    피라미드형 - 높은 출산율, 짧은 기대수명
+                                </p>
+                            </div>
                         </div>
-                        <div class="data-card" style="margin-top: 10px; background: #ecfdf5;">
-                            <h4>글로벌 수준</h4>
-                            <ul style="font-size: 11px; text-align: left;">
-                                <li>빈곤 감소</li>
-                                <li>불평등 완화</li>
-                                <li>지속가능 발전</li>
-                            </ul>
+                        <div style="flex: 1; text-align: right;">
+                            <div class="data-card" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                                <p style="font-size: 11px;">고령인구(65세+)</p>
+                                <p id="elderlyPercent" style="font-size: 20px; font-weight: 800; color: #dc2626;">2.9%</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -844,33 +834,38 @@
                 </div>
             </div>
 
-            <!-- Slide 11: 미충족 수요 분석 (지도) -->
+            <!-- Slide 11: 미충족 수요 분석 -->
             <div class="slide">
-                <h1>미충족 수요: 글로벌 현황</h1>
-                <div id="unmetNeedMap" class="map-container" style="height: 320px;"></div>
-                <div class="three-column" style="margin-top: 20px; height: auto;">
-                    <div class="panel-box">
-                        <h4>총 미충족 수요</h4>
-                        <div class="stat-number" style="font-size: 28px;">2.01억명</div>
-                        <p style="font-size: 11px;">가임기 기혼 여성</p>
+                <h1>미충족 수요: 정의와 지역별 분포</h1>
+                <div class="two-column">
+                    <div>
+                        <h3>지역별 미충족 수요</h3>
+                        <div class="chart-container" style="height: 250px;">
+                            <canvas id="unmetNeedByRegion"></canvas>
+                        </div>
+                        <div class="panel-box" style="margin-top: 15px;">
+                            <h4>총 미충족 수요</h4>
+                            <div class="stat-number" style="font-size: 24px;">2.01억명</div>
+                            <p style="font-size: 11px;">가임기 기혼 여성 중</p>
+                        </div>
                     </div>
-                    <div class="panel-box">
-                        <h4>주요 원인</h4>
-                        <ul style="font-size: 11px;">
-                            <li>접근성 부족 (45%)</li>
-                            <li>부작용 우려 (26%)</li>
-                            <li>문화적 반대 (23%)</li>
-                            <li>비용 문제 (6%)</li>
-                        </ul>
-                    </div>
-                    <div class="panel-box">
-                        <h4>경제 수준별</h4>
-                        <ul style="font-size: 11px;">
-                            <li>최빈층: <strong>36%</strong></li>
-                            <li>빈곤층: 28%</li>
-                            <li>중산층: 19%</li>
-                            <li>부유층: 12%</li>
-                        </ul>
+                    <div>
+                        <h3>미충족 수요의 원인</h3>
+                        <div class="chart-container small-chart" style="height: 200px;">
+                            <canvas id="unmetNeedReasons"></canvas>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                            <div class="data-card">
+                                <h4>경제 수준별</h4>
+                                <canvas id="unmetNeedByWealth" style="height: 120px;"></canvas>
+                            </div>
+                            <div class="data-card">
+                                <h4>정의</h4>
+                                <p style="font-size: 10px;">
+                                    임신을 원하지 않거나 연기하고자 하지만 피임을 사용하지 않는 여성
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1690,22 +1685,8 @@
                     });
                     break;
 
-                case 8: // 경제 영향
-                    createChart('demographicDividend', {
-                        type: 'bar',
-                        data: {
-                            labels: ['동아시아', '남아시아', '라틴아메리카', '사하라이남'],
-                            datasets: [{
-                                label: '경제성장 기여도 (%)',
-                                data: [33, 18, 22, 8],
-                                backgroundColor: '#69b7a4'
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false
-                        }
-                    });
+                case 8: // 한국 인구구조 변화
+                    initKoreaPyramid();
                     break;
 
                 case 9: // 교육과 출산율
@@ -1769,26 +1750,84 @@
                     break;
 
                 case 10: // 미충족 수요
-                    setTimeout(() => {
-                        const map = createMap('unmetNeedMap');
-                        if (map) {
-                            // 지역별 히트맵 오버레이 추가
-                            Object.keys(countryData).forEach(country => {
-                                const data = countryData[country];
-                                const color = data.unmetNeed > 15 ? '#c97064' :
-                                            data.unmetNeed > 10 ? '#c4a977' : '#69b7a4';
-
-                                L.circleMarker(data.coords, {
-                                    radius: data.unmetNeed / 2,
-                                    fillColor: color,
-                                    color: '#fff',
-                                    weight: 1,
-                                    opacity: 1,
-                                    fillOpacity: 0.6
-                                }).addTo(map).bindTooltip(`${data.name}: ${data.unmetNeed}% 미충족`);
-                            });
+                    // 지역별 미충족 수요 차트
+                    createChart('unmetNeedByRegion', {
+                        type: 'bar',
+                        data: {
+                            labels: ['사하라이남', '남아시아', '중동/북아프리카', '라틴아메리카', '동아시아'],
+                            datasets: [{
+                                label: '미충족 수요 (%)',
+                                data: [24, 18, 15, 10, 7],
+                                backgroundColor: ['#c97064', '#d4826e', '#c4a977', '#8fa68e', '#69b7a4']
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            indexAxis: 'y',
+                            plugins: {
+                                legend: { display: false },
+                                title: {
+                                    display: true,
+                                    text: '지역별 미충족 수요 비율',
+                                    font: { size: 12, family: 'SeoulHangang' }
+                                }
+                            }
                         }
-                    }, 100);
+                    });
+
+                    // 미충족 수요 원인
+                    createChart('unmetNeedReasons', {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['접근성 부족', '부작용 우려', '문화적 반대', '비용 문제'],
+                            datasets: [{
+                                data: [45, 26, 23, 6],
+                                backgroundColor: ['#c97064', '#c4a977', '#a8957e', '#8fa68e']
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: { font: { size: 10, family: 'SeoulHangang' } }
+                                }
+                            }
+                        }
+                    });
+
+                    // 경제 수준별 미충족 수요
+                    createChart('unmetNeedByWealth', {
+                        type: 'line',
+                        data: {
+                            labels: ['최빈층', '빈곤층', '중산층', '부유층'],
+                            datasets: [{
+                                label: '미충족 수요 (%)',
+                                data: [36, 28, 19, 12],
+                                borderColor: '#c97064',
+                                backgroundColor: 'rgba(201, 112, 100, 0.1)',
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: { font: { size: 9 } }
+                                },
+                                x: {
+                                    ticks: { font: { size: 9 } }
+                                }
+                            }
+                        }
+                    });
                     break;
 
                 case 11: // 서비스 전달
@@ -1947,6 +1986,126 @@
                     }, 100);
                     break;
             }
+        }
+
+        // 한국 인구 피라미드 초기화 및 애니메이션
+        function initKoreaPyramid() {
+            const canvas = document.getElementById('koreaPyramid');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+
+            // 한국 인구구조 데이터 (연령대별, 천명 단위)
+            const pyramidData = {
+                1960: {
+                    year: 1960,
+                    description: '피라미드형 - 높은 출산율, 짧은 기대수명',
+                    working: 54.8,
+                    elderly: 2.9,
+                    ageGroups: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
+                    male: [2100, 1900, 1700, 1500, 1300, 1100, 900, 800, 700, 600, 500, 400, 300, 200, 100, 50],
+                    female: [2000, 1800, 1600, 1400, 1200, 1000, 850, 750, 650, 550, 450, 350, 250, 150, 80, 40]
+                },
+                2000: {
+                    year: 2000,
+                    description: '종형 - 출산율 감소, 생산연령인구 최대',
+                    working: 71.7,
+                    elderly: 7.2,
+                    ageGroups: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
+                    male: [1400, 1500, 1600, 1700, 1750, 1800, 1850, 1900, 1850, 1700, 1500, 1200, 900, 600, 400, 200],
+                    female: [1300, 1400, 1500, 1600, 1650, 1700, 1750, 1800, 1750, 1600, 1400, 1100, 850, 550, 380, 220]
+                },
+                2040: {
+                    year: 2040,
+                    description: '역피라미드형 - 초고령 사회, 낮은 출산율',
+                    working: 52.4,
+                    elderly: 34.3,
+                    ageGroups: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
+                    male: [800, 850, 900, 950, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 1700, 1200],
+                    female: [750, 800, 850, 900, 950, 1050, 1150, 1250, 1350, 1450, 1550, 1650, 1750, 1850, 1650, 1400]
+                }
+            };
+
+            const years = [1960, 2000, 2040];
+            let currentYearIndex = 0;
+            let animationTimer = null;
+
+            function drawPyramid(data) {
+                // Canvas 크기 설정
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                const maxValue = 2100; // 최대값 고정
+                const barHeight = canvas.height / data.ageGroups.length;
+                const centerX = canvas.width / 2;
+                const maxBarWidth = canvas.width * 0.35;
+
+                // 연령 그룹 그리기
+                data.ageGroups.forEach((ageGroup, i) => {
+                    const y = i * barHeight;
+
+                    // 남성 막대 (왼쪽)
+                    const maleWidth = (data.male[i] / maxValue) * maxBarWidth;
+                    ctx.fillStyle = i < 3 ? '#bae6fd' : (i >= 13 ? '#fecaca' : '#fdebd0'); // 젊은층, 노년층, 생산연령
+                    ctx.fillRect(centerX - maleWidth, y, maleWidth, barHeight - 2);
+
+                    // 여성 막대 (오른쪽)
+                    const femaleWidth = (data.female[i] / maxValue) * maxBarWidth;
+                    ctx.fillStyle = i < 3 ? '#bae6fd' : (i >= 13 ? '#fee2e2' : '#fef3c7');
+                    ctx.fillRect(centerX, y, femaleWidth, barHeight - 2);
+
+                    // 연령 레이블
+                    ctx.fillStyle = '#4a5568';
+                    ctx.font = '10px SeoulHangang';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(ageGroup, centerX, y + barHeight/2 + 3);
+                });
+
+                // 축 그리기
+                ctx.strokeStyle = '#cbd5e0';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(centerX, 0);
+                ctx.lineTo(centerX, canvas.height);
+                ctx.stroke();
+
+                // 레이블
+                ctx.fillStyle = '#4a5568';
+                ctx.font = '12px SeoulHangang';
+                ctx.textAlign = 'left';
+                ctx.fillText('남성', 20, 20);
+                ctx.textAlign = 'right';
+                ctx.fillText('여성', canvas.width - 20, 20);
+
+                // 정보 업데이트
+                document.getElementById('pyramidYear').textContent = data.year + '년';
+                document.getElementById('pyramidDescription').textContent = data.description;
+                document.getElementById('workingAgePercent').textContent = data.working + '%';
+                document.getElementById('elderlyPercent').textContent = data.elderly + '%';
+            }
+
+            // 자동 애니메이션
+            function startAnimation() {
+                drawPyramid(pyramidData[years[currentYearIndex]]);
+
+                animationTimer = setInterval(() => {
+                    currentYearIndex = (currentYearIndex + 1) % years.length;
+                    drawPyramid(pyramidData[years[currentYearIndex]]);
+                }, 3000); // 3초마다 전환
+            }
+
+            // 슬라이드가 활성화될 때 애니메이션 시작
+            startAnimation();
+
+            // 슬라이드 변경 시 애니메이션 정리
+            window.pyramidCleanup = () => {
+                if (animationTimer) {
+                    clearInterval(animationTimer);
+                    animationTimer = null;
+                }
+            };
         }
 
         // 초기 로드
