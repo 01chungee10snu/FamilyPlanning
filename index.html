@@ -727,93 +727,112 @@
                 </div>
             </div>
 
-            <!-- Slide 5: 성공 사례 - 케냐 & 브라질 -->
+            <!-- Slide 5: 통합된 성공/실패 사례 -->
             <div class="slide">
-                <h1>성공 스토리: 케냐와 브라질</h1>
-                <div id="successMap" class="map-container" style="height: 300px;"></div>
-                <div class="two-column" style="margin-top: 20px; height: auto;">
-                    <div class="panel-box" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
-                        <h3>🇰🇪 케냐: 정부 주도 성공 (Cleland et al., 2006)</h3>
-                        <div style="display: flex; gap: 10px; margin: 10px 0;">
-                            <div class="data-card" style="flex: 1;">
-                                <p style="font-size: 16px;">TFR 변화</p>
-                                <p style="font-weight: 800; color: #059669;">8.0→4.8</p>
-                            </div>
-                            <div class="data-card" style="flex: 1;">
-                                <p style="font-size: 16px;">피임률</p>
-                                <p style="font-weight: 800; color: #059669;">7→27%</p>
-                            </div>
-                        </div>
-                        <p style="font-size: 18px;">
-                            <strong>성공 요인:</strong><br>
-                            <span style="margin-left: 20px;">• 강력한 정치적 의지</span><br>
-                            <span style="margin-left: 20px;">• 지역사회 기반 프로그램</span><br>
-                            <span style="margin-left: 20px;">• 남성 참여 프로그램</span>
-                        </p>
-                    </div>
-                    <div class="panel-box" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
-                        <h3>🇧🇷 브라질: 사회 주도 전환 (Cleland et al., 2006)</h3>
-                        <div style="display: flex; gap: 10px; margin: 10px 0;">
-                            <div class="data-card" style="flex: 1;">
-                                <p style="font-size: 16px;">TFR 변화</p>
-                                <p style="font-weight: 800; color: #2563eb;">6.2→2.5</p><!-- Corrected from 2.3 to 2.5 per Panel 6 -->
-                            </div>
-                            <div class="data-card" style="flex: 1;">
-                                <p style="font-size: 16px;">피임률</p>
-                                <p style="font-weight: 800; color: #2563eb;">77%</p>
-                            </div>
-                        </div>
-                        <p style="font-size: 18px;">
-                            <strong>성공 요인:</strong><br>
-                            <span style="margin-left: 20px;">• 미디어 영향 (TV 노벨라)</span><br>
-                            <span style="margin-left: 20px;">• 여성 교육 확대</span><br>
-                            <span style="margin-left: 20px;">• 도시화와 경제 발전</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+                <h1>가족계획 성공과 실패: 국가별 비교</h1>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; height: 85%;">
+                    <!-- 왼쪽: 성공 사례들 -->
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <h3 style="text-align: center; margin: 5px 0;">✅ 성공 사례</h3>
 
-            <!-- Slide 6: 남아시아 비교 -->
-            <div class="slide">
-                <h1>남아시아 대조: 방글라데시 vs 파키스탄</h1>
-                <div class="main-with-side">
-                    <div>
-                        <h3>합계출산율(TFR) 비교</h3>
-                        <div class="chart-container" style="height: 350px;">
-                            <canvas id="southAsiaComparison"></canvas>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="panel-box" style="background: linear-gradient(135deg, #e5f5e0 0%, #c8e6c9 100%);">
-                            <h4>🇧🇩 방글라데시: 성공 사례</h4>
-                            <p style="font-size: 18px;">
-                                <strong>TFR 감소:</strong> 6.3 → 3.0<br>
-                                <strong>피임률:</strong> 58% 달성<br>
-                                <strong>핵심 전략:</strong><br>
-                                <span style="margin-left: 20px;">• 여성 지역보건요원</span><br>
-                                <span style="margin-left: 20px;">• 문맹 여성 프로그램</span><br>
-                                <span style="margin-left: 20px;">• 소액금융 연계</span>
+                        <!-- 케냐 -->
+                        <div class="panel-box" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); flex: 1;">
+                            <h4 style="margin: 5px 0;">🇰🇪 케냐: 정부 주도</h4>
+                            <div style="display: flex; gap: 10px; margin: 5px 0;">
+                                <div style="flex: 1; text-align: center;">
+                                    <span style="font-size: 14px;">TFR</span><br>
+                                    <strong style="color: #059669;">8.0→4.8</strong>
+                                </div>
+                                <div style="flex: 1; text-align: center;">
+                                    <span style="font-size: 14px;">피임률</span><br>
+                                    <strong style="color: #059669;">7→27%</strong>
+                                </div>
+                            </div>
+                            <p style="font-size: 14px; margin: 5px 0;">
+                                • 강력한 정치적 의지<br>
+                                • 지역사회 기반 프로그램
                             </p>
                         </div>
-                        <div class="panel-box" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); margin-top: 15px;">
-                            <h4>🇵🇰 파키스탄: 정체 상태</h4>
-                            <p style="font-size: 18px;">
-                                <strong>TFR 정체:</strong> 6.0 → 4.3<br>
-                                <strong>피임률 (1990):</strong> 12%<br><!-- Corrected from 30% to 12% per Panel 8 -->
-                                <strong>장애 요인:</strong><br>
-                                <span style="margin-left: 20px;">• 정치적 불안정</span><br>
-                                <span style="margin-left: 20px;">• 종교적 반대</span><br>
-                                <span style="margin-left: 20px;">• 여성 이동 제한</span>
+
+                        <!-- 브라질 -->
+                        <div class="panel-box" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); flex: 1;">
+                            <h4 style="margin: 5px 0;">🇧🇷 브라질: 사회 주도</h4>
+                            <div style="display: flex; gap: 10px; margin: 5px 0;">
+                                <div style="flex: 1; text-align: center;">
+                                    <span style="font-size: 14px;">TFR</span><br>
+                                    <strong style="color: #2563eb;">6.2→2.5</strong>
+                                </div>
+                                <div style="flex: 1; text-align: center;">
+                                    <span style="font-size: 14px;">피임률</span><br>
+                                    <strong style="color: #2563eb;">77%</strong>
+                                </div>
+                            </div>
+                            <p style="font-size: 14px; margin: 5px 0;">
+                                • 미디어 영향 (TV 노벨라)<br>
+                                • 여성 교육 확대
                             </p>
                         </div>
-                        <p style="font-size: 20px; margin-top: 15px; font-style: italic;">
-                            (Cleland et al., 2006)
-                        </p>
+
+                        <!-- 방글라데시 -->
+                        <div class="panel-box" style="background: linear-gradient(135deg, #e5f5e0 0%, #c8e6c9 100%); flex: 1;">
+                            <h4 style="margin: 5px 0;">🇧🇩 방글라데시: 혁신적 접근</h4>
+                            <div style="display: flex; gap: 10px; margin: 5px 0;">
+                                <div style="flex: 1; text-align: center;">
+                                    <span style="font-size: 14px;">TFR</span><br>
+                                    <strong style="color: #16a34a;">6.3→3.0</strong>
+                                </div>
+                                <div style="flex: 1; text-align: center;">
+                                    <span style="font-size: 14px;">피임률</span><br>
+                                    <strong style="color: #16a34a;">58%</strong>
+                                </div>
+                            </div>
+                            <p style="font-size: 14px; margin: 5px 0;">
+                                • 여성 지역보건요원<br>
+                                • 문맹 여성 프로그램<br>
+                                • 소액금융 연계
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 오른쪽: 실패/정체 사례 및 차트 -->
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <h3 style="text-align: center; margin: 5px 0;">❌ 정체/실패 사례</h3>
+
+                        <!-- 파키스탄 -->
+                        <div class="panel-box" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);">
+                            <h4 style="margin: 5px 0;">🇵🇰 파키스탄: 정체 상태</h4>
+                            <div style="display: flex; gap: 10px; margin: 5px 0;">
+                                <div style="flex: 1; text-align: center;">
+                                    <span style="font-size: 14px;">TFR</span><br>
+                                    <strong style="color: #ea580c;">6.0→4.3</strong>
+                                </div>
+                                <div style="flex: 1; text-align: center;">
+                                    <span style="font-size: 14px;">피임률</span><br>
+                                    <strong style="color: #ea580c;">12%</strong>
+                                </div>
+                            </div>
+                            <p style="font-size: 14px; margin: 5px 0;">
+                                • 정치적 불안정<br>
+                                • 종교적 반대<br>
+                                • 여성 이동 제한
+                            </p>
+                        </div>
+
+                        <!-- 비교 차트 -->
+                        <div style="flex: 1; background: white; border-radius: 8px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                            <h4 style="margin: 5px 0; text-align: center;">남아시아 TFR 비교</h4>
+                            <div class="chart-container" style="height: 200px;">
+                                <canvas id="southAsiaComparison"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <p style="text-align: center; font-size: 14px; margin-top: 10px; font-style: italic;">
+                    출처: Cleland et al. (2006)
+                </p>
             </div>
 
-            <!-- Slide 7: MDG와 가족계획 -->
+            <!-- Slide 6: MDG와 가족계획 -->
             <div class="slide">
                 <h1>밀레니엄 개발목표(MDG)와 가족계획</h1>
                 <div class="two-column">
@@ -870,7 +889,7 @@
                 </div>
             </div>
 
-            <!-- Slide 8: 건강 혜택 종합 -->
+            <!-- Slide 7: 건강 혜택 종합 -->
             <div class="slide">
                 <h1>가족계획의 건강 영향</h1>
                 <div class="two-column">
@@ -921,7 +940,7 @@
                 </div>
             </div>
 
-            <!-- Slide 9: 경제적 영향과 남한 사례 -->
+            <!-- Slide 8: 경제적 영향과 남한 사례 -->
             <div class="slide">
                 <h1>인구 배당과 경제 성장: 남한 사례</h1>
                 <div class="two-column">
@@ -985,7 +1004,7 @@
             </div>
 
 
-            <!-- Slide 10: 미충족 수요 -->
+            <!-- Slide 9: 미충족 수요 -->
             <div class="slide">
                 <h1>미충족 수요: 정의와 지역별 분포</h1>
                 <div class="main-with-side">
@@ -1037,7 +1056,7 @@
 
 
 
-            <!-- Slide 15: 자금 조달 -->
+            <!-- Slide 14: 자금 조달 -->
             <div class="slide">
                 <h1>자금 조달과 자원 배분</h1>
                 <div class="two-column">
@@ -1080,7 +1099,7 @@
                 </div>
             </div>
 
-            <!-- Slide 16: 글로벌 우선순위 인포그래픽 -->
+            <!-- Slide 15: 글로벌 우선순위 인포그래픽 -->
             <div class="slide">
                 <h1>가족계획 우선순위 국가 분류</h1>
                 <div style="display: flex; justify-content: space-around; align-items: center; margin: 40px 0;">
@@ -1145,7 +1164,7 @@
                 </div>
             </div>
 
-            <!-- Slide 19: 핵심 메시지 -->
+            <!-- Slide 18: 핵심 메시지 -->
             <div class="slide">
                 <h1>핵심 메시지와 행동 촉구</h1>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
@@ -1745,19 +1764,8 @@
                     }, 100);
                     break;
 
-                case 4: // 성공 사례
-                    setTimeout(() => {
-                        const map = createMap('successMap', [-10, -30], 2);
-                        if (map) {
-                            addCountryMarker(map, 'kenya');
-                            addCountryMarker(map, 'brazil');
-                            addCountryMarker(map, 'thailand');
-                            addCountryMarker(map, 'iran');
-                        }
-                    }, 100);
-                    break;
-
-                case 5: // 남아시아 비교
+                case 4: // 통합된 성공/실패 사례 (슬라이드 5-6 병합)
+                    // 남아시아 비교 차트 생성
                     createChart('southAsiaComparison', {
                         type: 'line',
                         data: {
@@ -1827,7 +1835,7 @@
                     });
                     break;
 
-                case 7: // 건강 영향
+                case 5: // 건강 영향 (원래 case 7)
                     createChart('healthImpactChart', {
                         type: 'bar',
                         data: {
@@ -1859,7 +1867,7 @@
                     });
                     break;
 
-                case 8: // 남한 사례
+                case 6: // 남한 사례 (원래 case 8)
                     // 인구 피라미드 초기화 (1960년 기본 표시)
                     showPyramid('1960');
 
@@ -1928,7 +1936,7 @@
                     });
                     break;
 
-                case 9: // 미충족 수요 (원래 case 10)
+                case 7: // 미충족 수요 (원래 case 10)
                     setTimeout(() => {
                         const map = createMap('unmetNeedMap');
                         if (map) {
@@ -1951,7 +1959,7 @@
                     }, 100);
                     break;
 
-                case 10: // 서비스 전달 (원래 case 11)
+                case 8: // 서비스 전달 (원래 case 11)
                     createChart('accessBarriers', {
                         type: 'doughnut',
                         data: {
@@ -1968,7 +1976,7 @@
                     });
                     break;
 
-                case 11: // 남성 참여 (원래 case 13)
+                case 9: // 남성 참여 (원래 case 13) (원래 case 13)
                     createChart('maleInvolvement', {
                         type: 'bar',
                         data: {
