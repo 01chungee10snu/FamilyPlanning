@@ -91,6 +91,18 @@
             height: 100vh;
         }
 
+        /* Crisis theme colors */
+        :root {
+            --crisis-danger: #dc2626;
+            --crisis-warning: #ea580c;
+            --crisis-caution: #ca8a04;
+            --crisis-dark: #1f2937;
+            --crisis-darker: #111827;
+            --crisis-text-primary: #ffffff;
+            --crisis-text-secondary: #e5e7eb;
+            --crisis-text-accent: #fbbf24;
+        }
+
         /* ==================== 16:9 비율 강제 ==================== */
         .presentation-container {
             position: relative;
@@ -246,6 +258,130 @@
             width: 100%;
             border-radius: 8px;
             overflow: hidden;
+        }
+
+        /* Crisis Slide Styles */
+        .crisis-slide {
+            background: var(--crisis-darker);
+        }
+
+        .crisis-slide h1 {
+            color: var(--crisis-text-primary);
+            margin-bottom: 10px;
+        }
+
+        .crisis-slide .subtitle {
+            color: var(--crisis-text-secondary);
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .crisis-panels {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            height: calc(100% - 180px);
+            padding: 0 20px;
+        }
+
+        .crisis-panel {
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-funding {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+        }
+
+        .panel-africa {
+            background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);
+        }
+
+        .panel-resource {
+            background: linear-gradient(135deg, #713f12 0%, #92400e 100%);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .panel-icon {
+            font-size: 28px;
+            margin-right: 10px;
+        }
+
+        .panel-header h3 {
+            color: var(--crisis-text-primary);
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .key-metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .metric-value {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--crisis-text-accent);
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--crisis-text-secondary);
+            text-align: center;
+        }
+
+        .crisis-panel canvas {
+            width: 100%;
+            height: 150px;
+            margin: 10px 0;
+        }
+
+        #africaCrisisMap {
+            width: 100%;
+            height: 150px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .panel-points {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+        }
+
+        .panel-points li {
+            color: var(--crisis-text-secondary);
+            font-size: 14px;
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .panel-points li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--crisis-text-accent);
+        }
+
+        .citation-footer {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: var(--crisis-text-secondary);
+            font-size: 12px;
+            font-style: italic;
         }
 
         /* 테이블 */
@@ -832,7 +968,71 @@
                 </p>
             </div>
 
-            <!-- Slide 6: MDG와 가족계획 -->
+            <!-- Slide 6: 위기의 가족계획 -->
+            <div class="slide crisis-slide">
+                <h1>위기의 가족계획: 국제적 외면과 자원 부족</h1>
+                <p class="subtitle">가족계획이 직면한 3대 위기와 긴급한 행동의 필요성</p>
+
+                <div class="crisis-panels">
+                    <!-- Panel 1: Funding Decline -->
+                    <div class="crisis-panel panel-funding">
+                        <div class="panel-header">
+                            <span class="panel-icon">📉</span>
+                            <h3>국제 우선순위 하락</h3>
+                        </div>
+                        <div class="key-metric">
+                            <span class="metric-value">50%</span>
+                            <span class="metric-label">자금 감소 (1995-2003)</span>
+                        </div>
+                        <canvas id="fundingDeclineChart"></canvas>
+                        <ul class="panel-points">
+                            <li>MDG에서 가족계획 제외</li>
+                            <li>국제사회의 관심 급감</li>
+                            <li>리더십 부재 심화</li>
+                        </ul>
+                    </div>
+
+                    <!-- Panel 2: Africa Crisis -->
+                    <div class="crisis-panel panel-africa">
+                        <div class="panel-header">
+                            <span class="panel-icon">🌍</span>
+                            <h3>아프리카 위기</h3>
+                        </div>
+                        <div class="key-metric">
+                            <span class="metric-value">3배</span>
+                            <span class="metric-label">Niger 인구 증가 예상</span>
+                        </div>
+                        <div id="africaCrisisMap"></div>
+                        <ul class="panel-points">
+                            <li>HIV/AIDS보다 큰 위협</li>
+                            <li>9개국 미충족 수요 증가</li>
+                            <li>빈곤 악순환 지속</li>
+                        </ul>
+                    </div>
+
+                    <!-- Panel 3: Resource Gap -->
+                    <div class="crisis-panel panel-resource">
+                        <div class="panel-header">
+                            <span class="panel-icon">💰</span>
+                            <h3>자원 격차</h3>
+                        </div>
+                        <div class="key-metric">
+                            <span class="metric-value">$2.3B</span>
+                            <span class="metric-label">연간 부족액</span>
+                        </div>
+                        <canvas id="resourceGapChart"></canvas>
+                        <ul class="panel-points">
+                            <li>필요 자원의 50% 미만</li>
+                            <li>정치적 의지 부족</li>
+                            <li>긴급 행동 필요</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="citation-footer">출처: Cleland et al. (2006)</p>
+            </div>
+
+            <!-- Slide 7: MDG와 가족계획 (원래 Slide 6) -->
             <div class="slide">
                 <h1>밀레니엄 개발목표(MDG)와 가족계획</h1>
                 <div class="two-column">
@@ -1835,7 +2035,138 @@
                     });
                     break;
 
-                case 5: // 건강 영향 (원래 case 7)
+                case 5: // 위기의 가족계획
+                    // Funding Decline Chart
+                    createChart('fundingDeclineChart', {
+                        type: 'line',
+                        data: {
+                            labels: ['1994', '1995', '1997', '1999', '2001', '2003'],
+                            datasets: [{
+                                label: '국제 원조 (억 달러)',
+                                data: [5.6, 5.2, 4.5, 3.8, 3.1, 2.8],
+                                borderColor: '#ef4444',
+                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                borderWidth: 3,
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                title: {
+                                    display: true,
+                                    text: '가족계획 원조 감소 추이',
+                                    font: { size: 14, weight: '600' },
+                                    color: '#e5e7eb'
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                                    ticks: { color: '#e5e7eb' }
+                                },
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { color: '#e5e7eb' }
+                                }
+                            }
+                        }
+                    });
+
+                    // Africa Crisis Map
+                    setTimeout(() => {
+                        const mapDiv = document.getElementById('africaCrisisMap');
+                        if (mapDiv && !mapDiv._leaflet_id) {
+                            const map = L.map('africaCrisisMap', {
+                                center: [0, 20],
+                                zoom: 3,
+                                zoomControl: false,
+                                attributionControl: false,
+                                scrollWheelZoom: false,
+                                doubleClickZoom: false,
+                                dragging: false
+                            });
+
+                            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                                maxZoom: 19
+                            }).addTo(map);
+
+                            // Crisis countries with unmet need data
+                            const crisisCountries = [
+                                { name: 'Niger', coords: [17, 8], unmetNeed: 16 },
+                                { name: 'Chad', coords: [15, 19], unmetNeed: 23 },
+                                { name: 'Mali', coords: [17, -4], unmetNeed: 29 },
+                                { name: 'Uganda', coords: [1, 32], unmetNeed: 35 },
+                                { name: 'Kenya', coords: [-1, 37], unmetNeed: 25 },
+                                { name: 'Ethiopia', coords: [8, 38], unmetNeed: 34 },
+                                { name: 'Nigeria', coords: [9, 8], unmetNeed: 17 },
+                                { name: 'DRC', coords: [-3, 23], unmetNeed: 27 },
+                                { name: 'Tanzania', coords: [-6, 35], unmetNeed: 22 }
+                            ];
+
+                            crisisCountries.forEach(country => {
+                                const radius = 10 + (country.unmetNeed * 0.5);
+                                L.circleMarker(country.coords, {
+                                    radius: radius,
+                                    fillColor: '#dc2626',
+                                    color: '#fbbf24',
+                                    weight: 2,
+                                    opacity: 0.8,
+                                    fillOpacity: 0.6
+                                }).addTo(map)
+                                .bindTooltip(`${country.name}: ${country.unmetNeed}% 미충족`, {
+                                    permanent: false,
+                                    direction: 'top',
+                                    className: 'crisis-tooltip'
+                                });
+                            });
+                        }
+                    }, 100);
+
+                    // Resource Gap Chart
+                    createChart('resourceGapChart', {
+                        type: 'bar',
+                        data: {
+                            labels: ['필요 자원', '실제 지원'],
+                            datasets: [{
+                                data: [4.6, 2.3],
+                                backgroundColor: ['#f59e0b', '#dc2626'],
+                                borderColor: ['#fbbf24', '#ef4444'],
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                title: {
+                                    display: true,
+                                    text: '연간 자금 격차 (십억 달러)',
+                                    font: { size: 14, weight: '600' },
+                                    color: '#e5e7eb'
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 5,
+                                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                                    ticks: { color: '#e5e7eb' }
+                                },
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { color: '#e5e7eb' }
+                                }
+                            }
+                        }
+                    });
+                    break;
+
+                case 6: // 건강 영향 (원래 case 5, 이전 case 7)
                     createChart('healthImpactChart', {
                         type: 'bar',
                         data: {
@@ -1867,7 +2198,7 @@
                     });
                     break;
 
-                case 6: // 남한 사례 (원래 case 8)
+                case 7: // MDG와 가족계획
                     // 인구 피라미드 초기화 (1960년 기본 표시)
                     showPyramid('1960');
 
