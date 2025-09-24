@@ -330,7 +330,7 @@
         }
 
         .metric-value {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 800;
             color: var(--crisis-text-accent);
         }
@@ -981,7 +981,7 @@
                             <h3>국제 우선순위 하락</h3>
                         </div>
                         <div class="key-metric">
-                            <span class="metric-value">50%</span>
+                            <span class="metric-value">$100M</span>
                             <span class="metric-label">자금 감소 (1995-2003)</span>
                         </div>
                         <canvas id="fundingDeclineChart"></canvas>
@@ -1017,14 +1017,14 @@
                             <h3>자원 격차</h3>
                         </div>
                         <div class="key-metric">
-                            <span class="metric-value">$2.3B</span>
-                            <span class="metric-label">연간 부족액</span>
+                            <span class="metric-value">$3.8B</span>
+                            <span class="metric-label">10년 필요 자금</span>
                         </div>
                         <canvas id="resourceGapChart"></canvas>
                         <ul class="panel-points">
-                            <li>필요 자원의 50% 미만</li>
-                            <li>정치적 의지 부족</li>
-                            <li>긴급 행동 필요</li>
+                            <li>아프리카: $270M 필요 vs $200M 가용</li>
+                            <li>2006-2015년 총 $3.8B 필요</li>
+                            <li>긴급 자금 확보 필요</li>
                         </ul>
                     </div>
                 </div>
@@ -2040,10 +2040,10 @@
                     createChart('fundingDeclineChart', {
                         type: 'line',
                         data: {
-                            labels: ['1994', '1995', '1997', '1999', '2001', '2003'],
+                            labels: ['1995', '1997', '1999', '2001', '2003'],
                             datasets: [{
-                                label: '국제 원조 (억 달러)',
-                                data: [5.6, 5.2, 4.5, 3.8, 3.1, 2.8],
+                                label: '국제 원조 (백만 달러)',
+                                data: [560, 520, 480, 470, 460],
                                 borderColor: '#ef4444',
                                 backgroundColor: 'rgba(239, 68, 68, 0.1)',
                                 borderWidth: 3,
@@ -2057,7 +2057,7 @@
                                 legend: { display: false },
                                 title: {
                                     display: true,
-                                    text: '가족계획 원조 감소 추이',
+                                    text: '가족계획 원조 감소 ($560M → $460M)',
                                     font: { size: 14, weight: '600' },
                                     color: '#e5e7eb'
                                 }
@@ -2130,11 +2130,11 @@
                     createChart('resourceGapChart', {
                         type: 'bar',
                         data: {
-                            labels: ['필요 자원', '실제 지원'],
+                            labels: ['아프리카 필요(2006)', '공여국 지원', '국내 자원'],
                             datasets: [{
-                                data: [4.6, 2.3],
-                                backgroundColor: ['#f59e0b', '#dc2626'],
-                                borderColor: ['#fbbf24', '#ef4444'],
+                                data: [270, 113, 87],
+                                backgroundColor: ['#f59e0b', '#dc2626', '#dc2626'],
+                                borderColor: ['#fbbf24', '#ef4444', '#ef4444'],
                                 borderWidth: 2
                             }]
                         },
@@ -2145,7 +2145,7 @@
                                 legend: { display: false },
                                 title: {
                                     display: true,
-                                    text: '연간 자금 격차 (십억 달러)',
+                                    text: '아프리카 가족계획 자금 감소 (백만 달러)',
                                     font: { size: 14, weight: '600' },
                                     color: '#e5e7eb'
                                 }
@@ -2153,7 +2153,7 @@
                             scales: {
                                 y: {
                                     beginAtZero: true,
-                                    max: 5,
+                                    max: 300,
                                     grid: { color: 'rgba(255, 255, 255, 0.1)' },
                                     ticks: { color: '#e5e7eb' }
                                 },
