@@ -1231,7 +1231,19 @@
                 <div class="main-with-side">
                     <div>
                         <h3>미충족 수요 지역별 분포</h3>
-                        <div id="unmetNeedMap" class="map-container" style="height: 400px;"></div>
+                        <div class="chart-container" style="height: 280px;">
+                            <canvas id="unmetNeedByRegion"></canvas>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                            <div class="panel-box">
+                                <h4>원인별 분포</h4>
+                                <canvas id="unmetNeedReasons" style="height: 140px;"></canvas>
+                            </div>
+                            <div class="panel-box">
+                                <h4>경제수준별 차이</h4>
+                                <canvas id="unmetNeedByWealth" style="height: 140px;"></canvas>
+                            </div>
+                        </div>
                         <p style="font-size: 16px; margin-top: 10px; font-style: italic;">
                             데이터: Guttmacher Institute (2023), UN Population Division (2022)
                         </p>
@@ -1274,8 +1286,52 @@
                 </div>
             </div>
 
-
-
+            <!-- Slide 10: 서비스 전달 모델 -->
+            <div class="slide">
+                <h1>서비스 전달 모델과 접근성 개선</h1>
+                <div class="two-column">
+                    <div>
+                        <h3>효과적인 전달 모델</h3>
+                        <div class="panel-box">
+                            <h4>지역사회 기반</h4>
+                            <ul style="font-size: 17px;">
+                                <li>마을 보건요원 활용</li>
+                                <li>이동식 클리닉</li>
+                                <li>또래 교육자 프로그램</li>
+                            </ul>
+                        </div>
+                        <div class="panel-box" style="background: #fef3c7;">
+                            <h4>시설 기반</h4>
+                            <ul style="font-size: 17px;">
+                                <li>원스톱 서비스</li>
+                                <li>산후 즉시 제공</li>
+                                <li>청소년 친화적 공간</li>
+                            </ul>
+                        </div>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #e8f4fd 0%, #d1e7f5 100%);">
+                            <h4>혁신적 접근</h4>
+                            <ul style="font-size: 17px;">
+                                <li>모바일 헬스 (mHealth)</li>
+                                <li>바우처 시스템</li>
+                                <li>소셜 프랜차이즈</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>접근성 장벽</h3>
+                        <div class="chart-container" style="height: 280px;">
+                            <canvas id="accessBarriers"></canvas>
+                        </div>
+                        <div class="panel-box" style="margin-top: 20px;">
+                            <h4>서비스 품질 지표</h4>
+                            <canvas id="serviceQuality" style="height: 150px;"></canvas>
+                        </div>
+                        <div class="quote-box" style="margin-top: 15px;">
+                            <p>"마지막 1마일 문제 해결이 핵심"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Slide 14: 자금 조달 -->
             <div class="slide">
@@ -2295,26 +2351,79 @@
                     break;
 
                 case 7: // 미충족 수요 (원래 case 10)
-                    setTimeout(() => {
-                        const map = createMap('unmetNeedMap');
-                        if (map) {
-                            // 지역별 히트맵 오버레이 추가
-                            Object.keys(countryData).forEach(country => {
-                                const data = countryData[country];
-                                const color = data.unmetNeed > 15 ? '#c97064' :
-                                            data.unmetNeed > 10 ? '#c4a977' : '#69b7a4';
-
-                                L.circleMarker(data.coords, {
-                                    radius: data.unmetNeed / 2,
-                                    fillColor: color,
-                                    color: '#fff',
-                                    weight: 1,
-                                    opacity: 1,
-                                    fillOpacity: 0.6
-                                }).addTo(map).bindTooltip(`${data.name}: ${data.unmetNeed}% 미충족`);
-                            });
+                    // 지역별 미충족 수요 차트
+                    createChart('unmetNeedByRegion', {
+                        type: 'bar',
+                        data: {
+                            labels: ['사하라이남', '서아시아/북아프리카', '남아시아', '라틴아메리카', '동아시아'],
+                            datasets: [{
+                                label: '미충족 수요율 (%)',
+                                data: [24, 17, 13, 10, 6],
+                                backgroundColor: ['#8b0000', '#cc4125', '#e06666', '#f4cccc', '#d9ead3']
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 30
+                                }
+                            }
                         }
-                    }, 100);
+                    });
+
+                    // 원인별 분포 차트
+                    createChart('unmetNeedReasons', {
+                        type: 'pie',
+                        data: {
+                            labels: ['부작용 우려', '접근성 부족', '문화적 반대', '정보 부족', '기타'],
+                            datasets: [{
+                                data: [35, 25, 20, 15, 5],
+                                backgroundColor: ['#dc2626', '#f59e0b', '#fbbf24', '#fde68a', '#fef3c7']
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        font: {
+                                            size: 11
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    // 경제수준별 차이 차트
+                    createChart('unmetNeedByWealth', {
+                        type: 'line',
+                        data: {
+                            labels: ['최빈곤층', '빈곤층', '중산층', '부유층', '최부유층'],
+                            datasets: [{
+                                label: '미충족 수요 (%)',
+                                data: [28, 22, 16, 12, 8],
+                                borderColor: '#dc2626',
+                                backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 30
+                                }
+                            }
+                        }
+                    });
                     break;
 
                 case 8: // 서비스 전달 (원래 case 11)
@@ -2330,6 +2439,36 @@
                         options: {
                             responsive: true,
                             maintainAspectRatio: false
+                        }
+                    });
+
+                    // 서비스 품질 지표 차트
+                    createChart('serviceQuality', {
+                        type: 'radar',
+                        data: {
+                            labels: ['접근성', '친절도', '상담 품질', '사생활 보호', '대기 시간'],
+                            datasets: [{
+                                label: '현재 수준',
+                                data: [65, 70, 75, 80, 60],
+                                borderColor: '#69b7a4',
+                                backgroundColor: 'rgba(105, 183, 164, 0.2)'
+                            }, {
+                                label: '목표 수준',
+                                data: [90, 90, 90, 95, 85],
+                                borderColor: '#c4a977',
+                                backgroundColor: 'rgba(196, 169, 119, 0.1)',
+                                borderDash: [5, 5]
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                r: {
+                                    beginAtZero: true,
+                                    max: 100
+                                }
+                            }
                         }
                     });
                     break;
