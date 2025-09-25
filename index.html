@@ -136,6 +136,12 @@
             overflow: hidden;
         }
 
+        /* 첫 번째 슬라이드는 기본적으로 보이게 설정 */
+        .slide:first-child {
+            display: flex;
+            flex-direction: column;
+        }
+
         .slide.active {
             display: flex;
             flex-direction: column;
@@ -2916,6 +2922,24 @@
                 });
             }
         });
+    </script>
+
+    <!-- 기본 페이지 카운터 (JavaScript 로드 전에도 보이도록) -->
+    <div class="page-counter" id="pageCounter">1 | 13</div>
+
+    <!-- 네비게이션 안내 (처음 3초간 표시) -->
+    <div id="navHint" style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 8px; font-family: 'SeoulHangang', sans-serif; font-size: 16px; z-index: 1000; transition: opacity 0.5s;">
+        키보드: ← → 또는 스페이스바 | 마우스: 화면 좌우 클릭
+    </div>
+    <script>
+        // 3초 후 네비게이션 힌트 숨기기
+        setTimeout(function() {
+            var hint = document.getElementById('navHint');
+            if (hint) {
+                hint.style.opacity = '0';
+                setTimeout(function() { hint.style.display = 'none'; }, 500);
+            }
+        }, 3000);
     </script>
 </body>
 </html><!-- Last updated: Wed, Sep 24, 2025  1:36:07 PM -->
