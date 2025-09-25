@@ -136,25 +136,8 @@
             overflow: hidden;
         }
 
-        /* active 클래스가 있는 슬라이드만 표시 */
         .slide.active {
-            display: flex !important;
-            flex-direction: column;
-        }
-
-        /* JavaScript가 로드되기 전 첫 슬라이드 표시 */
-        .slide:first-child {
             display: flex;
-            flex-direction: column;
-        }
-
-        /* JavaScript가 로드되면 첫 슬라이드도 active 클래스로만 제어 */
-        .js-loaded .slide:first-child {
-            display: none;
-        }
-
-        .js-loaded .slide.active {
-            display: flex !important;
             flex-direction: column;
         }
 
@@ -412,54 +395,6 @@
             font-size: 16px;
             font-style: italic;
             font-weight: 500;
-        }
-
-        /* Timeline Slider Styles */
-        input[type="range"] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            background: linear-gradient(to right, #3b82f6 0%, #93c5fd 100%);
-            outline: none;
-            opacity: 0.9;
-            transition: opacity 0.2s;
-        }
-
-        input[type="range"]:hover {
-            opacity: 1;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #3b82f6;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            transition: all 0.2s;
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #3b82f6;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            transition: all 0.2s;
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            background: #2563eb;
-        }
-
-        input[type="range"]::-moz-range-thumb:hover {
-            transform: scale(1.2);
-            background: #2563eb;
         }
 
         /* 테이블 */
@@ -946,6 +881,19 @@
                                 ※ 2025년 현황: Niger TFR 6.7명 (세계 최고), 피임률 17% (UN, 2024)
                             </p>
                         </div>
+                        <!-- 니제르 국가 정보 추가 -->
+                        <div style="background: linear-gradient(135deg, #fff7ed, #fed7aa); padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #ea580c;">
+                            <h4 style="color: #7c2d12; margin-bottom: 10px;">니제르의 지리적 제약</h4>
+                            <p style="font-size: 14px; color: #92400e; line-height: 1.6;">
+                                니제르는 국토의 <strong>80% 이상이 사하라 사막</strong>으로 덮여있으며, 인구의 대부분이 남부 지역에 집중되어 있음.
+                                경작 가능한 토지는 전체 면적의 <strong>14%</strong>에 불과하며 (World Bank, 2022),
+                                인구는 수도 니아메이를 포함한 남서부 지역에 밀집.
+                                북부 사막 지역은 오아시스를 제외하고 거의 무인지대임 (CIA World Factbook, 2024).
+                            </p>
+                            <p style="font-size: 12px; color: #713f12; font-style: italic; margin-top: 8px;">
+                                <strong>Sources:</strong> World Bank (2022); CIA (2024)
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1074,9 +1022,9 @@
                         </div>
                         <canvas id="fundingDeclineChart"></canvas>
                         <ul class="panel-points">
-                            <li>MDG에서 가족계획 제외</li>
-                            <li>국제사회의 관심 급감</li>
-                            <li>리더십 부재 심화</li>
+                            <li>MDG 초기 목표에서 가족계획 제외</li>
+                            <li>국제 자금 지원 감소</li>
+                            <li>미국의 리더십 약화</li>
                         </ul>
                     </div>
 
@@ -1087,14 +1035,14 @@
                             <h3>아프리카 위기</h3>
                         </div>
                         <div class="key-metric">
-                            <span class="metric-value">3배</span>
-                            <span class="metric-label">Niger 인구 증가 예상</span>
+                            <span class="metric-value">3.6배</span>
+                            <span class="metric-label">Niger 인구 증가 (2050년까지)</span>
                         </div>
                         <div id="africaCrisisMap"></div>
                         <ul class="panel-points">
-                            <li>HIV/AIDS보다 큰 위협</li>
-                            <li>9개국 미충족 수요 증가</li>
-                            <li>빈곤 악순환 지속</li>
+                            <li>사하라이남: 2억명 미충족 수요</li>
+                            <li>26개국 인구 연 2% 이상 증가</li>
+                            <li>모성사망 32% 예방 가능</li>
                         </ul>
                     </div>
 
@@ -1110,9 +1058,9 @@
                         </div>
                         <canvas id="resourceGapChart"></canvas>
                         <ul class="panel-points">
-                            <li>아프리카: $270M 필요 vs $200M 가용</li>
-                            <li>2006-2015년 총 $3.8B 필요</li>
-                            <li>긴급 자금 확보 필요</li>
+                            <li>아프리카 2006: $270M 필요</li>
+                            <li>가용 자금: $113M (공여국) + $87M (국내)</li>
+                            <li>자금 격차 지속 확대</li>
                         </ul>
                     </div>
                 </div>
@@ -1179,99 +1127,34 @@
                 </div>
             </div>
 
-            <!-- Slide 7: 건강 혜택 종합 -->
-            <div class="slide">
-                <h1>가족계획의 건강 영향</h1>
-                <div class="two-column">
-                    <div>
-                        <h3>모성 및 영아 건강 개선</h3>
-                        <div class="panel-box" style="background: linear-gradient(135deg, #e5f5e0 0%, #c8e6c9 100%);">
-                            <h4>예방 가능한 사망</h4>
-                            <p style="font-size: 19px;">
-                                <strong>모성 사망:</strong> 32% 예방 가능<br>
-                                <strong>영아 사망:</strong> 거의 10% 감소<br>
-                                <span style="font-size: 16px; font-style: italic;">(Cleland et al., 2006)</span>
-                            </p>
-                        </div>
-                        <div class="panel-box" style="margin-top: 15px;">
-                            <h4>건강 개선 효과</h4>
-                            <ul style="font-size: 18px; padding-left: 20px; list-style: none;">
-                                <li style="margin: 5px 0;">• 모성 빈혈 감소</li>
-                                <li style="margin: 5px 0;">• 영아 저체중 예방</li>
-                                <li style="margin: 5px 0;">• 모유수유 기간 연장</li>
-                                <li style="margin: 5px 0;">• 산후 회복 개선</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>출산 간격의 중요성</h3>
-                        <div class="panel-box">
-                            <h4>권장 출산 간격</h4>
-                            <p style="font-size: 19px;">
-                                <span style="margin-left: 20px;">• 최소 2년 이상 권장</span><br>
-                                <span style="margin-left: 20px;">• 모성 및 영아 건강 개선</span><br>
-                                <span style="margin-left: 20px;">• 영양 상태 회복 기간 확보</span>
-                            </p>
-                        </div>
-                        <div class="panel-box" style="background: #fef3c7;">
-                            <h4>위험 임신 예방</h4>
-                            <p style="font-size: 19px;">
-                                <span style="margin-left: 20px;">• 너무 이른 임신 (18세 이하)</span><br>
-                                <span style="margin-left: 20px;">• 너무 늦은 임신 (35세 이상)</span><br>
-                                <span style="margin-left: 20px;">• 너무 잦은 임신 (간격 2년 미만)</span><br>
-                                <span style="margin-left: 20px;">• 너무 많은 임신 (4회 이상)</span>
-                            </p>
-                        </div>
-                        <div class="quote-box" style="margin-top: 15px;">
-                            <p>"가족계획은 가장 비용효과적인 보건 개입"<br>
-                            <span style="font-size: 20px;">(Cleland et al., 2006)</span></p>
-                            <p style="font-size: 16px; color: #c97064; margin-top: 10px; font-style: italic;">
-                                ※ 2025년: 가족계획으로 연간 39,000명 모성사망 예방 (UNFPA, 2024)
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Slide 8: 경제적 영향과 남한 사례 -->
             <div class="slide">
                 <h1>인구 배당과 경제 성장: 남한 사례</h1>
                 <div class="two-column">
                     <div>
-                        <h3>대한민국의 인구 구조 변화 (1960-2020)</h3>
-                        <!-- 타임라인 슬라이더 -->
-                        <div style="margin-bottom: 20px;">
-                            <label style="font-size: 16px; font-weight: 600;">연도 선택: <span id="yearDisplay" style="color: #3b82f6;">1960</span></label>
-                            <input type="range" id="yearSlider" min="1960" max="2020" step="10" value="1960"
-                                   style="width: 100%; margin-top: 10px; cursor: pointer;"
-                                   oninput="updatePyramidBySlider(this.value)">
-                            <div style="display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-top: 5px;">
-                                <span>1960</span>
-                                <span>1970</span>
-                                <span>1980</span>
-                                <span>1990</span>
-                                <span>2000</span>
-                                <span>2010</span>
-                                <span>2020</span>
-                            </div>
+                        <h3>대한민국의 인구 구조 변화 (1960-2040)</h3>
+                        <!-- 인구 피라미드 선택 버튼 -->
+                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                            <button onclick="showPyramid('1960')" class="pyramid-btn" id="btn1960" style="flex: 1; padding: 8px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer;">1960년</button>
+                            <button onclick="showPyramid('2000')" class="pyramid-btn" id="btn2000" style="flex: 1; padding: 8px; background: #6b7280; color: white; border: none; border-radius: 5px; cursor: pointer;">2000년</button>
+                            <button onclick="showPyramid('2040')" class="pyramid-btn" id="btn2040" style="flex: 1; padding: 8px; background: #6b7280; color: white; border: none; border-radius: 5px; cursor: pointer;">2040년 (예측)</button>
                         </div>
                         <div class="chart-container" style="position: relative; height: 300px;">
                             <canvas id="koreaPyramidChart"></canvas>
-                            <div id="pyramidDescription" style="position: absolute; bottom: 10px; left: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                            <div id="pyramidDescription" style="position: absolute; bottom: 10px; left: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 5px; font-size: 14px;">
                                 <strong>1960년:</strong> 전형적인 피라미드형 - 높은 출생률과 젊은 인구 구조
                             </div>
                         </div>
                         <p style="font-size: 14px; font-style: italic; margin-top: 5px;">
-                            출처: Lancet 2006; KOSIS 2024; UN Population Division 2023
+                            출처: Figure 1 - Republic of Korea Age Structure (Lancet 2006)
                         </p>
                         <div class="panel-box" style="margin-top: 15px;">
-                            <h4>주요 정책 및 인구 변화</h4>
-                            <ul style="font-size: 16px; line-height: 1.8;">
-                                <li><strong>1961:</strong> 가족계획 프로그램 시작</li>
-                                <li><strong>1973:</strong> 모자보건법 제정</li>
-                                <li><strong>1983:</strong> 두 자녀 정책 (TFR 2.0 달성)</li>
-                                <li><strong>2006:</strong> 초저출산 (TFR 1.13)</li>
-                                <li><strong>2023:</strong> TFR 0.72 세계 최저</li>
+                            <h4>주요 정책 개입</h4>
+                            <ul style="font-size: 17px;">
+                                <li><strong>1961년:</strong> 가족계획 국가 프로그램 시작</li>
+                                <li><strong>1973년:</strong> 모자보건법 제정</li>
+                                <li><strong>1983년:</strong> 두 자녀 정책 강화</li>
                             </ul>
                         </div>
                     </div>
@@ -1312,287 +1195,262 @@
             </div>
 
 
-            <!-- Slide 9: 미충족 수요 -->
+
+            <!-- Slide 9: 피임법 공급원 및 효과성 - Figure 6 & Table 3 기반 -->
             <div class="slide">
-                <h1>미충족 수요: 정의와 지역별 분포</h1>
-                <div class="main-with-side">
+                <h1>피임법 공급원 및 효과성 분석</h1>
+
+                <!-- iframe으로 외부 시각화 삽입 -->
+                <div style="position: relative; height: calc(100% - 100px); margin-top: 20px;">
+                    <iframe
+                        src="contraceptive-supply-viz.html"
+                        style="width: 100%; height: 100%; border: none; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
+                        title="피임법 공급원 인터랙티브 시각화">
+                    </iframe>
+                </div>
+
+                <!-- 대체 콘텐츠 (iframe 미지원 시) -->
+                <noscript>
+                <div style="display: grid; grid-template-columns: 1.2fr 1fr 0.8fr; gap: 25px; height: calc(100% - 120px);">
+                    <!-- 왼쪽: 세계 지도 -->
                     <div>
-                        <h3>미충족 수요 지역별 분포</h3>
-                        <div class="chart-container" style="height: 280px;">
-                            <canvas id="unmetNeedByRegion"></canvas>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
-                            <div class="panel-box">
-                                <h4>원인별 분포</h4>
-                                <canvas id="unmetNeedReasons" style="height: 140px;"></canvas>
-                            </div>
-                            <div class="panel-box">
-                                <h4>경제수준별 차이</h4>
-                                <canvas id="unmetNeedByWealth" style="height: 140px;"></canvas>
-                            </div>
-                        </div>
-                        <p style="font-size: 16px; margin-top: 10px; font-style: italic;">
-                            데이터: Guttmacher Institute (2023), UN Population Division (2022)
-                        </p>
-                    </div>
-                    <div>
-                        <h3>미충족 수요란?</h3>
-                        <div class="panel-box" style="background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);">
-                            <h4>정의</h4>
-                            <p style="font-size: 18px;">
-                                임신을 원하지 않거나 연기하고 싶지만 피임법을 사용하지 않는 가임기 여성
-                            </p>
-                        </div>
-                        <div class="panel-box">
-                            <h4>지역별 미충족 수요율</h4>
-                            <ul style="font-size: 17px; padding-left: 20px; list-style: none;">
-                                <li style="margin: 5px 0;">• <strong style="color: #8b0000;">사하라이남:</strong> 24%</li>
-                                <li style="margin: 5px 0;">• <strong style="color: #cc4125;">서아시아/북아프리카:</strong> 17%</li>
-                                <li style="margin: 5px 0;">• <strong style="color: #e06666;">남아시아:</strong> 13%</li>
-                                <li style="margin: 5px 0;">• <strong style="color: #f4cccc;">라틴아메리카:</strong> 10%</li>
-                                <li style="margin: 5px 0;">• <strong style="color: #d9ead3;">동아시아:</strong> 6%</li>
+                        <h3 style="color: #2D5F5D; margin-bottom: 10px; font-size: 18px;">피임약 공급원 분포</h3>
+                        <div id="contraceptiveSupplyMap" style="height: 320px; border-radius: 8px; border: 2px solid #2D5F5D;"></div>
+
+                        <div style="margin-top: 15px; background: #f5f0e6; padding: 12px; border-radius: 6px;">
+                            <h4 style="color: #234d48; margin-bottom: 8px; font-size: 15px;">지역별 특징</h4>
+                            <ul style="font-size: 13px; color: #576066; padding-left: 18px; line-height: 1.5;">
+                                <li><strong>사하라이남:</strong> 클리닉 의존 (60-93%)</li>
+                                <li><strong>라틴아메리카:</strong> 약국 중심 (40-70%)</li>
+                                <li><strong>아시아:</strong> 혼합형 체계</li>
                             </ul>
                         </div>
-                        <!-- Added qualitative insights per main.pdf text analysis -->
-                        <div class="panel-box" style="background: linear-gradient(135deg, #e8f4fd 0%, #d1e7f5 100%);">
-                            <h4>주요 인사이트</h4>
-                            <ul style="font-size: 17px; padding-left: 20px; list-style: none;">
-                                <li style="margin: 5px 0;">• <strong>사하라 이남:</strong> 출산 간격 조정 수요 > 가족 수 제한 수요</li>
-                                <li style="margin: 5px 0;">• <strong>아시아/라틴:</strong> 최빈곤층 미충족 수요가 최부유층보다 2배 높음</li>
-                            </ul>
+                    </div>
+
+                    <!-- 가운데: 효과성 데이터 (Table 3) -->
+                    <div>
+                        <h3 style="color: #2D5F5D; margin-bottom: 10px; font-size: 18px;">피임법 효과성</h3>
+
+                        <!-- 가장 효과적 -->
+                        <div style="background: linear-gradient(135deg, #2D5F5D, #3a7a6f); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                            <h4 style="color: white; font-size: 14px; margin-bottom: 8px;">가장 효과적 (실패율 &lt;1%)</h4>
+                            <div style="font-size: 12px; color: #e8f5f2; line-height: 1.6;">
+                                <div style="display: flex; justify-content: space-between; margin: 3px 0;">
+                                    <span>임플란트</span>
+                                    <span style="font-weight: bold;">0.1%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin: 3px 0;">
+                                    <span>불임술</span>
+                                    <span style="font-weight: bold;">0.5%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin: 3px 0;">
+                                    <span>자궁내장치(IUD)</span>
+                                    <span style="font-weight: bold;">0.6%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin: 3px 0;">
+                                    <span>주사제</span>
+                                    <span style="font-weight: bold;">0.3%</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="panel-box" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
-                            <h4>해결의 중요성</h4>
-                            <p style="font-size: 17px;">
-                                <span style="margin-left: 20px;">• 모성 사망 예방</span><br>
-                                <span style="margin-left: 20px;">• 안전하지 않은 낙태 감소</span><br>
-                                <span style="margin-left: 20px;">• 여성 자기결정권 보장</span>
-                            </p>
+
+                        <!-- 효과적 -->
+                        <div style="background: linear-gradient(135deg, #8B6F47, #a08660); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                            <h4 style="color: white; font-size: 14px; margin-bottom: 8px;">효과적 (실패율 2-10%)</h4>
+                            <div style="font-size: 12px; color: #fff5e8; line-height: 1.6;">
+                                <div style="display: flex; justify-content: space-between; margin: 3px 0;">
+                                    <span>경구피임약</span>
+                                    <span style="font-weight: bold;">6.9%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin: 3px 0;">
+                                    <span>콘돔</span>
+                                    <span style="font-weight: bold;">9.8%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 덜 효과적 -->
+                        <div style="background: linear-gradient(135deg, #D4A574, #e0b892); padding: 12px; border-radius: 8px;">
+                            <h4 style="color: white; font-size: 14px; margin-bottom: 8px;">덜 효과적 (실패율 &gt;15%)</h4>
+                            <div style="font-size: 12px; color: #fff8f0; line-height: 1.6;">
+                                <div style="display: flex; justify-content: space-between; margin: 3px 0;">
+                                    <span>질외사정</span>
+                                    <span style="font-weight: bold;">15.1%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin: 3px 0;">
+                                    <span>주기법</span>
+                                    <span style="font-weight: bold;">21.6%</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- 오른쪽: 공급원 차트 -->
+                    <div>
+                        <h3 style="color: #2D5F5D; margin-bottom: 10px; font-size: 18px;">공급원 분포</h3>
+                        <canvas id="supplySourceChart" style="height: 280px;"></canvas>
+
+                        <div style="margin-top: 15px; background: #f8f6f2; padding: 12px; border-radius: 8px;">
+                            <h4 style="color: #234d48; font-size: 14px; margin-bottom: 8px;">지역별 사용률</h4>
+                            <canvas id="methodEffectivenessChart" style="height: 150px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                </noscript>
+
+                <div style="text-align: center; margin-top: 10px;">
+                    <p style="font-size: 13px; font-style: italic; color: #6b7280;">
+                        출처: Cleland et al. (2006) Figure 6 & Table 3 - DHS 데이터 기반 분석
+                    </p>
+                    <button onclick="window.open('contraceptive-supply-viz.html', '_blank')"
+                            style="margin-top: 10px; padding: 8px 16px; background: #2D5F5D; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        🔍 전체화면으로 보기
+                    </button>
                 </div>
             </div>
 
-            <!-- Slide 10: Service Delivery, Finance and Strategies -->
+            <!-- Slide 10: 미충족 수요 - 가족계획의 핵심 과제 -->
             <div class="slide">
-                <h1>서비스 전달, 재원 조달 및 실행 전략</h1>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; padding: 20px;">
-                    <!-- Service Delivery Column -->
-                    <div>
-                        <h3 style="color: #000; font-size: 22px; margin-bottom: 15px;">효과적인 서비스 전달</h3>
-                        <div class="panel-box" style="background: #F5F0E8; border: 2px solid #B8D4CE; padding: 15px; margin-bottom: 15px;">
-                            <h4 style="color: #000; font-size: 18px; margin-bottom: 10px;">지역사회 기반</h4>
-                            <ul style="font-size: 16px; color: #000; padding-left: 20px;">
-                                <li>Community Health Workers</li>
-                                <li>Mobile clinics</li>
-                                <li>Outreach programs</li>
-                                <li>Traditional birth attendants training</li>
-                            </ul>
-                        </div>
-                        <div class="panel-box" style="background: #F5F0E8; border: 2px solid #9DC3C2; padding: 15px; margin-bottom: 15px;">
-                            <h4 style="color: #000; font-size: 18px; margin-bottom: 10px;">시설 기반</h4>
-                            <ul style="font-size: 16px; color: #000; padding-left: 20px;">
-                                <li>Postpartum/postabortion FP</li>
-                                <li>Integration with MCH services</li>
-                                <li>Youth-friendly services</li>
-                            </ul>
-                        </div>
-                        <div class="panel-box" style="background: #F5F0E8; border: 2px solid #A08C6C; padding: 15px;">
-                            <h4 style="color: #000; font-size: 18px; margin-bottom: 10px;">혁신 모델</h4>
-                            <ul style="font-size: 16px; color: #000; padding-left: 20px;">
-                                <li>Social franchising</li>
-                                <li>Voucher schemes</li>
-                                <li>mHealth applications</li>
-                                <li>Public-private partnerships</li>
-                            </ul>
-                        </div>
-                    </div>
+                <h1>미충족 수요: 가족계획의 핵심 과제</h1>
 
-                    <!-- Financing Column -->
-                    <div>
-                        <h3 style="color: #000; font-size: 22px; margin-bottom: 15px;">재원 조달 메커니즘</h3>
-                        <div class="chart-container" style="height: 200px; margin-bottom: 15px;">
-                            <canvas id="fundingSourcesPie"></canvas>
+                <!-- 미충족 수요 정의 및 핵심 통계 -->
+                <div style="background: linear-gradient(135deg, #fee2e2, #fef3c7); padding: 25px; border-radius: 12px; margin-bottom: 25px;">
+                    <h3 style="color: #dc2626; margin-bottom: 10px;">미충족 수요 (Unmet Need)란?</h3>
+                    <p style="font-size: 19px; margin-bottom: 20px;">임신을 피하거나 연기하고 싶지만 피임을 하지 않는 기혼 여성</p>
+                    <div style="display: flex; justify-content: space-around;">
+                        <div style="text-align: center;">
+                            <strong style="font-size: 36px; color: #dc2626;">2억 명</strong>
+                            <br/>전 세계 미충족 수요 여성
                         </div>
-                        <div class="panel-box" style="background: #F5F0E8; border: 2px solid #8B6F47; padding: 15px; margin-bottom: 15px;">
-                            <h4 style="color: #000; font-size: 18px; margin-bottom: 10px;">Current Gaps (2024)</h4>
-                            <div style="font-size: 24px; font-weight: bold; color: #8B6F47; text-align: center; margin: 10px 0;">$3.9B shortfall</div>
-                            <p style="font-size: 16px; color: #000; text-align: center;">Need $12B annually<br>Currently only $8.1B</p>
+                        <div style="text-align: center;">
+                            <strong style="font-size: 36px; color: #ef4444;">24%</strong>
+                            <br/>사하라이남 아프리카
                         </div>
-                        <div class="panel-box" style="background: #F5F0E8; border: 2px solid #6B5D54; padding: 15px;">
-                            <h4 style="color: #000; font-size: 18px; margin-bottom: 10px;">Investment Returns</h4>
-                            <ul style="font-size: 16px; color: #000; padding-left: 20px;">
-                                <li><strong>1:4</strong> - Economic return ratio</li>
-                                <li><strong>32M</strong> - Unintended pregnancies prevented</li>
-                                <li><strong>120K</strong> - Maternal deaths averted</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Strategies Column -->
-                    <div>
-                        <h3 style="color: #000; font-size: 22px; margin-bottom: 15px;">핵심 실행 전략</h3>
-                        <div class="panel-box" style="background: linear-gradient(135deg, #D4B896 0%, #A08C6C 100%); padding: 15px; margin-bottom: 15px;">
-                            <h4 style="color: #FFF; font-size: 18px; margin-bottom: 10px;">Quality Improvement</h4>
-                            <ul style="font-size: 16px; color: #FFF; padding-left: 20px;">
-                                <li>Method mix expansion</li>
-                                <li>Provider training</li>
-                                <li>Supply chain strengthening</li>
-                                <li>Client counseling</li>
-                            </ul>
-                        </div>
-                        <div class="panel-box" style="background: linear-gradient(135deg, #B8D4CE 0%, #9DC3C2 100%); padding: 15px; margin-bottom: 15px;">
-                            <h4 style="color: #FFF; font-size: 18px; margin-bottom: 10px;">Demand Creation</h4>
-                            <ul style="font-size: 16px; color: #FFF; padding-left: 20px;">
-                                <li>Community mobilization</li>
-                                <li>Male engagement</li>
-                                <li>Mass media campaigns</li>
-                                <li>Peer education</li>
-                            </ul>
-                        </div>
-                        <div class="panel-box" style="background: linear-gradient(135deg, #8B6F47 0%, #6B5D54 100%); padding: 15px;">
-                            <h4 style="color: #FFF; font-size: 18px; margin-bottom: 10px;">Policy Environment</h4>
-                            <ul style="font-size: 16px; color: #FFF; padding-left: 20px;">
-                                <li>Remove legal barriers</li>
-                                <li>Task shifting policies</li>
-                                <li>Commodity security</li>
-                                <li>Integration policies</li>
-                            </ul>
+                        <div style="text-align: center;">
+                            <strong style="font-size: 36px; color: #f59e0b;">9%</strong>
+                            <br/>동아시아
                         </div>
                     </div>
                 </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <!-- 왼쪽: 4대 장벽 -->
+                    <div>
+                        <h3 style="margin-bottom: 15px;">미충족 수요의 4대 장벽</h3>
+                        <div style="display: grid; gap: 12px;">
+                            <div style="background: #fff7ed; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                                <h4 style="margin: 0 0 5px; color: #92400e;">지식 부족</h4>
+                                <p style="margin: 0; font-size: 16px;">피임법과 사용법에 대한 정보 부재</p>
+                            </div>
+                            <div style="background: #fef3c7; padding: 15px; border-radius: 8px; border-left: 4px solid #eab308;">
+                                <h4 style="margin: 0 0 5px; color: #713f12;">사회적 반대</h4>
+                                <p style="margin: 0; font-size: 16px;">가족과 지역사회의 부정적 시각</p>
+                            </div>
+                            <div style="background: #fed7aa; padding: 15px; border-radius: 8px; border-left: 4px solid #ea580c;">
+                                <h4 style="margin: 0 0 5px; color: #7c2d12;">건강 우려</h4>
+                                <p style="margin: 0; font-size: 16px;">부작용과 건강 문제에 대한 두려움</p>
+                            </div>
+                            <div style="background: #fecaca; padding: 15px; border-radius: 8px; border-left: 4px solid #dc2626;">
+                                <h4 style="margin: 0 0 5px; color: #7f1d1d;">배우자 반대 인식</h4>
+                                <p style="margin: 0; font-size: 16px;">남편이 반대할 것이라는 여성의 인식</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 오른쪽: 건강 영향 및 빈곤 격차 -->
+                    <div>
+                        <h3 style="margin-bottom: 15px;">가족계획의 건강 영향</h3>
+                        <div style="background: #dcfce7; padding: 18px; border-radius: 10px; margin-bottom: 20px;">
+                            <ul style="margin: 0; padding-left: 20px; font-size: 17px; line-height: 1.8;">
+                                <li><strong>32%</strong> 모성사망 예방 (연간 15만명)</li>
+                                <li><strong>10%</strong> 5세 미만 아동사망 감소</li>
+                                <li><strong>90%</strong> 안전하지 않은 낙태 관련 사망 예방</li>
+                            </ul>
+                        </div>
+
+                        <h3 style="margin-bottom: 15px;">빈곤과 미충족 수요</h3>
+                        <div style="background: #f0f9ff; padding: 18px; border-radius: 10px;">
+                            <p style="margin: 0 0 10px; font-size: 17px;">
+                                <strong style="color: #0369a1;">최빈곤층 여성</strong>의 미충족 수요는<br/>
+                                <strong style="color: #0ea5e9;">최부유층의 2배</strong>
+                            </p>
+                            <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+                                <div>
+                                    <strong style="color: #0c4a6e;">최빈곤층</strong><br/>
+                                    26-30%
+                                </div>
+                                <div>
+                                    <strong style="color: #0284c7;">최부유층</strong><br/>
+                                    13-15%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div style="text-align: center; margin-top: 20px;">
-                    <p style="font-size: 18px; color: #000; font-style: italic;">"Effective family planning requires coordinated action across service delivery, financing, and policy" - Lancet 2006</p>
+                    <p style="font-size: 16px; font-style: italic; color: #6b7280;">
+                        출처: Cleland et al. (2006) "Family planning: the unfinished agenda"
+                    </p>
                 </div>
             </div>
 
-            <!-- Slide 11: Priority Actions and Implementation Framework -->
+            <!-- Slide 10: 핵심 메시지 -->
             <div class="slide">
-                <h1>우선 과제 및 실행 프레임워크</h1>
-                <div style="display: grid; grid-template-columns: 2fr 3fr; gap: 30px; padding: 20px;">
-                    <!-- Priority Countries Visual -->
+                <h1>핵심 메시지와 행동 촉구</h1>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                     <div>
-                        <h3 style="color: #000; font-size: 22px; margin-bottom: 15px;">우선순위 국가 분류</h3>
-                        <div style="position: relative; height: 400px;">
-                            <!-- High Priority Circle -->
-                            <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
-                                <div style="width: 140px; height: 140px; background: linear-gradient(135deg, #8B6F47 0%, #6B5D54 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(139, 111, 71, 0.3);">
-                                    <div style="color: white; text-align: center;">
-                                        <h2 style="font-size: 36px; margin: 0; color: white;">26</h2>
-                                        <p style="font-size: 14px; margin: 2px 0; color: white;">High Priority</p>
-                                    </div>
-                                </div>
-                                <div style="background: #F5F0E8; border: 2px solid #8B6F47; padding: 10px; border-radius: 8px; margin-top: 10px; width: 200px; transform: translateX(-30px);">
-                                    <p style="font-size: 14px; color: #000; margin: 2px 0;">• TFR >5</p>
-                                    <p style="font-size: 14px; color: #000; margin: 2px 0;">• CPR <20%</p>
-                                    <p style="font-size: 14px; color: #000; margin: 2px 0;">• Unmet need >20%</p>
-                                </div>
-                            </div>
-                            <!-- Medium Priority Circle -->
-                            <div style="position: absolute; top: 200px; left: 20%; text-align: center;">
-                                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #D4B896 0%, #A08C6C 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(212, 184, 150, 0.3);">
-                                    <div style="color: white; text-align: center;">
-                                        <h2 style="font-size: 30px; margin: 0; color: white;">31</h2>
-                                        <p style="font-size: 12px; margin: 2px 0; color: white;">Medium</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Low Priority Circle -->
-                            <div style="position: absolute; top: 200px; right: 20%; text-align: center;">
-                                <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #B8D4CE 0%, #9DC3C2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(184, 212, 206, 0.3);">
-                                    <div style="color: white; text-align: center;">
-                                        <h2 style="font-size: 26px; margin: 0; color: white;">18</h2>
-                                        <p style="font-size: 11px; margin: 2px 0; color: white;">Low</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <h3>미완의 과제</h3>
+                        <div class="panel-box">
+                            <ul style="font-size: 19px; line-height: 1.8;">
+                                <li>전 세계 미충족 수요 증가</li>
+                                <li>높은 모성 사망률 지속</li>
+                                <li>청소년 임신 문제</li>
+                                <li>성평등 과제</li>
+                            </ul>
                         </div>
-                        <div class="panel-box" style="background: #F5F0E8; border: 2px solid #8B6F47; padding: 15px; margin-top: 20px;">
-                            <h4 style="color: #000; font-size: 18px;">Geographic Focus</h4>
-                            <p style="font-size: 16px; color: #000;"><strong>85%</strong> of high-priority countries are in Sub-Saharan Africa</p>
-                            <p style="font-size: 14px; color: #666; margin-top: 5px;">Based on 75 low- and lower-middle income countries</p>
+                        <h3 style="margin-top: 20px;">기회의 창</h3>
+                        <div class="panel-box" style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);">
+                            <ul style="font-size: 19px; line-height: 1.8;">
+                                <li>인구 배당 효과 실현</li>
+                                <li>SDG 목표 달성</li>
+                                <li>기후 변화 완화</li>
+                                <li>경제 성장 가속화</li>
+                            </ul>
                         </div>
                     </div>
-
-                    <!-- Action Framework -->
                     <div>
-                        <h3 style="color: #000; font-size: 22px; margin-bottom: 15px;">실행을 위한 핵심 행동</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <!-- Political Commitment -->
-                            <div class="panel-box" style="background: linear-gradient(135deg, #8B6F47 0%, #6B5D54 100%); padding: 15px;">
-                                <h4 style="color: #FFF; font-size: 18px; margin-bottom: 10px;">정치적 약속</h4>
-                                <ul style="font-size: 15px; color: #FFF; padding-left: 20px;">
-                                    <li>National FP strategies</li>
-                                    <li>Budget allocation</li>
-                                    <li>Legal framework reform</li>
-                                    <li>Multi-sectoral coordination</li>
-                                </ul>
-                            </div>
-
-                            <!-- Health System -->
-                            <div class="panel-box" style="background: linear-gradient(135deg, #D4B896 0%, #A08C6C 100%); padding: 15px;">
-                                <h4 style="color: #FFF; font-size: 18px; margin-bottom: 10px;">보건 시스템 강화</h4>
-                                <ul style="font-size: 15px; color: #FFF; padding-left: 20px;">
-                                    <li>Infrastructure development</li>
-                                    <li>Human resource capacity</li>
-                                    <li>Supply chain management</li>
-                                    <li>Information systems</li>
-                                </ul>
-                            </div>
-
-                            <!-- Community Engagement -->
-                            <div class="panel-box" style="background: linear-gradient(135deg, #B8D4CE 0%, #9DC3C2 100%); padding: 15px;">
-                                <h4 style="color: #FFF; font-size: 18px; margin-bottom: 10px;">지역사회 참여</h4>
-                                <ul style="font-size: 15px; color: #FFF; padding-left: 20px;">
-                                    <li>Religious leader engagement</li>
-                                    <li>Male involvement</li>
-                                    <li>Youth participation</li>
-                                    <li>Women empowerment</li>
-                                </ul>
-                            </div>
-
-                            <!-- Innovation -->
-                            <div class="panel-box" style="background: linear-gradient(135deg, #9DC3C2 0%, #7DB8B5 100%); padding: 15px;">
-                                <h4 style="color: #FFF; font-size: 18px; margin-bottom: 10px;">혁신과 기술</h4>
-                                <ul style="font-size: 15px; color: #FFF; padding-left: 20px;">
-                                    <li>Digital health solutions</li>
-                                    <li>New contraceptive methods</li>
-                                    <li>Self-care approaches</li>
-                                    <li>Data-driven decisions</li>
-                                </ul>
-                            </div>
+                        <h3>행동 촉구</h3>
+                        <div class="data-card" style="background: #69b7a4; color: white;">
+                            <h4 style="color: white;">정부</h4>
+                            <p>정치적 의지와 자원 투입</p>
                         </div>
-
-                        <!-- Key Messages -->
-                        <div class="panel-box" style="background: #F5F0E8; border: 3px solid #8B6F47; padding: 20px; margin-top: 20px;">
-                            <h4 style="color: #000; font-size: 20px; margin-bottom: 15px; text-align: center;">핵심 메시지</h4>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; text-align: center;">
-                                <div>
-                                    <div style="font-size: 32px; font-weight: bold; color: #8B6F47;">201M</div>
-                                    <p style="font-size: 14px; color: #000; margin-top: 5px;">Women with unmet need</p>
-                                </div>
-                                <div>
-                                    <div style="font-size: 32px; font-weight: bold; color: #D4B896;">$1→$4</div>
-                                    <p style="font-size: 14px; color: #000; margin-top: 5px;">Return on investment</p>
-                                </div>
-                                <div>
-                                    <div style="font-size: 32px; font-weight: bold; color: #9DC3C2;">2030</div>
-                                    <p style="font-size: 14px; color: #000; margin-top: 5px;">Universal access goal</p>
-                                </div>
-                            </div>
+                        <div class="data-card" style="margin-top: 10px; background: #8fa68e; color: white;">
+                            <h4 style="color: white;">개발 파트너</h4>
+                            <p>지속가능한 자금 지원</p>
+                        </div>
+                        <div class="data-card" style="margin-top: 10px; background: #a8957e; color: white;">
+                            <h4 style="color: white;">시민사회</h4>
+                            <p>옹호와 모니터링</p>
+                        </div>
+                        <div class="data-card" style="margin-top: 10px; background: #c4a977; color: white;">
+                            <h4 style="color: white;">개인</h4>
+                            <p>정보 기반 선택</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-
-            <!-- Slide 20: 참고문헌 (APA 7th Edition) -->
+            <!-- Slide 12: 참고문헌 (APA 7th Edition) -->
             <div class="slide">
                 <h1>참고문헌 (References)</h1>
                 <div style="overflow-y: auto; height: calc(100% - 100px); padding-right: 20px;">
                     <div class="panel-box" style="background: #f9fafb; padding: 15px;">
                         <p style="font-size: 14px; line-height: 1.5; text-align: left; color: #2d3a3a;">
+
+                            Central Intelligence Agency. (2024). Niger. In <em>The World Factbook</em>. https://www.cia.gov/the-world-factbook/countries/niger/<br><br>
+
+                            World Bank. (2022). <em>Arable land (% of land area) - Niger</em> [Data set]. World Development Indicators. https://data.worldbank.org/indicator/AG.LND.ARBL.ZS?locations=NE<br><br>
 
                             Bloom, D. E., Canning, D., & Sevilla, J. (2003). <em>The demographic dividend: A new perspective on the economic consequences of population change</em>. RAND Corporation.<br>
 
@@ -1646,18 +1504,15 @@
     <script>
         // 슬라이드 네비게이션
         let currentSlide = 0;
-        let slides;
-        let totalSlides;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
 
         // 페이지 카운터 생성
         function createPageCounter() {
-            // 이미 있으면 생성하지 않음
-            if (!document.getElementById('pageCounter')) {
-                const counter = document.createElement('div');
-                counter.className = 'page-counter';
-                counter.id = 'pageCounter';
-                document.body.appendChild(counter);
-            }
+            const counter = document.createElement('div');
+            counter.className = 'page-counter';
+            counter.id = 'pageCounter';
+            document.body.appendChild(counter);
             updatePageCounter();
         }
 
@@ -1711,63 +1566,29 @@
         }
 
         function showSlide(index) {
-            console.log('showSlide called with index:', index);
-
-            if (!slides || !totalSlides) {
-                console.error('Slides not initialized!', 'slides:', slides, 'totalSlides:', totalSlides);
-                return;
-            }
-
             if (index < 0) index = totalSlides - 1;
             if (index >= totalSlides) index = 0;
 
-            console.log('Showing slide', index, 'of', totalSlides);
-
-            // 모든 슬라이드에서 active 클래스 제거 및 display 스타일 초기화
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
-                slides[i].style.display = '';  // 인라인 스타일 제거
-                console.log('Slide', i, 'deactivated');
-            }
-
-            // 선택된 슬라이드에 active 클래스 추가
-            if (slides[index]) {
-                slides[index].classList.add('active');
-                console.log('Slide', index, 'activated - has active class:', slides[index].classList.contains('active'));
-            } else {
-                console.error('Slide not found at index:', index);
-            }
-
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
             currentSlide = index;
 
             // 페이지 카운터 업데이트
             updatePageCounter();
 
             // 슬라이드별 차트 및 지도 초기화
-            try {
-                initSlideContent(index);
-            } catch (e) {
-                console.error('Error initializing slide content:', e);
-            }
+            initSlideContent(index);
         }
 
         // 키보드 네비게이션
         document.addEventListener('keydown', (e) => {
-            console.log('Key pressed:', e.key);
-
             if (e.key === 'ArrowRight' || e.key === ' ') {
-                console.log('Next slide requested');
-                e.preventDefault();
                 showSlide(currentSlide + 1);
             } else if (e.key === 'ArrowLeft') {
-                console.log('Previous slide requested');
-                e.preventDefault();
                 showSlide(currentSlide - 1);
             } else if (e.key === 'Home') {
-                e.preventDefault();
                 showSlide(0);
             } else if (e.key === 'End') {
-                e.preventDefault();
                 showSlide(totalSlides - 1);
             }
         });
@@ -1987,77 +1808,35 @@
                 labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
                 males: [-2800, -2400, -2000, -1800, -1600, -1400, -1200, -1000, -900, -800, -700, -600, -500, -400, -300, -200],
                 females: [2600, 2200, 1900, 1700, 1500, 1300, 1100, 950, 850, 750, 650, 550, 450, 350, 250, 180],
-                description: '전형적인 피라미드형 - 높은 출생률 (TFR 6.1), 15세 미만 41.2%',
-                stats: { young: 41.2, working: 55.1, elderly: 3.7, tfr: 6.1 }
-            },
-            '1970': {
-                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
-                males: [-2600, -2500, -2300, -2000, -1700, -1500, -1300, -1100, -950, -850, -750, -650, -550, -450, -350, -250],
-                females: [2400, 2300, 2100, 1850, 1600, 1400, 1200, 1050, 900, 800, 700, 600, 500, 400, 300, 230],
-                description: '피라미드형 유지 - 가족계획 시작, TFR 4.2로 감소, 15세 미만 42.1%',
-                stats: { young: 42.1, working: 54.6, elderly: 3.3, tfr: 4.2 }
-            },
-            '1980': {
-                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
-                males: [-2000, -2300, -2500, -2400, -2200, -1800, -1500, -1300, -1100, -950, -850, -750, -650, -500, -400, -300],
-                females: [1850, 2100, 2300, 2200, 2000, 1700, 1400, 1200, 1050, 900, 800, 700, 600, 450, 350, 280],
-                description: '변화 시작 - TFR 2.8, 15세 미만 34.2%, 생산가능인구 증가',
-                stats: { young: 34.2, working: 62.0, elderly: 3.8, tfr: 2.8 }
-            },
-            '1990': {
-                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
-                males: [-1600, -1800, -2100, -2300, -2400, -2200, -1900, -1600, -1300, -1100, -950, -850, -750, -600, -450, -350],
-                females: [1500, 1700, 1950, 2150, 2250, 2050, 1800, 1500, 1250, 1050, 900, 800, 700, 550, 400, 350],
-                description: '종형 구조 - TFR 1.6 달성, 15세 미만 25.6%, 인구배당 효과',
-                stats: { young: 25.6, working: 69.4, elderly: 5.0, tfr: 1.6 }
+                description: '전형적인 피라미드형 - 높은 출생률과 젊은 인구 구조'
             },
             '2000': {
                 labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
                 males: [-1400, -1600, -1800, -2000, -2100, -2000, -2100, -2200, -1900, -1600, -1300, -1000, -800, -600, -400, -300],
                 females: [1300, 1500, 1700, 1900, 2000, 1900, 2000, 2100, 1800, 1500, 1200, 950, 750, 600, 450, 400],
-                description: '항아리형 - 초저출산 시작 (TFR 1.5), 15세 미만 21%, 고령화 진입',
-                stats: { young: 21.0, working: 71.7, elderly: 7.3, tfr: 1.5 }
+                description: '항아리형 - 출산율 감소로 젊은 층 감소, 중년층 증가'
             },
-            '2010': {
+            '2040': {
                 labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
-                males: [-1200, -1300, -1500, -1700, -1900, -2000, -1900, -2000, -2100, -2000, -1800, -1500, -1200, -900, -600, -450],
-                females: [1100, 1200, 1400, 1600, 1800, 1900, 1800, 1900, 2000, 1900, 1700, 1400, 1100, 850, 600, 500],
-                description: '다이아몬드형 - TFR 1.2, 15세 미만 16.2%, 고령사회 진입 (11.3%)',
-                stats: { young: 16.2, working: 72.5, elderly: 11.3, tfr: 1.2 }
-            },
-            '2020': {
-                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
-                males: [-900, -1100, -1200, -1400, -1600, -1800, -1900, -1800, -1900, -2000, -2100, -1900, -1700, -1400, -1000, -700],
-                females: [850, 1000, 1100, 1300, 1500, 1700, 1800, 1700, 1800, 1900, 2000, 1800, 1600, 1350, 1000, 850],
-                description: '역피라미드 진입 - TFR 0.84 (세계 최저), 15세 미만 12.2%, 초고령사회 임박',
-                stats: { young: 12.2, working: 71.7, elderly: 16.1, tfr: 0.84 }
+                males: [-1000, -1100, -1200, -1300, -1400, -1500, -1600, -1700, -1800, -1900, -2000, -2100, -2200, -2000, -1800, -1500],
+                females: [950, 1050, 1150, 1250, 1350, 1450, 1550, 1650, 1750, 1850, 1950, 2050, 2150, 2000, 1850, 2000],
+                description: '역피라미드형 - 극도로 낮은 출생률과 고령화된 인구 구조'
             }
         };
 
         let currentPyramidChart = null;
 
-        function updatePyramidBySlider(year) {
-            document.getElementById('yearDisplay').textContent = year;
-            showPyramid(year);
-        }
-
         function showPyramid(year) {
+            // 버튼 스타일 업데이트
+            document.querySelectorAll('.pyramid-btn').forEach(btn => {
+                btn.style.background = '#6b7280';
+            });
+            document.getElementById(`btn${year}`).style.background = '#3b82f6';
+
             // 설명 업데이트
             const descDiv = document.getElementById('pyramidDescription');
-            const data = koreaPyramidData[year];
-            if (descDiv && data) {
-                descDiv.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <strong>${year}년:</strong> ${data.description}
-                        </div>
-                        <div style="display: flex; gap: 15px; font-size: 13px;">
-                            <span>👶 ${data.stats.young}%</span>
-                            <span>💼 ${data.stats.working}%</span>
-                            <span>👴 ${data.stats.elderly}%</span>
-                        </div>
-                    </div>
-                `;
+            if (descDiv) {
+                descDiv.innerHTML = `<strong>${year}년:</strong> ${koreaPyramidData[year].description}`;
             }
 
             // 차트 업데이트
@@ -2460,17 +2239,9 @@
                     });
                     break;
 
-                case 7: // 경제적 영향과 남한 사례 (Slide 8)
+                case 7: // MDG와 가족계획
                     // 인구 피라미드 초기화 (1960년 기본 표시)
                     showPyramid('1960');
-
-                    // 슬라이더 이벤트 리스너 추가
-                    const slider = document.getElementById('yearSlider');
-                    if (slider) {
-                        slider.addEventListener('input', function() {
-                            updatePyramidBySlider(this.value);
-                        });
-                    }
 
                     createChart('southKoreaChart', {
                         type: 'line',
@@ -2660,34 +2431,7 @@
                     });
                     break;
 
-                case 9: // 새로운 Slide 10: Service Delivery, Finance and Strategies
-                    // Funding Sources Pie Chart
-                    createChart('fundingSourcesPie', {
-                        type: 'pie',
-                        data: {
-                            labels: ['Bilateral donors', 'Multilateral', 'Domestic resources', 'Private sector', 'Foundations'],
-                            datasets: [{
-                                data: [38, 27, 22, 8, 5],
-                                backgroundColor: ['#8B6F47', '#D4B896', '#B8D4CE', '#9DC3C2', '#A08C6C']
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: {
-                                    position: 'bottom',
-                                    labels: {
-                                        font: { size: 14 },
-                                        color: '#000'
-                                    }
-                                }
-                            }
-                        }
-                    });
-                    break;
-
-                case 10: // 남성 참여 (원래 case 13)
+                case 9: // 남성 참여 (원래 case 13) (원래 case 13)
                     createChart('maleInvolvement', {
                         type: 'bar',
                         data: {
@@ -2793,6 +2537,237 @@
                             }
                         }
                     });
+                    break;
+
+                case 8: // 피임법 공급원 지도 (Slide 9) - Figure 6 정확한 데이터
+                    // Figure 6 데이터 기반 국가별 피임약(Pills) 공급원
+                    const supplyData = {
+                        // 사하라이남 아프리카 (Figure 6 Pills 섹션)
+                        'Zimbabwe': { pharmacy: 5, community: 2, clinic: 93 },
+                        'South Africa': { pharmacy: 10, community: 5, clinic: 85 },
+                        'Kenya': { pharmacy: 20, community: 5, clinic: 75 },
+                        'Zambia': { pharmacy: 12, community: 8, clinic: 80 },
+                        'Namibia': { pharmacy: 20, community: 10, clinic: 70 },
+                        'Ghana': { pharmacy: 25, community: 15, clinic: 60 },
+                        'Côte d\'Ivoire': { pharmacy: 35, community: 15, clinic: 50 },
+                        'Cameroon': { pharmacy: 30, community: 10, clinic: 60 },
+                        'Guinea': { pharmacy: 15, community: 5, clinic: 80 },
+                        'Madagascar': { pharmacy: 15, community: 10, clinic: 75 },
+                        'Ethiopia': { pharmacy: 8, community: 12, clinic: 80 },
+                        'Burkina Faso': { pharmacy: 10, community: 15, clinic: 75 },
+                        'Malawi': { pharmacy: 5, community: 5, clinic: 90 },
+                        'Uganda': { pharmacy: 10, community: 8, clinic: 82 },
+                        'Mali': { pharmacy: 8, community: 10, clinic: 82 },
+                        'Niger': { pharmacy: 5, community: 3, clinic: 92 },
+                        'Senegal': { pharmacy: 12, community: 8, clinic: 80 },
+                        'Gabon': { pharmacy: 25, community: 5, clinic: 70 },
+                        'Mozambique': { pharmacy: 8, community: 7, clinic: 85 },
+
+                        // 라틴아메리카 (Figure 6 Pills 섹션)
+                        'Haiti': { pharmacy: 42, community: 18, clinic: 40 },
+                        'Bolivia': { pharmacy: 48, community: 12, clinic: 40 },
+                        'Guatemala': { pharmacy: 45, community: 10, clinic: 45 },
+                        'Peru': { pharmacy: 55, community: 8, clinic: 37 },
+                        'Colombia': { pharmacy: 65, community: 10, clinic: 25 },
+                        'Nicaragua': { pharmacy: 60, community: 5, clinic: 35 },
+                        'Dominican Republic': { pharmacy: 58, community: 7, clinic: 35 },
+                        'Brazil': { pharmacy: 75, community: 5, clinic: 20 },
+
+                        // 남/동남/동아시아 (Figure 6 Pills 섹션)
+                        'Bangladesh': { pharmacy: 45, community: 20, clinic: 35 },
+                        'Vietnam': { pharmacy: 40, community: 5, clinic: 55 },
+                        'Philippines': { pharmacy: 48, community: 10, clinic: 42 },
+                        'Indonesia': { pharmacy: 52, community: 8, clinic: 40 },
+                        'India': { pharmacy: 38, community: 12, clinic: 50 },
+                        'Nepal': { pharmacy: 35, community: 25, clinic: 40 },
+
+                        // 북아프리카/중동 (Figure 6 Pills 섹션)
+                        'Egypt': { pharmacy: 68, community: 2, clinic: 30 },
+                        'Morocco': { pharmacy: 72, community: 3, clinic: 25 },
+                        'Turkey': { pharmacy: 78, community: 2, clinic: 20 }
+                    };
+
+                    // 지도 초기화
+                    if (!window.supplyMap) {
+                        window.supplyMap = L.map('contraceptiveSupplyMap').setView([0, 0], 2);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '© OpenStreetMap contributors'
+                        }).addTo(window.supplyMap);
+                    }
+
+                    // 국가별 좌표 (확장됨)
+                    const countryCoordinates = {
+                        // 사하라이남 아프리카
+                        'Zimbabwe': [-20.0, 30.0], 'South Africa': [-29.0, 24.0],
+                        'Kenya': [0.0236, 37.9062], 'Zambia': [-13.1339, 27.8493],
+                        'Namibia': [-22.5609, 17.0658], 'Ghana': [7.9465, -1.0232],
+                        'Côte d\'Ivoire': [7.5400, -5.5471], 'Cameroon': [7.3697, 12.3547],
+                        'Guinea': [9.9456, -9.6966], 'Madagascar': [-18.7669, 46.8691],
+                        'Ethiopia': [9.1450, 40.4897], 'Burkina Faso': [12.2383, -1.5616],
+                        'Malawi': [-13.2543, 34.3015], 'Uganda': [1.3733, 32.2903],
+                        'Mali': [17.5707, -3.9962], 'Niger': [17.6078, 8.0817],
+                        'Senegal': [14.4974, -14.4524], 'Gabon': [-0.8037, 11.6094],
+                        'Mozambique': [-18.6657, 35.5296],
+                        // 라틴아메리카
+                        'Haiti': [18.9712, -72.2852], 'Bolivia': [-16.2902, -63.5887],
+                        'Guatemala': [15.7835, -90.2308], 'Peru': [-9.1900, -75.0152],
+                        'Colombia': [4.5709, -74.2973], 'Nicaragua': [12.8654, -85.2072],
+                        'Dominican Republic': [18.7357, -70.1627], 'Brazil': [-14.235, -51.9253],
+                        // 아시아
+                        'Bangladesh': [23.685, 90.3563], 'Vietnam': [14.0583, 108.2772],
+                        'Philippines': [12.8797, 121.7740], 'Indonesia': [-0.7893, 113.9213],
+                        'India': [20.5937, 78.9629], 'Nepal': [28.3949, 84.1240],
+                        // 북아프리카/중동
+                        'Egypt': [26.8206, 30.8025], 'Morocco': [31.7917, -7.0926],
+                        'Turkey': [38.9637, 35.2433]
+                    };
+
+                    // 지도에 마커 추가 (크기와 색상으로 공급원 표현)
+                    Object.keys(supplyData).forEach(country => {
+                        if (countryCoordinates[country]) {
+                            const data = supplyData[country];
+                            const total = data.pharmacy + data.clinic + data.community;
+
+                            // 주요 공급원 판별
+                            let mainSource = 'clinic';
+                            let color = '#2D5F5D'; // 클리닉
+                            if (data.pharmacy >= data.clinic && data.pharmacy >= data.community) {
+                                mainSource = 'pharmacy';
+                                color = '#69b7a4'; // 약국
+                            } else if (data.community >= data.clinic && data.community >= data.pharmacy) {
+                                mainSource = 'community';
+                                color = '#D4A574'; // 지역사회
+                            }
+
+                            // 마커 크기 (주요 공급원 비율에 비례)
+                            const maxRadius = Math.max(data.pharmacy, data.clinic, data.community);
+                            const radius = 4 + (maxRadius / 100) * 12;
+
+                            L.circleMarker(countryCoordinates[country], {
+                                radius: radius,
+                                fillColor: color,
+                                color: '#2D5F5D',
+                                weight: 2,
+                                opacity: 1,
+                                fillOpacity: 0.7
+                            }).addTo(window.supplyMap)
+                            .bindPopup(`<strong style="font-size: 14px;">${country}</strong><br>
+                                <div style="margin-top: 5px;">
+                                <span style="color: #69b7a4;">\u25cf</span> 약국/상점: <strong>${data.pharmacy}%</strong><br>
+                                <span style="color: #2D5F5D;">\u25cf</span> 클리닉: <strong>${data.clinic}%</strong><br>
+                                <span style="color: #D4A574;">\u25cf</span> 지역사회: <strong>${data.community}%</strong>
+                                </div>`);
+                        }
+                    });
+
+                    // 레전드 추가
+                    const legend = L.control({position: 'bottomright'});
+                    legend.onAdd = function() {
+                        const div = L.DomUtil.create('div', 'info legend');
+                        div.innerHTML = `
+                            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                                <strong style="display: block; margin-bottom: 5px;">공급원 유형</strong>
+                                <div style="font-size: 12px;">
+                                    <span style="color: #69b7a4; font-size: 16px;">\u25cf</span> 약국/상점 우세<br>
+                                    <span style="color: #2D5F5D; font-size: 16px;">\u25cf</span> 클리닉 우세<br>
+                                    <span style="color: #D4A574; font-size: 16px;">\u25cf</span> 지역사회 우세
+                                </div>
+                            </div>
+                        `;
+                        return div;
+                    };
+                    legend.addTo(window.supplyMap);
+
+                    // 차트 생성 (Figure 6 정확한 데이터)
+                    const ctx = document.getElementById('supplySourceChart');
+                    if (ctx) {
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['사하라이남', '라틴아메리카', '남아시아', '동남아시아', '북아프리카'],
+                                datasets: [
+                                    {
+                                        label: '클리닉',
+                                        data: [75, 33, 42, 44, 25],
+                                        backgroundColor: '#2D5F5D'
+                                    },
+                                    {
+                                        label: '약국/상점',
+                                        data: [15, 57, 40, 47, 71],
+                                        backgroundColor: '#69b7a4'
+                                    },
+                                    {
+                                        label: '지역사회',
+                                        data: [10, 10, 18, 9, 4],
+                                        backgroundColor: '#D4A574'
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    x: { stacked: true },
+                                    y: {
+                                        stacked: true,
+                                        max: 100,
+                                        ticks: {
+                                            callback: function(value) {
+                                                return value + '%';
+                                            }
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom'
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: '지역별 피임약 공급원 비율 (%)',
+                                        font: { size: 16 }
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    // Table 3 기반 효과성 사용률 차트
+                    const effectivenessCtx = document.getElementById('methodEffectivenessChart');
+                    if (effectivenessCtx) {
+                        new Chart(effectivenessCtx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['가장 효과적(>99%)', '효과적', '덜 효과적'],
+                                datasets: [{
+                                    data: [45, 35, 20],
+                                    backgroundColor: ['#2D5F5D', '#8B6F47', '#D4A574'],
+                                    borderWidth: 2,
+                                    borderColor: '#ffffff'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: {
+                                            padding: 8,
+                                            font: { size: 11 }
+                                        }
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                return context.label + ': ' + context.parsed + '%';
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
                     break;
 
                 case 15: // 글로벌 우선순위 인포그래픽 (Slide 16)
@@ -2930,86 +2905,6 @@
                 showSlide(originalSlide);
             }
         }
-
-        // 페이지 로드 시 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('=== Initializing Presentation ===');
-
-            // JavaScript가 로드되었음을 표시
-            document.body.classList.add('js-loaded');
-
-            // DOM이 로드된 후 슬라이드 요소들을 찾음
-            slides = document.querySelectorAll('.slide');
-            totalSlides = slides.length;
-
-            console.log('Found ' + totalSlides + ' slides');
-            console.log('Slides:', slides);
-
-            // 슬라이드가 없으면 경고
-            if (totalSlides === 0) {
-                console.error('ERROR: No slides found! Check if .slide class exists');
-                alert('슬라이드를 찾을 수 없습니다. 콘솔을 확인해주세요.');
-                return;
-            }
-
-            createPageCounter();
-            console.log('Showing initial slide');
-            showSlide(0);
-
-            // 클릭 네비게이션 추가
-            const slideContainer = document.querySelector('.slide-container');
-            if (slideContainer) {
-                slideContainer.addEventListener('click', function(e) {
-                // 링크나 버튼 클릭 시에는 네비게이션 안함
-                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' ||
-                    e.target.closest('button') || e.target.closest('a')) {
-                    return;
-                }
-
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const width = rect.width;
-
-                if (x < width * 0.3) {
-                    // 왼쪽 30% 클릭 시 이전 슬라이드
-                    showSlide(currentSlide - 1);
-                } else if (x > width * 0.7) {
-                    // 오른쪽 30% 클릭 시 다음 슬라이드
-                    showSlide(currentSlide + 1);
-                }
-                });
-            }
-        });
-    </script>
-
-    <!-- 기본 페이지 카운터 (JavaScript 로드 전에도 보이도록) -->
-    <div class="page-counter" id="pageCounter">1 | 13</div>
-
-    <!-- 디버깅용 네비게이션 버튼 -->
-    <div style="position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); z-index: 9999;">
-        <button onclick="if(typeof showSlide !== 'undefined') { showSlide(currentSlide - 1); } else { alert('Not loaded'); }"
-                style="padding: 10px 20px; font-size: 18px; margin-right: 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">
-            ← 이전
-        </button>
-        <button onclick="if(typeof showSlide !== 'undefined') { showSlide(currentSlide + 1); } else { alert('Not loaded'); }"
-                style="padding: 10px 20px; font-size: 18px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">
-            다음 →
-        </button>
-    </div>
-
-    <!-- 네비게이션 안내 (처음 3초간 표시) -->
-    <div id="navHint" style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 8px; font-family: 'SeoulHangang', sans-serif; font-size: 16px; z-index: 1000; transition: opacity 0.5s;">
-        키보드: ← → 또는 스페이스바 | 마우스: 화면 좌우 클릭
-    </div>
-    <script>
-        // 3초 후 네비게이션 힌트 숨기기
-        setTimeout(function() {
-            var hint = document.getElementById('navHint');
-            if (hint) {
-                hint.style.opacity = '0';
-                setTimeout(function() { hint.style.display = 'none'; }, 500);
-            }
-        }, 3000);
     </script>
 </body>
 </html><!-- Last updated: Wed, Sep 24, 2025  1:36:07 PM -->
