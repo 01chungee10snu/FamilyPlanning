@@ -85,22 +85,46 @@
         body {
             font-family: 'SeoulNamsan', 'Malgun Gothic', sans-serif;
             font-weight: 300;
-            background: linear-gradient(135deg, #2d3a3a 0%, #576066 100%);
+            background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
             overflow: hidden;
             width: 100vw;
             height: 100vh;
         }
 
-        /* Crisis theme colors */
+        /* Color Concept Palette - Warm tones from ColorConcept.png */
         :root {
-            --crisis-danger: #dc2626;
-            --crisis-warning: #ea580c;
-            --crisis-caution: #ca8a04;
-            --crisis-dark: #1f2937;
-            --crisis-darker: #111827;
-            --crisis-text-primary: #ffffff;
-            --crisis-text-secondary: #e5e7eb;
-            --crisis-text-accent: #fbbf24;
+            /* Primary Colors */
+            --primary-green-dark: #2d5931;    /* Dark green */
+            --primary-green: #4a7c4e;         /* Medium green */
+            --primary-green-light: #6b9f6e;   /* Light green */
+
+            /* Secondary Colors */
+            --secondary-brown-dark: #8b4513;  /* Dark brown */
+            --secondary-brown: #a0522d;       /* Medium brown */
+            --secondary-brown-light: #cd853f; /* Light brown */
+
+            /* Accent Colors */
+            --accent-yellow: #ffd700;         /* Gold yellow */
+            --accent-yellow-light: #ffed4e;   /* Light yellow */
+            --accent-beige: #f5f5dc;          /* Beige */
+
+            /* Text Colors */
+            --text-primary: #2d5931;          /* Dark green for main text */
+            --text-secondary: #4a7c4e;        /* Medium green for secondary */
+            --text-light: #6b6b6b;            /* Gray for light text */
+
+            /* Background Colors */
+            --bg-light: #faf8f3;               /* Light warm background */
+            --bg-medium: #f5f0e8;              /* Medium warm background */
+            --bg-dark: #e8e2d5;               /* Dark warm background */
+
+            /* Chart Colors */
+            --chart-1: #2d5931;
+            --chart-2: #4a7c4e;
+            --chart-3: #8b4513;
+            --chart-4: #daa520;
+            --chart-5: #cd853f;
+            --chart-6: #6b9f6e;
         }
 
         /* ==================== 16:9 비율 강제 ==================== */
@@ -132,7 +156,7 @@
             height: 100%;
             display: none;
             padding: 40px 60px;
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-beige) 100%);
             overflow: hidden;
         }
 
@@ -145,42 +169,42 @@
         h1 {
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 800;
-            font-size: 46px;
-            color: #2d3a3a;
+            font-size: 48px;
+            color: var(--text-primary);
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         h2 {
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 700;
             font-size: 36px;
-            color: #576066;
-            margin-bottom: 16px;
+            color: var(--primary-green-dark);
+            margin-bottom: 20px;
         }
 
         h3 {
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 500;
-            font-size: 36px;
-            color: #3e4948;
-            margin-bottom: 14px;
+            font-size: 28px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
         }
 
         h4 {
             font-family: 'SeoulNamsan', sans-serif;
             font-weight: 700;
             font-size: 22px;
-            color: #576066;
+            color: var(--text-secondary);
             margin-bottom: 12px;
         }
 
         p {
             font-family: 'SeoulNamsan', sans-serif;
             font-weight: 300;
-            font-size: 18px;
+            font-size: 20px;
             line-height: 1.7;
-            color: #576066;
+            color: var(--text-primary);
         }
 
         strong, b {
@@ -210,13 +234,41 @@
             height: calc(100% - 60px);
         }
 
-        /* ==================== 컴포넌트 스타일 ==================== */
+        /* ==================== List Styles ==================== */
+        ul, ol {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        li {
+            font-family: 'SeoulNamsan', sans-serif;
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin: 8px 0;
+            position: relative;
+            padding-left: 28px;
+        }
+
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.4;
+        }
+
+        /* ==================== 컴포넌트 스타일 ====================*/
         .panel-box {
-            background: linear-gradient(135deg, #e5e7e7 0%, #d1d5d5 100%);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            border-left: 4px solid #69b7a4;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-medium) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 12px 0;
+            border-left: 4px solid var(--primary-green);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .data-card {
@@ -262,18 +314,18 @@
 
         /* Crisis Slide Styles */
         .crisis-slide {
-            background: #F5F0E8;
+            background: var(--bg-medium);
         }
 
         .crisis-slide h1 {
-            color: #000000;
+            color: var(--text-primary);
             font-size: 48px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .crisis-slide .subtitle {
-            color: #000000;
-            font-size: 24px;
+            color: var(--text-secondary);
+            font-size: 26px;
             margin-bottom: 30px;
         }
 
@@ -295,18 +347,18 @@
         }
 
         .panel-funding {
-            background: linear-gradient(135deg, #B8D4CE 0%, #9DC3C2 100%);
-            border: 3px solid #4A7C7E;
+            background: linear-gradient(135deg, var(--primary-green-light) 0%, var(--primary-green) 100%);
+            border: 3px solid var(--primary-green-dark);
         }
 
         .panel-africa {
-            background: linear-gradient(135deg, #D4B896 0%, #A08C6C 100%);
-            border: 3px solid #8B6F47;
+            background: linear-gradient(135deg, var(--secondary-brown-light) 0%, var(--secondary-brown) 100%);
+            border: 3px solid var(--secondary-brown-dark);
         }
 
         .panel-resource {
-            background: linear-gradient(135deg, #9DC3C2 0%, #B8D4CE 100%);
-            border: 3px solid #2D5F5D;
+            background: linear-gradient(135deg, var(--accent-beige) 0%, var(--accent-yellow-light) 100%);
+            border: 3px solid var(--accent-yellow);
         }
 
         .panel-header {
@@ -316,13 +368,13 @@
         }
 
         .panel-icon {
-            font-size: 32px;
-            margin-right: 12px;
+            font-size: 36px;
+            margin-right: 15px;
         }
 
         .panel-header h3 {
-            color: #000000;
-            font-size: 26px;
+            color: var(--text-primary);
+            font-size: 28px;
             font-weight: 700;
             margin: 0;
         }
@@ -335,14 +387,14 @@
         }
 
         .metric-value {
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 800;
-            color: #000000;
+            color: var(--text-primary);
         }
 
         .metric-label {
-            font-size: 18px;
-            color: #000000;
+            font-size: 20px;
+            color: var(--text-secondary);
             text-align: center;
             font-weight: 500;
         }
@@ -401,34 +453,50 @@
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 18px;
-            margin: 10px 0;
+            font-size: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .data-table th {
             font-family: 'SeoulHangang', sans-serif;
             font-weight: 700;
-            background: #576066;
+            background: var(--primary-green);
             color: white;
-            padding: 8px;
+            padding: 12px;
             text-align: left;
+            font-size: 20px;
         }
 
         .data-table td {
             font-family: 'SeoulNamsan', sans-serif;
             font-weight: 300;
-            padding: 6px 8px;
-            border-bottom: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--bg-dark);
+            background: var(--bg-light);
+            color: var(--text-primary);
+            font-size: 19px;
         }
 
         /* 인용문 */
         .quote-box {
             position: relative;
-            padding: 15px 20px;
-            background: #f5f6f6;
-            border-left: 3px solid #69b7a4;
-            margin: 15px 0;
+            padding: 25px 30px;
+            background: linear-gradient(135deg, var(--accent-beige) 0%, var(--bg-medium) 100%);
+            border-left: 5px solid var(--secondary-brown);
+            border-radius: 12px;
+            margin: 20px 0;
             font-style: italic;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .quote-box p {
+            font-size: 22px;
+            color: var(--text-primary);
+            font-weight: 400;
+            margin: 0;
         }
 
         /* ==================== 지도 툴팁 스타일 ==================== */
@@ -653,7 +721,7 @@
             <!-- Slide 1: 타이틀 + 핵심 메시지 -->
             <div class="slide title-slide active">
                 <h1>가족계획: 미완의 과제</h1>
-                <p style="font-size: 42px; margin-bottom: 30px;">
+                <p style="font-size: 48px; margin-bottom: 30px; color: var(--primary-green-dark);">
                     Family planning: The unfinished agenda
                 </p>
                 <div class="key-messages">
@@ -674,7 +742,7 @@
                         <p>인구·환경 균형</p>
                     </div>
                 </div>
-                <p style="margin-top: 40px; font-size: 20px; color: #FFFFFF;">
+                <p style="margin-top: 40px; font-size: 24px; color: #FFFFFF;">
                     Cleland, J., Bernstein, S., Ezeh, A., Faundes, A., Glasier, A., & Innis, J. (2006). Family planning: the unfinished agenda. The Lancet, 368(9549), 1810-1827.
                 </p>
             </div>
@@ -687,19 +755,19 @@
                         <div class="panel-box">
                             <h3>1960년대: 시작</h3>
                             <p><strong>인구 폭발 우려</strong></p>
-                            <ul style="font-size: 19px; margin: 10px 0; padding-left: 20px; list-style: none;">
-                                <li style="margin: 5px 0;">• 개발도상국 급속 인구 증가</li>
-                                <li style="margin: 5px 0;">• 경제발전 저해 우려</li>
-                                <li style="margin: 5px 0;">• 정부 주도 프로그램 시작</li>
+                            <ul style="font-size: 20px; margin: 10px 0; padding-left: 20px; list-style: none;">
+                                <li style="margin: 8px 0;">• 개발도상국 급속 인구 증가</li>
+                                <li style="margin: 8px 0;">• 경제발전 저해 우려</li>
+                                <li style="margin: 8px 0;">• 정부 주도 프로그램 시작</li>
                             </ul>
                         </div>
                         <div class="panel-box" style="background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);">
                             <h3>1994년: 카이로 회의</h3>
                             <p><strong>패러다임 전환</strong></p>
-                            <ul style="font-size: 19px; margin: 10px 0; padding-left: 20px; list-style: none;">
-                                <li style="margin: 5px 0;">• 인구 목표 → 개인 권리</li>
-                                <li style="margin: 5px 0;">• 숫자 중심 → 인권 중심</li>
-                                <li style="margin: 5px 0;">• 여성 생식건강권 강조</li>
+                            <ul style="font-size: 20px; margin: 10px 0; padding-left: 20px; list-style: none;">
+                                <li style="margin: 8px 0;">• 인구 목표 → 개인 권리</li>
+                                <li style="margin: 8px 0;">• 숫자 중심 → 인권 중심</li>
+                                <li style="margin: 8px 0;">• 여성 생식건강권 강조</li>
                             </ul>
                         </div>
                     </div>
@@ -1114,10 +1182,10 @@
                         <div class="panel-box" style="margin-top: 15px;">
                             <h4>달성 현황 (2015년)</h4>
                             <ul style="font-size: 18px; padding-left: 20px; list-style: none;">
-                                <li style="margin: 5px 0;">• <strong>모성 사망률:</strong> 45% 감소 (목표 75% 미달)</li>
-                                <li style="margin: 5px 0;">• <strong>피임률:</strong> 64% (55%에서 증가)</li>
-                                <li style="margin: 5px 0;">• <strong>미충족 수요:</strong> 12% 여성</li>
-                                <li style="margin: 5px 0;">• <strong>산전 관리(4회+):</strong> 64%</li>
+                                <li style="margin: 8px 0;">• <strong>모성 사망률:</strong> 45% 감소 (목표 75% 미달)</li>
+                                <li style="margin: 8px 0;">• <strong>피임률:</strong> 64% (55%에서 증가)</li>
+                                <li style="margin: 8px 0;">• <strong>미충족 수요:</strong> 12% 여성</li>
+                                <li style="margin: 8px 0;">• <strong>산전 관리(4회+):</strong> 64%</li>
                             </ul>
                         </div>
                         <div class="quote-box" style="margin-top: 15px;">
@@ -1933,8 +2001,8 @@
                             datasets: [{
                                 label: '세계 평균 TFR',
                                 data: [5.0, 4.5, 3.6, 3.0, 2.75, 2.5, 2.4, 2.3],
-                                borderColor: '#69b7a4',
-                                backgroundColor: 'rgba(105, 183, 164, 0.1)',
+                                borderColor: 'var(--primary-green)',
+                                backgroundColor: 'rgba(74, 124, 78, 0.1)',
                                 tension: 0.3
                             }]
                         },
@@ -2023,8 +2091,8 @@
                                 {
                                     label: '파키스탄',
                                     data: [6.3, 6.0, 5.4, 4.3, 3.7],
-                                    borderColor: '#c4a977',
-                                    backgroundColor: 'rgba(196, 169, 119, 0.1)',
+                                    borderColor: 'var(--secondary-brown)',
+                                    backgroundColor: 'rgba(160, 82, 45, 0.1)',
                                     borderWidth: 3,
                                     borderDash: [5, 5],
                                     tension: 0.3
@@ -2085,7 +2153,7 @@
                             datasets: [{
                                 label: '국제 원조 (백만 달러)',
                                 data: [560, 520, 480, 470, 460],
-                                borderColor: '#ef4444',
+                                borderColor: 'var(--secondary-brown-dark)',
                                 backgroundColor: 'rgba(239, 68, 68, 0.1)',
                                 borderWidth: 3,
                                 tension: 0.3
@@ -2215,7 +2283,7 @@
                             datasets: [{
                                 label: '예방 가능 비율 (%)',
                                 data: [32, 10],
-                                backgroundColor: ['#c97064', '#69b7a4']
+                                backgroundColor: ['var(--secondary-brown)', 'var(--primary-green)']
                             }]
                         },
                         options: {
@@ -2250,15 +2318,15 @@
                             datasets: [{
                                 label: 'TFR',
                                 data: [6.0, 4.5, 2.8, 1.6, 1.5],
-                                borderColor: '#69b7a4',
-                                backgroundColor: 'rgba(105, 183, 164, 0.1)',
+                                borderColor: 'var(--primary-green)',
+                                backgroundColor: 'rgba(74, 124, 78, 0.1)',
                                 yAxisID: 'y',
                                 tension: 0.3
                             }, {
                                 label: 'GDP 성장률 (%)',
                                 data: [5, 9, 8, 9, 4],
-                                borderColor: '#c4a977',
-                                backgroundColor: 'rgba(196, 169, 119, 0.1)',
+                                borderColor: 'var(--secondary-brown)',
+                                backgroundColor: 'rgba(160, 82, 45, 0.1)',
                                 yAxisID: 'y1',
                                 borderDash: [5, 5],
                                 tension: 0.3
@@ -2339,7 +2407,7 @@
                             labels: ['부작용 우려', '접근성 부족', '문화적 반대', '정보 부족', '기타'],
                             datasets: [{
                                 data: [35, 25, 20, 15, 5],
-                                backgroundColor: ['#dc2626', '#f59e0b', '#fbbf24', '#fde68a', '#fef3c7']
+                                backgroundColor: ['var(--secondary-brown-dark)', 'var(--secondary-brown)', 'var(--secondary-brown-light)', 'var(--accent-yellow)', 'var(--accent-beige)']
                             }]
                         },
                         options: {
@@ -2391,7 +2459,7 @@
                             labels: ['접근성', '부작용 우려', '문화적 반대', '비용'],
                             datasets: [{
                                 data: [45, 26, 23, 6],
-                                backgroundColor: ['#69b7a4', '#8fa68e', '#a8957e', '#c4a977']
+                                backgroundColor: ['var(--primary-green)', 'var(--primary-green-light)', 'var(--secondary-brown-light)', 'var(--secondary-brown)']
                             }]
                         },
                         options: {
@@ -2413,8 +2481,8 @@
                             }, {
                                 label: '목표 수준',
                                 data: [90, 90, 90, 95, 85],
-                                borderColor: '#c4a977',
-                                backgroundColor: 'rgba(196, 169, 119, 0.1)',
+                                borderColor: 'var(--secondary-brown)',
+                                backgroundColor: 'rgba(160, 82, 45, 0.1)',
                                 borderDash: [5, 5]
                             }]
                         },
