@@ -397,6 +397,54 @@
             font-weight: 500;
         }
 
+        /* Timeline Slider Styles */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #3b82f6 0%, #93c5fd 100%);
+            outline: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        input[type="range"]:hover {
+            opacity: 1;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            background: #2563eb;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.2);
+            background: #2563eb;
+        }
+
         /* 테이블 */
         .data-table {
             width: 100%;
@@ -1173,28 +1221,40 @@
                 <h1>인구 배당과 경제 성장: 남한 사례</h1>
                 <div class="two-column">
                     <div>
-                        <h3>대한민국의 인구 구조 변화 (1960-2040)</h3>
-                        <!-- 인구 피라미드 선택 버튼 -->
-                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                            <button onclick="showPyramid('1960')" class="pyramid-btn" id="btn1960" style="flex: 1; padding: 8px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer;">1960년</button>
-                            <button onclick="showPyramid('2000')" class="pyramid-btn" id="btn2000" style="flex: 1; padding: 8px; background: #6b7280; color: white; border: none; border-radius: 5px; cursor: pointer;">2000년</button>
-                            <button onclick="showPyramid('2040')" class="pyramid-btn" id="btn2040" style="flex: 1; padding: 8px; background: #6b7280; color: white; border: none; border-radius: 5px; cursor: pointer;">2040년 (예측)</button>
+                        <h3>대한민국의 인구 구조 변화 (1960-2020)</h3>
+                        <!-- 타임라인 슬라이더 -->
+                        <div style="margin-bottom: 20px;">
+                            <label style="font-size: 16px; font-weight: 600;">연도 선택: <span id="yearDisplay" style="color: #3b82f6;">1960</span></label>
+                            <input type="range" id="yearSlider" min="1960" max="2020" step="10" value="1960"
+                                   style="width: 100%; margin-top: 10px; cursor: pointer;"
+                                   oninput="updatePyramidBySlider(this.value)">
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-top: 5px;">
+                                <span>1960</span>
+                                <span>1970</span>
+                                <span>1980</span>
+                                <span>1990</span>
+                                <span>2000</span>
+                                <span>2010</span>
+                                <span>2020</span>
+                            </div>
                         </div>
                         <div class="chart-container" style="position: relative; height: 300px;">
                             <canvas id="koreaPyramidChart"></canvas>
-                            <div id="pyramidDescription" style="position: absolute; bottom: 10px; left: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 5px; font-size: 14px;">
+                            <div id="pyramidDescription" style="position: absolute; bottom: 10px; left: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                 <strong>1960년:</strong> 전형적인 피라미드형 - 높은 출생률과 젊은 인구 구조
                             </div>
                         </div>
                         <p style="font-size: 14px; font-style: italic; margin-top: 5px;">
-                            출처: Figure 1 - Republic of Korea Age Structure (Lancet 2006)
+                            출처: Lancet 2006; KOSIS 2024; UN Population Division 2023
                         </p>
                         <div class="panel-box" style="margin-top: 15px;">
-                            <h4>주요 정책 개입</h4>
-                            <ul style="font-size: 17px;">
-                                <li><strong>1961년:</strong> 가족계획 국가 프로그램 시작</li>
-                                <li><strong>1973년:</strong> 모자보건법 제정</li>
-                                <li><strong>1983년:</strong> 두 자녀 정책 강화</li>
+                            <h4>주요 정책 및 인구 변화</h4>
+                            <ul style="font-size: 16px; line-height: 1.8;">
+                                <li><strong>1961:</strong> 가족계획 프로그램 시작</li>
+                                <li><strong>1973:</strong> 모자보건법 제정</li>
+                                <li><strong>1983:</strong> 두 자녀 정책 (TFR 2.0 달성)</li>
+                                <li><strong>2006:</strong> 초저출산 (TFR 1.13)</li>
+                                <li><strong>2023:</strong> TFR 0.72 세계 최저</li>
                             </ul>
                         </div>
                     </div>
@@ -1860,35 +1920,77 @@
                 labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
                 males: [-2800, -2400, -2000, -1800, -1600, -1400, -1200, -1000, -900, -800, -700, -600, -500, -400, -300, -200],
                 females: [2600, 2200, 1900, 1700, 1500, 1300, 1100, 950, 850, 750, 650, 550, 450, 350, 250, 180],
-                description: '전형적인 피라미드형 - 높은 출생률과 젊은 인구 구조'
+                description: '전형적인 피라미드형 - 높은 출생률 (TFR 6.1), 15세 미만 41.2%',
+                stats: { young: 41.2, working: 55.1, elderly: 3.7, tfr: 6.1 }
+            },
+            '1970': {
+                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
+                males: [-2600, -2500, -2300, -2000, -1700, -1500, -1300, -1100, -950, -850, -750, -650, -550, -450, -350, -250],
+                females: [2400, 2300, 2100, 1850, 1600, 1400, 1200, 1050, 900, 800, 700, 600, 500, 400, 300, 230],
+                description: '피라미드형 유지 - 가족계획 시작, TFR 4.2로 감소, 15세 미만 42.1%',
+                stats: { young: 42.1, working: 54.6, elderly: 3.3, tfr: 4.2 }
+            },
+            '1980': {
+                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
+                males: [-2000, -2300, -2500, -2400, -2200, -1800, -1500, -1300, -1100, -950, -850, -750, -650, -500, -400, -300],
+                females: [1850, 2100, 2300, 2200, 2000, 1700, 1400, 1200, 1050, 900, 800, 700, 600, 450, 350, 280],
+                description: '변화 시작 - TFR 2.8, 15세 미만 34.2%, 생산가능인구 증가',
+                stats: { young: 34.2, working: 62.0, elderly: 3.8, tfr: 2.8 }
+            },
+            '1990': {
+                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
+                males: [-1600, -1800, -2100, -2300, -2400, -2200, -1900, -1600, -1300, -1100, -950, -850, -750, -600, -450, -350],
+                females: [1500, 1700, 1950, 2150, 2250, 2050, 1800, 1500, 1250, 1050, 900, 800, 700, 550, 400, 350],
+                description: '종형 구조 - TFR 1.6 달성, 15세 미만 25.6%, 인구배당 효과',
+                stats: { young: 25.6, working: 69.4, elderly: 5.0, tfr: 1.6 }
             },
             '2000': {
                 labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
                 males: [-1400, -1600, -1800, -2000, -2100, -2000, -2100, -2200, -1900, -1600, -1300, -1000, -800, -600, -400, -300],
                 females: [1300, 1500, 1700, 1900, 2000, 1900, 2000, 2100, 1800, 1500, 1200, 950, 750, 600, 450, 400],
-                description: '항아리형 - 출산율 감소로 젊은 층 감소, 중년층 증가'
+                description: '항아리형 - 초저출산 시작 (TFR 1.5), 15세 미만 21%, 고령화 진입',
+                stats: { young: 21.0, working: 71.7, elderly: 7.3, tfr: 1.5 }
             },
-            '2040': {
+            '2010': {
                 labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
-                males: [-1000, -1100, -1200, -1300, -1400, -1500, -1600, -1700, -1800, -1900, -2000, -2100, -2200, -2000, -1800, -1500],
-                females: [950, 1050, 1150, 1250, 1350, 1450, 1550, 1650, 1750, 1850, 1950, 2050, 2150, 2000, 1850, 2000],
-                description: '역피라미드형 - 극도로 낮은 출생률과 고령화된 인구 구조'
+                males: [-1200, -1300, -1500, -1700, -1900, -2000, -1900, -2000, -2100, -2000, -1800, -1500, -1200, -900, -600, -450],
+                females: [1100, 1200, 1400, 1600, 1800, 1900, 1800, 1900, 2000, 1900, 1700, 1400, 1100, 850, 600, 500],
+                description: '다이아몬드형 - TFR 1.2, 15세 미만 16.2%, 고령사회 진입 (11.3%)',
+                stats: { young: 16.2, working: 72.5, elderly: 11.3, tfr: 1.2 }
+            },
+            '2020': {
+                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
+                males: [-900, -1100, -1200, -1400, -1600, -1800, -1900, -1800, -1900, -2000, -2100, -1900, -1700, -1400, -1000, -700],
+                females: [850, 1000, 1100, 1300, 1500, 1700, 1800, 1700, 1800, 1900, 2000, 1800, 1600, 1350, 1000, 850],
+                description: '역피라미드 진입 - TFR 0.84 (세계 최저), 15세 미만 12.2%, 초고령사회 임박',
+                stats: { young: 12.2, working: 71.7, elderly: 16.1, tfr: 0.84 }
             }
         };
 
         let currentPyramidChart = null;
 
-        function showPyramid(year) {
-            // 버튼 스타일 업데이트
-            document.querySelectorAll('.pyramid-btn').forEach(btn => {
-                btn.style.background = '#6b7280';
-            });
-            document.getElementById(`btn${year}`).style.background = '#3b82f6';
+        function updatePyramidBySlider(year) {
+            document.getElementById('yearDisplay').textContent = year;
+            showPyramid(year);
+        }
 
+        function showPyramid(year) {
             // 설명 업데이트
             const descDiv = document.getElementById('pyramidDescription');
-            if (descDiv) {
-                descDiv.innerHTML = `<strong>${year}년:</strong> ${koreaPyramidData[year].description}`;
+            const data = koreaPyramidData[year];
+            if (descDiv && data) {
+                descDiv.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>${year}년:</strong> ${data.description}
+                        </div>
+                        <div style="display: flex; gap: 15px; font-size: 13px;">
+                            <span>👶 ${data.stats.young}%</span>
+                            <span>💼 ${data.stats.working}%</span>
+                            <span>👴 ${data.stats.elderly}%</span>
+                        </div>
+                    </div>
+                `;
             }
 
             // 차트 업데이트
@@ -2291,9 +2393,17 @@
                     });
                     break;
 
-                case 7: // MDG와 가족계획
+                case 7: // 경제적 영향과 남한 사례 (Slide 8)
                     // 인구 피라미드 초기화 (1960년 기본 표시)
                     showPyramid('1960');
+
+                    // 슬라이더 이벤트 리스너 추가
+                    const slider = document.getElementById('yearSlider');
+                    if (slider) {
+                        slider.addEventListener('input', function() {
+                            updatePyramidBySlider(this.value);
+                        });
+                    }
 
                     createChart('southKoreaChart', {
                         type: 'line',
