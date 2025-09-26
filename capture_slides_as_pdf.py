@@ -1,9 +1,6 @@
-
 import asyncio
 import os
-import http.server
-import socketserver
-import threading
+from aiohttp import web
 from playwright.async_api import async_playwright
 
 # --- 설정 ---
@@ -14,31 +11,35 @@ VIEWPORT_WIDTH = 1920
 VIEWPORT_HEIGHT = 1080
 # --- 설정 끝 ---
 
-def run_server():
-    """백그라운드에서 간단한 HTTP 서버를 실행합니다."""
-    Handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        print(f"Serving at port {PORT}")
-        httpd.serve_forever()
-
 async def main():
-    """Playwright를 사용하여 각 슬라이드를 PDF로 캡처합니다."""
+    """aiohttp 서버를 시작하고 Playwright를 사용하여 슬라이드를 캡처합니다."""
+    
     # 출력 디렉터리 생성
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
         print(f"'{OUTPUT_DIR}' 디렉터리를 생성했습니다.")
 
-    # 백그라운드에서 서버 시작
-    server_thread = threading.Thread(target=run_server, daemon=True)
-    server_thread.start()
-
+    # aiohttp 웹 서버 설정
+    app = web.Application()
+    # 현재 작업 디렉터리의 모든 파일을 서비스하도록 설정
+    app.router.add_static('/', path=os.getcwd(), name='static', show_index=True)
+    
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, 'localhost', PORT)
+    
+    # Playwright와 서버를 함께 실행
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page(
             viewport={"width": VIEWPORT_WIDTH, "height": VIEWPORT_HEIGHT}
         )
-
+        
         try:
+            # 서버 시작
+            await site.start()
+            print(f"HTTP 서버가 http://localhost:{PORT} 에서 시작되었습니다.")
+
             print(f"'{URL}' 페이지로 이동 중...")
             await page.goto(URL, wait_until="networkidle")
             print("페이지 로딩 완료.")
@@ -79,9 +80,18 @@ async def main():
         except Exception as e:
             print(f"오류가 발생했습니다: {e}")
         finally:
+            # 리소스 정리
             await browser.close()
-            # 서버는 데몬 스레드이므로 스크립트 종료 시 자동으로 중지됩니다.
+            await runner.cleanup()
+            print("서버 및 브라우저 리소스를 정리했습니다.")
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    # Windows에서 asyncio 정책 설정
+    if os.name == 'nt':
+        asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+    
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\n사용자에 의해 작업이 중단되었습니다.")

@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가족계획: 미완의 과제 - 개선된 발제</title>
+
+    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulHangang.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsan.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'SeoulNamsan', 'Malgun Gothic', sans-serif;
+            font-weight: 300;
+            color: var(--text-primary);
+            background: radial-gradient(circle at top left, #202020 0%, #151515 45%, var(--primary-green-dark) 100%);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        :root {
+            --primary-green-dark: #103629;
+            --primary-green: #2f5b45;
+            --primary-green-light: #5d8c6b;
+            --secondary-brown-dark: #5c4631;
+            --secondary-brown: #7a6247;
+            --secondary-brown-light: #b79a72;
+            --accent-yellow: #c89a1b;
+            --accent-yellow-light: #e3c66a;
+            --accent-beige: #f2eddf;
+            --text-primary: #1c1c1c;
+            --text-secondary: #2f5b45;
+            --text-light: #6c6c6c;
+            --bg-light: #f0e6d6;
+            --bg-medium: #e2d4be;
+            --bg-dark: #cfc2af;
+            --chart-1: #103629;
+            --chart-2: #2f5b45;
+            --chart-3: #7a6247;
+            --chart-4: #c89a1b;
+            --chart-5: #a37e4d;
+            --chart-6: #5d8c6b;
+        }
+
+        .presentation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 32px;
+            background: linear-gradient(160deg, #121212 0%, #1e1e1e 52%, #2d4135 100%);
+        }
+
+        .presentation-viewport {
+            position: relative;
+            width: min(90vw, 1560px);
+            height: min(88vh, calc(90vw * 9 / 16));
+            max-width: 1560px;
+            max-height: 88vh;
+            aspect-ratio: 16 / 9;
+            background: var(--accent-beige);
+            border-radius: 24px;
+            box-shadow: 0 28px 60px rgba(12, 19, 15, 0.45);
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: none;
+            padding: 48px 64px 56px 64px;
+            background: linear-gradient(140deg, #fdfbf5 0%, var(--bg-medium) 55%, var(--bg-dark) 100%);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(47, 91, 69, 0.35) transparent;
+        }
+
+        .slide::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .slide::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .slide::-webkit-scrollbar-thumb {
+            background: rgba(47, 91, 69, 0.32);
+            border-radius: 8px;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        h1 {
+            font-family: 'SeoulHangang', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.3rem, 2.4vw + 1.5rem, 3.3rem);
+            color: var(--text-primary);
+            line-height: 1.2;
+            letter-spacing: -0.4px;
+        }
+
+        h2 {
+            font-family: 'SeoulHangang', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.9rem, 1.6vw + 1.2rem, 2.6rem);
+            color: var(--primary-green-dark);
+            letter-spacing: -0.2px;
+        }
+
+        h3 {
+            font-family: 'SeoulHangang', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.4rem, 1.4vw + 0.9rem, 2rem);
+            color: var(--text-primary);
+        }
+
+        h4 {
+            font-family: 'SeoulNamsan', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.15rem, 1vw + 0.8rem, 1.45rem);
+            color: var(--text-secondary);
+        }
+
+        p, li {
+            font-size: clamp(1.05rem, 0.85vw + 0.85rem, 1.18rem);
+            line-height: 1.65;
+            color: var(--text-primary);
+        }
+
+        ul { list-style: none; padding-left: 0; }
+        li { position: relative; padding-left: 26px; margin: 6px 0; }
+        li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-yellow);
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            height: calc(100% - 60px);
+            align-items: start;
+        }
+
+        .main-with-side {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 32px;
+            height: calc(100% - 60px);
+            align-items: start;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .panel-box {
+            background: rgba(255, 255, 255, 0.88);
+            border-left: 5px solid var(--primary-green);
+            border-radius: 18px;
+            padding: 24px 26px;
+            box-shadow: 0 16px 32px rgba(16, 37, 27, 0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        .key-messages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .key-message {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(47, 91, 69, 0.18);
+            box-shadow: 0 12px 22px rgba(16, 37, 27, 0.12);
+        }
+
+        .data-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 16px;
+            padding: 18px 20px;
+            box-shadow: 0 14px 26px rgba(17, 24, 19, 0.14);
+            border: 1px solid rgba(163, 126, 77, 0.15);
+        }
+
+        .stat-number {
+            font-family: 'SeoulHangang', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 1.2vw + 1.4rem, 2.6rem);
+            color: var(--primary-green);
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 14px 28px rgba(17, 24, 19, 0.12);
+        }
+
+        th, td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(28, 28, 28, 0.08);
+            text-align: left;
+        }
+
+        th {
+            background: linear-gradient(120deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            color: #fff;
+            font-family: 'SeoulHangang';
+            font-weight: 600;
+            letter-spacing: 0.15px;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 18px 36px rgba(12, 24, 19, 0.18);
+        }
+
+        .map-insight-card {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: min(320px, 88%);
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 18px;
+            box-shadow: 0 18px 36px rgba(16, 37, 27, 0.25);
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+            border: 1px solid rgba(47, 91, 69, 0.18);
+        }
+
+        .map-insight-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .map-insight-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .map-flag {
+            width: 42px;
+            height: 28px;
+            border-radius: 6px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(12, 24, 19, 0.2);
+        }
+
+        .map-region-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .map-country-name {
+            font-family: 'SeoulHangang', sans-serif;
+            font-size: 1.28rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .map-landmark-name {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .map-landmark {
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .map-landmark-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .map-landmark-caption {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .map-summary {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .map-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(47, 91, 69, 0.08);
+        }
+
+        .map-stat-label {
+            display: block;
+            font-size: 0.72rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        .map-stat-value {
+            font-family: 'SeoulHangang', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-green-dark);
+        }
+
+        .map-insight-footnote {
+            font-size: 0.72rem;
+            color: var(--text-light);
+            letter-spacing: 0.4px;
+        }
+
+        .page-counter {
+            position: absolute;
+            bottom: 18px;
+            right: 24px;
+            padding: 9px 16px;
+            background: rgba(17, 30, 24, 0.85);
+            color: #fffbe8;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+        }
+
+        .pdf-export-btn {
+            position: absolute;
+            top: 22px;
+            right: 32px;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            color: #fff;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 999px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 12px 24px rgba(17, 24, 19, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pdf-export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(17, 24, 19, 0.28);
+        }
+
+        .pdf-progress {
+            position: absolute;
+            top: 70px;
+            right: 32px;
+            background: rgba(255,255,255,0.95);
+            padding: 14px 18px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            width: 240px;
+            display: none;
+            gap: 8px;
+            flex-direction: column;
+        }
+
+        .pdf-progress.active { display: flex; }
+
+        .pdf-progress-bar {
+            width: 100%;
+            height: 8px;
+            border-radius: 6px;
+            background: rgba(74, 124, 78, 0.15);
+        }
+
+        .pdf-progress-fill {
+            width: 0%;
+            height: 100%;
+            border-radius: 6px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .citation {
+            font-size: 16px;
+            color: #5f5f5f;
+            font-style: italic;
+        }
+
+        @media (max-width: 1200px) {
+            h1 { font-size: 42px; }
+            .slide { padding: 32px 40px; }
+            .key-messages { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <button class="pdf-export-btn" onclick="exportToPDF()">PDF로 저장</button>
+    <div class="pdf-progress" id="pdfProgress">
+        <div>PDF 생성 중...</div>
+        <div id="pdfProgressText">준비 중...</div>
+        <div class="pdf-progress-bar"><div class="pdf-progress-fill" id="pdfProgressFill"></div></div>
+    </div>
+
+    <div class="presentation-container">
+        <div class="presentation-viewport">
+            <div class="slide title-slide active">
+                <h1>가족계획: 미완의 과제</h1>
+                <p style="font-size: 46px; color: var(--primary-green-dark);">Family planning: the unfinished agenda</p>
+                <div class="panel-box" style="display: flex; flex-direction: column; gap: 6px;">
+                    <span>Sexual and Reproductive Health Series No.3 | <strong>The Lancet</strong> 368(9549):1810-1827 | 2006년 11월 1일</span>
+                    <span>John Cleland · Stan Bernstein · Alex Ezeh · Aníbal Faundes · Anna Glasier · Jolene Innis</span>
+                </div>
+                <div class="key-messages">
+                    <div class="key-message">
+                        <h4>미완의 의제</h4>
+                        <p>사하라이남 아프리카의 합계출산율은 4.6명으로 세계 평균의 두 배이며 미충족 수요가 집중돼 있습니다 (United Nations Department of Economic and Social Affairs [UNDESA], 2022).</p>
+                    </div>
+                    <div class="key-message">
+                        <h4>교차적 효과</h4>
+                        <p>가족계획에 1달러를 투자하면 임신·출산 관련 비용 3달러를 절감해 빈곤·보건·성평등에 동시에 기여합니다 (Guttmacher Institute, 2023).</p>
+                    </div>
+                    <div class="key-message">
+                        <h4>증거 기반 성과</h4>
+                        <p>FP2030 참여국의 현대식 피임 이용 여성은 2012년 대비 9,200만 명 증가했습니다 (FP2030, 2023).</p>
+                    </div>
+                    <div class="key-message">
+                        <h4>재활성화의 긴급성</h4>
+                        <p>공여국 가족계획 ODA는 2022년에 5% 감소해 수요 증가 속도를 따라가지 못하고 있습니다 (Kaiser Family Foundation, 2023).</p>
+                    </div>
+                </div>
+                <p class="citation" style="margin-top:16px;">(FP2030, 2023; Guttmacher Institute, 2023; Kaiser Family Foundation, 2023; UNDESA, 2022)</p>
+            </div>
+
+            <div class="slide">
+                <h1>패널 1 요약: 핵심 메시지</h1>
+                <div class="two-column">
+                    <div class="panel-box">
+                        <h3>글로벌 핵심 쟁점</h3>
+                        <ul>
+                            <li>사하라이남 아프리카의 합계출산율은 4.6명으로 세계 평균 2.3명의 두 배입니다 (United Nations Department of Economic and Social Affairs [UNDESA], 2022).</li>
+                            <li>FP2030 참여 69개국에서 현대식 피임을 이용하는 여성은 2012년 대비 9,200만 명 증가해 3억 7,700만 명에 달합니다 (FP2030, 2023).</li>
+                            <li>저·중소득국 2억 1,800만 명의 여성은 원하는 시기에 임신을 피하기 위한 현대적 방법에 접근하지 못합니다 (Guttmacher Institute, 2023).</li>
+                            <li>청소년·미혼 여성, 인도적 위기 상황의 여성에서 미충족 수요가 특히 높습니다 (United Nations Population Fund [UNFPA], 2022).</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box">
+                        <h3>프로그램 재활성화 조건</h3>
+                        <ul>
+                            <li>가족계획에 1달러를 투자하면 임신·분만 관련 비용 3달러를 절감할 수 있습니다 (Guttmacher Institute, 2023).</li>
+                            <li>2022년 공여국의 가족계획 ODA는 144억 달러로 2021년 대비 감소했습니다 (Kaiser Family Foundation, 2023).</li>
+                            <li>지속 가능한 성과는 국가 주도의 리더십과 커뮤니티 파트너십, 공급망과 데이터 역량 강화가 병행될 때 달성됩니다 (UNFPA, 2022).</li>
+                            <li>권리 기반 접근과 문화적 조율을 결합한 통합 전략이 정책 신뢰와 수요 창출에 필수적입니다 (UNFPA, 2022).</li>
+                        </ul>
+                        <p class="citation">(FP2030, 2023; Guttmacher Institute, 2023; Kaiser Family Foundation, 2023; United Nations Department of Economic and Social Affairs [UNDESA], 2022; United Nations Population Fund [UNFPA], 2022)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>역사적 전환과 투자 흐름</h1>
+                <div class="two-column">
+                    <div class="panel-box">
+                        <h3>주요 분기점</h3>
+                        <ul>
+                            <li>1960년대 정부 주도의 가족계획 프로그램이 확산되면서 세계 합계출산율이 5.0명에서 하향곡선을 그리기 시작했습니다 (UNDESA, 2022).</li>
+                            <li>1994년 카이로 국제인구개발회의는 인구 억제에서 권리·선택 중심 접근으로 정책 패러다임을 전환했습니다 (UNFPA, 2022).</li>
+                            <li>2000-2015년 MDGs와 SDGs는 생식건강을 보편적 보건의 핵심 목표로 재배치했고, FP2020·FP2030 이니셔티브가 글로벌 파트너십을 구축했습니다 (FP2030, 2023; UNFPA, 2022).</li>
+                            <li>그러나 공여국 재정은 2022년 144억 달러로 정체돼 수요 증가 속도를 따라가지 못하고 있습니다 (Kaiser Family Foundation, 2023).</li>
+                        </ul>
+                        <div class="data-card" style="margin-top:14px;">
+                            <h4>전 지구적 변화</h4>
+                            <p>세계 합계출산율 <strong>5.0 → 2.3</strong> (1960-2021), 현대식 피임 사용자 <strong>+9,200만 명</strong> (2012-2023).</p>
+                            <p class="citation" style="font-size:15px; margin-top:8px;">(FP2030, 2023; UNDESA, 2022)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="chart-container">
+                            <canvas id="historicalTrend"></canvas>
+                        </div>
+                        <p class="citation">(FP2030, 2023; Kaiser Family Foundation, 2023; UNDESA, 2022; UNFPA, 2022)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>글로벌 인구 전망과 지역별 차이</h1>
+                <div class="main-with-side">
+                    <div>
+                        <div id="worldMap" class="map-container"></div>
+                        <div style="display:flex; gap:16px; margin-top:18px;">
+                            <div class="data-card">
+                                <p>1960년 세계 인구</p>
+                                <div class="stat-number" style="font-size:36px;">30억</div>
+                            </div>
+                            <div class="data-card">
+                                <p>2022년 세계 인구</p>
+                                <div class="stat-number" style="font-size:36px;">80억</div>
+                            </div>
+                            <div class="data-card">
+                                <p>2050년 전망</p>
+                                <div class="stat-number" style="font-size:36px;">97억</div>
+                            </div>
+                        </div>
+                        <p class="citation">(UNDESA, 2022)</p>
+                    </div>
+                    <div>
+                        <h3>지역별 인구 규모 (백만 명)</h3>
+                        <table>
+                            <thead>
+                                <tr><th>지역</th><th>1960</th><th>2022</th><th>2050</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>세계</td><td>3,030</td><td>7,975</td><td>9,738</td></tr>
+                                <tr><td>사하라이남 아프리카</td><td>227</td><td>1,180</td><td>2,094</td></tr>
+                                <tr><td>중앙·남아시아</td><td>870</td><td>2,107</td><td>2,602</td></tr>
+                                <tr><td>동아시아·동남아시아</td><td>1,366</td><td>2,370</td><td>2,269</td></tr>
+                                <tr><td>라틴아메리카·카리브</td><td>219</td><td>662</td><td>762</td></tr>
+                                <tr><td>유럽·북미</td><td>729</td><td>1,106</td><td>1,134</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="panel-box" style="margin-top:16px;">
+                            <h4>미래 성장의 세 축</h4>
+                            <ul>
+                                <li><strong>인구 모멘텀</strong>: 현재 25세 미만 인구가 세계 인구 증가분의 50% 이상을 좌우합니다 (UNDESA, 2022).</li>
+                                <li><strong>미충족 수요</strong>: 현대식 피임을 확대하면 2050년 세계 인구가 약 2억 명 적을 수 있습니다 (Guttmacher Institute, 2023).</li>
+                                <li><strong>희망 가족규모</strong>: 사하라이남 국가의 이상 자녀 수가 4명 이상으로 유지돼 구조적 압력이 지속됩니다 (UNFPA, 2022).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>가족계획이 만드는 변화</h1>
+                <div class="two-column">
+                    <div class="panel-box">
+                        <h3>빈곤·권리·환경</h3>
+                        <ul>
+                            <li>계획되지 않은 임신 예방은 매년 가계 빈곤 위험을 낮추고 청소년의 교육 지속률을 높입니다 (Guttmacher Institute, 2023; UNFPA, 2022).</li>
+                            <li>여성의 시간 자율성과 노동 참여 증가는 성평등 지표 개선으로 이어집니다 (UNFPA, 2022).</li>
+                            <li>인구 성장 압력을 완화하면 식량·물·토지 수요를 안정화하고 기후 적응 비용을 절감할 수 있습니다 (UNDESA, 2022).</li>
+                            <li>위기·재난 상황에서 가족계획을 유지하는 것은 폭력·조혼 위험을 줄이는 보호 전략입니다 (WHO, 2023).</li>
+                        </ul>
+                        <p class="citation">(Ahmed et al., 2012; Guttmacher Institute, 2023; UNDESA, 2022; UNFPA, 2022; World Health Organization [WHO], 2023)</p>
+                    </div>
+                    <div>
+                        <div class="chart-container">
+                            <canvas id="healthImpactChart"></canvas>
+                        </div>
+                        <div class="data-card" style="margin-top:16px;">
+                            <h4>건강 효과</h4>
+                            <p>현대식 피임 접근이 보편화되면 매년 <strong>76,000건의 모성사망</strong>과 <strong>2,100만 건의 안전하지 않은 낙태</strong>를 예방할 수 있습니다.</p>
+                            <p style="font-size:16px; color:#6b6b6b;">(Guttmacher Institute, 2023)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>패널 3: 니제르 위기의 실체</h1>
+                <div class="two-column">
+                    <div>
+                        <div id="nigerMap" class="map-container"></div>
+                        <p class="citation" style="margin-top:12px;">(DHS Program, 2022; FP2030, 2023; UNDESA, 2022)</p>
+                    </div>
+                    <div class="panel-box">
+                        <h3>주요 지표 (최신 가용)</h3>
+                        <table>
+                            <tbody>
+                                <tr><th>합계출산율</th><td>6.8명</td></tr>
+                                <tr><th>현대식 피임률</th><td>14%</td></tr>
+                                <tr><th>평균 희망 자녀 수</th><td>6.9명</td></tr>
+                                <tr><th>미충족 수요</th><td>28%</td></tr>
+                                <tr><th>5세 미만 발육부진</th><td>39%</td></tr>
+                                <tr><th>2050년 인구 전망</th><td>6,600만 명</td></tr>
+                            </tbody>
+                        </table>
+                        <ul style="margin-top:12px;">
+                            <li>농촌 지역의 서비스 접근성은 2012년 대비 개선됐지만 공급망·인력 공백이 반복됩니다 (FP2030, 2023).</li>
+                            <li>사헬 지역의 식량·기후 위기는 가족계획과 영양, 청소년 역량 강화 패키지를 요구합니다 (UNFPA, 2022).</li>
+                            <li>청소년 첫 출산율은 206명(15-19세당)으로 청소년 중심 접근이 핵심입니다 (DHS Program, 2022).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>패널 4: 인구 배당과 한국의 경험</h1>
+                <div class="two-column">
+                    <div>
+                        <div style="display:flex; gap:12px; margin-bottom:12px;">
+                            <button class="pyramid-btn" id="btn1960" onclick="showPyramid('1960')" style="flex:1; padding:8px; background:#3b82f6; color:#fff; border:none; border-radius:6px;">1960년</button>
+                            <button class="pyramid-btn" id="btn2000" onclick="showPyramid('2000')" style="flex:1; padding:8px; background:#6b7280; color:#fff; border:none; border-radius:6px;">2000년</button>
+                            <button class="pyramid-btn" id="btn2040" onclick="showPyramid('2040')" style="flex:1; padding:8px; background:#6b7280; color:#fff; border:none; border-radius:6px;">2040년 전망</button>
+                        </div>
+                        <div class="chart-container" style="height:320px; position:relative;">
+                            <canvas id="koreaPyramidChart"></canvas>
+                            <div id="pyramidDescription" style="position:absolute; bottom:10px; left:10px; right:10px; background:rgba(255,255,255,0.9); padding:10px; border-radius:8px; font-size:14px;"></div>
+                        </div>
+                        <p class="citation" style="margin-top:12px;">(Statistics Korea, 2024; UNDESA, 2022)</p>
+                    </div>
+                    <div class="panel-box">
+                        <h3>인구 배당과 저출산</h3>
+                        <ul>
+                            <li>한국의 합계출산율은 1960년 6.0명에서 2023년 0.72명으로 감소했습니다 (Statistics Korea, 2024).</li>
+                            <li>생산가능인구 비중은 1960년 55%에서 2020년 72%까지 확대된 뒤 2040년 63%로 재하락할 전망입니다 (UNDESA, 2022).</li>
+                            <li>노동시장·돌봄·이민 정책을 연계한 복합 전략이 인구 배당을 유지하는 핵심입니다 (World Bank, 2024).</li>
+                        </ul>
+                        <div class="chart-container" style="margin-top:18px; height:260px;">
+                            <canvas id="southKoreaChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>패널 7·8: 프로그램 성패의 교훈</h1>
+                <div class="two-column">
+                    <div class="panel-box">
+                        <h3>케냐: 위태로운 성공</h3>
+                        <ul>
+                            <li>케냐의 현대식 피임률은 2012년 46%에서 2023년 57%로 상승했고, 청소년·도시 빈곤층의 격차 축소가 핵심 과제로 남아 있습니다 (FP2030, 2023).</li>
+                            <li>지속 가능한 성과는 주정부-커뮤니티 보건요원-민간 공급망의 삼각 협력으로 뒷받침됩니다 (UNFPA, 2022).</li>
+                            <li>데이터 기반의 지역별 가용성 모니터링과 남성 참여 전략이 재정 정체 시기의 완충장치가 됩니다 (FP2030, 2023).</li>
+                        </ul>
+                        <div class="panel-box" style="margin-top:14px; background:linear-gradient(135deg,#e0f2fe,#bfdbfe);">
+                            <h4>핵심 인프라</h4>
+                            <p>커뮤니티 보건요원, 사회적 마케팅, 남성 파트너 참여, 디지털 데이터 플랫폼.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="chart-container">
+                            <canvas id="southAsiaComparison"></canvas>
+                        </div>
+                        <p class="citation" style="margin-top:8px;">(FP2030, 2023; UNFPA, 2022)</p>
+                        <div class="panel-box" style="margin-top:12px;">
+                            <h4>방글라데시 vs 파키스탄</h4>
+                            <ul>
+                                <li>방글라데시는 여성 방문요원과 NGO 협력으로 mCPR 62%를 달성해 출산율을 2.0명까지 낮췄습니다 (FP2030, 2023).</li>
+                                <li>파키스탄은 공급망·사회규범 제약으로 mCPR 34% 수준에 머물며 출산율 감소가 완만합니다 (FP2030, 2023).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>패널 5: 미충족 수요와 불평등</h1>
+                <div class="three-column" style="height:80%;">
+                    <div class="data-card">
+                        <h4>지역별 미충족 수요</h4>
+                        <div class="chart-container" style="height:240px;">
+                            <canvas id="unmetNeedByRegion"></canvas>
+                        </div>
+                        <p class="citation" style="margin-top:6px;">(Guttmacher Institute, 2023)</p>
+                    </div>
+                    <div class="data-card">
+                        <h4>원인 구조</h4>
+                        <div class="chart-container" style="height:240px;">
+                            <canvas id="unmetNeedReasons"></canvas>
+                        </div>
+                        <p style="font-size:16px; color:#6b6b6b;">부작용 우려, 접근성, 문화 규범이 미충족 수요의 70% 이상을 차지합니다 (Guttmacher Institute, 2023).</p>
+                    </div>
+                    <div class="data-card">
+                        <h4>부의 5분위별 격차</h4>
+                        <div class="chart-container" style="height:240px;">
+                            <canvas id="unmetNeedByWealth"></canvas>
+                        </div>
+                        <p style="font-size:16px; color:#6b6b6b;">최빈곤층 여성의 미충족 수요는 최부유층의 세 배에 달합니다 (FP2030, 2023).</p>
+                    </div>
+                </div>
+                <p class="citation">(FP2030, 2023; Guttmacher Institute, 2023)</p>
+            </div>
+
+            <div class="slide">
+                <h1>패널 6: 서비스 전달과 방법 혼합</h1>
+                <div class="main-with-side">
+                    <div>
+                        <div id="contraceptiveSupplyMap" class="map-container"></div>
+                        <p class="citation" style="margin-top:12px;">(FP2030, 2023; UNFPA, 2022)</p>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:16px;">
+                        <div class="data-card" style="flex:1;">
+                            <h4>지역별 공급 채널</h4>
+                            <div class="chart-container" style="height:200px;">
+                                <canvas id="supplySourceChart"></canvas>
+                            </div>
+                            <p style="font-size:16px; color:#6b6b6b;">공공 클리닉 중심(사하라이남) vs 상업 채널 확대(라틴아메리카) 구조가 뚜렷합니다 (FP2030, 2023).</p>
+                        </div>
+                        <div class="data-card" style="flex:1;">
+                            <h4>방법별 효과성·사용률</h4>
+                            <div class="chart-container" style="height:200px;">
+                                <canvas id="methodEffectivenessChart"></canvas>
+                            </div>
+                            <p style="font-size:16px; color:#6b6b6b;">장기·영구 방법 확충과 상담 품질 제고가 필요합니다 (WHO, 2023).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>재정·정책 격차와 리더십</h1>
+                <div class="two-column" style="height:78%;">
+                    <div class="panel-box" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+                        <h3>위기의 세 축</h3>
+                        <ul>
+                            <li><strong>재정 정체</strong>: 2022년 공여국 가족계획 지원은 144억 달러로 전년 대비 5% 감소했습니다 (Kaiser Family Foundation, 2023).</li>
+                            <li><strong>아프리카 집중 위험</strong>: 미충족 수요 20% 이상 국가의 80%가 사하라이남 아프리카에 집중돼 있습니다 (FP2030, 2023).</li>
+                            <li><strong>국내 자원 격차</strong>: 필요 재원 126억 달러 중 절반 이상이 확보되지 않아 서비스 질과 지속성이 위협받습니다 (Guttmacher Institute, 2023).</li>
+                        </ul>
+                        <p style="margin-top:12px;">권리 기반 프로그램을 지탱하려면 다자 기구·국내 재정·민간 파트너가 공동 투자 전략을 수립해야 합니다 (UNFPA, 2022).</p>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:16px;">
+                        <div class="chart-container" style="height:200px;">
+                            <canvas id="fundingDeclineChart"></canvas>
+                        </div>
+                        <div id="africaCrisisMap" class="map-container" style="height:200px;"></div>
+                        <div class="chart-container" style="height:160px;">
+                            <canvas id="resourceGapChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container" style="height:200px; margin-top:8px;">
+                    <canvas id="fundingTrendsMain"></canvas>
+                </div>
+                <p class="citation" style="margin-top:8px;">(FP2030, 2023; Guttmacher Institute, 2023; Kaiser Family Foundation, 2023)</p>
+            </div>
+
+            <div class="slide">
+                <h1>재활성화를 위한 행동 과제</h1>
+                <div class="two-column">
+                    <div class="panel-box">
+                        <h3>정책 및 거버넌스</h3>
+                        <ul>
+                            <li>고위급 정치 리더십과 초당적 합의를 통해 장기 재정 프레임 확립.</li>
+                            <li>국가별 프로그램에 성과 기반 재원배분·데이터 시스템 연계.</li>
+                            <li>청소년·미혼 여성 포함한 보편적 접근권 보장.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box">
+                        <h3>서비스·수요 창출</h3>
+                        <ul>
+                            <li>장기·영구 방법을 포함한 방법 혼합을 확장하고, 후속관리와 상담 품질을 표준화합니다 (WHO, 2023).</li>
+                            <li>커뮤니티 방문, 이동 클리닉, 디지털 상담을 결합해 지리·연령 격차를 줄입니다 (FP2030, 2023).</li>
+                            <li>남성, 종교, 지역 지도자와의 파트너십을 통해 문화적 장벽을 완화하고 청소년 권리를 보호합니다 (UNFPA, 2022).</li>
+                        </ul>
+                        <p class="citation">(FP2030, 2023; UNFPA, 2022; WHO, 2023)</p>
+                    </div>
+                </div>
+                <div class="key-messages" style="margin-top:12px; grid-template-columns: repeat(3, 1fr);">
+                    <div class="key-message">
+                        <h4>정부</h4>
+                        <p>보건·교육·재정부 협업으로 통합 투자계획 수립.</p>
+                    </div>
+                    <div class="key-message">
+                        <h4>공여자</h4>
+                        <p>장기 파이낸싱과 민간혁신(디지털, 원격상담) 지원.</p>
+                    </div>
+                    <div class="key-message">
+                        <h4>시민사회</h4>
+                        <p>권리 기반 옹호와 서비스 감시로 책임성 강화.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>핵심 참고문헌</h1>
+                <div class="panel-box">
+                    <ul>
+                        <li>Ahmed, S., Li, Q., Liu, L., &amp; Tsui, A. O. (2012). Maternal deaths averted by contraceptive use: An analysis of 172 countries. <em>The Lancet, 380</em>(9837), 111–125. https://doi.org/10.1016/S0140-6736(12)60478-4</li>
+                        <li>DHS Program. (2022). <em>Niger Demographic and Health Survey 2021: Key indicators report</em>. https://dhsprogram.com</li>
+                        <li>FP2030. (2023). <em>Measurement report 2023: The arc of progress</em>. https://fp2030.org/2023measurementreport</li>
+                        <li>Guttmacher Institute. (2023). <em>Adding it up: Investing in sexual and reproductive health 2023</em>. https://www.guttmacher.org/report/adding-it-up-investing-in-sexual-and-reproductive-health-2023</li>
+                        <li>Kaiser Family Foundation. (2023). <em>Donor government funding for family planning in 2022</em>. https://www.kff.org</li>
+                        <li>Statistics Korea. (2024). <em>Total fertility rate (1970–2023)</em>. https://kostat.go.kr</li>
+                        <li>United Nations Department of Economic and Social Affairs, Population Division. (2022). <em>World population prospects 2022: Summary of results</em>. https://population.un.org/wpp</li>
+                        <li>United Nations Population Fund. (2022). <em>State of world population 2022: Seeing the unseen</em>. https://www.unfpa.org/swop</li>
+                        <li>World Bank. (2024). <em>World development indicators: GDP growth (annual %)</em>. https://databank.worldbank.org/source/world-development-indicators</li>
+                        <li>World Health Organization. (2023). <em>Family planning/contraception methods</em>. https://www.who.int/news-room/fact-sheets/detail/family-planning-contraception</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        const maps = {};
+        const charts = {};
+
+        function showSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            currentSlide = index;
+            updatePageCounter();
+            initSlideContent(index);
+        }
+
+        function createPageCounter() {
+            const counter = document.createElement('div');
+            counter.id = 'pageCounter';
+            counter.className = 'page-counter';
+            counter.textContent = `1 | ${totalSlides}`;
+            document.body.appendChild(counter);
+        }
+
+        function updatePageCounter() {
+            const counter = document.getElementById('pageCounter');
+            if (counter) {
+                counter.textContent = `${currentSlide + 1} | ${totalSlides}`;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                showSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft') {
+                showSlide(currentSlide - 1);
+            } else if (e.key === 'Home') {
+                showSlide(0);
+            } else if (e.key === 'End') {
+                showSlide(totalSlides - 1);
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            const viewport = document.querySelector('.presentation-viewport');
+            if (!viewport.contains(e.target)) return;
+            const rect = viewport.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            if (x < rect.width * 0.3) {
+                showSlide(currentSlide - 1);
+            } else if (x > rect.width * 0.7) {
+                showSlide(currentSlide + 1);
+            }
+        });
+
+        function createMap(elementId, center = [0, 0], zoom = 2, options = {}) {
+            if (maps[elementId]) {
+                maps[elementId].remove();
+            }
+            const el = document.getElementById(elementId);
+            if (!el) return null;
+            const { showCard = false, ...leafletOptions } = options;
+            const map = L.map(elementId, Object.assign({ center, zoom }, leafletOptions));
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            if (showCard) {
+                map._insightCard = createMapInsightCard(elementId);
+            }
+            maps[elementId] = map;
+            return map;
+        }
+
+        function createMapInsightCard(elementId) {
+            const mapElement = document.getElementById(elementId);
+            if (!mapElement) return null;
+            const wrapper = mapElement.closest('.map-container') || mapElement.parentElement;
+            if (!wrapper) return null;
+            let card = wrapper.querySelector('.map-insight-card');
+            if (!card) {
+                card = document.createElement('div');
+                card.className = 'map-insight-card';
+                card.innerHTML = `
+                    <div class="map-insight-header">
+                        <img class="map-flag" src="" alt="국기">
+                        <div>
+                            <p class="map-region-label">현장 하이라이트</p>
+                            <p class="map-country-name"></p>
+                            <p class="map-landmark-name"></p>
+                        </div>
+                    </div>
+                    <div class="map-landmark">
+                        <img class="map-landmark-image" src="" alt="랜드마크 이미지">
+                        <span class="map-landmark-caption"></span>
+                    </div>
+                    <p class="map-summary"></p>
+                    <div class="map-stat-grid">
+                        <div>
+                            <span class="map-stat-label">TFR</span>
+                            <span class="map-stat-value map-stat-tfr"></span>
+                        </div>
+                        <div>
+                            <span class="map-stat-label">현대적 피임</span>
+                            <span class="map-stat-value map-stat-contraceptive"></span>
+                        </div>
+                        <div>
+                            <span class="map-stat-label">미충족 수요</span>
+                            <span class="map-stat-value map-stat-unmet"></span>
+                        </div>
+                    </div>
+                    <p class="map-insight-footnote"></p>
+                `;
+                wrapper.appendChild(card);
+            }
+            return card;
+        }
+
+        function showMapInsight(map, data) {
+            if (!map || !map._insightCard || !data) return;
+            const card = map._insightCard;
+            if (card._hideTimer) {
+                clearTimeout(card._hideTimer);
+            }
+            const flagEl = card.querySelector('.map-flag');
+            const countryNameEl = card.querySelector('.map-country-name');
+            const landmarkNameEl = card.querySelector('.map-landmark-name');
+            const landmarkImg = card.querySelector('.map-landmark-image');
+            const landmarkCaption = card.querySelector('.map-landmark-caption');
+            const summaryEl = card.querySelector('.map-summary');
+            const tfrEl = card.querySelector('.map-stat-tfr');
+            const contraceptiveEl = card.querySelector('.map-stat-contraceptive');
+            const unmetEl = card.querySelector('.map-stat-unmet');
+            const footnoteEl = card.querySelector('.map-insight-footnote');
+
+            if (flagEl && data.flag) {
+                flagEl.src = data.flag;
+                flagEl.alt = `${data.displayName || data.name} 국기`;
+            }
+            if (countryNameEl) {
+                countryNameEl.textContent = data.displayName || data.name;
+            }
+            if (landmarkNameEl) {
+                landmarkNameEl.textContent = data.landmarkName || '';
+            }
+            if (landmarkImg && data.landmarkImage) {
+                landmarkImg.src = data.landmarkImage;
+                landmarkImg.alt = data.landmarkAlt || data.landmarkName || '';
+            }
+            if (landmarkCaption) {
+                landmarkCaption.textContent = data.landmarkCredit || '';
+            }
+            if (summaryEl) {
+                summaryEl.textContent = data.summary || '';
+            }
+            if (tfrEl) {
+                tfrEl.textContent = data.tfr ? data.tfr.toFixed(1) : '—';
+            }
+            if (contraceptiveEl) {
+                contraceptiveEl.textContent = typeof data.contraceptive === 'number' ? `${data.contraceptive}%` : '—';
+            }
+            if (unmetEl) {
+                unmetEl.textContent = typeof data.unmetNeed === 'number' ? `${data.unmetNeed}%` : '—';
+            }
+            if (footnoteEl) {
+                const parts = [];
+                if (data.cardSources) parts.push(data.cardSources);
+                if (typeof data.maternalMortality === 'number') {
+                    parts.push(`모성사망비 ${data.maternalMortality}/10만`);
+                }
+                if (data.trend) parts.push(data.trend);
+                footnoteEl.textContent = parts.join(' · ');
+            }
+            card.classList.add('visible');
+        }
+
+        function hideMapInsight(map, delay = 260) {
+            if (!map || !map._insightCard) return;
+            const card = map._insightCard;
+            if (card._hideTimer) {
+                clearTimeout(card._hideTimer);
+            }
+            card._hideTimer = setTimeout(() => {
+                card.classList.remove('visible');
+            }, delay);
+        }
+
+        function createChart(canvasId, config) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            if (charts[canvasId]) {
+                charts[canvasId].destroy();
+            }
+            const ctx = canvas.getContext('2d');
+            charts[canvasId] = new Chart(ctx, config);
+        }
+
+        const countryData = {
+            niger: {
+                name: '니제르',
+                displayName: '니제르 (Niger)',
+                coords: [13.5, 2.1],
+                tfr: 6.8,
+                contraceptive: 14,
+                unmetNeed: 28,
+                trend: '현대식 피임 사용자 2배↑ (2012-2023)',
+                color: '#c97064',
+                flag: 'https://flagcdn.com/w160/ne.png',
+                landmarkName: 'Sahel resilience spotlight',
+                landmarkImage: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Grande_mosque_d%27Agadez.jpg',
+                landmarkAlt: '니제르 아가데즈 그랜드 모스크의 사각형 미너렛',
+                landmarkCredit: 'Photo: UNESCO/Wikimedia Commons',
+                summary: 'FP2030는 니제르의 현대식 피임률이 2012년 7%에서 2023년 14%로 상승했지만 미충족 수요가 28%로 여전히 높다고 보고합니다 (FP2030, 2023).',
+                cardSources: '자료: UNDESA, 2022; FP2030, 2023; DHS Program, 2022'
+            },
+            kenya: {
+                name: '케냐',
+                displayName: '케냐 (Kenya)',
+                coords: [-1.3, 36.8],
+                tfr: 3.4,
+                contraceptive: 57,
+                unmetNeed: 14,
+                trend: '청소년 접근성 강화',
+                color: '#c4a977',
+                flag: 'https://flagcdn.com/w160/ke.png',
+                landmarkName: 'Community health network',
+                landmarkImage: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Mount_Kenya.jpg',
+                landmarkAlt: '설산과 숲이 어우러진 케냐 산 풍경',
+                landmarkCredit: 'Photo: UNESCO/Wikimedia Commons',
+                summary: '국가 커뮤니티 보건전달망을 통해 케냐의 현대식 피임률은 57%까지 상승했으며, 슬럼 지역의 격차 해소가 차기 과제로 남아 있습니다 (FP2030, 2023; UNFPA, 2022).',
+                cardSources: '자료: UNDESA, 2022; FP2030, 2023'
+            },
+            bangladesh: {
+                name: '방글라데시',
+                displayName: '방글라데시 (Bangladesh)',
+                coords: [23.7, 90.4],
+                tfr: 2.0,
+                contraceptive: 66,
+                unmetNeed: 12,
+                trend: '포용적 커뮤니티 모델',
+                color: '#69b7a4',
+                flag: 'https://flagcdn.com/w160/bd.png',
+                landmarkName: 'Community clinic network',
+                landmarkImage: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Sundarban_sonalgaon.jpg',
+                landmarkAlt: '순다르반스의 수로와 맹그로브 숲 풍경',
+                landmarkCredit: 'Photo: Wikimedia Commons',
+                summary: '방글라데시는 NGO-정부 파트너십을 통해 mCPR 66%, 출산율 2.0명을 달성했습니다 (FP2030, 2023).',
+                cardSources: '자료: UNDESA, 2022; FP2030, 2023'
+            },
+            pakistan: {
+                name: '파키스탄',
+                displayName: '파키스탄 (Pakistan)',
+                coords: [30.4, 69.3],
+                tfr: 3.6,
+                contraceptive: 34,
+                unmetNeed: 17,
+                trend: '공급망·규범 병목',
+                color: '#d97706',
+                flag: 'https://flagcdn.com/w160/pk.png',
+                landmarkName: 'Urban-rural contrast',
+                landmarkImage: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Badshahi_Mosque_front.jpg',
+                landmarkAlt: '파키스탄 라호르의 바드샤히 모스크 전경',
+                landmarkCredit: 'Photo: Wikimedia Commons',
+                summary: '도시와 농촌의 서비스 격차가 지속되면서 파키스탄의 현대식 피임률은 34%에 머물고 있습니다 (FP2030, 2023).',
+                cardSources: '자료: UNDESA, 2022; FP2030, 2023'
+            },
+            brazil: {
+                name: '브라질',
+                displayName: '브라질 (Brazil)',
+                coords: [-14.2, -51.9],
+                tfr: 1.6,
+                contraceptive: 84,
+                unmetNeed: 7,
+                trend: '민간·공공 혼합 성공',
+                color: '#10b981',
+                flag: 'https://flagcdn.com/w160/br.png',
+                landmarkName: 'Unified health system',
+                landmarkImage: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Cristo_Redentor_-_Rio_de_Janeiro%2C_Brasil.jpg',
+                landmarkAlt: '리우데자네이루를 내려다보는 구세주 그리스도상',
+                landmarkCredit: 'Photo: Wikimedia Commons',
+                summary: '브라질의 통합 보건시스템과 민간약국 네트워크는 mCPR 84%를 유지하며 성과를 공고화했습니다 (FP2030, 2023).',
+                cardSources: '자료: UNDESA, 2022; FP2030, 2023'
+            },
+            mexico: {
+                name: '멕시코',
+                displayName: '멕시코 (Mexico)',
+                coords: [23.6, -102.5],
+                tfr: 1.8,
+                contraceptive: 77,
+                unmetNeed: 11,
+                trend: '다숙련 상담·보험 연계',
+                color: '#10b981',
+                flag: 'https://flagcdn.com/w160/mx.png',
+                landmarkName: 'Seguro Popular legacy',
+                landmarkImage: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Chichen_Itza_3.jpg',
+                landmarkAlt: '햇볕이 비치는 치첸이차 엘 카스티요 피라미드',
+                landmarkCredit: 'Photo: Wikimedia Commons',
+                summary: '보험 기반 접근성과 다숙련 상담 네트워크가 멕시코의 mCPR 77%를 지탱합니다 (FP2030, 2023).',
+                cardSources: '자료: UNDESA, 2022; FP2030, 2023'
+            },
+            indonesia: {
+                name: '인도네시아',
+                displayName: '인도네시아 (Indonesia)',
+                coords: [-0.8, 113.9],
+                tfr: 2.2,
+                contraceptive: 63,
+                unmetNeed: 14,
+                trend: '섬·지역 격차 관리',
+                color: '#69b7a4',
+                flag: 'https://flagcdn.com/w160/id.png',
+                landmarkName: 'Decentralized services',
+                landmarkImage: 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Borobudur-Nothwest-view.jpg',
+                landmarkAlt: '보로부두르 사원의 스투파와 풍경',
+                landmarkCredit: 'Photo: Wikimedia Commons',
+                summary: '분권형 보건 시스템은 섬간 격차를 줄이기 위해 디지털 상담과 커뮤니티 접근을 확대하고 있습니다 (FP2030, 2023).',
+                cardSources: '자료: UNDESA, 2022; FP2030, 2023'
+            },
+            rwanda: {
+                name: '르완다',
+                displayName: '르완다 (Rwanda)',
+                coords: [-1.9, 29.9],
+                tfr: 3.8,
+                contraceptive: 58,
+                unmetNeed: 17,
+                trend: '커뮤니티 건강보험',
+                color: '#69b7a4',
+                flag: 'https://flagcdn.com/w160/rw.png',
+                landmarkName: 'Mutuelle de santé model',
+                landmarkImage: 'https://upload.wikimedia.org/wikipedia/commons/5/5d/Volcanoes_National_Park_Rwanda.jpg',
+                landmarkAlt: '비룽가 화산과 숲을 품은 볼케이노스 국립공원',
+                landmarkCredit: 'Photo: Rwanda Development Board',
+                summary: '르완다는 커뮤니티 기반 건강보험과 방문요원으로 mCPR 58%를 달성했으며 산모건강 지표가 빠르게 개선되고 있습니다 (FP2030, 2023; UNFPA, 2022).',
+                cardSources: '자료: UNDESA, 2022; FP2030, 2023; UNFPA, 2022'
+            }
+        };
+
+        const koreaPyramidData = {
+            '1960': { labels: ['0-4','5-9','10-14','15-19','20-24','25-29','30-34','35-39','40-44','45-49','50-54','55-59','60-64','65-69','70-74','75+'], males: [-2800,-2400,-2000,-1800,-1600,-1400,-1200,-1000,-900,-800,-700,-600,-500,-400,-300,-200], females: [2600,2200,1900,1700,1500,1300,1100,950,850,750,650,550,450,350,250,180], description: '전형적인 피라미드형 - 높은 출산과 젊은 인구' },
+            '2000': { labels: ['0-4','5-9','10-14','15-19','20-24','25-29','30-34','35-39','40-44','45-49','50-54','55-59','60-64','65-69','70-74','75+'], males: [-1400,-1600,-1800,-2000,-2100,-2000,-2100,-2200,-1900,-1600,-1300,-1000,-800,-600,-400,-300], females: [1300,1500,1700,1900,2000,1900,2000,2100,1800,1500,1200,950,750,600,450,400], description: '항아리형 - 출산율 감소와 자원 집중' },
+            '2040': { labels: ['0-4','5-9','10-14','15-19','20-24','25-29','30-34','35-39','40-44','45-49','50-54','55-59','60-64','65-69','70-74','75+'], males: [-1000,-1100,-1200,-1300,-1400,-1500,-1600,-1700,-1800,-1900,-2000,-2100,-2200,-2000,-1800,-1500], females: [950,1050,1150,1250,1350,1450,1550,1650,1750,1850,1950,2050,2150,2000,1850,2000], description: '역피라미드형 - 초저출산과 고령화' }
+        };
+
+        let currentPyramidChart = null;
+
+        function showPyramid(year) {
+            document.querySelectorAll('.pyramid-btn').forEach(btn => btn.style.background = '#6b7280');
+            const activeBtn = document.getElementById(`btn${year}`);
+            if (activeBtn) activeBtn.style.background = '#3b82f6';
+            const data = koreaPyramidData[year];
+            const desc = document.getElementById('pyramidDescription');
+            if (desc) desc.innerHTML = `<strong>${year}년:</strong> ${data.description}`;
+            const canvas = document.getElementById('koreaPyramidChart');
+            if (!canvas) return;
+            if (currentPyramidChart) currentPyramidChart.destroy();
+            const ctx = canvas.getContext('2d');
+            currentPyramidChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [
+                        { label: '남성', data: data.males, backgroundColor: 'rgba(54, 162, 235, 0.7)', borderColor: 'rgba(54, 162, 235, 1)' },
+                        { label: '여성', data: data.females, backgroundColor: 'rgba(255, 99, 132, 0.7)', borderColor: 'rgba(255, 99, 132, 1)' }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' },
+                        title: { display: true, text: `한국 인구구조 ${year}` }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { callback: value => Math.abs(value).toLocaleString() },
+                            title: { display: true, text: '인구 (천 명)' }
+                        },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function addCountryMarker(map, data, key) {
+            if (!data || !map) return;
+            const marker = L.circleMarker(data.coords, {
+                radius: 8,
+                fillColor: data.color,
+                color: '#fff',
+                weight: 2,
+                fillOpacity: 0.85
+            }).addTo(map);
+            marker.bindTooltip(`<strong>${data.displayName || data.name}</strong><br>합계출산율: ${data.tfr}<br>현대적 피임: ${data.contraceptive}%<br>미충족 수요: ${data.unmetNeed}%<br>${data.trend}`);
+
+            marker.on('mouseover', () => {
+                showMapInsight(map, data);
+            });
+            marker.on('mouseout', () => {
+                hideMapInsight(map);
+            });
+            marker.on('focus', () => {
+                showMapInsight(map, data);
+            });
+            marker.on('blur', () => {
+                hideMapInsight(map);
+            });
+        }
+
+        function initHistoricalSlide() {
+            createChart('historicalTrend', {
+                type: 'line',
+                data: {
+                    labels: ['1960','1970','1980','1990','1994','2000','2010','2020','2022'],
+                    datasets: [{
+                        label: '세계 평균 합계출산율',
+                        data: [5.0,4.7,3.7,3.3,2.9,2.7,2.5,2.3,2.3],
+                        borderColor: 'var(--primary-green)',
+                        backgroundColor: 'rgba(74,124,78,0.12)',
+                        tension: 0.35
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        annotation: {
+                            annotations: {
+                                start: { type: 'line', xMin: '1960', xMax: '1960', borderColor: '#dc2626', borderWidth: 2, label: { display: true, content: '프로그램 출발점', position: 'start' } },
+                                cairo: { type: 'line', xMin: '1994', xMax: '1994', borderColor: '#2563eb', borderWidth: 2, label: { display: true, content: '카이로 ICPD', rotation: -90 } }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: false, suggestedMin: 1.5, suggestedMax: 6 },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function initPopulationSlide() {
+            setTimeout(() => {
+                const map = createMap('worldMap', [5, 20], 2, { showCard: true });
+                if (!map) return;
+                Object.entries(countryData).forEach(([key, country]) => addCountryMarker(map, country, key));
+                showMapInsight(map, countryData.niger);
+            }, 200);
+        }
+
+        function initBenefitsSlide() {
+            createChart('healthImpactChart', {
+                type: 'bar',
+                data: {
+                    labels: ['모성 사망 예방 비율', '5세 미만 사망 예방 비율'],
+                    datasets: [{ data: [44, 10], backgroundColor: ['#a0522d', '#4a7c4e'] }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, max: 50, ticks: { callback: v => v + '%' } } }
+                }
+            });
+        }
+
+        function initNigerSlide() {
+            setTimeout(() => {
+                const map = createMap('nigerMap', [17, 8], 5, { showCard: true });
+                if (!map) return;
+                addCountryMarker(map, countryData.niger, 'niger');
+                addCountryMarker(map, countryData.kenya, 'kenya');
+                showMapInsight(map, countryData.niger);
+            }, 200);
+        }
+
+        function initDemographicSlide() {
+            showPyramid('1960');
+            createChart('southKoreaChart', {
+                type: 'line',
+                data: {
+                    labels: ['1960','1980','2000','2020','2040'],
+                    datasets: [
+                        { label: '합계출산율(TFR)', data: [6.0,2.8,1.5,0.84,1.05], borderColor: '#4a7c4e', backgroundColor: 'rgba(74,124,78,0.1)', tension: 0.3, yAxisID: 'y' },
+                        { label: '생산가능인구 비중(%)', data: [55,60,71,72,63], borderColor: '#d97706', backgroundColor: 'rgba(217,119,6,0.1)', borderDash: [6,4], tension: 0.3, yAxisID: 'y1' }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        y: { type: 'linear', position: 'left', title: { display: true, text: 'TFR' }, suggestedMin: 0, suggestedMax: 7 },
+                        y1: { type: 'linear', position: 'right', title: { display: true, text: '생산가능인구 비중(%)' }, grid: { drawOnChartArea: false }, suggestedMin: 50, suggestedMax: 80 }
+                    }
+                }
+            });
+        }
+
+        function initProgrammeSlide() {
+            createChart('southAsiaComparison', {
+                type: 'line',
+                data: {
+                    labels: ['1980','1995','2005','2015','2023'],
+                    datasets: [
+                        { label: '방글라데시', data: [6.1,3.4,2.9,2.3,2.0], borderColor: '#4a7c4e', backgroundColor: 'rgba(74,124,78,0.12)', tension: 0.35, borderWidth: 3 },
+                        { label: '파키스탄', data: [6.6,5.5,4.6,3.8,3.6], borderColor: '#a0522d', backgroundColor: 'rgba(160,82,45,0.12)', tension: 0.35, borderWidth: 3, borderDash: [6,4] }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } },
+                    scales: { y: { beginAtZero: false, suggestedMin: 2, suggestedMax: 7 }, x: { grid: { display: false } } }
+                }
+            });
+        }
+
+        function initUnmetNeedSlide() {
+            createChart('unmetNeedByRegion', {
+                type: 'bar',
+                data: {
+                    labels: ['사하라이남', '서아시아·북아프리카', '남아시아', '라틴아메리카', '동아시아'],
+                    datasets: [{ data: [24,17,13,10,6], backgroundColor: ['#b91c1c','#ef4444','#f97316','#fb923c','#facc15'] }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 30 } } }
+            });
+
+            createChart('unmetNeedReasons', {
+                type: 'pie',
+                data: {
+                    labels: ['부작용 우려', '접근성 부족', '문화·종교 반대', '정보 부족', '기타'],
+                    datasets: [{ data: [35,25,20,15,5], backgroundColor: ['#8b4513','#a0522d','#cd853f','#ffd700','#f5f5dc'] }]
+                },
+                options: { responsive: true }
+            });
+
+            createChart('unmetNeedByWealth', {
+                type: 'line',
+                data: {
+                    labels: ['최빈곤층','빈곤층','중간층','부유층','최부유층'],
+                    datasets: [{ label: '미충족 수요(%)', data: [28,22,16,12,8], borderColor: '#dc2626', backgroundColor: 'rgba(220,38,38,0.1)', tension: 0.3 }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 30 } } }
+            });
+        }
+
+        function initServiceSlide() {
+            setTimeout(() => {
+                const map = createMap('contraceptiveSupplyMap', [10, 0], 2);
+                if (!map) return;
+                Object.entries(contraceptiveSupplyData).forEach(([country, value]) => {
+                    const marker = L.circleMarker(countryCoords[country], {
+                        radius: 6 + value.clinic / 10,
+                        fillColor: value.clinic >= value.pharmacy ? '#2d5f5d' : '#69b7a4',
+                        color: '#fff',
+                        weight: 1,
+                        fillOpacity: 0.85
+                    }).addTo(map);
+                    marker.bindTooltip(`<strong>${country}</strong><br>클리닉 ${value.clinic}%<br>약국 ${value.pharmacy}%<br>지역사회 ${value.community}%`);
+                });
+            }, 200);
+
+            createChart('supplySourceChart', {
+                type: 'bar',
+                data: {
+                    labels: ['사하라이남','라틴아메리카','남아시아','동남아시아','북아프리카'],
+                    datasets: [
+                        { label: '클리닉', data: [75,33,42,44,25], backgroundColor: '#2d5f5d' },
+                        { label: '약국/상점', data: [15,57,40,47,71], backgroundColor: '#69b7a4' },
+                        { label: '지역사회', data: [10,10,18,9,4], backgroundColor: '#d4a574' }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: { x: { stacked: true }, y: { stacked: true, max: 100, ticks: { callback: v => v + '%' } } },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            createChart('methodEffectivenessChart', {
+                type: 'doughnut',
+                data: {
+                    labels: ['가장 효과적(>99%)', '효과적', '덜 효과적'],
+                    datasets: [{ data: [45,35,20], backgroundColor: ['#2d5f5d','#8b6f47','#d4a574'] }]
+                },
+                options: { responsive: true }
+            });
+        }
+
+        function initFinancingSlide() {
+            createChart('fundingDeclineChart', {
+                type: 'line',
+                data: {
+                    labels: ['2018','2019','2020','2021','2022'],
+                    datasets: [{ data: [1.50,1.48,1.44,1.52,1.44], borderColor: '#b91c1c', tension: 0.3, fill: false }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: false, suggestedMin: 1.3, suggestedMax: 1.6, ticks: { callback: v => v + '십억 달러' } } } }
+            });
+
+            setTimeout(() => {
+                const map = createMap('africaCrisisMap', [5, 20], 3, { zoomControl: false });
+                if (!map) return;
+                africaUnmetNeed.forEach(item => {
+                    L.circleMarker(item.coords, {
+                        radius: 6 + item.unmet * 0.3,
+                        fillColor: '#8b6f47',
+                        color: '#2d5f5d',
+                        weight: 2,
+                        fillOpacity: 0.75
+                    }).addTo(map).bindTooltip(`${item.name}: ${item.unmet}% 미충족`);
+                });
+            }, 200);
+
+            createChart('resourceGapChart', {
+                type: 'bar',
+                data: {
+                    labels: ['필요 재원', '현재 지출', '추가 필요 재원'],
+                    datasets: [{ data: [12.6,6.4,6.2], backgroundColor: ['#f97316','#0f766e','#dc2626'] }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 14, ticks: { callback: v => v + '십억 달러' } } } }
+            });
+
+            createChart('fundingTrendsMain', {
+                type: 'line',
+                data: {
+                    labels: ['2015','2016','2017','2018','2019','2020','2021','2022','2023'],
+                    datasets: [
+                        { label: '필요 자금', data: [10.5,10.7,10.9,11.2,11.6,12.0,12.3,12.5,12.6], borderColor: '#dc2626', fill: false, tension: 0.3 },
+                        { label: '실제 자금', data: [6.6,6.7,6.8,6.8,6.9,6.2,6.3,6.4,6.4], borderColor: '#0f766e', fill: false, tension: 0.3 },
+                        { label: '자금 격차', data: [3.9,4.0,4.1,4.4,4.7,5.8,6.0,6.1,6.2], borderColor: '#f59e0b', fill: false, tension: 0.3, borderDash: [6,4] }
+                    ]
+                },
+                options: { responsive: true, scales: { y: { ticks: { callback: v => v + '십억 달러' } } } }
+            });
+        }
+
+        const contraceptiveSupplyData = {
+            'Zimbabwe': { pharmacy: 5, community: 2, clinic: 93 },
+            'Kenya': { pharmacy: 20, community: 5, clinic: 75 },
+            'Ghana': { pharmacy: 25, community: 15, clinic: 60 },
+            'Madagascar': { pharmacy: 15, community: 10, clinic: 75 },
+            'South Africa': { pharmacy: 10, community: 5, clinic: 85 },
+            'Brazil': { pharmacy: 75, community: 5, clinic: 20 },
+            'Colombia': { pharmacy: 65, community: 10, clinic: 25 },
+            'Bangladesh': { pharmacy: 45, community: 20, clinic: 35 },
+            'Indonesia': { pharmacy: 52, community: 8, clinic: 40 },
+            'India': { pharmacy: 38, community: 12, clinic: 50 },
+            'Egypt': { pharmacy: 68, community: 2, clinic: 30 },
+            'Morocco': { pharmacy: 72, community: 3, clinic: 25 }
+        };
+
+        const countryCoords = {
+            'Zimbabwe': [-20.0, 30.0], 'Kenya': [0.0, 36.8], 'Ghana': [7.9, -1.0], 'Madagascar': [-18.7, 46.9], 'South Africa': [-29.0, 24.0],
+            'Brazil': [-14.2, -51.9], 'Colombia': [4.6, -74.1], 'Bangladesh': [23.7, 90.4], 'Indonesia': [-0.8, 113.9], 'India': [20.6, 79.0],
+            'Egypt': [26.8, 30.8], 'Morocco': [31.8, -7.1]
+        };
+
+        const africaUnmetNeed = [
+            { name: '니제르', coords: [17, 8], unmet: 28 },
+            { name: '차드', coords: [15, 19], unmet: 24 },
+            { name: '말리', coords: [17, -4], unmet: 25 },
+            { name: '우간다', coords: [1, 32], unmet: 24 },
+            { name: '케냐', coords: [-1, 37], unmet: 14 },
+            { name: '에티오피아', coords: [8, 38], unmet: 22 },
+            { name: '나이지리아', coords: [9, 8], unmet: 19 },
+            { name: 'DR콩고', coords: [-3, 23], unmet: 26 }
+        ];
+
+        const slideInitializers = {
+            2: initHistoricalSlide,
+            3: initPopulationSlide,
+            4: initBenefitsSlide,
+            5: initNigerSlide,
+            6: initDemographicSlide,
+            7: initProgrammeSlide,
+            8: initUnmetNeedSlide,
+            9: initServiceSlide,
+            10: initFinancingSlide
+        };
+
+        function initSlideContent(index) {
+            if (slideInitializers[index]) {
+                slideInitializers[index]();
+            }
+        }
+
+        window.addEventListener('load', () => {
+            createPageCounter();
+            showSlide(0);
+        });
+
+        async function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const button = document.querySelector('.pdf-export-btn');
+            const progress = document.getElementById('pdfProgress');
+            const progressText = document.getElementById('pdfProgressText');
+            const progressFill = document.getElementById('pdfProgressFill');
+            button.disabled = true;
+            progress.classList.add('active');
+
+            const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+            const originalSlide = currentSlide;
+
+            for (let i = 0; i < totalSlides; i++) {
+                progressText.textContent = `슬라이드 ${i + 1} / ${totalSlides} 처리 중...`;
+                progressFill.style.width = `${((i + 1) / totalSlides) * 100}%`;
+                showSlide(i);
+                await new Promise(resolve => setTimeout(resolve, 500));
+                const canvas = await html2canvas(slides[i], { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
+                const imgData = canvas.toDataURL('image/jpeg', 0.95);
+                if (i > 0) pdf.addPage();
+                const pdfWidth = 297, pdfHeight = 210;
+                const ratio = Math.min(pdfWidth / canvas.width, pdfHeight / canvas.height);
+                const w = canvas.width * ratio;
+                const h = canvas.height * ratio;
+                pdf.addImage(imgData, 'JPEG', (pdfWidth - w) / 2, (pdfHeight - h) / 2, w, h);
+                pdf.setFontSize(10);
+                pdf.text(`${i + 1} / ${totalSlides}`, pdfWidth - 20, pdfHeight - 10);
+            }
+
+            pdf.save('가족계획_미완의_과제_개선발제.pdf');
+            showSlide(originalSlide);
+            setTimeout(() => {
+                progress.classList.remove('active');
+                progressFill.style.width = '0%';
+                button.disabled = false;
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
